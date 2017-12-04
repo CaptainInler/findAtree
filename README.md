@@ -1,4 +1,4 @@
-# findAtree - Projekt2 - Cas Fee - HSR
+# find:evergreen_tree:tree - Projekt2 - Cas Fee - HSR
 Mobiles Geo-Spiel-App
 
 Spielumfang:
