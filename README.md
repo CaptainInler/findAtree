@@ -13,4 +13,4 @@ Umfang der Arbeit.
 - Einbinden der POI über den WebService (https://data.stadt-zuerich.ch/dataset/baumkataster)
 - Speichern der Punkte der Spieler auf einem Server via REST (z.b mit: https://firebase.google.com/ oder https://firebase.google.com/products/firestore/)
 - App auf Heroku laufen lassen: https://www.heroku.com/
-- App erstellt mit Angular5
+- App erstellt mit ~~Angular5~~~ React
