@@ -7,8 +7,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 
-import { MapComponent } from './map.component';
-import { MapService } from './map.service';
+import { MapComponent } from './map/map.component';
+import { MapService } from './map/map.service';
 
 @NgModule({
   imports: [

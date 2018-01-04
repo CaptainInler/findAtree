@@ -11,9 +11,7 @@ export class AppComponent {
   items: Observable<any[]>;
   constructor(db: AngularFireDatabase) {
     this.items = db.list('features', ref => ref.limitToFirst(10)).valueChanges();
-    console.log(this.items);
   }
-
 }
 
 
