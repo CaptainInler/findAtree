@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import WebScene = require('esri/WebScene');
-import esriConfig = require('esri/config');
+import * as WebScene from 'esri/WebScene';
+import * as esriConfig from 'esri/config';
 
 @Injectable()
 export class MapService {
