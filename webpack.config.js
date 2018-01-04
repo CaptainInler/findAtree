@@ -37,8 +37,8 @@ module.exports = function (env) {
         },
         // css
         {
-          test: /\.css$/,
-          use: ["to-string-loader", "css-loader"]
+          test: /\.scss$/,
+          use: ["to-string-loader", "style-loader", "css-loader", "sass-loader"]
         },
         // html
         {
