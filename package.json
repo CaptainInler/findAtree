@@ -1,15 +1,23 @@
 {
   "name": "find-atree",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "1.0.0",
+  "description": "An application for viewing and editing trees in the city of Zurich.",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "start": "npm run build & webpack-dev-server --config ./webpack.config.js --hot --progress --open",
+    "build": "webpack --config ./webpack.config.js --progress --colors",
+    "dev": "webpack-dev-server --open --config webpack.config.js"
   },
+  "keywords": [
+    "community-app",
+    "tree",
+    "3D"
+  ],
+  "license": "MIT",
+  "contributors": [
+    "Beat Fleischli",
+    "Daniel Gmuer",
+    "Raluca Nicola"
+  ],
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
@@ -28,13 +36,17 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.5.5",
-    "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
+    "@types/arcgis-js-api": "4.6.0",
+    "@types/core-js": "0.9.35",
+    "@types/dojo": "^1.9.38",
     "@types/jasmine": "~2.5.53",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "angular2-template-loader": "^0.6.2",
     "codelyzer": "^4.0.1",
+    "css-loader": "0.28.7",
+    "html-loader": "0.5.1",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",
@@ -44,8 +56,15 @@
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
+    "style-loader": "^0.18.2",
+    "to-string-loader": "1.1.5",
+    "ts-helpers": "1.1.2",
+    "ts-loader": "2.3.7",
     "ts-node": "~3.2.0",
     "tslint": "~5.7.0",
-    "typescript": "~2.4.2"
-  }
+    "typescript": "~2.4.2",
+    "webpack": "3.6.0",
+    "webpack-dev-server": "2.9.1"
+  },
+  "repository": "https://github.com/CaptainInler/findAtree/"
 }
