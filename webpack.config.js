@@ -1,12 +1,6 @@
 var path = require('path');
 var webpack = require("webpack");
 
-// Helper functions
-function root(args) {
-  args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [__dirname].concat(args));
-}
-
 module.exports = function (env) {
   var minimize = false;
   var htmlLoaderOptions = {};
@@ -24,15 +18,14 @@ module.exports = function (env) {
     },
     output: {
       filename: './dist/[name].bundle.js',
-      publicPath: './',
       libraryTarget: "amd"
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', 'json']
     },
     devServer: {
-      contentBase: path.join(__dirname, "/"),
-      port: 8080
+      contentBase: __dirname,
+      inline: true
     },
     module: {
       rules: [
@@ -65,15 +58,8 @@ module.exports = function (env) {
       ]
     },
     plugins: [
-      // https://github.com/angular/angular/issues/11580
-      new webpack.ContextReplacementPlugin(
-        // The (\\|\/) piece accounts for path separators in *nix and Windows
-        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-        root('./src') // location of your src
-      ),
-
       new webpack.optimize.CommonsChunkPlugin({
-        name: ['src', 'vendor', 'polyfills'],
+        name: ['src','vendor', 'polyfills'],
         minChunks: Infinity
       })
     ],
