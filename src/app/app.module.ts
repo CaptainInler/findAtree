@@ -7,6 +7,9 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 
+import { MapComponent } from './map/map.component';
+import { MapService } from './map/map.service';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -15,7 +18,13 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule
   ],
-  declarations: [ AppComponent ],
-  bootstrap: [ AppComponent ]
+  declarations: [
+    AppComponent,
+    MapComponent
+  ],
+  bootstrap: [ AppComponent ],
+  providers: [
+    MapService
+  ]
 })
 export class AppModule {}
