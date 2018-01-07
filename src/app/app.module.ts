@@ -9,6 +9,8 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
+import { TreeService } from './tree.service';
+import { TreesComponent } from './trees/trees.component';
 
 @NgModule({
   imports: [
@@ -20,11 +22,12 @@ import { MapService } from './map/map.service';
   ],
   declarations: [
     AppComponent,
-    MapComponent
+    MapComponent,
+    TreesComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [
-    MapService
+    MapService, TreeService
   ]
 })
 export class AppModule {}

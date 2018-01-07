@@ -8,10 +8,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: Observable<any[]>;
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('features', ref => ref.limitToFirst(10)).valueChanges();
-  }
+  title = "Find A Tree";
 }
 
 
