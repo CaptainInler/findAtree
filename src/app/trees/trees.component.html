@@ -1,6 +1,7 @@
 <ul>
   <li *ngFor="let item of trees">
-    {{ item.geometry.coordinates[0][0] | json }},
-    {{ item.geometry.coordinates[0][1] | json }}
+    {{ item.geometry.coordinates[0][0] }},
+    {{ item.geometry.coordinates[0][1] }},
+    {{ item.properties.baumnamedeu }},
   </li>
 </ul>

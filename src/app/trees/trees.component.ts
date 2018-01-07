@@ -20,4 +20,7 @@ export class TreesComponent implements OnInit {
     this.treeService.getTrees()
       .subscribe(trees => this.trees = trees );
   }
+  generateArray(obj){
+    return Object.keys(obj).map((key)=>{ return obj[key]});
+  }
 }
