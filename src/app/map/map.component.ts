@@ -1,13 +1,16 @@
-import { Component, ElementRef, Output, EventEmitter } from '@angular/core';
+import { Component, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MapService } from './map.service';
 
-import * as SceneView from 'esri/views/SceneView';
-import * as Point from 'esri/geometry/Point';
-import * as SpatialReference from 'esri/geometry/SpatialReference';
+import MapView = require('esri/views/MapView');
+import * as FeatureLayer from 'esri/layers/FeatureLayer';
+import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
+import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
+import { TreeService } from '../tree.service';
+import { attributeNames } from '../tree';
 
 @Component({
   selector: 'esri-map',
-  template: '<div id="viewDiv"></div>',
+  templateUrl: './map.component.html',
   styleUrls: ['map.component.scss']
 })
 export class MapComponent {
@@ -15,16 +18,67 @@ export class MapComponent {
   @Output()
   viewCreated = new EventEmitter();
 
-  sceneView: SceneView;
+  private mapView: MapView;
+  private treeLayer: FeatureLayer;
+
+  // this is needed to be able to create the MapView at the DOM element in this component
+ // @ViewChild('mapViewNode') private mapViewEl: ElementRef;
 
   constructor(private mapService: MapService,
-    private elementRef: ElementRef) { }
+              private elementRef: ElementRef,
+              private treeService: TreeService) { }
 
   ngOnInit() {
-    this.sceneView = new SceneView({
+
+    var map = this.mapService.map;
+
+    const mapViewProperties: any = {
       container: this.elementRef.nativeElement.firstChild,
-      map: this.mapService.webscene
+      map
+    }
+    this.mapView = new MapView(mapViewProperties);
+
+    this.treeService.dataLoaded.subscribe(() => {
+      let layer = this.createLayer(this.treeService.trees);
+      map.add(layer);
+    })
+
+    this.viewCreated.next(this.mapView);
+  }
+
+  createLayer(graphics) {
+    let pTemplate = {
+      title: "{title}",
+      content: [{
+        type: "fields",
+        fieldInfos: attributeNames
+      }]
+    };
+    let fields = attributeNames.map(attribute => {
+      return {
+        name: attribute.fieldName,
+        alias: attribute.label,
+        type: attribute.type
+      }
     });
-    this.viewCreated.next(this.sceneView);
+    let treesLayer = new FeatureLayer({
+      source: graphics,
+      fields: fields,
+      objectIdField: "ObjectID",
+      spatialReference: {
+        wkid: 4326
+      },
+      renderer: new SimpleRenderer({
+         symbol: new PictureMarkerSymbol({
+          url: "./src/assets/images/tree.png",
+          width: 15,
+          height: 15
+        })
+      }),
+      geometryType: "point",
+      popupTemplate: pTemplate
+    });
+
+    return treesLayer;
   }
 }

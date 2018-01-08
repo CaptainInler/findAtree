@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { TreeService } from './tree.service';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +9,12 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  items: Observable<any[]>;
-  constructor(db: AngularFireDatabase) {
-    this.items = db.list('features', ref => ref.limitToFirst(10)).valueChanges();
-  }
+  constructor(private treeService: TreeService) {
+    this.treeService.dataLoaded.subscribe(() => {
+      this.title = "Find A Tree";
+    })
+   }
+  title = "Loading data...";
 }
 
 

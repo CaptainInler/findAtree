@@ -9,11 +9,13 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
+import { TreeService } from './tree.service';
 
 @NgModule({
   imports: [
     BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'), // imports firebase/app needed for everything
+    AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
+    // imports firebase/app needed for everything
     // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule
@@ -24,7 +26,7 @@ import { MapService } from './map/map.service';
   ],
   bootstrap: [ AppComponent ],
   providers: [
-    MapService
+    MapService, TreeService
   ]
 })
 export class AppModule {}
