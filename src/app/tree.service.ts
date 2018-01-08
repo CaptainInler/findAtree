@@ -12,6 +12,6 @@ export class TreeService {
   constructor(private db: AngularFireDatabase) {
   }
   getTrees():Observable<any[]> {
-    return this.db.list('features', ref=>ref.limitToFirst(10)).valueChanges()
+    return this.db.list('features', ref=>ref.limitToFirst(5000)).valueChanges()
   }
 }

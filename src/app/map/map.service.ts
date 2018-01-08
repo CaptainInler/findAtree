@@ -7,7 +7,7 @@ export class MapService {
   map: Map;
   constructor() {
     this.map = new Map({
-      basemap: <any>'dark-gray'
+      basemap: <any>'topo'
     });
   }
 }

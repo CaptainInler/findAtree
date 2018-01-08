@@ -5,7 +5,7 @@ import { TreeService } from '../tree.service';
 import { Tree } from '../tree';
 
 @Component({
-  selector: 'app-trees',
+  //selector: 'app-trees',
   templateUrl: './trees.component.html',
   styleUrls: ['./trees.component.scss']
 })
