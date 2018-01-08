@@ -63,8 +63,6 @@ export class MapComponent {
   }
 
   createGraphics(trees) {
-    console.log(trees);
-    // Create an array of Graphics from each tree feature
     return trees.map(function(feature, i) {
       return {
         geometry: new Point({
@@ -219,20 +217,6 @@ export class MapComponent {
         alias: "Genauigkeit",
         type: "string"
       }];
-    let treesRenderer = {
-      type: "simple", // autocasts as new SimpleRenderer()
-      symbol: {
-        type: "simple-marker", // autocasts as new SimpleMarkerSymbol()
-        style: "circle",
-        size: 20,
-        color: [211, 255, 0, 0],
-        outline: {
-          width: 1,
-          color: "#FF0055",
-          style: "solid"
-        }
-      }
-    };
     let treesLayer = new FeatureLayer({
       source: graphics, // autocast as an array of esri/Graphic
       // create an instance of esri/layers/support/Field for each field object
@@ -242,7 +226,7 @@ export class MapComponent {
         wkid: 4326
       },
       renderer: new SimpleRenderer({
-        symbol: new PictureMarkerSymbol({
+         symbol: new PictureMarkerSymbol({
           url: "./src/assets/images/tree.png",
           width: 15,
           height: 15

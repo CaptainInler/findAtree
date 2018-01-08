@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
 
-import * as Map from 'esri/Map';
+import * as WebMap from 'esri/WebMap';
 
 @Injectable()
 export class MapService {
-  map: Map;
+  map: WebMap;
   constructor() {
-    this.map = new Map({
-      basemap: <any>'topo'
+    this.map = new WebMap({
+      portalItem: {
+        id: '0486802a73cb4e5f9fff5f24927e5915'
+      }
     });
   }
 }

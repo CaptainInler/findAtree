@@ -7,11 +7,13 @@ import {Tree} from './tree';
 
 @Injectable()
 export class TreeService {
-  features:Observable<any[]>;
 
   constructor(private db: AngularFireDatabase) {
   }
-  getTrees():Observable<any[]> {
-    return this.db.list('features', ref=>ref.limitToFirst(5000)).valueChanges()
+
+  getTrees(): Observable<{}[]> {
+    return this.db.list('features', ref=>ref.limitToFirst(5000)).valueChanges();
   }
+
+
 }
