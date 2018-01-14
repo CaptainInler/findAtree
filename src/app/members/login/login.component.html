@@ -1,0 +1,12 @@
+<div class="form-container">
+  <img src="../../../assets/images/lock.png" id="lock">
+
+  <span class="error" *ngIf="error">{{ error }}</span>
+
+  <button (click)="signInWithFacebook()" id="fb">Login With Facebook</button><br>
+  <button (click)="signInWithGoogle()" id="google">Login With Google</button><br>
+  <button (click)="signInWithGithub()" id="github">Login With Github</button><br>
+  <button routerLink="/login/email" id="email">Email</button><br>
+
+  <a routerLink="/login/signup" routerLinkActive="active" class="alc">No account? <strong>Create one here</strong></a>
+</div>

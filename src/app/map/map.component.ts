@@ -11,7 +11,7 @@ import { attributeNames } from '../tree';
 @Component({
   selector: 'esri-map',
   templateUrl: './map.component.html',
-  styleUrls: ['map.component.scss']
+  styleUrls: ['./map.component.scss']
 })
 export class MapComponent {
 
