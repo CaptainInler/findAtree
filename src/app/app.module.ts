@@ -8,6 +8,7 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 
 import { FormsModule} from '@angular/forms';
+import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
@@ -31,7 +32,8 @@ import {AuthGuard} from './services/auth.guard';
     AngularFireDatabaseModule,
     AppRoutingModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   declarations: [
     AppComponent,

@@ -1,15 +1,15 @@
 import { Injectable, Component, OnInit, HostBinding } from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-//import { moveIn} from '../router.animations';
+import { moveIn} from '../../router.animations';
 
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  // animations: [moveIn()],
-  // host: {'[@moveIn]':'' }
+  animations: [moveIn()],
+  host: {'[@moveIn]':'' }
 })
 @Injectable()
 export class LoginComponent implements OnInit {
