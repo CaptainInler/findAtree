@@ -60,6 +60,12 @@ export class AuthService {
     )
   }
 
+  signInWithTwitter() {
+    return this._firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.TwitterAuthProvider()
+    )
+  }
+
 
   isLoggedIn() {
     if (this.userDetails == null ) {

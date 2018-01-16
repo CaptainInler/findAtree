@@ -33,6 +33,13 @@ export class LoginComponent implements OnInit {
       })
       .catch((err) => this.error = err );
   }
+  signInWithTwitter() {
+    this.authService.signInWithTwitter()
+      .then((res) => {
+        this.router.navigate(['/members']);
+      })
+      .catch((err) => this.error = err );
+  }
   signInWithGithub() {
     this.authService.signInWithGithub()
       .then((res) => {
