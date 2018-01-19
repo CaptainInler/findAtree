@@ -31,10 +31,11 @@ button {
 }
 
 input.txt {
-  background:#fff !important;
-  padding:1.3em 1em;
-  font-size:1.3em;
+  background:#fff;
+  padding:1em 0.4em;
+  font-size:0.7em;
   border: 1px solid #BBBBBB;
+  width: 94.6%;
 }
 
 h2 {
@@ -51,9 +52,10 @@ h2 {
 .error {
   background:#f1f0ef;
   padding:1em;
-  width:100%;
+  width:84%;
   display:block;
   margin-bottom:20px;
+  font-size: 0.8em;
 }
 
 #goback {
@@ -147,6 +149,11 @@ h2 {
   border: 1px solid #000080;
   background: #ECECEC  url('../../../assets/images/email.png') no-repeat 18px;
   background-size: 28px;
+}
+
+#signup {
+  border: none;
+  background: #FFF ;
 }
 
 @media (max-width: 600px) {

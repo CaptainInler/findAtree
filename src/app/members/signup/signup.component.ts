@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
 import { moveIn, moveInLeft, fallIn} from  '../../router.animations';
@@ -14,9 +14,14 @@ export class SignupComponent implements OnInit {
   state: string = '';
   error: any;
   result: any;
+  @Output() eventData:EventEmitter<string> = new EventEmitter();
 
   constructor(private auth: AuthService, private router: Router) {
 
+  }
+  removeSignup(event: string) {
+    console.log(event);
+    this.eventData.emit(event);
   }
   onSubmit(formData){
     if (formData.valid) {
@@ -24,7 +29,7 @@ export class SignupComponent implements OnInit {
         .then(
           (success) => {
             console.log(success);
-            this.router.navigate(['/members']);
+            this.removeSignup('hide');
           }
         ).catch(
         (err) => {

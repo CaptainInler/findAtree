@@ -49,7 +49,7 @@ import {AuthGuard} from './services/auth.guard';
     MapService, TreeService, AuthService, AuthGuard
   ],
   entryComponents: [
-    LoginComponent
+    LoginComponent, EmailComponent, SignupComponent
   ]
 })
 export class AppModule {}

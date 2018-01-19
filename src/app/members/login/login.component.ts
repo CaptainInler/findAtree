@@ -1,8 +1,8 @@
-import { Injectable, Component, OnInit, HostBinding } from '@angular/core';
+import {Injectable, Component, OnInit, HostBinding, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
 import { moveIn} from '../../router.animations';
-
+import { AppComponent} from '../../app.component';
 
 @Component({
   selector: 'app-login',
@@ -15,11 +15,11 @@ import { moveIn} from '../../router.animations';
 export class LoginComponent implements OnInit {
   error: any;
   show: boolean = false;
-  _ref: any;
+  @Output() eventData:EventEmitter<string> = new EventEmitter();
   constructor(private authService: AuthService, private router: Router) {
   }
-  removeLogin() {
-    this._ref.destroy();
+  removeLogin(event: string) {
+    this.eventData.emit(event);
   }
   logout() {
     this.authService.logout();
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithFacebook()
       .then((res) => {
         // this.router.navigate(['/members']);
-        this.removeLogin();
+        this.removeLogin('hide');
       })
       .catch((err) => this.error = err );
   }
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithGoogle()
       .then((res) => {
         // this.router.navigate(['/members']);
-        this.removeLogin();
+        this.removeLogin('hide');
       })
       .catch((err) => this.error = err );
   }
@@ -47,15 +47,21 @@ export class LoginComponent implements OnInit {
     this.authService.signInWithTwitter()
       .then((res) => {
         // this.router.navigate(['/members']);
-        this.removeLogin();
+        this.removeLogin('hide');
       })
       .catch((err) => this.error = err );
+  }
+  signInWithEmail() {
+    this.removeLogin('email');
+  }
+  signUpNewAccount() {
+    this.removeLogin('signup');
   }
   signInWithGithub() {
     this.authService.signInWithGithub()
       .then((res) => {
         // this.router.navigate(['/members']);
-        this.removeLogin();
+        this.removeLogin('hide');
       })
       .catch((err) => {
         console.log(err);

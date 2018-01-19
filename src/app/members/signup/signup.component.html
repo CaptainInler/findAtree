@@ -1,5 +1,6 @@
 <div class="form-container">
-  <a routerLink="/login" id="goback">Go back</a>
+  <!--<a routerLink="/login" id="goback">Go back</a>-->
+  <button (click)="removeSignup('login')" id="signup">Go back</button><br>
 
   <h2>Join now</h2>
 
@@ -8,6 +9,8 @@
 
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
+    <input type="text" placeholder="First name.." (ngModel)="first" name="firstName" class="txt" required>
+    <input type="text" placeholder="Last name.." (ngModel)="name" name="lastName" class="txt" required>
     <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
     <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
 

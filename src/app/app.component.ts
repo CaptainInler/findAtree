@@ -1,11 +1,14 @@
 import {
-  Component, ViewChild, ComponentFactory, ComponentFactoryResolver, ViewContainerRef, OnInit
+  Component, ViewChild, ComponentFactory, ComponentFactoryResolver, ViewContainerRef, OnInit, Input, ComponentRef
 } from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { TreeService } from './tree.service';
 import { LoginComponent } from './members/login/login.component';
+import { EmailComponent} from './members/email/email.component';
+import { SignupComponent} from './members/signup/signup.component';
 import { AuthService} from './services/auth.service';
+import {subscribeToResult} from 'rxjs/util/subscribeToResult';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +19,8 @@ export class AppComponent implements OnInit{
   @ViewChild('tools',{
     read: ViewContainerRef })
   container: ViewContainerRef;
+  @Input() type;
+  cmpRef: ComponentRef<any>;
   title = "Loading data...";
   loggedIn: boolean = false;
   constructor(private treeService: TreeService, private _cfr: ComponentFactoryResolver, private authService: AuthService) {
@@ -37,15 +42,38 @@ export class AppComponent implements OnInit{
       this.addTool('login');
     }
    }
+   loginEvent(event) {
+    console.log(event);
+    this.addTool(event);
+   }
    addTool(tool: string){
-    let comp= this._cfr.resolveComponentFactory(LoginComponent);
-    switch (tool) {
-      case 'members': {comp = this._cfr.resolveComponentFactory(LoginComponent);
-                      break;}
-      default: ;
+
+    if (this.cmpRef){
+      this.cmpRef.destroy();
     }
-    let toolsComponent = this.container.createComponent(comp);
-    toolsComponent.instance._ref = toolsComponent;
+
+    switch (tool) {
+      case 'login': {this.type = LoginComponent;
+        break;}
+      case 'email': {this.type = EmailComponent;
+         break;}
+      case 'signup': {this.type = SignupComponent;
+        break;}
+      default: this.type = null;
+    }
+
+    if (this.type) {
+      let comp = this._cfr.resolveComponentFactory(this.type);
+      this.cmpRef = this.container.createComponent(comp);
+      this.cmpRef.instance.eventData.subscribe(
+        (data)=>{
+          console.log(data);
+          this.addTool(data);
+        }
+      );
+    }
+
+    // toolsComponent.instance.ref = toolsComponent;
    }
 }
 

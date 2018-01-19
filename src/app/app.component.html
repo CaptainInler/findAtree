@@ -1,9 +1,8 @@
 <h1>{{title}}</h1>
 
 <nav>
-  <a routerLink="/members">Members</a>
   <button type="button" (click)="toggleLogin()"><span>{{loggedIn?'Logout':'Login'}}</span></button>
-  <a routerLink="/map">Map</a>
+  <div (loginEvent)="loginEvent($event)"></div>
 </nav>
 
 <section>
