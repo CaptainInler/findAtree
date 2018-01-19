@@ -14,36 +14,48 @@ import { moveIn} from '../../router.animations';
 @Injectable()
 export class LoginComponent implements OnInit {
   error: any;
+  show: boolean = false;
+  _ref: any;
   constructor(private authService: AuthService, private router: Router) {
-    if(this.authService.isLoggedIn()){
-      this.router.navigateByUrl('/members')
-    }
+  }
+  removeLogin() {
+    this._ref.destroy();
+  }
+  logout() {
+    this.authService.logout();
+  }
+  toggleShow() {
+    this.show = !this.show;
   }
   signInWithFacebook() {
     this.authService.signInWithFacebook()
       .then((res) => {
-        this.router.navigate(['/members']);
+        // this.router.navigate(['/members']);
+        this.removeLogin();
       })
       .catch((err) => this.error = err );
   }
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then((res) => {
-        this.router.navigate(['/members']);
+        // this.router.navigate(['/members']);
+        this.removeLogin();
       })
       .catch((err) => this.error = err );
   }
   signInWithTwitter() {
     this.authService.signInWithTwitter()
       .then((res) => {
-        this.router.navigate(['/members']);
+        // this.router.navigate(['/members']);
+        this.removeLogin();
       })
       .catch((err) => this.error = err );
   }
   signInWithGithub() {
     this.authService.signInWithGithub()
       .then((res) => {
-        this.router.navigate(['/members']);
+        // this.router.navigate(['/members']);
+        this.removeLogin();
       })
       .catch((err) => {
         console.log(err);
@@ -51,6 +63,9 @@ export class LoginComponent implements OnInit {
       } );
   }
   ngOnInit() {
+    // if(this.authService.isLoggedIn()){
+    //   this.router.navigateByUrl('/members')
+    // }
   }
 
 }

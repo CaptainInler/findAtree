@@ -47,6 +47,9 @@ import {AuthGuard} from './services/auth.guard';
   bootstrap: [ AppComponent ],
   providers: [
     MapService, TreeService, AuthService, AuthGuard
+  ],
+  entryComponents: [
+    LoginComponent
   ]
 })
 export class AppModule {}

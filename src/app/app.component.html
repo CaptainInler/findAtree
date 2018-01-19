@@ -2,13 +2,15 @@
 
 <nav>
   <a routerLink="/members">Members</a>
-  <a routerLink="/login">Login</a>
+  <button type="button" (click)="toggleLogin()"><span>{{loggedIn?'Logout':'Login'}}</span></button>
   <a routerLink="/map">Map</a>
 </nav>
 
-<router-outlet></router-outlet>
-
-<!--<esri-map></esri-map>-->
+<section>
+<!--<router-outlet></router-outlet>-->
+  <esri-map></esri-map>
 <!--<app-members></app-members>-->
 <!--<app-page-not-found></app-page-not-found>-->
 <!--<app-login></app-login>-->
+  <div #tools></div>
+</section>

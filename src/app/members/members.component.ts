@@ -13,6 +13,7 @@ import { moveIn, fallIn, moveInLeft } from '../router.animations';
 export class MembersComponent implements OnInit {
   name: any;
   state: string =  '';
+  show: boolean = false;
 
   constructor(private auth: AuthService, private router: Router) {
     if (this.auth.isLoggedIn()) {

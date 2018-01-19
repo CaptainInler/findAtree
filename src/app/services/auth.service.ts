@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AngularFireAuth} from 'angularfire2/auth';
@@ -10,6 +10,7 @@ import { Observable} from 'rxjs/Observable';
 export class AuthService {
   private user: Observable<firebase.User>;
   private userDetails: firebase.User = null;
+  userChanged: EventEmitter<any> = new EventEmitter();
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = _firebaseAuth.authState;
@@ -23,6 +24,7 @@ export class AuthService {
         else {
           this.userDetails = null;
         }
+        this.userChanged.emit(this.isLoggedIn());
       }
     );
   }
@@ -87,7 +89,7 @@ export class AuthService {
       .then((res) => {
         this.user = null;
         this.userDetails = null;
-        this.router.navigate(['/map'])
+        // this.router.navigate(['/map'])
       });
   }
 
