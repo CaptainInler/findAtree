@@ -19,7 +19,7 @@ export class SignupComponent implements OnInit {
   constructor(private auth: AuthService, private router: Router) {
 
   }
-  removeSignup(event: string) {
+  resetTool(event: string) {
     console.log(event);
     this.eventData.emit(event);
   }
@@ -27,9 +27,23 @@ export class SignupComponent implements OnInit {
     if (formData.valid) {
       this.auth.signupNewUser(formData)
         .then(
-          (success) => {
-            console.log(success);
-            this.removeSignup('hide');
+          (res) => {
+            console.log(res);
+            let dispName = formData.value.first.concat(' '.concat(formData.value.last));
+            let user =
+            res.updateProfile({
+              displayName: dispName,
+              photoURL: res.photoURL
+          }).then(
+              (res) => {
+                console.log(res);
+                this.resetTool('hide');
+              }
+            ).catch(
+              (err) => {
+                this.error=err;
+              }
+            );
           }
         ).catch(
         (err) => {

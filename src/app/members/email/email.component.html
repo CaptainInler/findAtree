@@ -1,6 +1,6 @@
 <div class="form-container">
   <!--<a routerLink="/login" id="goback">Go back</a>-->
-  <button (click)="removeEmail('login')" id="goback">Go back</button><br>
+  <button (click)="resetTool('login')" id="goback">Go back</button><br>
 
   <h2>Custom Login</h2>
 
@@ -15,5 +15,5 @@
     <button type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button>
     <!--<a routerLink="/login/signup" class="alc">Don't have an account?</a>-->
   </form>
-  <button (click)="removeEmail('signup')" id="signup">Don't have an account?</button><br>
+  <button (click)="resetTool('signup')" id="signup">Don't have an account?</button><br>
 </div>

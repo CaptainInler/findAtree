@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { FormsModule} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
 import { moveIn, fallIn, moveInLeft } from '../router.animations';
@@ -13,14 +14,18 @@ import { moveIn, fallIn, moveInLeft } from '../router.animations';
 export class MembersComponent implements OnInit {
   name: any;
   state: string =  '';
-  show: boolean = false;
-
+  show: boolean = true;
+  mode: string = 'play';  // play or add
+  @Output() eventData:EventEmitter<string> = new EventEmitter();
   constructor(private auth: AuthService, private router: Router) {
     if (this.auth.isLoggedIn()) {
       this.name = this.auth.getUser();
     }
   }
-
+  resetTool(event: string) {
+    this.eventData.emit(event);
+    alert(this.auth.mode);
+  }
   logout() {
     this.auth.logout();
   }

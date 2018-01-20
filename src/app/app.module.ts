@@ -21,6 +21,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupComponent } from './members/signup/signup.component';
 import { EmailComponent } from './members/email/email.component';
 import {AuthGuard} from './services/auth.guard';
+import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 
 @NgModule({
   imports: [
@@ -42,14 +43,15 @@ import {AuthGuard} from './services/auth.guard';
     LoginComponent,
     PageNotFoundComponent,
     SignupComponent,
-    EmailComponent
+    EmailComponent,
+    ModeSelectorComponent
   ],
   bootstrap: [ AppComponent ],
   providers: [
     MapService, TreeService, AuthService, AuthGuard
   ],
   entryComponents: [
-    LoginComponent, EmailComponent, SignupComponent
+    LoginComponent, EmailComponent, SignupComponent, ModeSelectorComponent
   ]
 })
 export class AppModule {}

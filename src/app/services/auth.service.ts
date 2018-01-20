@@ -12,6 +12,8 @@ export class AuthService {
   private userDetails: firebase.User = null;
   userChanged: EventEmitter<any> = new EventEmitter();
 
+  mode: string = 'play';
+
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router) {
     this.user = _firebaseAuth.authState;
 
@@ -66,6 +68,14 @@ export class AuthService {
     return this._firebaseAuth.auth.signInWithPopup(
       new firebase.auth.TwitterAuthProvider()
     )
+  }
+
+  updateUserProfile(displayName: string, photoURL: string) {
+      return this.userDetails.updateProfile({
+        displayName,
+        photoURL
+      }
+      )
   }
 
 

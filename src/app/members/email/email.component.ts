@@ -20,7 +20,7 @@ export class EmailComponent implements OnInit {
       this.router.navigateByUrl('/members');
     }
   }
-  removeEmail(event: string) {
+  resetTool(event: string) {
     this.eventData.emit(event);
   }
   onSubmit(formData) {
@@ -29,7 +29,7 @@ export class EmailComponent implements OnInit {
         .then(
           (success) => {
             console.log(success);
-            this.removeEmail('hide');
+            this.resetTool('hide');
           }
         ).catch(
         (err) => {

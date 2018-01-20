@@ -8,6 +8,8 @@ import { LoginComponent } from './members/login/login.component';
 import { EmailComponent} from './members/email/email.component';
 import { SignupComponent} from './members/signup/signup.component';
 import { AuthService} from './services/auth.service';
+import { MembersComponent } from './members/members.component';
+import { ModeSelectorComponent} from './members/mode-selector/mode-selector.component';
 import {subscribeToResult} from 'rxjs/util/subscribeToResult';
 
 @Component({
@@ -47,11 +49,9 @@ export class AppComponent implements OnInit{
     this.addTool(event);
    }
    addTool(tool: string){
-
     if (this.cmpRef){
       this.cmpRef.destroy();
     }
-
     switch (tool) {
       case 'login': {this.type = LoginComponent;
         break;}
@@ -59,9 +59,10 @@ export class AppComponent implements OnInit{
          break;}
       case 'signup': {this.type = SignupComponent;
         break;}
+      case 'mode': {this.type = ModeSelectorComponent;
+        break;}
       default: this.type = null;
     }
-
     if (this.type) {
       let comp = this._cfr.resolveComponentFactory(this.type);
       this.cmpRef = this.container.createComponent(comp);
@@ -72,8 +73,6 @@ export class AppComponent implements OnInit{
         }
       );
     }
-
-    // toolsComponent.instance.ref = toolsComponent;
    }
 }
 

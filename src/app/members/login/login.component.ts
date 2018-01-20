@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() eventData:EventEmitter<string> = new EventEmitter();
   constructor(private authService: AuthService, private router: Router) {
   }
-  removeLogin(event: string) {
+  resetTool(event: string) {
     this.eventData.emit(event);
   }
   logout() {
@@ -30,38 +30,34 @@ export class LoginComponent implements OnInit {
   signInWithFacebook() {
     this.authService.signInWithFacebook()
       .then((res) => {
-        // this.router.navigate(['/members']);
-        this.removeLogin('hide');
+        this.resetTool('hide');
       })
       .catch((err) => this.error = err );
   }
   signInWithGoogle() {
     this.authService.signInWithGoogle()
       .then((res) => {
-        // this.router.navigate(['/members']);
-        this.removeLogin('hide');
+        this.resetTool('hide');
       })
       .catch((err) => this.error = err );
   }
   signInWithTwitter() {
     this.authService.signInWithTwitter()
       .then((res) => {
-        // this.router.navigate(['/members']);
-        this.removeLogin('hide');
+        this.resetTool('hide');
       })
       .catch((err) => this.error = err );
   }
   signInWithEmail() {
-    this.removeLogin('email');
+    this.resetTool('email');
   }
   signUpNewAccount() {
-    this.removeLogin('signup');
+    this.resetTool('signup');
   }
   signInWithGithub() {
     this.authService.signInWithGithub()
       .then((res) => {
-        // this.router.navigate(['/members']);
-        this.removeLogin('hide');
+        this.resetTool('hide');
       })
       .catch((err) => {
         console.log(err);
