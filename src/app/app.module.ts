@@ -51,7 +51,7 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     MapService, TreeService, AuthService, AuthGuard
   ],
   entryComponents: [
-    LoginComponent, EmailComponent, SignupComponent, ModeSelectorComponent
+    LoginComponent, EmailComponent, SignupComponent, MembersComponent
   ]
 })
 export class AppModule {}

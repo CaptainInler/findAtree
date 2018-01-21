@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ModeSelectComponent } from './mode-selector.component';
+import { ModeSelectorComponent } from './mode-selector.component';
 
-describe('ModeSelectComponent', () => {
-  let component: ModeSelectComponent;
-  let fixture: ComponentFixture<ModeSelectComponent>;
+describe('ModeSelectorComponent', () => {
+  let component: ModeSelectorComponent;
+  let fixture: ComponentFixture<ModeSelectorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModeSelectComponent ]
+      declarations: [ ModeSelectorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ModeSelectComponent);
+    fixture = TestBed.createComponent(ModeSelectorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

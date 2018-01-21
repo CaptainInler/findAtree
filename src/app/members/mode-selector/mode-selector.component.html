@@ -1,12 +1,8 @@
-<div class="form-container" id="toolbar">
-  <div id="page" [@moveInLeft]="state">
-    <h2>Hey {{ auth.userDetails.displayName }}!</h2>
-    <span>What would you like to do?</span>
+<div class="form-container">
+    <span>What would you like to do?</span><br>
 
     <form #f="ngForm">
       <label><input type="radio" value="play" name="mode" [(ngModel)]="auth.mode"> Play the game</label><br>
       <label><input type="radio" value="add" name="mode" [(ngModel)]="auth.mode"> Add new trees</label><br>
     </form>
-  </div>
-  <button (click)="resetTool('hide')">Done</button><br>
 </div>

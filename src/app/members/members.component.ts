@@ -15,6 +15,7 @@ export class MembersComponent implements OnInit {
   name: any;
   state: string =  '';
   show: boolean = true;
+  type: string = 'mode-selector';
   mode: string = 'play';  // play or add
   @Output() eventData:EventEmitter<string> = new EventEmitter();
   constructor(private auth: AuthService, private router: Router) {
@@ -24,7 +25,6 @@ export class MembersComponent implements OnInit {
   }
   resetTool(event: string) {
     this.eventData.emit(event);
-    alert(this.auth.mode);
   }
   logout() {
     this.auth.logout();

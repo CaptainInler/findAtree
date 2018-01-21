@@ -48,7 +48,12 @@ export class AppComponent implements OnInit{
     console.log(event);
     this.addTool(event);
    }
+
+   showComponent
+
+   // creates a component and shows it in the browser
    addTool(tool: string){
+    // first remove previously shown component
     if (this.cmpRef){
       this.cmpRef.destroy();
     }
@@ -59,7 +64,7 @@ export class AppComponent implements OnInit{
          break;}
       case 'signup': {this.type = SignupComponent;
         break;}
-      case 'mode': {this.type = ModeSelectorComponent;
+      case 'mode': {this.type = MembersComponent;
         break;}
       default: this.type = null;
     }
