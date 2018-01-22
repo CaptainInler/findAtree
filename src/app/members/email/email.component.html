@@ -1,0 +1,19 @@
+<div class="form-container">
+  <!--<a routerLink="/login" id="goback">Go back</a>-->
+  <button (click)="resetTool('login')" id="goback">Go back</button><br>
+
+  <h2>Custom Login</h2>
+
+  <span class="error" *ngIf="error" [@fallIn]='state'>{{ error }}</span>
+  <!--<span class="error" *ngIf="error">{{ error }}</span>-->
+
+  <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
+
+    <input type="text" placeholder="Email address.." (ngModel)="email" name="email" class="txt" required>
+    <input type="password" placeholder="Password" (ngModel)="password" name="password" class="txt" required>
+
+    <button type="submit" [disabled]="!formData.valid" class="basic-btn">Log in</button>
+    <!--<a routerLink="/login/signup" class="alc">Don't have an account?</a>-->
+  </form>
+  <button (click)="resetTool('signup')" id="signup">Don't have an account?</button><br>
+</div>

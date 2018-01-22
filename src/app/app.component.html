@@ -1,2 +1,15 @@
 <h1>{{title}}</h1>
-<esri-map></esri-map>
+
+<nav>
+  <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
+  <button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>
+</nav>
+
+<section>
+<!--<router-outlet></router-outlet>-->
+  <esri-map></esri-map>
+<!--<app-members></app-members>-->
+<!--<app-page-not-found></app-page-not-found>-->
+<!--<app-login></app-login>-->
+  <div #tools></div>
+</section>

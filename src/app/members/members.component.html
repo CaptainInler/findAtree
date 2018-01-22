@@ -1,0 +1,14 @@
+<div class="form-container" id="toolbar">
+  <div *ngIf="show">
+  <!--<header [@fallIn]="state">-->
+  <!--&lt;!&ndash;<header>&ndash;&gt;-->
+    <!--<button (click)="logout()" class="basic-btn">Logout</button>-->
+  <!--</header>-->
+  <div id="page" [@moveInLeft]="state">
+  <!--<div id="page">-->
+    <h2>Hey {{ name.displayName }}!</h2>
+  </div>
+    <app-mode-selector *ngIf="type==='mode-selector'"></app-mode-selector>
+  </div>
+  <button (click)="resetTool('hide')">Done</button><br>
+</div>
