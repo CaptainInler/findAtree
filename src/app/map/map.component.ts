@@ -76,6 +76,7 @@ export class MapComponent {
 
     this.treeService.dataLoaded.subscribe(() => {
       let layer = this.createLayer(this.treeService.trees);
+      console.log(this.treeService.trees);
       map.add(layer);
     })
 
