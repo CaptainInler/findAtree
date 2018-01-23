@@ -86,7 +86,8 @@ interface Attributes {
 export interface FirebaseFeature {
   geometry: {
     coordinates: [
-      Array<number>
+      0,
+      1
     ]
   },
   properties: Attributes
@@ -99,8 +100,8 @@ export class Tree {
 
   constructor(feature: FirebaseFeature){
     this.geometry = new Point({
-        x: feature.geometry.coordinates[0][0],
-        y: feature.geometry.coordinates[0][1]
+        x: feature.geometry.coordinates[0],
+        y: feature.geometry.coordinates[1]
     });
     this.attributes = feature.properties;
     this.attributes.ObjectID = Tree.index++;
