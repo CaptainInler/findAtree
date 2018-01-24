@@ -40,19 +40,25 @@ export class MapComponent {
     }
     this.mapView = new MapView(mapViewProperties);
 
-    /*
 
-      // Create a locator task using the world geocoding service
+     /*  // Create a locator task using the world geocoding service
       let locatorTask = new Locator({
         url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-      });
+      }); */
 
 
       let view = this.mapView;
       view.on("click", function (event) {
         event.stopPropagation();
+        console.log(event);
+        // hier kriegt man die Koordinaten in event.mapPoint
 
-        // Get the coordinates of the click on the view
+        view.hitTest(event).then(function(response) {
+          console.log(response);
+          // hier kriegt man die Objekten die geklickt wurden im response.results
+        });
+
+      /*   // Get the coordinates of the click on the view
         // around the decimals to 3 decimals
         var lat = Math.round(event.mapPoint.latitude * 1000) / 1000;
         var lon = Math.round(event.mapPoint.longitude * 1000) / 1000;
@@ -70,9 +76,9 @@ export class MapComponent {
         }).otherwise(function (err) {
           // If the promise fails and no result is found, show a generic message
           view.popup.content = "No address was found for this location";
-        });
+        }); */
 
-      }); */
+      });
 
     this.treeService.dataLoaded.subscribe(() => {
       let layer = this.createLayer(this.treeService.trees);
