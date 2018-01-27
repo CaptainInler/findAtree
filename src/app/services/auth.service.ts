@@ -28,7 +28,7 @@ export class AuthService {
     this.afAuth.authState
       .switchMap(auth => {
         if(auth) {
-          return this.db.object(`users/{auth.uid}`).valueChanges()
+          return this.db.object(`users/${auth.uid}`).valueChanges()
         }else{
           return Observable.of(null)
         }
@@ -101,7 +101,7 @@ export class AuthService {
   updateUser(authData) {
     let userData = new User (authData);
     console.log(userData);
-    let ref = this.db.object(`users/{authData.uid}`);
+    let ref = this.db.object(`users/${authData.uid}`);
     ref.valueChanges().take(1)
       .subscribe(user => {
         if (!user) {
