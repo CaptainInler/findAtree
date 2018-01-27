@@ -37,6 +37,12 @@ export class AppComponent implements OnInit{
       }
     );
    }
+   // rescue button, if something does not work
+   logout(){
+    this.authService.logout();
+     this.addTool('hide');
+     console.log(this.authService.getUser());
+   }
    toggleLogin() {
     if (this.loggedIn) {
       this.authService.logout();
