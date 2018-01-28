@@ -1,0 +1,8 @@
+<p>
+  <button (click)="import()" class="nav_button"><span>Import</span></button>
+</p>
+<ul>
+<li *ngFor="let tree of treenames">
+  {{tree.id}}, {{tree.baumgattunglat}}, {{tree.baumartlat}}, {{tree.baumnamelat}}, {{tree.baumnamedeu}}
+</li>
+</ul>

@@ -9,6 +9,7 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
 
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule} from '@angular/common/http';
 
 import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
@@ -22,6 +23,8 @@ import { SignupComponent } from './members/signup/signup.component';
 import { EmailComponent } from './members/email/email.component';
 import {AuthGuard} from './services/auth.guard';
 import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
+import { AdminComponent } from './admin/admin.component';
+import { TreenamesComponent } from './admin/treenames/treenames.component';
 
 @NgModule({
   imports: [                            // modules, everything declared here and under declarations may be used in component templates
@@ -34,7 +37,8 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     AppRoutingModule,
     AngularFireAuthModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   declarations: [                       //declarables: directives (Attribute, Structural), components, pipes. Can only be declared in one module
     AppComponent,
@@ -44,7 +48,9 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     PageNotFoundComponent,
     SignupComponent,
     EmailComponent,
-    ModeSelectorComponent
+    ModeSelectorComponent,
+    AdminComponent,
+    TreenamesComponent
   ],
   bootstrap: [ AppComponent ],           // component to start with
   providers: [                           // services
