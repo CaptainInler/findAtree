@@ -34,21 +34,29 @@ export class AuthService {
         }
       })
       .subscribe(user=> {
-        this.user.next(user)
-      });
-
-    this.user.subscribe(
-      (user) => {
+        this.user.next(user);
         if (user) {
           this.userDetails = user;
-          console.log(this.userDetails);
+          // console.log(this.userDetails);
         }
         else {
           this.userDetails = null;
         }
         this.userChanged.emit(this.isLoggedIn());
-      }
-    );
+      });
+
+    // this.user.subscribe(
+    //   (user) => {
+    //     if (user) {
+    //       this.userDetails = user;
+    //       console.log(this.userDetails);
+    //     }
+    //     else {
+    //       this.userDetails = null;
+    //     }
+    //     this.userChanged.emit(this.isLoggedIn());
+    //   }
+    // );
   }
 
   signupNewUser(formData) {
@@ -62,18 +70,21 @@ export class AuthService {
     return this.afAuth.auth.signInWithEmailAndPassword(
       formData.value.email,
       formData.value.password
-    )
+    ).then((credential => {
+      // console.log(credential);
+        this.updateUser(credential);
+      }))
   }
 
   signInWithGithub() {
-    return this.afAuth.auth.signInWithPopup(
+    return this.authLoginPopup(
       new firebase.auth.GithubAuthProvider()
     )
   }
 
 
   signInWithFacebook() {
-    return this.afAuth.auth.signInWithPopup(
+    return this.authLoginPopup(
       new firebase.auth.FacebookAuthProvider()
     )
   }
@@ -85,7 +96,7 @@ export class AuthService {
   }
 
   signInWithTwitter() {
-    return this.afAuth.auth.signInWithPopup(
+    return this.authLoginPopup(
       new firebase.auth.TwitterAuthProvider()
     )
   }
