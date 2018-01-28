@@ -35,8 +35,9 @@ export class SignupComponent implements OnInit {
               displayName: dispName,
               photoURL: res.photoURL
           }).then(
-              (res) => {
-                console.log(res);
+              (nothing) => {
+                console.log(nothing);
+                this.auth.updateUser(res);
                 this.resetTool('hide');
               }
             ).catch(
