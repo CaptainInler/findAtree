@@ -9,6 +9,7 @@ import { AngularFireAuthModule} from 'angularfire2/auth';
 
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { MatButtonModule } from '@angular/material';
 
 import { MapComponent } from './map/map.component';
 import { MapService } from './map/map.service';
@@ -34,7 +35,8 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     AppRoutingModule,
     AngularFireAuthModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule
   ],
   declarations: [
     AppComponent,

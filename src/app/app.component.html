@@ -1,8 +1,8 @@
 <h1>{{title}}</h1>
 
 <nav>
-  <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
-  <button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>
+  <button mat-raised-button color="accent" type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
+  <button mat-raised-button color="accent" *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>
 </nav>
 
 <section>
