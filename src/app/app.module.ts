@@ -24,7 +24,7 @@ import {AuthGuard} from './services/auth.guard';
 import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 
 @NgModule({
-  imports: [
+  imports: [                            // modules, everything declared here and under declarations may be used in component templates
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
     // imports firebase/app needed for everything
@@ -36,7 +36,7 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     FormsModule,
     BrowserAnimationsModule
   ],
-  declarations: [
+  declarations: [                       //declarables: directives (Attribute, Structural), components, pipes. Can only be declared in one module
     AppComponent,
     MapComponent,
     MembersComponent,
@@ -46,11 +46,11 @@ import { ModeSelectorComponent } from './members/mode-selector/mode-selector.com
     EmailComponent,
     ModeSelectorComponent
   ],
-  bootstrap: [ AppComponent ],
-  providers: [
+  bootstrap: [ AppComponent ],           // component to start with
+  providers: [                           // services
     MapService, TreeService, AuthService, AuthGuard
   ],
-  entryComponents: [
+  entryComponents: [                     // components to be dynamically loaded
     LoginComponent, EmailComponent, SignupComponent, MembersComponent
   ]
 })
