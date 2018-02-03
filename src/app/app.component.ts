@@ -55,7 +55,9 @@ export class AppComponent implements OnInit{
     this.addTool(event);
    }
 
-   showComponent
+   mapClicked(event:string){
+    console.log(event);
+   }
 
    // creates a component and shows it in the browser
    addTool(tool: string){
