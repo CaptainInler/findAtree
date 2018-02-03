@@ -8,7 +8,8 @@
   <!--<div id="page">-->
     <h2>Hey {{ name.displayName }}!</h2>
   </div>
-    <app-mode-selector *ngIf="type==='mode-selector'"></app-mode-selector>
+    <app-mode-selector *ngIf="subComponent==='mode-selector'"></app-mode-selector>
+    <app-guess [mapClickData]="mapClickData" *ngIf="subComponent==='guess'"></app-guess>
   </div>
   <button (click)="resetTool('hide')">Done</button><br>
 </div>

@@ -18,8 +18,8 @@ export class TreeNameService {
       });
   }
 
-  public getSetOfNames(size: number): Array<Treename>{
-    let set: Array<Treename>;
+  public getSelectionOfNames(size: number): Array<Treename>{
+    let set: Array<Treename> = Array();
     if(this.dataLoaded) {
       let length = this.treenames.length;
       for (let i = 0; i < size; i++) {
@@ -29,8 +29,7 @@ export class TreeNameService {
     }
     return set;
   }
-
-
+  
   private getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }

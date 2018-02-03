@@ -1,0 +1,11 @@
+<div class="form-container">
+
+  <span class="error" *ngIf="error">{{ error }}</span>
+
+  <ul>
+    <li *ngFor="let item of selection">
+      <button (click)="selectTreeName(item.baumnamelat)" id="{{item.id}}">{{item.baumnamedeu}}</button>
+    </li>
+  </ul>
+
+</div>
