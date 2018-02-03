@@ -68,12 +68,13 @@ export class AppComponent implements OnInit{
    mapClicked(event:MapClickEvent){
     console.log(event);
     this.mapClickData = event;
-    if (event.attr){
+    if (event.attr && (this.authService.mode==='play')){
       this.memberSubComponent = "guess";
-    }else{
+      this.addTool('member');
+    } else if (this.authService.mode==='add'){
       this.memberSubComponent = "add";
+      this.addTool('member');
     }
-     this.addTool('member');
    }
 
    // creates a component and shows it in the browser

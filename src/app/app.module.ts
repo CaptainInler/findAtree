@@ -24,6 +24,7 @@ import { EmailComponent } from './members/email/email.component';
 import { AuthGuard } from './services/auth.guard';
 import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 import { GuessComponent } from './members/guess/guess.component';
+import { AddComponent } from './members/add/add.component';
 
 @NgModule({
   imports: [                            // modules, everything declared here and under declarations may be used in component templates
@@ -47,7 +48,8 @@ import { GuessComponent } from './members/guess/guess.component';
     SignupComponent,
     EmailComponent,
     ModeSelectorComponent,
-    GuessComponent
+    GuessComponent,
+    AddComponent
   ],
   bootstrap: [ AppComponent ],           // component to start with
   providers: [                           // services

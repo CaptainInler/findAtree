@@ -1,11 +1,8 @@
 <div class="form-container">
+  <span>What kind of tree did you click on?</span><br>
 
   <span class="error" *ngIf="error">{{ error }}</span>
 
-  <ul>
-    <li *ngFor="let item of selection">
-      <button (click)="selectTreeName(item.baumnamelat)" id="{{item.id}}">{{item.baumnamedeu}}</button>
-    </li>
-  </ul>
+  <button *ngFor="let item of selection" (click)="selectTreeName(item.id)" id="{{item.id}}">{{item.baumnamedeu}}</button>
 
 </div>
