@@ -68,6 +68,12 @@ export const attributeNames = [{
   }
 ]
 
+export class MapClickEvent {
+  lat: number;
+  lon: number;
+  attr: Attributes;
+}
+
 interface Attributes {
   ObjectID: number;
   baumartlat: string;

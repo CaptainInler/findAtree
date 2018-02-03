@@ -9,8 +9,10 @@ import { EmailComponent} from './members/email/email.component';
 import { SignupComponent} from './members/signup/signup.component';
 import { AuthService} from './services/auth.service';
 import { MembersComponent } from './members/members.component';
+import { GuessComponent} from './members/guess/guess.component';
 import { ModeSelectorComponent} from './members/mode-selector/mode-selector.component';
 import {subscribeToResult} from 'rxjs/util/subscribeToResult';
+import {MapClickEvent} from './tree';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +23,9 @@ export class AppComponent implements OnInit{
   @ViewChild('tools',{
     read: ViewContainerRef })
   container: ViewContainerRef;
-  @Input() type;
+  toolComponent: any;
+  memberSubComponent: string = '';
+  mapClickData: MapClickEvent = null;
   cmpRef: ComponentRef<any>;
   title = "Loading data...";
   loggedIn: boolean = false;
@@ -55,7 +59,23 @@ export class AppComponent implements OnInit{
     this.addTool(event);
    }
 
-   showComponent
+   selectMode() {
+    // console.log('select mode');
+    this.memberSubComponent = "mode-selector";
+    this.addTool('member');
+   }
+
+   mapClicked(event:MapClickEvent){
+    console.log(event);
+    this.mapClickData = event;
+    if (event.attr && (this.authService.mode==='play')){
+      this.memberSubComponent = "guess";
+      this.addTool('member');
+    } else if (this.authService.mode==='add'){
+      this.memberSubComponent = "add";
+      this.addTool('member');
+    }
+   }
 
    // creates a component and shows it in the browser
    addTool(tool: string){
@@ -64,23 +84,27 @@ export class AppComponent implements OnInit{
       this.cmpRef.destroy();
     }
     switch (tool) {
-      case 'login': {this.type = LoginComponent;
+      case 'login': {this.toolComponent = LoginComponent;
         break;}
-      case 'email': {this.type = EmailComponent;
+      case 'email': {this.toolComponent = EmailComponent;
          break;}
-      case 'signup': {this.type = SignupComponent;
+      case 'signup': {this.toolComponent = SignupComponent;
         break;}
-      case 'mode': {this.type = MembersComponent;
+      case 'member': {this.toolComponent = MembersComponent;
         break;}
-      default: this.type = null;
+      default: this.toolComponent = null;
     }
-    if (this.type) {
-      let comp = this._cfr.resolveComponentFactory(this.type);
+    if (this.toolComponent) {
+      let comp = this._cfr.resolveComponentFactory(this.toolComponent);
       this.cmpRef = this.container.createComponent(comp);
+      this.cmpRef.instance.subComponent = this.memberSubComponent;
+      this.cmpRef.instance.mapClickData = this.mapClickData;
       this.cmpRef.instance.eventData.subscribe(
         (data)=>{
           console.log(data);
           this.addTool(data);
+          this.mapClickData = null;
+          this.memberSubComponent = '';
         }
       );
     }
