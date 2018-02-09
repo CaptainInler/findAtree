@@ -20,6 +20,7 @@ export class AuthService {
   userChanged: EventEmitter<any> = new EventEmitter();
 
   mode: string = 'play';
+  level: number = 6;
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,

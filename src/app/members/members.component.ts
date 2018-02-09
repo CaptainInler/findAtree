@@ -1,8 +1,9 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
 import { moveIn, fallIn, moveInLeft } from '../router.animations';
+import {MapClickEvent} from '../tree';
 
 @Component({
   selector: 'app-members',
@@ -15,7 +16,8 @@ export class MembersComponent implements OnInit {
   name: any;
   state: string =  '';
   show: boolean = true;
-  type: string = 'mode-selector';
+  @Input() subComponent: string;
+  @Input() mapClickData: MapClickEvent;
   mode: string = 'play';  // play or add
   @Output() eventData:EventEmitter<string> = new EventEmitter();
   constructor(private auth: AuthService, private router: Router) {

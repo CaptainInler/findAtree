@@ -5,11 +5,17 @@
   <button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>
   <a routerLink="/admin">Admin</a>
   <a routerLink="/map">Map</a>
+  <!--<button *ngIf="loggedIn" (click)="selectMode()" class="nav_button"><span>Mode</span></button>-->
+
   <!--<button (click)="logout()" class="nav_button"><span>Logout (rescue)</span></button>-->
 </nav>
 <section>
+
 <router-outlet></router-outlet>
   <!--<esri-map></esri-map>-->
+
+  <!--<esri-map (clicked)="mapClicked($event)"></esri-map>-->
+
 <!--<app-members></app-members>-->
 <!--<app-page-not-found></app-page-not-found>-->
 <!--<app-login></app-login>-->
