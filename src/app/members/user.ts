@@ -10,7 +10,11 @@ export class User {
   displayName: string;
   roles:    Roles;
   constructor(authData) {
-    this.id = authData.uid;
+    if (authData.uid) {
+      this.id = authData.uid;
+    }else{
+      this.id = authData.id;
+    }
     this.email    = authData.email;
     this.photoURL = authData.photoURL;
     this.displayName = authData.displayName;

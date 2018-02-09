@@ -4,8 +4,10 @@
   <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
   <!--<button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>-->
   <button *ngIf="loggedIn" (click)="selectMode()" class="nav_button"><span>Mode</span></button>
+  <div *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
   <a routerLink="/admin">Admin</a>
   <a routerLink="/map">Map</a>
+  </div>
 
   <!--<button (click)="logout()" class="nav_button"><span>Logout (rescue)</span></button>-->
 </nav>

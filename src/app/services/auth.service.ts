@@ -60,6 +60,11 @@ export class AuthService {
     // );
   }
 
+  hasRole(role:string){
+    return this.userDetails.roles[role];
+  }
+
+
   signupNewUser(formData) {
     return this.afAuth.auth.createUserWithEmailAndPassword(
       formData.value.email,

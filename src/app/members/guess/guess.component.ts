@@ -37,9 +37,9 @@ export class GuessComponent implements OnInit {
     };
     this.answer = this.mapClickData.attr.ObjectID;
     this.selection.push(tree);
-    console.log(this.selection);
+    // console.log(this.selection);
     this.selection = this.shuffle(this.selection);
-    console.log(this.selection);
+    // console.log(this.selection);
   }
   shuffle(array) {
     var m = array.length, t, i;

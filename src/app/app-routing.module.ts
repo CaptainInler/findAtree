@@ -10,10 +10,11 @@ import {SignupComponent} from './members/signup/signup.component';
 import {EmailComponent} from './members/email/email.component';
 import { AdminComponent} from './admin/admin.component';
 import {AuthGuard} from './services/auth.guard';
+import {AdminGuard} from './services/admin.guard';
 
 export const routes: Routes = [
   { path: 'map', component: MapComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   // { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'login/signup', component: SignupComponent },

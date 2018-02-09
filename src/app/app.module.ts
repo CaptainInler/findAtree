@@ -28,6 +28,8 @@ import { AdminComponent } from './admin/admin.component';
 import { TreenamesComponent } from './admin/treenames/treenames.component';
 import { GuessComponent } from './members/guess/guess.component';
 import { AddComponent } from './members/add/add.component';
+import { UsersComponent } from './admin/users/users.component';
+import {AdminGuard} from './services/admin.guard';
 
 @NgModule({
   imports: [                            // modules, everything declared here and under declarations may be used in component templates
@@ -55,11 +57,12 @@ import { AddComponent } from './members/add/add.component';
     AdminComponent,
     TreenamesComponent,
     GuessComponent,
-    AddComponent
+    AddComponent,
+    UsersComponent
   ],
   bootstrap: [ AppComponent ],           // component to start with
   providers: [                           // services
-    MapService, TreeService, AuthService, AuthGuard, TreeNameService
+    MapService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard
   ],
   entryComponents: [                     // components to be dynamically loaded
     LoginComponent, EmailComponent, SignupComponent, MembersComponent
