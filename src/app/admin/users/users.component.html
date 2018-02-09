@@ -1,0 +1,11 @@
+<h4>Currently registered users</h4>
+
+<ul>
+  <li *ngFor="let user of users">
+    {{user.id}}, {{user.displayName}}, {{user.email}}, Roles:
+    User <input type="checkbox" [checked]="user.roles.user" (change)="user.roles.user = !user.roles.user" />,
+    Superuser <input type="checkbox" [checked]="user.roles.superuser" (change)="user.roles.superuser = !user.roles.superuser" />,
+    Admin <input type="checkbox" [checked]="user.roles.admin" (change)="user.roles.admin = !user.roles.admin" />
+  </li>
+</ul>
+<button (click)="update()" class="nav_button"><span>Update</span></button>

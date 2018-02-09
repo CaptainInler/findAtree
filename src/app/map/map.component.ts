@@ -7,8 +7,10 @@ import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
 import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
 import * as Locator from 'esri/tasks/Locator';
 import { TreeService } from '../tree.service';
-import { attributeNames } from '../tree';
+import { attributeNames, MapClickEvent } from '../tree';
 import * as firebase from 'firebase';
+import { MapEventService } from '../services/map-event.service';
+
 
 @Component({
   selector: 'esri-map',
@@ -19,6 +21,8 @@ export class MapComponent {
 
   @Output()
   viewCreated = new EventEmitter();
+  @Output()
+  clicked: EventEmitter<MapClickEvent> = new EventEmitter<MapClickEvent>();
 
   private mapView: MapView;
   private treeLayer: FeatureLayer;
@@ -28,7 +32,8 @@ export class MapComponent {
 
   constructor(private mapService: MapService,
               private elementRef: ElementRef,
-              private treeService: TreeService) { }
+              private treeService: TreeService,
+              private mapEventService: MapEventService) { }
 
   ngOnInit() {
 
@@ -48,13 +53,29 @@ export class MapComponent {
 
 
       let view = this.mapView;
+      let clickEvent = new MapClickEvent();
+      // let clickEventEmitter = this.clicked;
+      let mapEventService = this.mapEventService;
       view.on("click", function (event) {
+
+      // })
+      // view.on("click", function (event) {
         event.stopPropagation();
-        console.log(event);
+        // console.log(event);
         // hier kriegt man die Koordinaten in event.mapPoint
 
         view.hitTest(event).then(function(response) {
-          console.log(response);
+          // console.log(response);
+          if (response.results.length>0){
+            let result = response.results[0];
+            clickEvent.attr = result.graphic.attributes;
+          }else{
+            clickEvent.attr = null;
+          }
+          clickEvent.lat = event.mapPoint.latitude;
+          clickEvent.lon = event.mapPoint.longitude;
+          // clickEventEmitter.emit(clickEvent);
+          mapEventService.emitMapEvent(clickEvent);
           // hier kriegt man die Objekten die geklickt wurden im response.results
         });
 
