@@ -4,11 +4,12 @@
   <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
   <button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>
   <a routerLink="/admin">Admin</a>
+  <a routerLink="/map">Map</a>
   <!--<button (click)="logout()" class="nav_button"><span>Logout (rescue)</span></button>-->
 </nav>
 <section>
-<!--<router-outlet></router-outlet>-->
-  <esri-map></esri-map>
+<router-outlet></router-outlet>
+  <!--<esri-map></esri-map>-->
 <!--<app-members></app-members>-->
 <!--<app-page-not-found></app-page-not-found>-->
 <!--<app-login></app-login>-->

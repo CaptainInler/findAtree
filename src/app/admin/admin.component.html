@@ -1,4 +1,8 @@
-<p>
-  This is admin component<br>
+<h2>Admin</h2>
+<nav>
+  <button type="button" (click)="showSection('treenames')" class="nav_button"><span>TreeNames</span></button>
+  <button type="button" (click)="showSection('users')" class="nav_button"><span>Users</span></button>
+</nav>
+<div *ngIf="show==='treenames'">
   <app-treenames></app-treenames>
-</p>
+</div>
