@@ -9,6 +9,8 @@ import * as Locator from 'esri/tasks/Locator';
 import { TreeService } from '../tree.service';
 import { attributeNames, MapClickEvent } from '../tree';
 import * as firebase from 'firebase';
+import { MapEventService } from '../services/map-event.service';
+
 
 @Component({
   selector: 'esri-map',
@@ -30,7 +32,8 @@ export class MapComponent {
 
   constructor(private mapService: MapService,
               private elementRef: ElementRef,
-              private treeService: TreeService) { }
+              private treeService: TreeService,
+              private mapEventService: MapEventService) { }
 
   ngOnInit() {
 
@@ -51,7 +54,8 @@ export class MapComponent {
 
       let view = this.mapView;
       let clickEvent = new MapClickEvent();
-      let clickEventEmitter = this.clicked;
+      // let clickEventEmitter = this.clicked;
+      let mapEventService = this.mapEventService;
       view.on("click", function (event) {
 
       // })
@@ -70,7 +74,8 @@ export class MapComponent {
           }
           clickEvent.lat = event.mapPoint.latitude;
           clickEvent.lon = event.mapPoint.longitude;
-          clickEventEmitter.emit(clickEvent);
+          // clickEventEmitter.emit(clickEvent);
+          mapEventService.emitMapEvent(clickEvent);
           // hier kriegt man die Objekten die geklickt wurden im response.results
         });
 

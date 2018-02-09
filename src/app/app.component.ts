@@ -11,13 +11,15 @@ import { AuthService} from './services/auth.service';
 import { MembersComponent } from './members/members.component';
 import { GuessComponent} from './members/guess/guess.component';
 import { ModeSelectorComponent} from './members/mode-selector/mode-selector.component';
-import {subscribeToResult} from 'rxjs/util/subscribeToResult';
-import {MapClickEvent} from './tree';
+import { subscribeToResult } from 'rxjs/util/subscribeToResult';
+import { MapClickEvent } from './tree';
+import { MapEventService } from './services/map-event.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [MapEventService]
 })
 export class AppComponent implements OnInit{
   @ViewChild('tools',{
@@ -29,10 +31,18 @@ export class AppComponent implements OnInit{
   cmpRef: ComponentRef<any>;
   title = "Loading data...";
   loggedIn: boolean = false;
-  constructor(private treeService: TreeService, private _cfr: ComponentFactoryResolver, private authService: AuthService) {
+  constructor(private treeService: TreeService,
+              private _cfr: ComponentFactoryResolver,
+              private authService: AuthService,
+              private _mes: MapEventService) {
     this.treeService.dataLoaded.subscribe(() => {
       this.title = "Find A Tree";
     })
+    this._mes.mapEvent$.subscribe(
+      event => {
+        this.mapClicked(event);
+      }
+    )
    }
    ngOnInit() {
     this.authService.userChanged.subscribe(

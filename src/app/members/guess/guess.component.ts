@@ -15,6 +15,7 @@ import {AuthService} from '../../services/auth.service';
 export class GuessComponent implements OnInit {
   error: any;
   selection: Array<Treename>;
+  clicks: Array<number>=[];
   answer: number;
 
   @Input() mapClickData: MapClickEvent;
@@ -36,12 +37,31 @@ export class GuessComponent implements OnInit {
     };
     this.answer = this.mapClickData.attr.ObjectID;
     this.selection.push(tree);
+    console.log(this.selection);
+    this.selection = this.shuffle(this.selection);
+    console.log(this.selection);
+  }
+  shuffle(array) {
+    var m = array.length, t, i;
+
+    // While there remain elements to shuffle…
+    while (m) {
+
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+
+      // And swap it with the current element.
+      t = array[m];
+      array[m] = array[i];
+      array[i] = t;
+    }
+    return array;
   }
   selectTreeName(id: number) {
     if (id===this.answer){
-      alert('This answer is correct.');
+      this.clicks[id]=1;
     }else{
-      alert('Sorry, you are wrong.');
+      this.clicks[id]=-1;
     }
   }
 }
