@@ -29,7 +29,9 @@ import { TreenamesComponent } from './admin/treenames/treenames.component';
 import { GuessComponent } from './members/guess/guess.component';
 import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
-import {AdminGuard} from './services/admin.guard';
+import { AdminGuard } from './services/admin.guard';
+import { MaterialModule } from './material/material.module';
+
 
 @NgModule({
   imports: [                            // modules, everything declared here and under declarations may be used in component templates
@@ -43,7 +45,8 @@ import {AdminGuard} from './services/admin.guard';
     AngularFireAuthModule,
     FormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   declarations: [                       //declarables: directives (Attribute, Structural), components, pipes. Can only be declared in one module
     AppComponent,

@@ -1,26 +1,26 @@
-<h1>{{title}}</h1>
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <span>FindATree</span>
+    <span class="spacer"></span>
+    <button type="button" (click)="toggleLogin()" class="nav_button">
+      <span>{{loggedIn?'Logout':'Login'}}</span>
+    </button>
+    <!--<button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>-->
+    <button *ngIf="loggedIn" (click)="selectMode()" class="nav_button">
+      <span>Mode</span>
+    </button>
+    <div *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
+      <a routerLink="/admin">Admin</a>
+      <a routerLink="/map">Map</a>
+    </div>
+    <mat-icon class="icon" color='primary'>account_circle</mat-icon>
+    <mat-icon class="icon" color='primary'>info</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
 
-<nav>
-  <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
-  <!--<button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>-->
-  <button *ngIf="loggedIn" (click)="selectMode()" class="nav_button"><span>Mode</span></button>
-  <div *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
-  <a routerLink="/admin">Admin</a>
-  <a routerLink="/map">Map</a>
-  </div>
-
-  <!--<button (click)="logout()" class="nav_button"><span>Logout (rescue)</span></button>-->
-</nav>
 <section>
 
-<router-outlet></router-outlet>
-  <!--<esri-map></esri-map>-->
-
-  <!--<esri-map (clicked)="mapClicked($event)"></esri-map>-->
-
-<!--<app-members></app-members>-->
-<!--<app-page-not-found></app-page-not-found>-->
-<!--<app-login></app-login>-->
+  <router-outlet></router-outlet>
 
   <div #tools></div>
 </section>

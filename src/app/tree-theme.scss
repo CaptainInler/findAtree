@@ -1,0 +1,12 @@
+@import '../../node_modules/@angular/material/theming';
+
+@include mat-core();
+
+$tree-theme-primary: mat-palette($mat-brown);
+$tree-theme-accent: mat-palette($mat-teal);
+$tree-theme-warn: mat-palette($mat-red);
+
+$tree-theme: mat-light-theme($tree-theme-primary, $tree-theme-accent, $tree-theme-warn);
+
+
+@include angular-material-theme($tree-theme);

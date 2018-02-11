@@ -1,5 +1,12 @@
 #viewDiv {
   position: absolute;
   width: 100%;
-  height: 85%;
+  top: 64px;
+  bottom: 0;
+}
+
+@media (max-width: 600px) {
+  #viewDiv {
+    top: 56px;
+  }
 }
