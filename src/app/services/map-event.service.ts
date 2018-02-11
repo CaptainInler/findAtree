@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { MapClickEvent} from '../tree';
+import { AuthService} from './auth.service';
 
 
 @Injectable()
@@ -14,10 +15,13 @@ export class MapEventService {
 
   // Service event command
   emitMapEvent(event: MapClickEvent){
-    this.mapEventSource.next(event);
+    if (this._aS.isLoggedIn()) {
+      this.mapEventSource.next(event);
+    }
   }
 
 
-  constructor() { }
+  constructor(private _aS: AuthService){
+  }
 
 }
