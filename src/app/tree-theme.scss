@@ -10,9 +10,9 @@ $tree-theme: mat-light-theme($tree-theme-primary, $tree-theme-accent, $tree-them
 
 
 @include angular-material-theme($tree-theme);
-
+/*
 $primary: map-get($tree-theme, primary);
 $accent: map-get($tree-theme, accent);
 
 $primary-color: mat-color($primary);
-$accent-color: mat-color($accent);
+$accent-color: mat-color($accent); */
