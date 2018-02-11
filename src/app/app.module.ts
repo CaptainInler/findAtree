@@ -31,6 +31,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { EsriMapComponent } from './map/esri-map/esri-map.component';
 import { SidePanelComponent } from './map/side-panel/side-panel.component';
 import { EditorPanelComponent } from './map/editor-panel/editor-panel.component';
+import { AddTreePanelComponent } from './map/add-tree-panel/add-tree-panel.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
@@ -72,7 +73,8 @@ import { AppStateService } from './services/app-state.service';
     UsersComponent,
     EsriMapComponent,
     SidePanelComponent,
-    EditorPanelComponent
+    EditorPanelComponent,
+    AddTreePanelComponent
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [

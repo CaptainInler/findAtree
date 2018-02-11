@@ -1,0 +1,36 @@
+<mat-vertical-stepper [linear]="isLinear">
+    <mat-step [stepControl]="locationFormGroup">
+      <form [formGroup]="locationFormGroup">
+        <ng-template matStepLabel>Lokalisierung</ng-template>
+        Auf die Karten tippen, um die Koordinaten einzutraggen:
+        <mat-form-field>
+          <input matInput placeholder="Latitude" formControlName="latitude" required>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput placeholder="Longitude" formControlName="longitude" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperNext color='primary'>Weiter</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="attributeFormGroup">
+      <form [formGroup]="attributeFormGroup">
+        <ng-template matStepLabel>Attributen eintragen</ng-template>
+        <mat-form-field>
+          <input matInput placeholder="Quartier" formControlName="quartier" required>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button matStepperPrevious color='primary'>Zurück</button>
+          <button mat-raised-button matStepperNext color='primary'>Weiter</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Speichern</ng-template>
+      <div>
+        <button mat-raised-button color='primary'>Speichern</button>
+        <button mat-raised-button matStepperPrevious color='primary'>Zurück</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
