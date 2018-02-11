@@ -11,6 +11,7 @@ export class MapDataService {
 
   map: WebMap;
   layer: FeatureLayer;
+  uniqueTreeNames: any[];
 
   constructor() {
     this.map = new WebMap({
@@ -32,11 +33,26 @@ export class MapDataService {
     });
 
     this.map.add(this.layer);
+    this.getUniqueTreeNames();
   }
 
   updateTree(tree) {
     return this.layer.applyEdits({
       updateFeatures: [tree]
     });
+  }
+
+  getUniqueTreeNames() {
+    this.layer.queryFeatures({
+      outFields: [attr.nameDE],
+      returnDistinctValues: true,
+      where: '1=1'
+    })
+    .then((result) => {
+      this.uniqueTreeNames = result.features.map(feature => {
+        return feature.attributes[attr.nameDE]
+      });
+    })
+    .otherwise(err => console.log(err));
   }
 }
