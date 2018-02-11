@@ -9,13 +9,6 @@ export class TreeNameService {
   dataLoaded: boolean = false;
 
   constructor(private db: AngularFireDatabase) {
-    this.db.list('treenames').valueChanges()
-      .subscribe(trees => {
-        this.treenames = trees.map((tree:FirebaseTN) => {
-          return new Treename(tree);
-        });
-        this.dataLoaded = true;
-      });
   }
 
   public getSelectionOfNames(size: number): Array<Treename>{
@@ -28,6 +21,25 @@ export class TreeNameService {
       }
     }
     return set;
+  }
+
+  public getSelectionOfNamesObs(size: number, selected: number): Observable<Treename[]>{
+    if (this.dataLoaded){
+      const obs =  Observable.create((observer) => {
+        observer.next(this.treenames);
+        console.log('treenames read');
+        observer.complete();
+      });
+      return obs;
+    }
+    this.db.list('treenames').valueChanges()
+      .subscribe(trees => {
+        this.treenames = trees.map((tree:FirebaseTN) => {
+          return new Treename(tree);
+        });
+        this.dataLoaded = true;
+        return this.treenames;
+      });
   }
 
   private getRandomInt(min, max) {

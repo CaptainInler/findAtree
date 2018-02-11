@@ -1,16 +1,16 @@
 <div class="form-container" id="toolbar">
-  <div *ngIf="show">
-  <!--<header [@fallIn]="state">-->
-  <!--&lt;!&ndash;<header>&ndash;&gt;-->
-    <!--<button (click)="logout()" class="basic-btn">Logout</button>-->
-  <!--</header>-->
+
   <div id="page" [@moveInLeft]="state">
-  <!--<div id="page">-->
     <h2>Hey {{ name.displayName }}!</h2>
   </div>
+
+  <div *ngIf="show" class="child-container">
     <app-mode-selector *ngIf="subComponent==='mode-selector'"></app-mode-selector>
     <app-guess [mapClickData]="mapClickData" *ngIf="subComponent==='guess'"></app-guess>
     <app-add [mapClickData]="mapClickData" *ngIf="subComponent==='add'"></app-add>
   </div>
-  <button (click)="resetTool('hide')">Done</button><br>
+
+  <div>
+    <button (click)="resetTool('hide')"class="darkgrey">Done</button><br>
+  </div>
 </div>

@@ -10,7 +10,7 @@ import {AuthService} from '../../services/auth.service';
   templateUrl: './guess.component.html',
   styleUrls: ['./guess.component.scss'],
   animations: [moveIn()],
-  host: {'[@moveIn]':''}
+  // host: {'[@moveIn]':''}
 })
 export class GuessComponent implements OnInit {
   error: any;
