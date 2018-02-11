@@ -40,6 +40,7 @@ import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
+import { GuessPanelComponent } from './guess-panel/guess-panel.component';
 
 
 @NgModule({
@@ -74,7 +75,8 @@ import { AppStateService } from './services/app-state.service';
     EsriMapComponent,
     SidePanelComponent,
     EditorPanelComponent,
-    AddTreePanelComponent
+    AddTreePanelComponent,
+    GuessPanelComponent
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [

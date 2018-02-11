@@ -2,7 +2,7 @@ import { Component, ElementRef, Output, EventEmitter, Input } from '@angular/cor
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
 
-import * as MapView  from 'esri/views/MapView';
+import * as MapView from 'esri/views/MapView';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
 
 @Component({
@@ -49,37 +49,35 @@ export class EsriMapComponent {
 
       view.hitTest(event).then((response) => {
 
-        if (this.appState.getMode() === 'editor') {
-          // user is in the editor mode and he clicked on a tree
-          if (response.results.length > 0) {
-            let result = response.results[0];
-            if (result.graphic) {
+        // user is in the editor mode and he clicked on a tree
+        if (response.results.length > 0) {
+          let result = response.results[0];
+          if (result.graphic) {
 
-              // zoom to selected feature
-              view.goTo({
-                target: result.graphic.geometry,
-                zoom: 18
-              });
+            // zoom to selected feature
+            view.goTo({
+              target: result.graphic.geometry,
+              zoom: 18
+            });
 
-              this.appState.setInteraction('view');
+            this.appState.setInteraction('view');
 
-              this.selectedTree = result.graphic;
-              this.selectedTreeChange.emit(result.graphic);
-            }
+            this.selectedTree = result.graphic;
+            this.selectedTreeChange.emit(result.graphic);
           }
-          // user is in the editor mode and he clicked next to a tree
+        }
+        // user is in the editor mode and he clicked next to a tree
+        else {
+          // in case he is in the add mode then the coordinates should be added
+          if (this.appState.getInteraction() === 'add') {
+            console.log(event);
+          }
           else {
-            // in case he is in the add mode then the coordinates should be added
-            if (this.appState.getInteraction() === 'add') {
-              console.log(event);
-            }
-            else {
-              // in case he was just viewing a tree or editing a tree the selection
-              // is canceled
-              this.appState.setInteraction('none');
-              this.selectedTree = null;
-              this.selectedTreeChange.emit(null);
-            }
+            // in case he was just viewing a tree or editing a tree the selection
+            // is canceled
+            this.appState.setInteraction('none');
+            this.selectedTree = null;
+            this.selectedTreeChange.emit(null);
           }
         }
       });
@@ -110,7 +108,7 @@ function getMaxPadding(fixPadding: number): number {
     e = d.documentElement,
     g = d.getElementsByTagName('body')[0],
     x = w.innerWidth || e.clientWidth || g.clientWidth;
-  let maxPadding = 30/100*x;
+  let maxPadding = 30 / 100 * x;
   if (fixPadding > maxPadding) {
     maxPadding = fixPadding;
   }

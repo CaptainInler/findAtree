@@ -1,27 +1,32 @@
 <section *ngIf='appState.getInteraction() !== "none"' class='side-panel'>
+  <div *ngIf='appState.getMode() === "editor"'>
+    <div *ngIf='selectedTree' class='tree-detail'>
 
-  <div *ngIf='selectedTree' class='tree-detail'>
+      <div *ngIf='!inEditMode' class='tree-read-only'>
+        <mat-list>
+          <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>
+          <mat-divider></mat-divider>
+          <mat-list-item>Name Lateinisch: {{ selectedTree.attributes[attr.gattungLat] }} - {{ selectedTree.attributes[attr.artLat] }}</mat-list-item>
+          <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>
+          <mat-list-item>Pflanz Jahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>
+          <mat-list-item>Status: {{ selectedTree.attributes[attr.status] }}</mat-list-item>
+        </mat-list>
 
-    <div *ngIf='!inEditMode' class='tree-read-only'>
-      <mat-list>
-        <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item>Name Lateinisch: {{ selectedTree.attributes[attr.gattungLat] }} - {{ selectedTree.attributes[attr.artLat] }}</mat-list-item>
-        <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>
-        <mat-list-item>Pflanz Jahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>
-        <mat-list-item>Status: {{ selectedTree.attributes[attr.status] }}</mat-list-item>
-      </mat-list>
+        <button mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+      </div>
 
-      <button mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>
-        <mat-icon>mode_edit</mat-icon>
-      </button>
+      <editor-panel *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></editor-panel>
     </div>
 
-    <editor-panel *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></editor-panel>
+    <div *ngIf='appState.getInteraction() === "add"'>
+      <add-tree-panel></add-tree-panel>
+    </div>
   </div>
 
-  <div *ngIf='appState.getInteraction() === "add"'>
-  <add-tree-panel></add-tree-panel>
+  <div *ngIf='appState.getMode() === "game"'>
+    To do: add Beat's guess component in here
   </div>
 
 </section>
