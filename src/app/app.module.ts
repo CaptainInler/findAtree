@@ -1,22 +1,20 @@
+import { environment } from '../environments/environment';
+
+// modules
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
 import { AngularFireModule } from 'angularfire2';
-// import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { environment } from '../environments/environment';
-import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
-
+import { AppRoutingModule } from './app-routing.module';
 import { FormsModule} from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
+import { MaterialModule } from './material/material.module';
 
+// components
+import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
-import { MapService } from './map/map.service';
-import { TreeService } from './tree.service';
-import { TreeNameService } from './services/tree-name.service';
-import { AuthService} from './services/auth.service';
-import { AppRoutingModule } from './app-routing.module';
 import { MembersComponent } from './members/members.component';
 import { LoginComponent } from './members/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -30,16 +28,18 @@ import { GuessComponent } from './members/guess/guess.component';
 import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
 import { AdminGuard } from './services/admin.guard';
-import { MaterialModule } from './material/material.module';
 
+// services
+import { MapService } from './map/map.service';
+import { TreeService } from './tree.service';
+import { TreeNameService } from './services/tree-name.service';
+import { AuthService} from './services/auth.service';
 
 @NgModule({
-  imports: [                            // modules, everything declared here and under declarations may be used in component templates
+  imports: [
+    // modules, everything declared here and under declarations may be used in component templates
     BrowserModule,
     AngularFireModule.initializeApp(environment.firebase, 'my-app-name'),
-    // imports firebase/app needed for everything
-    // AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-    // AngularFireAuthModule, // imports firebase/auth, only needed for auth features
     AngularFireDatabaseModule,
     AppRoutingModule,
     AngularFireAuthModule,
@@ -48,7 +48,8 @@ import { MaterialModule } from './material/material.module';
     HttpClientModule,
     MaterialModule
   ],
-  declarations: [                       //declarables: directives (Attribute, Structural), components, pipes. Can only be declared in one module
+  declarations: [
+    // declarables: directives (Attribute, Structural), components, pipes.
     AppComponent,
     MapComponent,
     MembersComponent,
@@ -63,11 +64,13 @@ import { MaterialModule } from './material/material.module';
     AddComponent,
     UsersComponent
   ],
-  bootstrap: [ AppComponent ],           // component to start with
-  providers: [                           // services
+  bootstrap: [ AppComponent ], // component to start with
+  providers: [
+    // services
     MapService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard
   ],
-  entryComponents: [                     // components to be dynamically loaded
+  entryComponents: [
+    // components to be dynamically loaded
     LoginComponent, EmailComponent, SignupComponent, MembersComponent
   ]
 })
