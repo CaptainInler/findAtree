@@ -5,8 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="initial-scale=1">
   <title>FindATree</title>
-   <base href="/">
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
    rel="stylesheet">
   <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
   <script src="https://js.arcgis.com/4.6/" data-dojo-config="async: true"></script>
@@ -15,6 +14,9 @@
 
 <body>
   <app-root></app-root>
+  <script type="text/javascript">
+    document.write("<base href='" + document.location.href + "' />");
+  </script>
   <script type="text/javascript">
     require([
       "dist/polyfills.bundle.js",
