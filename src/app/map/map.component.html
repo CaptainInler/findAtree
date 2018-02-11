@@ -1,3 +1,8 @@
-<div id="viewDiv"></div>
+<esri-map [(selectedTree)]='selectedTree'></esri-map>
+<side-panel [selectedTree]='selectedTree'></side-panel>
+<button mat-raised-button color='accent' class='btn-add-tree'
+  (click)='toggleAddInteraction()'>
+  {{ appState.interaction !== 'add' ? 'Add new tree' : 'Cancel'}}
+</button>
 
 

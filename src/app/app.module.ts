@@ -27,6 +27,8 @@ import { TreenamesComponent } from './admin/treenames/treenames.component';
 import { GuessComponent } from './members/guess/guess.component';
 import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
+import { EsriMapComponent } from './map/esri-map/esri-map.component';
+import { SidePanelComponent } from './map/side-panel/side-panel.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
@@ -35,6 +37,7 @@ import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
+
 
 @NgModule({
   imports: [
@@ -63,7 +66,9 @@ import { AppStateService } from './services/app-state.service';
     TreenamesComponent,
     GuessComponent,
     AddComponent,
-    UsersComponent
+    UsersComponent,
+    EsriMapComponent,
+    SidePanelComponent
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [

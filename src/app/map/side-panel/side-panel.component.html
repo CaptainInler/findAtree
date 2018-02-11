@@ -1,0 +1,28 @@
+<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'>
+
+  <div *ngIf='selectedTree' class='tree-detail'>
+
+    <div *ngIf='!inEditMode' class='tree-read-only'>
+      <mat-list>
+        <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Name Lateinisch: {{ selectedTree.attributes[attr.gattungLat] }} - {{ selectedTree.attributes[attr.artLat] }}</mat-list-item>
+        <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>
+        <mat-list-item>Pflanz Jahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>
+        <mat-list-item>Status: {{ selectedTree.attributes[attr.status] }}</mat-list-item>
+      </mat-list>
+
+      <button mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>
+        <mat-icon>mode_edit</mat-icon>
+      </button>
+    </div>
+
+ <!--    <app-tree-editor *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></app-tree-editor>
+ -->
+  </div>
+
+  <div *ngIf='appState.getInteraction() === "add"'>
+   <!--  <app-add-tree></app-add-tree> -->
+  </div>
+
+</section>

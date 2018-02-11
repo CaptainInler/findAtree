@@ -23,6 +23,7 @@ export class AppStateService {
   setInteraction(interaction: interactionType) {
     this.interaction = interaction;
     this.interactionSource.next(interaction);
+    console.log(this.interaction);
   }
 
   getInteraction(): interactionType {
@@ -32,6 +33,7 @@ export class AppStateService {
   setMode(mode: modeType) {
     this.mode = mode;
     this.modeSource.next(mode);
+    console.log(this.mode);
   }
 
   getMode(): modeType {
