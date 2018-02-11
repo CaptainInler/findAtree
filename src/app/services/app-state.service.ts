@@ -2,11 +2,15 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 
 type interactionType = 'none' | 'guess' | 'edit' | 'add' | 'view';
+type modeType = 'game' | 'editor' | 'dashboard';
 
 @Injectable()
 export class AppStateService {
 
-  public mode: 'game' | 'editor';
+  private mode: modeType;
+  private modeSource = new Subject<modeType>();
+  public modeChanged = this.modeSource.asObservable();
+
   private interaction: interactionType;
   private interactionSource = new Subject<interactionType>();
   public interactionChanged = this.interactionSource.asObservable();
@@ -23,6 +27,15 @@ export class AppStateService {
 
   getInteraction(): interactionType {
     return this.interaction;
+  }
+
+  setMode(mode: modeType) {
+    this.mode = mode;
+    this.modeSource.next(mode);
+  }
+
+  getMode(): modeType {
+    return this.mode;
   }
 
 }

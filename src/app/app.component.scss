@@ -5,13 +5,30 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background:#E2E4E6;
 }
 
-.icon {
-  padding: 0 5px;
-  cursor: pointer;
+.nav-menu {
+
+  font-size: 0.7em;
+  margin-right: 10px;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: 2px 5px;
+  }
+
+  .selected, a:hover {
+    background-color: white;
+    color: black;
+  }
+
+  .icon {
+    padding: 0 5px;
+    cursor: pointer;
+  }
 }
+
 
 .spacer {
   flex: 1 1 auto;

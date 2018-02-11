@@ -1,20 +1,28 @@
+<!-- header -->
 <mat-toolbar color="accent">
   <mat-toolbar-row>
+
+    <!-- title -->
     <span>FindATree</span>
     <span class="spacer"></span>
-    <button type="button" (click)="toggleLogin()" class="nav_button">
+
+    <!-- menu for selecting the mode -->
+    <div class="nav-menu">  <!-- *ngIf="loggedIn" -->
+      <a routerLink="/map" [class.selected]="appState.getMode() === 'game'" (click)="appState.setMode('game')">Game</a>
+      <a routerLink="/map" [class.selected]="appState.getMode() === 'editor'" (click)="appState.setMode('editor')">Tree editor</a>
+      <span *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
+        <a routerLink="/admin" [class.selected]="appState.getMode() === 'dashboard'" (click)="appState.setMode('dashboard')">Dashboard</a>
+      </span>
+    </div>
+
+    <!-- application information button -->
+    <mat-icon class="icon" color='primary'>info</mat-icon>
+
+    <!-- log in button -->
+    <button type="button" (click)="toggleLogin()" class="nav_button" tooltip="Login">
       <span>{{loggedIn?'Logout':'Login'}}</span>
     </button>
-    <!--<button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>-->
-    <button *ngIf="loggedIn" (click)="selectMode()" class="nav_button">
-      <span>Mode</span>
-    </button>
-    <div *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
-      <a routerLink="/admin">Admin</a>
-      <a routerLink="/map">Map</a>
-    </div>
-    <mat-icon class="icon" color='primary'>account_circle</mat-icon>
-    <mat-icon class="icon" color='primary'>info</mat-icon>
+
   </mat-toolbar-row>
 </mat-toolbar>
 

@@ -27,9 +27,9 @@ import { TreenamesComponent } from './admin/treenames/treenames.component';
 import { GuessComponent } from './members/guess/guess.component';
 import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
-import { AdminGuard } from './services/admin.guard';
 
 // services
+import { AdminGuard } from './services/admin.guard';
 import { MapService } from './map/map.service';
 import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
@@ -68,7 +68,8 @@ import { AppStateService } from './services/app-state.service';
   bootstrap: [ AppComponent ], // component to start with
   providers: [
     // services
-    MapService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard
+    MapService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard,
+    AppStateService
   ],
   entryComponents: [
     // components to be dynamically loaded
