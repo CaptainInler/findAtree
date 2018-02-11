@@ -34,6 +34,7 @@ import { MapService } from './map/map.service';
 import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
+import { AppStateService } from './services/app-state.service';
 
 @NgModule({
   imports: [
