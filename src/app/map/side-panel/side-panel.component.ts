@@ -10,7 +10,7 @@ import { attr } from '../../tree';
 export class SidePanelComponent {
 
   @Input() selectedTree;
-  @Output() inEditMode: boolean = false;
+  @Output() inEditMode = false;
   public attr = attr;
 
   constructor(public appState: AppStateService) { }

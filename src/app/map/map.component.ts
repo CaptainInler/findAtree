@@ -2,7 +2,7 @@ import { Component, Output } from '@angular/core';
 import { AppStateService } from '../services/app-state.service';
 
 @Component({
-  selector: 'map',
+  selector: 'map-component',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
@@ -24,8 +24,7 @@ export class MapComponent {
       this.appState.setInteraction('add');
       // remove the existing selection when user wants to add a tree
       this.selectedTree = null;
-    }
-    else {
+    } else {
       this.appState.setInteraction('none');
     }
   }

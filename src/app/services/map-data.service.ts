@@ -50,7 +50,7 @@ export class MapDataService {
     })
     .then((result) => {
       this.uniqueTreeNames = result.features.map(feature => {
-        return feature.attributes[attr.nameDE]
+        return feature.attributes[attr.nameDE];
       });
     })
     .otherwise(err => console.log(err));

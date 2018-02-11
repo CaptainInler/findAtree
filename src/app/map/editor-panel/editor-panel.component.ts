@@ -22,7 +22,7 @@ export class EditorPanelComponent implements OnInit {
 
   ngOnInit() {
 
-    let attributes = this.selectedTree.attributes;
+    const attributes = this.selectedTree.attributes;
     this.form = new FormGroup({
       quartier: new FormControl(attributes[attr.quartier]),
       status: new FormControl(attributes[attr.status]),
@@ -32,7 +32,7 @@ export class EditorPanelComponent implements OnInit {
 
   onSubmit(form) {
 
-    let editedTree = this.selectedTree;
+    const editedTree = this.selectedTree;
 
     editedTree.attributes[attr.pflanzJahr] = form.pflanzJahr;
 

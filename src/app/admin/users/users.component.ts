@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsersService} from '../../services/users.service';
-import { User} from '../../members/user';
-import {AngularFireDatabase} from 'angularfire2/database';
+import { UsersService } from '../../services/users.service';
+import { User } from '../../members/user';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
   selector: 'app-users',
@@ -13,7 +13,7 @@ export class UsersComponent implements OnInit {
   users: Array<User>;
 
   constructor(private _us: UsersService,
-              private _db: AngularFireDatabase) { }
+    private _db: AngularFireDatabase) { }
 
   ngOnInit() {
     this._us.getUsers()
@@ -22,20 +22,20 @@ export class UsersComponent implements OnInit {
   }
 
   private update() {
-      // console.log(this.users);
-      for (let i=0;i<this.users.length;i++){
-        this.updateUser(this.users[i]);
-      }
+    // console.log(this.users);
+    for ( let i = 0; i < this.users.length; i++ ) {
+      this.updateUser(this.users[i]);
+    }
   }
 
 
-  private updateUser(user:User) {
+  private updateUser(user: User) {
     console.log(user);
-    let ref = this._db.object(`users/${user.id}`);
+    const ref = this._db.object(`users/${user.id}`);
     ref.valueChanges().take(1)
-      .subscribe( usr => {
+      .subscribe(usr => {
         ref.update(user);
-      })
+      });
   }
 
 }
