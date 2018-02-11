@@ -30,7 +30,7 @@ import { UsersComponent } from './admin/users/users.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
-import { MapService } from './map/map.service';
+import { MapDataService } from './services/map-data.service';
 import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
@@ -68,7 +68,7 @@ import { AppStateService } from './services/app-state.service';
   bootstrap: [ AppComponent ], // component to start with
   providers: [
     // services
-    MapService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard,
+    MapDataService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard,
     AppStateService
   ],
   entryComponents: [

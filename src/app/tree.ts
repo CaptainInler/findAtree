@@ -113,3 +113,13 @@ export class Tree {
     this.attributes.ObjectID = Tree.index++;
   }
 }
+
+export enum attr {
+  gattungLat = 'baumgattun',
+  artLat = 'baumartlat',
+  nameLat = 'baumnamela',
+  nameDE = 'baumnamede',
+  status = 'status',
+  pflanzJahr = 'pflanzjahr',
+  quartier = 'quartier'
+}

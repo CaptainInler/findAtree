@@ -1,16 +1,9 @@
-import { Component, ElementRef, ViewChild, Output, EventEmitter } from '@angular/core';
-import { MapService } from './map.service';
+import { Component, ElementRef, Output, EventEmitter, Input } from '@angular/core';
+import { MapDataService } from '../services/map-data.service';
+import { AppStateService } from '../services/app-state.service';
 
-import MapView = require('esri/views/MapView');
+import * as MapView  from 'esri/views/MapView';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
-import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
-import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
-import * as Locator from 'esri/tasks/Locator';
-import { TreeService } from '../tree.service';
-import { attributeNames, MapClickEvent } from '../tree';
-import * as firebase from 'firebase';
-import { MapEventService } from '../services/map-event.service';
-
 
 @Component({
   selector: 'esri-map',
@@ -19,25 +12,30 @@ import { MapEventService } from '../services/map-event.service';
 })
 export class MapComponent {
 
-  @Output()
-  viewCreated = new EventEmitter();
-  @Output()
-  clicked: EventEmitter<MapClickEvent> = new EventEmitter<MapClickEvent>();
-
   private mapView: MapView;
   private treeLayer: FeatureLayer;
 
-  // this is needed to be able to create the MapView at the DOM element in this component
- // @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @Output()
+  selectedTreeChange = new EventEmitter();
 
-  constructor(private mapService: MapService,
-              private elementRef: ElementRef,
-              private treeService: TreeService,
-              private mapEventService: MapEventService) { }
+  private _selectedTree;
+  @Input()
+  set selectedTree(tree) {
+    this._selectedTree = tree;
+  };
+  get selectedTree() {
+    return this._selectedTree;
+  }
+
+  constructor(
+    private mapDataService: MapDataService,
+    private elementRef: ElementRef,
+    public appState: AppStateService
+  ) { }
 
   ngOnInit() {
 
-    var map = this.mapService.map;
+    var map = this.mapDataService.map;
 
     const mapViewProperties: any = {
       container: this.elementRef.nativeElement.firstChild,
@@ -45,104 +43,76 @@ export class MapComponent {
     }
     this.mapView = new MapView(mapViewProperties);
 
+    let view = this.mapView;
 
-     /*  // Create a locator task using the world geocoding service
-      let locatorTask = new Locator({
-        url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
-      }); */
+    view.on("click", (event) => {
 
+      view.hitTest(event).then((response) => {
 
-      let view = this.mapView;
-      let clickEvent = new MapClickEvent();
-      // let clickEventEmitter = this.clicked;
-      let mapEventService = this.mapEventService;
-      view.on("click", function (event) {
-
-      // })
-      // view.on("click", function (event) {
-        event.stopPropagation();
-        // console.log(event);
-        // hier kriegt man die Koordinaten in event.mapPoint
-
-        view.hitTest(event).then(function(response) {
-          // console.log(response);
-          if (response.results.length>0){
+        if (this.appState.getMode() === 'editor') {
+          // user is in the editor mode and he clicked on a tree
+          if (response.results.length > 0) {
             let result = response.results[0];
-            clickEvent.attr = result.graphic.attributes;
-          }else{
-            clickEvent.attr = null;
+            if (result.graphic) {
+
+              // zoom to selected feature
+              view.goTo({
+                target: result.graphic.geometry,
+                zoom: 18
+              });
+
+              this.appState.setInteraction('view');
+
+              this.selectedTree = result.graphic;
+              this.selectedTreeChange.emit(result.graphic);
+            }
           }
-          clickEvent.lat = event.mapPoint.latitude;
-          clickEvent.lon = event.mapPoint.longitude;
-          // clickEventEmitter.emit(clickEvent);
-          mapEventService.emitMapEvent(clickEvent);
-          // hier kriegt man die Objekten die geklickt wurden im response.results
-        });
-
-      /*   // Get the coordinates of the click on the view
-        // around the decimals to 3 decimals
-        var lat = Math.round(event.mapPoint.latitude * 1000) / 1000;
-        var lon = Math.round(event.mapPoint.longitude * 1000) / 1000;
-
-        view.popup.open({
-          // Set the popup's title to the coordinates of the clicked location
-          title: "Reverse geocode: [" + lon + ", " + lat + "]",
-          location: event.mapPoint // Set the location of the popup to the clicked location
-        });
-
-        // Execute a reverse geocode using the clicked location
-        locatorTask.locationToAddress(event.mapPoint).then(function (response) {
-          // If an address is successfully found, show it in the popup's content
-          view.popup.content = response.address;
-        }).otherwise(function (err) {
-          // If the promise fails and no result is found, show a generic message
-          view.popup.content = "No address was found for this location";
-        }); */
-
+          // user is in the editor mode and he clicked next to a tree
+          else {
+            // in case he is in the add mode then the coordinates should be added
+            if (this.appState.getInteraction() === 'add') {
+              console.log(event);
+            }
+            else {
+              // in case he was just viewing a tree or editing a tree the selection
+              // is canceled
+              this.appState.setInteraction('none');
+              this.selectedTree = null;
+              this.selectedTreeChange.emit(null);
+            }
+          }
+        }
       });
 
-    this.treeService.dataLoaded.subscribe(() => {
-      let layer = this.createLayer(this.treeService.trees);
-      // console.log(this.treeService.trees);
-      map.add(layer);
-    })
+    });
 
-    this.viewCreated.next(this.mapView);
-  }
-
-  createLayer(graphics) {
-    let pTemplate = {
-      title: "{title}",
-      content: [{
-        type: "fields",
-        fieldInfos: attributeNames
-      }]
-    };
-    let fields = attributeNames.map(attribute => {
-      return {
-        name: attribute.fieldName,
-        alias: attribute.label,
-        type: attribute.type
+    this.appState.interactionChanged.subscribe((interaction) => {
+      if (interaction === 'none') {
+        this.changePadding(0);
+      } else {
+        this.changePadding(400);
       }
     });
-    let treesLayer = new FeatureLayer({
-      source: graphics,
-      fields: fields,
-      objectIdField: "ObjectID",
-      spatialReference: {
-        wkid: 4326
-      },
-      renderer: new SimpleRenderer({
-         symbol: new PictureMarkerSymbol({
-          url: "./src/assets/images/tree.png",
-          width: 15,
-          height: 15
-        })
-      }),
-      geometryType: "point",
-      popupTemplate: pTemplate
-    });
-
-    return treesLayer;
   }
+
+  changePadding(padding: number) {
+    this.mapView.padding = {
+      right: padding
+    }
+  }
+
+}
+
+// function that calculates map view padding depending on viewport width
+function getMaxPadding(fixPadding: number): number {
+  let w = window,
+    d = document,
+    e = d.documentElement,
+    g = d.getElementsByTagName('body')[0],
+    x = w.innerWidth || e.clientWidth || g.clientWidth;
+  let maxPadding = 30/100*x;
+  if (fixPadding > maxPadding) {
+    maxPadding = fixPadding;
+  }
+  return maxPadding;
 }
