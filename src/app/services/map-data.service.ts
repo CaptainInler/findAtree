@@ -33,4 +33,10 @@ export class MapDataService {
 
     this.map.add(this.layer);
   }
+
+  updateTree(tree) {
+    return this.layer.applyEdits({
+      updateFeatures: [tree]
+    });
+  }
 }

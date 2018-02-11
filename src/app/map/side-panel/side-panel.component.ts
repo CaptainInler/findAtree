@@ -17,6 +17,7 @@ export class SidePanelComponent {
 
   toggleEditMode(value) {
     this.inEditMode = value;
+    console.log(this.inEditMode);
   }
 
 }

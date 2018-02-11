@@ -17,8 +17,7 @@
       </button>
     </div>
 
- <!--    <app-tree-editor *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></app-tree-editor>
- -->
+    <editor-panel *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></editor-panel>
   </div>
 
   <div *ngIf='appState.getInteraction() === "add"'>

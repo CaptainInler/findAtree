@@ -8,6 +8,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule} from 'angularfire2/auth';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
@@ -29,6 +30,7 @@ import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EsriMapComponent } from './map/esri-map/esri-map.component';
 import { SidePanelComponent } from './map/side-panel/side-panel.component';
+import { EditorPanelComponent } from './map/editor-panel/editor-panel.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
@@ -48,6 +50,7 @@ import { AppStateService } from './services/app-state.service';
     AppRoutingModule,
     AngularFireAuthModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     MaterialModule
@@ -68,7 +71,8 @@ import { AppStateService } from './services/app-state.service';
     AddComponent,
     UsersComponent,
     EsriMapComponent,
-    SidePanelComponent
+    SidePanelComponent,
+    EditorPanelComponent
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [
