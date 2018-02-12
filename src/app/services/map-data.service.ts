@@ -42,7 +42,7 @@ export class MapDataService {
     });
   }
 
-  getUniqueTreeNames() {
+  private getUniqueTreeNames() {
     this.layer.queryFeatures({
       outFields: [attr.nameDE],
       returnDistinctValues: true,
@@ -54,5 +54,14 @@ export class MapDataService {
       });
     })
     .otherwise(err => console.log(err));
+  }
+
+  public getRandomTreeNames(n: number): Array<string> {
+    const randomTreeNames = [];
+    const length = this.uniqueTreeNames.length;
+    for ( let i = 0; i < n; i++ ) {
+      randomTreeNames.push(this.uniqueTreeNames[Math.floor(Math.random() * length)])
+    }
+    return randomTreeNames;
   }
 }

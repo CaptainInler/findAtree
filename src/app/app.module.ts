@@ -32,6 +32,7 @@ import { EsriMapComponent } from './map/esri-map/esri-map.component';
 import { SidePanelComponent } from './map/side-panel/side-panel.component';
 import { EditorPanelComponent } from './map/editor-panel/editor-panel.component';
 import { AddTreePanelComponent } from './map/add-tree-panel/add-tree-panel.component';
+import { GuessPanelComponent } from './map/guess-panel/guess-panel.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
@@ -40,7 +41,6 @@ import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
-import { GuessPanelComponent } from './guess-panel/guess-panel.component';
 
 
 @NgModule({
