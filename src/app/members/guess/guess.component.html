@@ -1,19 +1,9 @@
-<div *ngIf='selectedTree' class='tree-detail'>
 
-  <h1>What kind of tree did you click on?</h1>
+<div class="form-container">
+    <span>What kind of tree did you click on?</span><br>
 
-  <span class="error" *ngIf="error">{{ error }}</span>
+    <span class="error" *ngIf="error">{{ error }}</span>
 
-  <button *ngFor="let item of selection"
-      (click)="selectTreeName(item.id)"
-      id="{{item.id}}"
-      [ngClass]="{'red':clicks[item.id]===-1,'green':clicks[item.id]===1}">
+    <button *ngFor="let item of selection" (click)="selectTreeName(item.id)" id="{{item.id}}" [ngClass]="{'red':clicks[item.id]===-1,'green':clicks[item.id]===1}">{{item.baumnamedeu}}</button>
 
-    {{item.baumnamedeu}}
-  </button>
-
-</div>
-
-<div *ngIf='!selectedTree'>
-  Click on a tree to guess what type of tree it is.
-</div>
+  </div>
