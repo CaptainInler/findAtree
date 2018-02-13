@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MapDataService } from '../../services/map-data.service';
 
 @Component({
   selector: 'add-tree-panel',
@@ -11,7 +12,8 @@ export class AddTreePanelComponent implements OnInit {
   locationFormGroup: FormGroup;
   attributeFormGroup: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+  private mapDataService: MapDataService) { }
 
   ngOnInit() {
     this.locationFormGroup = this._formBuilder.group({
@@ -22,6 +24,17 @@ export class AddTreePanelComponent implements OnInit {
     this.attributeFormGroup = this._formBuilder.group({
       quartier: ['', Validators.required]
     });
+
+    // add the coordinates to the form
+    this.mapDataService.mapEvent$.subscribe(value => {
+      this.locationFormGroup.patchValue({
+        'latitude': value.latitude,
+        'longitude': value.longitude
+      });
+    });
   }
+
+
+
 
 }

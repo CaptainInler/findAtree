@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 import * as WebMap from 'esri/WebMap';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
 import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
 import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
+import * as Point from 'esri/geometry/Point';
+
 import { attr } from '../tree';
 
 @Injectable()
@@ -12,6 +15,8 @@ export class MapDataService {
   map: WebMap;
   layer: FeatureLayer;
   uniqueTreeNames: any[];
+  mapEventSource = new Subject<Point>();
+  mapEvent$ = this.mapEventSource.asObservable();
 
   constructor() {
     this.map = new WebMap({

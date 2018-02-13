@@ -69,7 +69,7 @@ export class EsriMapComponent implements OnInit {
         } else {
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
-            console.log(event);
+            this.mapDataService.mapEventSource.next(event.mapPoint);
           } else {
             // in case he was just viewing a tree or editing a tree the selection
             // is canceled
