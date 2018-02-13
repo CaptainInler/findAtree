@@ -47,6 +47,14 @@ export class MapDataService {
     });
   }
 
+  addTree(tree) {
+    return this.layer.applyEdits({
+      addFeatures: [tree]
+    })
+    .then((tree) => console.log(tree))
+    .otherwise(err => console.log(err));
+  }
+
   private getUniqueTreeNames() {
     this.layer.queryFeatures({
       outFields: [attr.nameDE],
