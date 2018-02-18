@@ -55,7 +55,7 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     console.log('beeing destroyed');
-    if (this.points > 0 ) {
+    if (!(this.points === 0) ) {
       this.updateGuess();
     }
   }
@@ -104,7 +104,6 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
     }
     let d = this.getDate();
     let t = this.getTime();
-    let s: Score = {p:this.points};
     let refLast = this._db.object(`guess/${this._aS.getUserId()}/${d}/${t}`);
     let refScore = this._db.object<Score>(`guess/${this._aS.getUserId()}/${d}/score`);
     let refTot = this._db.object<Score>(`guess/${this._aS.getUserId()}/score`);
@@ -118,11 +117,16 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
       })
     refScore.valueChanges().take(1)
       .subscribe( score => {
+        let s: Score = {p:this.points};
         if (score) {
           console.log(score);
           s.p += score.p;
         }
         refScore.update(s)
+          .then( res => {
+            console.log(s);
+            this._aS.dayScore = s.p;
+          })
           .catch((err) => {
             console.log(err);
             }
@@ -130,11 +134,16 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
       })
     refTot.valueChanges().take(1)
       .subscribe(tot => {
+        let t: Score = {p:this.points};
         if (tot) {
           console.log(tot);
-          s.p += tot.p;
+          t.p += tot.p;
         }
-        refTot.update(s)
+        refTot.update(t)
+          .then( res => {
+            console.log(t);
+            this._aS.totScore = t.p;
+          })
           .catch((err) => {
               console.log(err);
             }
