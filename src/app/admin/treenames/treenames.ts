@@ -1,4 +1,6 @@
-export const TREENAMES = [
+import { Treename} from '../../treename';
+
+export const TREENAMES: Treename[] = [
   {"baumartlat":"abies","baumgattunglat":"Picea","baumnamedeu":"Rottanne, Fichte","baumnamelat":"Picea abies","id":1}
   ,{"baumartlat":"abies","baumgattunglat":"Picea","baumnamedeu":"Igel-Fichte","baumnamelat":"Picea abies 'Echiniformis'","id":2}
   ,{"baumartlat":"abies","baumgattunglat":"Picea","baumnamedeu":"Zapfen-Fichte","baumnamelat":"Picea abies 'Nigra'","id":3}

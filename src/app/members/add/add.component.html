@@ -1,11 +1,11 @@
 <div class="form-container">
   <span>You have clicked on this point:</span><br><br>
 
-  <span>Latitude:<br>{{mapClickData.lat}}</span>
-  <span>Longitude:<br>{{mapClickData.lon}}</span><br><br>
+  <span>Latitude:<br>{{treeData.lat}}</span>
+  <span>Longitude:<br>{{treeData.lon}}</span><br><br>
 
-  <span *ngIf="mapClickData.attr">There is allready a tree registred here.</span>
-  <span *ngIf="!mapClickData.attr">There is no tree registred here.</span>
+  <span *ngIf="treeData.attr">There is allready a tree registred here.</span>
+  <span *ngIf="!treeData.attr">There is no tree registred here.</span>
 
 
 </div>

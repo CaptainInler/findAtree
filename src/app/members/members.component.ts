@@ -16,6 +16,7 @@ export class MembersComponent implements OnInit {
   name: any;
   state: string =  '';
   show: boolean = true;
+  private done: boolean = false;
   @Input() subComponent: string;
   @Input() mapClickData: MapClickEvent;
   @Output() eventData:EventEmitter<string> = new EventEmitter();
@@ -25,6 +26,8 @@ export class MembersComponent implements OnInit {
     }
   }
   resetTool(event: string) {
+    this.done = true;
+    console.log(this.done);
     this.eventData.emit(event);
   }
   logout() {

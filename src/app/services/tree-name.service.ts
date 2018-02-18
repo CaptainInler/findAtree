@@ -1,7 +1,7 @@
 import {Injectable, EventEmitter, OnInit} from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import {Treename, FirebaseTN} from '../treename';
+import { Treename } from '../treename';
 
 @Injectable()
 export class TreeNameService {
@@ -11,41 +11,39 @@ export class TreeNameService {
   constructor(private db: AngularFireDatabase) {
   }
 
-
   public getSelectionOfNames (size: number, clicked: Treename = null): Array<Treename>{
     let set: Array<Treename> = Array();
     let clickedNameId: number = 0;
     this.loadTreeNames().subscribe( (treenames) => {
       // console.log(treenames);
       let length = treenames.length;
-      if (clicked) {
-        clickedNameId = this.getTreenameId(clicked.baumnamelat, clicked.baumnamedeu);
-      }
       for (let i = 0; i < size; i++) {
         let index = this.getRandomInt(1, length);
-        while (index === clickedNameId){
+        while (index === clicked.id){
           index = this.getRandomInt(1, length);
         }
         set.push(treenames[index]);
       }
-      set.push(clicked);
+      if (clicked) {
+        set.push(clicked);
+      }
       set = this.shuffle(set);
       console.log(set);
     })
     return set;
   }
+
   public getTreenameId(nameLat: string, nameDeu: string): number{
-    if (this.dataLoaded) {
-      let id: number = 0;
-      for (let i = 0; i < this.treenames.length; i++) {
-        if ((this.treenames[i].baumnamelat===nameLat)&&(this.treenames[i].baumnamedeu===nameDeu)){
-          id = this.treenames[i].id;
+    let id: number = 0;
+    this.loadTreeNames().subscribe( (treenames) => {
+      for (let i = 0; i < treenames.length; i++) {
+        if ((treenames[i].baumnamelat===nameLat)&&(treenames[i].baumnamedeu===nameDeu)){
+          id = treenames[i].id;
           break;
         }
       }
-      return id;
-    }
-    return null;
+    })
+    return id;
   }
 
   public loadTreeNames(): Observable<Treename[]>{
