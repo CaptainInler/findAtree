@@ -10,6 +10,7 @@ import { Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
+import {catchError} from 'rxjs/operators';
 
 
 @Injectable()
@@ -122,7 +123,11 @@ export class AuthService {
     ref.valueChanges().take(1)
       .subscribe(user => {
         if (!user) {
-          ref.update(userData);
+          ref.update(userData).then( (res) => {
+            console.log('user data successfully added');
+          }).catch( (err) => {
+            console.log(err);
+          });
         }
       })
   }
