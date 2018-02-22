@@ -9,7 +9,7 @@ import {MapClickEvent} from '../../tree';
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.scss'],
   animations: [moveIn()],
-  host: {'[@moveIn]':''}
+  host: {'[@moveIn]': ''}
 })
 export class AddComponent implements OnInit {
 

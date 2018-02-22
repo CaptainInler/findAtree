@@ -1,0 +1,17 @@
+<div *ngIf='selectedTree' class='guess-panel'>
+
+  <h1>What kind of tree did you click on?</h1>
+
+  <span class="error" *ngIf="error">{{ error }}</span>
+
+  <button *ngFor="let name of selection" mat-raised-button
+    (click)="selectTreeName(name, $event)" id="{{name}}"
+    [ngClass]="buttonState[name]">
+    {{name}}
+  </button>
+
+</div>
+
+<div *ngIf='!selectedTree'>
+  Click on a tree to guess what type of tree it is.
+</div>

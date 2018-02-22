@@ -1,0 +1,46 @@
+<mat-vertical-stepper [linear]="isLinear">
+  <mat-step [stepControl]="locationFormGroup">
+    <form [formGroup]="locationFormGroup">
+      <ng-template matStepLabel>Localization</ng-template>
+      Click on the map at the location of the tree to fill up the coordinates:
+      <mat-form-field>
+        <input matInput placeholder="Latitude" formControlName="latitude" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Longitude" formControlName="longitude" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperNext color='primary'>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="attributeFormGroup">
+    <form [formGroup]="attributeFormGroup">
+      <ng-template matStepLabel>Attributes</ng-template>
+      <mat-form-field>
+        <mat-select placeholder="Tree type" formControlName="nameDE" required>
+          <mat-option *ngFor="let name of treeNames" [value]="name">
+            {{name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Planting year" formControlName="pflanzJahr" required>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Neighbourhood" formControlName="quartier" required>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button matStepperPrevious color='primary'>Back</button>
+        <button mat-raised-button matStepperNext color='primary'>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Save</ng-template>
+    <div>
+      <button mat-raised-button color='primary' (click)='saveTree()'>Save</button>
+      <button mat-raised-button matStepperPrevious color='primary'>Back</button>
+    </div>
+  </mat-step>
+</mat-vertical-stepper>

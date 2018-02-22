@@ -1,0 +1,16 @@
+@import '../../tree-theme';
+
+.guess-panel {
+  button {
+    width: 100%;
+    margin: 10px 0;
+  }
+
+  .correct {
+    background-color: mat-color($tree-theme-accent);
+  }
+
+  .false {
+    background-color: mat-color($tree-theme-warn);
+  }
+}

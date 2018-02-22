@@ -1,26 +1,34 @@
-<h1>{{title}}</h1>
+<!-- header -->
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
 
-<nav>
-  <button type="button" (click)="toggleLogin()" class="nav_button"><span>{{loggedIn?'Logout':'Login'}}</span></button>
-  <!--<button *ngIf="loggedIn" (click)="addTool('mode')" class="nav_button"><span>Mode</span></button>-->
-  <button *ngIf="loggedIn" (click)="selectMode()" class="nav_button"><span>Mode</span></button>
-  <div *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
-  <a routerLink="/admin">Admin</a>
-  <a routerLink="/map">Map</a>
-  </div>
+    <!-- title -->
+    <span>FindATree</span>
+    <span class="spacer"></span>
 
-  <!--<button (click)="logout()" class="nav_button"><span>Logout (rescue)</span></button>-->
-</nav>
+    <!-- menu for selecting the mode -->
+    <div class="nav-menu">  <!-- *ngIf="loggedIn" -->
+      <a routerLink="/map" [class.selected]="appState.getMode() === 'game'" (click)="appState.setMode('game')">Game</a>
+      <a routerLink="/map" [class.selected]="appState.getMode() === 'editor'" (click)="appState.setMode('editor')">Tree editor</a>
+      <span *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
+        <a routerLink="/admin" [class.selected]="appState.getMode() === 'dashboard'" (click)="appState.setMode('dashboard')">Dashboard</a>
+      </span>
+    </div>
+
+    <!-- application information button -->
+    <mat-icon class="icon" color='primary'>info</mat-icon>
+
+    <!-- log in button -->
+    <button type="button" (click)="toggleLogin()" class="nav_button" tooltip="Login">
+      <span>{{loggedIn?'Logout':'Login'}}</span>
+    </button>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
 <section>
 
-<router-outlet></router-outlet>
-  <!--<esri-map></esri-map>-->
-
-  <!--<esri-map (clicked)="mapClicked($event)"></esri-map>-->
-
-<!--<app-members></app-members>-->
-<!--<app-page-not-found></app-page-not-found>-->
-<!--<app-login></app-login>-->
+  <router-outlet></router-outlet>
 
   <div #tools></div>
 </section>

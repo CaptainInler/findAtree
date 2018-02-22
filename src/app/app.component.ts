@@ -5,15 +5,16 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { TreeService } from './tree.service';
 import { LoginComponent } from './members/login/login.component';
-import { EmailComponent} from './members/email/email.component';
-import { SignupComponent} from './members/signup/signup.component';
-import { AuthService} from './services/auth.service';
+import { EmailComponent } from './members/email/email.component';
+import { SignupComponent } from './members/signup/signup.component';
+import { AuthService } from './services/auth.service';
 import { MembersComponent } from './members/members.component';
-import { GuessComponent} from './members/guess/guess.component';
-import { ModeSelectorComponent} from './members/mode-selector/mode-selector.component';
+import { GuessComponent } from './members/guess/guess.component';
+import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 import { subscribeToResult } from 'rxjs/util/subscribeToResult';
 import { MapClickEvent } from './tree';
 import { MapEventService } from './services/map-event.service';
+import { AppStateService } from './services/app-state.service';
 
 @Component({
   selector: 'app-root',
@@ -21,87 +22,99 @@ import { MapEventService } from './services/map-event.service';
   styleUrls: ['./app.component.scss'],
   providers: [MapEventService]
 })
-export class AppComponent implements OnInit{
-  @ViewChild('tools',{
-    read: ViewContainerRef })
+export class AppComponent implements OnInit {
+
+  @ViewChild('tools', { read: ViewContainerRef })
   container: ViewContainerRef;
   toolComponent: any;
   memberSubComponent: string = '';
   mapClickData: MapClickEvent = null;
   cmpRef: ComponentRef<any>;
-  title = "Loading data...";
   loggedIn: boolean = false;
+
   constructor(private treeService: TreeService,
-              private _cfr: ComponentFactoryResolver,
-              private authService: AuthService,
-              private _mes: MapEventService) {
-    this.treeService.dataLoaded.subscribe(() => {
-      this.title = "Find A Tree";
-    })
-    this._mes.mapEvent$.subscribe(
+    private _cfr: ComponentFactoryResolver,
+    private authService: AuthService,
+    private _mes: MapEventService,
+    public appState: AppStateService) {
+
+    /* this._mes.mapEvent$.subscribe(
       event => {
         this.mapClicked(event);
       }
-    )
-   }
-   ngOnInit() {
+    ) */
+  }
+
+  ngOnInit() {
+
     this.authService.userChanged.subscribe(
-      ()=>{
+      () => {
         this.loggedIn = this.authService.isLoggedIn();
       }
     );
-   }
-   // rescue button, if something does not work
-   logout(){
+
+  }
+
+  // rescue button, if something does not work
+  logout() {
     this.authService.logout();
-     this.addTool('hide');
-     console.log(this.authService.getUser());
-   }
-   toggleLogin() {
+    this.addTool('hide');
+    console.log(this.authService.getUser());
+  }
+  toggleLogin() {
     if (this.loggedIn) {
       this.authService.logout();
-    }else{
+    } else {
       this.addTool('login');
     }
-   }
-   loginEvent(event) {
+  }
+  loginEvent(event) {
     console.log(event);
     this.addTool(event);
-   }
+  }
 
-   selectMode() {
+  setMode(mode) {
+    this.appState.setMode(mode);
     // console.log('select mode');
-    this.memberSubComponent = "mode-selector";
-    this.addTool('member');
-   }
+    /* this.memberSubComponent = "mode-selector";
+    this.addTool('member'); */
+  }
 
-   mapClicked(event:MapClickEvent){
+  mapClicked(event: MapClickEvent) {
     console.log(event);
     this.mapClickData = event;
-    if (event.attr && (this.authService.mode==='play')){
+    if (event.attr && (this.authService.mode === 'play')) {
       this.memberSubComponent = "guess";
       this.addTool('member');
-    } else if (this.authService.mode==='add'){
+    } else if (this.authService.mode === 'add') {
       this.memberSubComponent = "add";
       this.addTool('member');
     }
-   }
+  }
 
-   // creates a component and shows it in the browser
-   addTool(tool: string){
+  // creates a component and shows it in the browser
+  addTool(tool: string) {
     // first remove previously shown component
-    if (this.cmpRef){
+    if (this.cmpRef) {
       this.cmpRef.destroy();
     }
     switch (tool) {
-      case 'login': {this.toolComponent = LoginComponent;
-        break;}
-      case 'email': {this.toolComponent = EmailComponent;
-         break;}
-      case 'signup': {this.toolComponent = SignupComponent;
-        break;}
-      case 'member': {this.toolComponent = MembersComponent;
-        break;}
+      case 'login': {
+      this.toolComponent = LoginComponent;
+        break;
+      }
+      case 'email': {
+      this.toolComponent = EmailComponent;
+        break;
+      }
+      case 'signup': {
+      this.toolComponent = SignupComponent;
+        break;
+      }
+      case 'member': {
+      this.toolComponent = MembersComponent;
+        break;
+      }
       default: this.toolComponent = null;
     }
     if (this.toolComponent) {
@@ -110,7 +123,7 @@ export class AppComponent implements OnInit{
       this.cmpRef.instance.subComponent = this.memberSubComponent;
       this.cmpRef.instance.mapClickData = this.mapClickData;
       this.cmpRef.instance.eventData.subscribe(
-        (data)=>{
+        (data) => {
           console.log(data);
           this.addTool(data);
           this.mapClickData = null;
@@ -118,7 +131,5 @@ export class AppComponent implements OnInit{
         }
       );
     }
-   }
+  }
 }
-
-
