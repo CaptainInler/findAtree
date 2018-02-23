@@ -13,7 +13,7 @@ import {MapClickEvent} from '../../tree';
 })
 export class AddComponent implements OnInit {
 
-  @Input() mapClickData: MapClickEvent;
+  @Input() treeData: MapClickEvent;
 
   constructor() { }
 

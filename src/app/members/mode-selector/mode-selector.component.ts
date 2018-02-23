@@ -8,7 +8,7 @@ import { moveIn, fallIn, moveInLeft } from '../../router.animations';
   templateUrl: './mode-selector.component.html',
   styleUrls: ['./mode-selector.component.scss'],
   animations: [moveIn(),fallIn(),moveInLeft()],
-  host: {'[@moveIn]':''}
+  // host: {'[@moveIn]':''}
 })
 export class ModeSelectorComponent implements OnInit {
 

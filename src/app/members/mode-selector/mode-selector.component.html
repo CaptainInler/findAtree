@@ -1,9 +1,9 @@
-<div class="form-container">
+<div>
     <span>What would you like to do?</span><br>
 
     <form #f="ngForm">
       <label><input type="radio" value="play" name="mode" [(ngModel)]="auth.mode"> Play the game</label><br>
       <label><input type="radio" value="add" name="mode" [(ngModel)]="auth.mode"> Add new trees</label><br>
-      <label><input name="level" [(ngModel)]="auth.level"> Level</label><br>
+      <label><input type="number" name="level" [(ngModel)]="auth.level"> Level</label><br>
     </form>
 </div>

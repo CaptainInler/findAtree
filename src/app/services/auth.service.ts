@@ -18,7 +18,9 @@ export class AuthService {
   private user: BehaviorSubject<User> = new BehaviorSubject(null);
 //  private user: Observable<User>;
   private userDetails: User = null;
-  userChanged: EventEmitter<any> = new EventEmitter();
+  public dayScore: number;
+  public totScore: number;
+  userChanged: EventEmitter<any> = new EventEmitter()
 
   mode: string = 'play';
   level: number = 6;
@@ -146,6 +148,10 @@ export class AuthService {
 
   getUser() {
     return this.userDetails;
+  }
+
+  getUserId(): string {
+    return this.userDetails.id;
   }
 
   logout() {
