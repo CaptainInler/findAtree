@@ -1,0 +1,15 @@
+<form [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>
+  <mat-form-field>
+    <input matInput placeholder='Quartier' formControlName='quartier'>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder='PflanzJahr' formControlName='pflanzJahr'>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder='Status' formControlName='status'>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <button mat-raised-button color="accent" type='submit'>Speichern</button>
+  <button mat-raised-button color="accent" type='button' (click)='cancelEdit()'>Abbrechen</button>
+  <button mat-raised-button color="warn" type='button'>Baum löschen</button>
+</form>

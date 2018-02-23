@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TREENAMES } from './treenames';
-import {User} from '../../members/user';
+import { User } from '../../members/user';
 import { AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
@@ -9,6 +9,7 @@ import { AngularFireDatabase} from 'angularfire2/database';
   styleUrls: ['./treenames.component.scss']
 })
 export class TreenamesComponent implements OnInit {
+
   treenames: any = TREENAMES;
 
   constructor(private db: AngularFireDatabase) {
@@ -19,7 +20,7 @@ export class TreenamesComponent implements OnInit {
   }
 
   import() {
-    for (let i=0;i<this.treenames.length;i++){
+    for ( let i = 0; i < this.treenames.length; i++ ) {
       this.updateTreename(this.treenames[i]);
       // console.log(this.treenames[i].baumnamedeu);
     }
