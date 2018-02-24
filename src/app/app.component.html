@@ -7,7 +7,7 @@
     <span class="spacer"></span>
 
     <!-- menu for selecting the mode -->
-    <div class="nav-menu">  <!-- *ngIf="loggedIn" -->
+    <div class="nav-menu" *ngIf="userHasRole('user')">  <!-- *ngIf="loggedIn" -->
       <a routerLink="/map" [class.selected]="appState.getMode() === 'game'" (click)="appState.setMode('game')">Game</a>
       <a routerLink="/map" [class.selected]="appState.getMode() === 'editor'" (click)="appState.setMode('editor')">Tree editor</a>
       <span *ngIf="userHasRole('admin')">

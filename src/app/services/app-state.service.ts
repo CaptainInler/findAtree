@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { AuthService} from './auth.service';
 
 type interactionType = 'none' | 'guess' | 'edit' | 'add' | 'view';
 type modeType = 'game' | 'editor' | 'dashboard';
@@ -15,7 +16,7 @@ export class AppStateService {
   private interactionSource = new Subject<interactionType>();
   public interactionChanged = this.interactionSource.asObservable();
 
-  constructor() {
+  constructor(private _aS: AuthService) {
     this.mode = 'editor';
     this.interaction = 'none';
   }
@@ -28,6 +29,10 @@ export class AppStateService {
 
   getInteraction(): interactionType {
     return this.interaction;
+  }
+
+  userHasRole(role: string){
+    return this._aS.hasRole(role);
   }
 
   setMode(mode: modeType) {
