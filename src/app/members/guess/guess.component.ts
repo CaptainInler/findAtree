@@ -84,7 +84,7 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
   updateGuess() {
     let guess: Guess = {
        treeId : this.treeData.attr.ObjectID,
-        treeNameId: this.treeNameId,
+        treeNameId: this.treeNameId.toString(),
         points: this.points
     };
     let d = Utils.getDate();
