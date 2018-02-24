@@ -10,7 +10,7 @@
     <div class="nav-menu">  <!-- *ngIf="loggedIn" -->
       <a routerLink="/map" [class.selected]="appState.getMode() === 'game'" (click)="appState.setMode('game')">Game</a>
       <a routerLink="/map" [class.selected]="appState.getMode() === 'editor'" (click)="appState.setMode('editor')">Tree editor</a>
-      <span *ngIf="authService.userDetails && authService.userDetails.roles.admin===true">
+      <span *ngIf="userHasRole('admin')">
         <a routerLink="/admin" [class.selected]="appState.getMode() === 'dashboard'" (click)="appState.setMode('dashboard')">Dashboard</a>
       </span>
     </div>

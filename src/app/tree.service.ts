@@ -6,7 +6,7 @@ import {Tree, FirebaseFeature} from './tree';
 
 @Injectable()
 export class TreeService {
-  trees: Array<Tree>
+  trees: Array<Tree>;
   dataLoaded = new EventEmitter<Array<Tree>>();
 
   constructor(private db: AngularFireDatabase) {

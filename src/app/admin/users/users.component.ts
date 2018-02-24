@@ -34,7 +34,10 @@ export class UsersComponent implements OnInit {
     const ref = this._db.object(`users/${user.id}`);
     ref.valueChanges().take(1)
       .subscribe(usr => {
-        ref.update(user);
+        ref.update(user)
+          .then(usr=>{
+            console.log(usr);
+          });
       });
   }
 

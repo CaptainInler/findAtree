@@ -2,6 +2,7 @@ import {Injectable, EventEmitter, OnInit} from '@angular/core';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { Treename } from '../treename';
+import {Utils} from '../classes/utils';
 
 @Injectable()
 export class TreeNameService {
@@ -18,18 +19,18 @@ export class TreeNameService {
       // console.log(treenames);
       let length = treenames.length;
       for (let i = 0; i < size; i++) {
-        let index = this.getRandomInt(1, length);
+        let index = Utils.getRandomInt(1, length);
         while (index === clicked.id){
-          index = this.getRandomInt(1, length);
+          index = Utils.getRandomInt(1, length);
         }
         set.push(treenames[index]);
       }
       if (clicked) {
         set.push(clicked);
       }
-      set = this.shuffle(set);
+      set = Utils.shuffle(set);
       console.log(set);
-    })
+    });
     return set;
   }
 
@@ -42,51 +43,27 @@ export class TreeNameService {
           break;
         }
       }
-    })
+    });
     return id;
   }
 
   public loadTreeNames(): Observable<Treename[]>{
     if (this.dataLoaded){
-      const obs =  Observable.create((observer) => {
+      return  Observable.create((observer) => {
         observer.next(this.treenames);
         // console.log('treenames read');
         observer.complete();
       });
-      return obs;
     }
     let dbs = this.db.list<Treename>('treenames').valueChanges();
 
       dbs.subscribe(trees => {
-        this.treenames = trees
+        this.treenames = trees;
         this.dataLoaded = true;
         // console.log(trees);
         return this.treenames;
       });
     return dbs;
   }
-
-  private getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
-  shuffle(array) {
-    var m = array.length, t, i;
-
-    // While there remain elements to shuffle…
-    while (m) {
-
-      // Pick a remaining element…
-      i = Math.floor(Math.random() * m--);
-
-      // And swap it with the current element.
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-    return array;
-  }
-
-
 }
 

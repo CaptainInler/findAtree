@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
+import { Utils} from '../../classes/utils';
 
 @Component({
   selector: 'guess-panel',
@@ -23,7 +24,7 @@ export class GuessPanelComponent {
       console.log(this.selection);
       const name = values.selectedTree.currentValue.attributes.baumnamede;
       this.selection.push(name);
-      this.selection = this.shuffle(this.selection);
+      this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
     }
   }
@@ -32,23 +33,6 @@ export class GuessPanelComponent {
     this.selection.forEach(name => {
       this.buttonState[name] = 'not-guessed';
     });
-  }
-
-  shuffle(array) {
-    let m = array.length, t, i;
-
-    // While there remain elements to shuffle…
-    while (m) {
-
-      // Pick a remaining element…
-      i = Math.floor(Math.random() * m--);
-
-      // And swap it with the current element.
-      t = array[m];
-      array[m] = array[i];
-      array[i] = t;
-    }
-    return array;
   }
 
   selectTreeName(name: string, event) {

@@ -21,7 +21,7 @@ export const routes: Routes = [
   { path: 'login/email', component: EmailComponent},
   { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
-]
+];
 
 @NgModule({
   imports: [

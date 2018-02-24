@@ -11,7 +11,7 @@ export class AppStateService {
   private modeSource = new Subject<modeType>();
   public modeChanged = this.modeSource.asObservable();
 
-  private interaction: interactionType;
+  public interaction: interactionType;
   private interactionSource = new Subject<interactionType>();
   public interactionChanged = this.interactionSource.asObservable();
 

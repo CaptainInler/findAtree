@@ -35,7 +35,7 @@ export class AppComponent implements OnInit {
   constructor(private treeService: TreeService,
     private _cfr: ComponentFactoryResolver,
     private authService: AuthService,
-    private _mes: MapEventService,
+    // private _mes: MapEventService,
     public appState: AppStateService) {
 
     /* this._mes.mapEvent$.subscribe(
@@ -53,6 +53,10 @@ export class AppComponent implements OnInit {
       }
     );
 
+  }
+
+  userHasRole(role: string){
+    return this.authService.hasRole(role);
   }
 
   // rescue button, if something does not work

@@ -66,7 +66,7 @@ export const attributeNames = [{
     visible: true,
     type: "string"
   }
-]
+];
 
 export class MapClickEvent {
   lat: number;

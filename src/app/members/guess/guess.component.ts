@@ -6,6 +6,7 @@ import {MapClickEvent} from '../../tree';
 import {AuthService} from '../../services/auth.service';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {Guess, Score} from '../../classes/guess';
+import {Utils} from '../../classes/utils';
 
 @Component({
   selector: 'app-guess',
@@ -30,11 +31,11 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
               private _db: AngularFireDatabase) {
   }
 
-  resetTool(event: string) {
+ /* resetTool(event: string) {
     let d = new Date();
     alert(d.toString());
     // this.eventData.emit(event);
-  }
+  }*/
 
   ngOnInit() {
     this.treeNameId = this._tNS.getTreenameId(this.treeData.attr.baumnamelat,this.treeData.attr.baumnamedeu);
@@ -72,28 +73,12 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
-  //delta: days
-  getDate(delta: number = 0): string {
-    var delta = delta || 0;
-    var newDate = new Date(Date.now()+delta*1000*3600*24);
-    var dd = ("0"+newDate.getDate()).slice(-2);
-    var mm = ("0"+(newDate.getMonth()+1)).slice(-2);
-    var yy = ("0"+(newDate.getFullYear())).slice(-2);
-    var yyyy = newDate.getFullYear();
-
-    return yy.toString()+mm+dd;
-  }
-
-  // delta: minutes
-  getTime(delta: number = 0): string {
-    var delta = delta || 0;
-    var newDate = new Date(Date.now()+delta*1000*60);
-    var dd = ("0"+newDate.getSeconds()).slice(-2);
-    var mm = ("0"+(newDate.getMinutes())).slice(-2);
-    var yy = ("0"+(newDate.getHours())).slice(-2);
-    var yyyy = newDate.getFullYear();
-
-    return yy.toString()+mm+dd;
+  getScore(period: string): number{
+    if(period==='day'){
+      return this._aS.dayScore;
+    }else{
+      return this._aS.totScore;
+    }
   }
 
   updateGuess() {
@@ -101,9 +86,9 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
        treeId : this.treeData.attr.ObjectID,
         treeNameId: this.treeNameId,
         points: this.points
-    }
-    let d = this.getDate();
-    let t = this.getTime();
+    };
+    let d = Utils.getDate();
+    let t = Utils.getTime();
     let refLast = this._db.object(`guess/${this._aS.getUserId()}/${d}/${t}`);
     let refScore = this._db.object<Score>(`guess/${this._aS.getUserId()}/${d}/score`);
     let refTot = this._db.object<Score>(`guess/${this._aS.getUserId()}/score`);
@@ -114,7 +99,7 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
             .catch( (err) =>
             console.log(err));
         }
-      })
+      });
     refScore.valueChanges().take(1)
       .subscribe( score => {
         let s: Score = {p:this.points};
@@ -131,7 +116,7 @@ export class GuessComponent implements OnInit, OnChanges, OnDestroy {
             console.log(err);
             }
           );
-      })
+      });
     refTot.valueChanges().take(1)
       .subscribe(tot => {
         let t: Score = {p:this.points};

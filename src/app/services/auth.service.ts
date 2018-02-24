@@ -20,7 +20,7 @@ export class AuthService {
   private userDetails: User = null;
   public dayScore: number;
   public totScore: number;
-  userChanged: EventEmitter<any> = new EventEmitter()
+  userChanged: EventEmitter<any> = new EventEmitter();
 
   mode: string = 'play';
   level: number = 6;
@@ -64,7 +64,11 @@ export class AuthService {
   }
 
   hasRole(role:string){
-    return this.userDetails.roles[role];
+    if (this.userDetails===null){
+      return false
+    }else {
+      return this.userDetails.roles[role];
+    }
   }
 
 

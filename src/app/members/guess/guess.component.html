@@ -1,7 +1,7 @@
 
 <div >
-  <span *ngIf="_aS.dayScore>0">Your score today: {{_aS.dayScore}}<br></span>
-  <span *ngIf="_aS.totScore>0">Your total score: {{_aS.totScore}}<br><br></span>
+  <span *ngIf="getScore('day')>0">Your score today: {{getScore('day')}}<br></span>
+  <span *ngIf="getScore('tot')>0">Your total score: {{getScore('tot')}}<br><br></span>
   <span>What kind of tree did you click on?</span><br><br>
 
     <span class="error" *ngIf="error">{{ error }}</span>

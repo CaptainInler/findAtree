@@ -33,8 +33,11 @@ export class TreenamesComponent implements OnInit {
     ref.valueChanges().take(1)
       .subscribe(tname => {
         if (!tname) {
-          ref.update(treename);
-          console.log(treename.id);
+          ref.update(treename)
+            .then(tr=>{
+              console.log(tr);
+            });
+
         }
       })
   }
