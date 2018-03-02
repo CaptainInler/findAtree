@@ -8,6 +8,7 @@ import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
 import * as Point from 'esri/geometry/Point';
 
 import { attr } from '../tree';
+import {Utils} from '../classes/utils';
 
 @Injectable()
 export class MapDataService {
@@ -69,11 +70,16 @@ export class MapDataService {
     .otherwise(err => console.log(err));
   }
 
-  public getRandomTreeNames(n: number): Array<string> {
+  public getRandomTreeNames(n: number,selected: string = null): Array<string> {
     const randomTreeNames = [];
+    if (selected) randomTreeNames.push(selected);
     const length = this.uniqueTreeNames.length;
     for ( let i = 0; i < n; i++ ) {
-      randomTreeNames.push(this.uniqueTreeNames[Math.floor(Math.random() * length)])
+      let randomTreeName: string = this.uniqueTreeNames[Math.floor(Math.random() * length)];
+      while (Utils.contains(randomTreeNames,randomTreeName)){
+        randomTreeName = this.uniqueTreeNames[Math.floor(Math.random() * length)];
+      }
+      randomTreeNames.push(randomTreeName);
     }
     return randomTreeNames;
   }

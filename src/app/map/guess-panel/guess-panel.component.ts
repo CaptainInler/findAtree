@@ -33,10 +33,9 @@ export class GuessPanelComponent {
     if (values.selectedTree.currentValue) {
       this.correctAnswer = false;
       this.selectedTreeId = values.selectedTree.currentValue.attributes.OBJECTID;
-      this.selection = this.mapDataService.getRandomTreeNames(3);
-      console.log(this.selection);
       this.selectedTreeName = values.selectedTree.currentValue.attributes.baumnamede;
-      this.selection.push(this.selectedTreeName);
+      this.selection = this.mapDataService.getRandomTreeNames(this._aS.level-1,this.selectedTreeName );
+      console.log(this.selection);
       this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
       this.points = 0;
@@ -52,7 +51,7 @@ export class GuessPanelComponent {
   selectTreeName(name: string, event) {
     if (this.selectedTree.attributes.baumnamede === name) {
       this.correctAnswer = true;
-      this.points += 3;
+      this.points += this._aS.level;
       this.buttonState[name] = 'correct';
     } else {
       this.correctAnswer = false;
