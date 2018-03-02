@@ -10,6 +10,14 @@
     {{name}}
   </button>
 
+  <span class="score"><br>Points: {{points}}</span>
+
+</div>
+
+<div *ngIf="getScore('day')>0" class="guess-panel">
+  <h4>Your current score is:</h4>
+  <span class="score">Today: {{getScore('day')}}<br></span>
+  <span class="score">Total: {{getScore('tot')}}<br></span>
 </div>
 
 <div *ngIf='!selectedTree'>

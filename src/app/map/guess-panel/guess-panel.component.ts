@@ -39,6 +39,7 @@ export class GuessPanelComponent {
       this.selection.push(this.selectedTreeName);
       this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
+      this.points = 0;
     }
   }
 
@@ -57,6 +58,14 @@ export class GuessPanelComponent {
       this.correctAnswer = false;
       this.points--;
       this.buttonState[name] = 'false';
+    }
+  }
+
+  getScore(period: string): number{
+    if(period==='day'){
+      return this._aS.dayScore;
+    }else{
+      return this._aS.totScore;
     }
   }
 
@@ -82,14 +91,12 @@ export class GuessPanelComponent {
       });
     refScore.valueChanges().take(1)
       .subscribe( score => {
-        let s: Score = {p:this.points};
+        let s: Score = {p:guess.points};
         if (score) {
-          console.log(score);
           s.p += score.p;
         }
         refScore.update(s)
           .then( res => {
-            console.log(s);
             this._aS.dayScore = s.p;
           })
           .catch((err) => {
@@ -99,14 +106,12 @@ export class GuessPanelComponent {
       });
     refTot.valueChanges().take(1)
       .subscribe(tot => {
-        let t: Score = {p:this.points};
+        let t: Score = {p:guess.points};
         if (tot) {
-          console.log(tot);
           t.p += tot.p;
         }
         refTot.update(t)
           .then( res => {
-            console.log(t);
             this._aS.totScore = t.p;
           })
           .catch((err) => {
