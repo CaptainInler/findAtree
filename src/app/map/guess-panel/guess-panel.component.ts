@@ -34,7 +34,7 @@ export class GuessPanelComponent {
       this.correctAnswer = false;
       this.selectedTreeId = values.selectedTree.currentValue.attributes.OBJECTID;
       this.selectedTreeName = values.selectedTree.currentValue.attributes.baumnamede;
-      this.selection = this.mapDataService.getRandomTreeNames(this._aS.level-1,this.selectedTreeName );
+      this.selection = this.mapDataService.getRandomTreeNames(this._aS.level,this.selectedTreeName );
       console.log(this.selection);
       this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
