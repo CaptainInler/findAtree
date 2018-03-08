@@ -4,13 +4,14 @@ import { Utils} from '../../classes/utils';
 import {Guess, Score} from '../../classes/guess';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AuthService} from '../../services/auth.service';
+import {OnChanges, OnDestroy} from '@angular/core';
 
 @Component({
   selector: 'guess-panel',
   templateUrl: './guess-panel.component.html',
   styleUrls: ['./guess-panel.component.scss']
 })
-export class GuessPanelComponent {
+export class GuessPanelComponent implements OnDestroy, OnChanges{
 
   @Input() selectedTree;
   error: any;
@@ -39,6 +40,13 @@ export class GuessPanelComponent {
       this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
       this.points = 0;
+    }
+  }
+
+  ngOnDestroy(){
+    console.log('on destroy');
+    if (!(this.points === 0) ) {
+      this.updateGuess();
     }
   }
 

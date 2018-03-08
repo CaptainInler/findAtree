@@ -31,6 +31,10 @@ export class AppStateService {
     return this.interaction;
   }
 
+  userIsLoggedIn():boolean{
+    return this._aS.isLoggedIn();
+  }
+
   userHasRole(role: string){
     return this._aS.hasRole(role);
   }
