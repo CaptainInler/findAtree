@@ -19,7 +19,6 @@ export class MapComponent {
   }
 
   toggleAddInteraction() {
-
     if (this.appState.getInteraction() !== 'add') {
       this.appState.setInteraction('add');
       // remove the existing selection when user wants to add a tree

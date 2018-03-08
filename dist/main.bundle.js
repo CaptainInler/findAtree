@@ -1,4 +1,4 @@
-define(["esri/geometry/Point","esri/views/MapView","esri/WebMap","esri/layers/FeatureLayer","esri/renderers/SimpleRenderer","esri/symbols/PictureMarkerSymbol","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_289__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_593__, __WEBPACK_EXTERNAL_MODULE_594__, __WEBPACK_EXTERNAL_MODULE_610__) { return webpackJsonp([1],[
+define(["esri/geometry/Point","esri/views/MapView","esri/layers/FeatureLayer","esri/WebMap","esri/renderers/SimpleRenderer","esri/symbols/PictureMarkerSymbol","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_289__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_593__, __WEBPACK_EXTERNAL_MODULE_594__, __WEBPACK_EXTERNAL_MODULE_610__) { return webpackJsonp([1],[
 /* 0 */,
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -26,7 +26,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__(218));
 __export(__webpack_require__(219));
-__export(__webpack_require__(153));
+__export(__webpack_require__(154));
 __export(__webpack_require__(415));
 __export(__webpack_require__(416));
 __export(__webpack_require__(417));
@@ -760,7 +760,7 @@ exports.setTimeoutNonBlocking = function (fn, time) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_platform_browser__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_cdk_keycodes__ = __webpack_require__(23);
 /**
  * @license
@@ -4415,7 +4415,7 @@ function updateLink (link, options, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operators_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Subject__ = __webpack_require__(5);
@@ -4425,13 +4425,13 @@ function updateLink (link, options, obj) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_debounceTime__ = __webpack_require__(85);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_debounceTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators_debounceTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_map__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_operators_map__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_tap__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_tap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_operators_tap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_of__);
 /**
  * @license
@@ -6918,9 +6918,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵr", function() { return REQUIRED_VALIDATOR; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_forkJoin__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_forkJoin__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_observable_forkJoin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_observable_forkJoin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_fromPromise__ = __webpack_require__(148);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_fromPromise__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_observable_fromPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__);
@@ -17187,9 +17187,156 @@ exports.PRIORITY_INDEX = new PriorityIndex();
 
 
 /***/ }),
-/* 29 */,
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(46), __webpack_require__(262), __webpack_require__(249), __webpack_require__(409), __webpack_require__(62), __webpack_require__(0), __webpack_require__(113), __webpack_require__(114), __webpack_require__(266)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, database_1, auth_1, firebase, user_1, BehaviorSubject_1, Observable_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let AuthService = class AuthService {
+        constructor(afAuth, db, router) {
+            this.afAuth = afAuth;
+            this.db = db;
+            this.router = router;
+            this.user = new BehaviorSubject_1.BehaviorSubject(null);
+            //  private user: Observable<User>;
+            this.userDetails = null;
+            this.userChanged = new core_1.EventEmitter();
+            this.mode = 'play';
+            this.level = 4;
+            this.afAuth.authState
+                .switchMap(auth => {
+                if (auth) {
+                    return this.db.object(`users/${auth.uid}`).valueChanges();
+                }
+                else {
+                    return Observable_1.Observable.of(null);
+                }
+            })
+                .subscribe(user => {
+                this.user.next(user);
+                if (user) {
+                    this.userDetails = user;
+                    // console.log(this.userDetails);
+                }
+                else {
+                    this.userDetails = null;
+                }
+                this.userChanged.emit(this.isLoggedIn());
+            });
+            // this.user.subscribe(
+            //   (user) => {
+            //     if (user) {
+            //       this.userDetails = user;
+            //       console.log(this.userDetails);
+            //     }
+            //     else {
+            //       this.userDetails = null;
+            //     }
+            //     this.userChanged.emit(this.isLoggedIn());
+            //   }
+            // );
+        }
+        hasRole(role) {
+            if (this.userDetails === null) {
+                return false;
+            }
+            else {
+                return this.userDetails.roles[role];
+            }
+        }
+        signupNewUser(formData) {
+            return this.afAuth.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password);
+        }
+        signInWithEmail(formData) {
+            return this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password).then((credential => {
+                // console.log(credential);
+                this.updateUser(credential);
+            }));
+        }
+        signInWithGithub() {
+            return this.authLoginPopup(new firebase.auth.GithubAuthProvider());
+        }
+        signInWithFacebook() {
+            return this.authLoginPopup(new firebase.auth.FacebookAuthProvider());
+        }
+        signInWithGoogle() {
+            return this.authLoginPopup(new firebase.auth.GoogleAuthProvider());
+        }
+        signInWithTwitter() {
+            return this.authLoginPopup(new firebase.auth.TwitterAuthProvider());
+        }
+        authLoginPopup(provider) {
+            return this.afAuth.auth.signInWithPopup(provider)
+                .then((credential => {
+                this.updateUser(credential.user);
+            }));
+        }
+        updateUser(authData) {
+            let userData = new user_1.User(authData);
+            console.log(userData);
+            let ref = this.db.object(`users/${authData.uid}`);
+            ref.valueChanges().take(1)
+                .subscribe(user => {
+                if (!user) {
+                    ref.update(userData).then((res) => {
+                        console.log('user data successfully added');
+                    }).catch((err) => {
+                        console.log(err);
+                    });
+                }
+            });
+        }
+        isLoggedIn() {
+            if (this.userDetails == null) {
+                console.log('not logged in');
+                return false;
+            }
+            else {
+                console.log('logged in');
+                //  console.log(this.userDetails.displayName);
+                return true;
+            }
+        }
+        getUser() {
+            return this.userDetails;
+        }
+        getUserId() {
+            return this.userDetails.id;
+        }
+        logout() {
+            this.afAuth.auth.signOut()
+                .then((res) => {
+                // this.user = null;
+                // this.userDetails = null;
+                // this.router.navigate(['/map'])
+            });
+        }
+    };
+    AuthService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_1.AngularFireAuth,
+            database_1.AngularFireDatabase,
+            router_1.Router])
+    ], AuthService);
+    exports.AuthService = AuthService;
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
 /* 30 */,
-/* 31 */
+/* 31 */,
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17700,7 +17847,7 @@ PriorityIndex_1.setMaxNode(exports.MAX_NODE);
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -17894,157 +18041,6 @@ var PlatformModule = /** @class */ (function () {
 
 
 //# sourceMappingURL=platform.es5.js.map
-
-
-/***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(50), __webpack_require__(262), __webpack_require__(249), __webpack_require__(409), __webpack_require__(62), __webpack_require__(0), __webpack_require__(113), __webpack_require__(114), __webpack_require__(266)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, database_1, auth_1, firebase, user_1, BehaviorSubject_1, Observable_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var AuthService = (function () {
-        function AuthService(afAuth, db, router) {
-            var _this = this;
-            this.afAuth = afAuth;
-            this.db = db;
-            this.router = router;
-            this.user = new BehaviorSubject_1.BehaviorSubject(null);
-            //  private user: Observable<User>;
-            this.userDetails = null;
-            this.userChanged = new core_1.EventEmitter();
-            this.mode = 'play';
-            this.level = 6;
-            this.afAuth.authState
-                .switchMap(function (auth) {
-                if (auth) {
-                    return _this.db.object("users/" + auth.uid).valueChanges();
-                }
-                else {
-                    return Observable_1.Observable.of(null);
-                }
-            })
-                .subscribe(function (user) {
-                _this.user.next(user);
-                if (user) {
-                    _this.userDetails = user;
-                    // console.log(this.userDetails);
-                }
-                else {
-                    _this.userDetails = null;
-                }
-                _this.userChanged.emit(_this.isLoggedIn());
-            });
-            // this.user.subscribe(
-            //   (user) => {
-            //     if (user) {
-            //       this.userDetails = user;
-            //       console.log(this.userDetails);
-            //     }
-            //     else {
-            //       this.userDetails = null;
-            //     }
-            //     this.userChanged.emit(this.isLoggedIn());
-            //   }
-            // );
-        }
-        AuthService.prototype.hasRole = function (role) {
-            if (this.userDetails === null) {
-                return false;
-            }
-            else {
-                return this.userDetails.roles[role];
-            }
-        };
-        AuthService.prototype.signupNewUser = function (formData) {
-            return this.afAuth.auth.createUserWithEmailAndPassword(formData.value.email, formData.value.password);
-        };
-        AuthService.prototype.signInWithEmail = function (formData) {
-            var _this = this;
-            return this.afAuth.auth.signInWithEmailAndPassword(formData.value.email, formData.value.password).then((function (credential) {
-                // console.log(credential);
-                _this.updateUser(credential);
-            }));
-        };
-        AuthService.prototype.signInWithGithub = function () {
-            return this.authLoginPopup(new firebase.auth.GithubAuthProvider());
-        };
-        AuthService.prototype.signInWithFacebook = function () {
-            return this.authLoginPopup(new firebase.auth.FacebookAuthProvider());
-        };
-        AuthService.prototype.signInWithGoogle = function () {
-            return this.authLoginPopup(new firebase.auth.GoogleAuthProvider());
-        };
-        AuthService.prototype.signInWithTwitter = function () {
-            return this.authLoginPopup(new firebase.auth.TwitterAuthProvider());
-        };
-        AuthService.prototype.authLoginPopup = function (provider) {
-            var _this = this;
-            return this.afAuth.auth.signInWithPopup(provider)
-                .then((function (credential) {
-                _this.updateUser(credential.user);
-            }));
-        };
-        AuthService.prototype.updateUser = function (authData) {
-            var userData = new user_1.User(authData);
-            console.log(userData);
-            var ref = this.db.object("users/" + authData.uid);
-            ref.valueChanges().take(1)
-                .subscribe(function (user) {
-                if (!user) {
-                    ref.update(userData).then(function (res) {
-                        console.log('user data successfully added');
-                    }).catch(function (err) {
-                        console.log(err);
-                    });
-                }
-            });
-        };
-        AuthService.prototype.isLoggedIn = function () {
-            if (this.userDetails == null) {
-                console.log('not logged in');
-                return false;
-            }
-            else {
-                console.log('logged in');
-                //  console.log(this.userDetails.displayName);
-                return true;
-            }
-        };
-        AuthService.prototype.getUser = function () {
-            return this.userDetails;
-        };
-        AuthService.prototype.getUserId = function () {
-            return this.userDetails.id;
-        };
-        AuthService.prototype.logout = function () {
-            this.afAuth.auth.signOut()
-                .then(function (res) {
-                // this.user = null;
-                // this.userDetails = null;
-                // this.router.navigate(['/map'])
-            });
-        };
-        AuthService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_1.AngularFireAuth,
-                database_1.AngularFireDatabase,
-                router_1.Router])
-        ], AuthService);
-        return AuthService;
-    }());
-    exports.AuthService = AuthService;
-}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
@@ -18898,11 +18894,7 @@ var PortalInjector = /** @class */ (function () {
 /* 43 */,
 /* 44 */,
 /* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -18925,6 +18917,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //# sourceMappingURL=index.js.map
 
 /***/ }),
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */,
 /* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -18971,7 +18967,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_Subscription__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_Subscription___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_Subscription__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_observable_fromEvent__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_observable_fromEvent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_observable_fromEvent__);
@@ -22592,14 +22588,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             type: "string"
         }
     ];
-    var MapClickEvent = (function () {
-        function MapClickEvent() {
-        }
-        return MapClickEvent;
-    }());
+    class MapClickEvent {
+    }
     exports.MapClickEvent = MapClickEvent;
-    var Tree = (function () {
-        function Tree(feature) {
+    class Tree {
+        constructor(feature) {
             this.geometry = new Point({
                 x: feature.geometry.coordinates[0],
                 y: feature.geometry.coordinates[1]
@@ -22607,9 +22600,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             this.attributes = feature.properties;
             this.attributes.ObjectID = Tree.index++;
         }
-        Tree.index = 0;
-        return Tree;
-    }());
+    }
+    Tree.index = 0;
     exports.Tree = Tree;
     var attr;
     (function (attr) {
@@ -23286,7 +23278,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return matFormFieldAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material_core__ = __webpack_require__(10);
@@ -24223,7 +24215,7 @@ exports.KEY_INDEX = new KeyIndex();
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var LeafNode_1 = __webpack_require__(107);
 var Node_1 = __webpack_require__(34);
 var util_1 = __webpack_require__(1);
@@ -24360,12 +24352,12 @@ function checkOperationCases(item, cases) {
 /* harmony export (immutable) */ __webpack_exports__["a"] = fromRef;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_observeOn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(111);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_delay__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_delay__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_delay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_share__ = __webpack_require__(253);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_share__);
@@ -24417,11 +24409,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(33)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AppStateService = (function () {
-        function AppStateService(_aS) {
+    let AppStateService = class AppStateService {
+        constructor(_aS) {
             this._aS = _aS;
             this.modeSource = new Subject_1.Subject();
             this.modeChanged = this.modeSource.asObservable();
@@ -24430,31 +24422,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.mode = 'editor';
             this.interaction = 'none';
         }
-        AppStateService.prototype.setInteraction = function (interaction) {
+        setInteraction(interaction) {
             this.interaction = interaction;
             this.interactionSource.next(interaction);
             console.log(this.interaction);
-        };
-        AppStateService.prototype.getInteraction = function () {
+        }
+        getInteraction() {
             return this.interaction;
-        };
-        AppStateService.prototype.userHasRole = function (role) {
+        }
+        userIsLoggedIn() {
+            return this._aS.isLoggedIn();
+        }
+        userHasRole(role) {
             return this._aS.hasRole(role);
-        };
-        AppStateService.prototype.setMode = function (mode) {
+        }
+        setMode(mode) {
             this.mode = mode;
             this.modeSource.next(mode);
             console.log(this.mode);
-        };
-        AppStateService.prototype.getMode = function () {
+        }
+        getMode() {
             return this.mode;
-        };
-        AppStateService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_service_1.AuthService])
-        ], AppStateService);
-        return AppStateService;
-    }());
+        }
+    };
+    AppStateService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
+    ], AppStateService);
     exports.AppStateService = AppStateService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -24478,11 +24472,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(591), __webpack_require__(592), __webpack_require__(593), __webpack_require__(594), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, PictureMarkerSymbol, tree_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(592), __webpack_require__(591), __webpack_require__(593), __webpack_require__(594), __webpack_require__(53), __webpack_require__(119)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, PictureMarkerSymbol, tree_1, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MapDataService = (function () {
-        function MapDataService() {
+    let MapDataService = class MapDataService {
+        constructor() {
             this.mapEventSource = new Subject_1.Subject();
             this.mapEvent$ = this.mapEventSource.asObservable();
             this.map = new WebMap({
@@ -24504,46 +24498,50 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.map.add(this.layer);
             this.getUniqueTreeNames();
         }
-        MapDataService.prototype.updateTree = function (tree) {
+        updateTree(tree) {
             return this.layer.applyEdits({
                 updateFeatures: [tree]
             });
-        };
-        MapDataService.prototype.addTree = function (tree) {
+        }
+        addTree(tree) {
             return this.layer.applyEdits({
                 addFeatures: [tree]
             })
-                .then(function (tree) { return console.log(tree); })
-                .otherwise(function (err) { return console.log(err); });
-        };
-        MapDataService.prototype.getUniqueTreeNames = function () {
-            var _this = this;
+                .then((tree) => console.log(tree))
+                .otherwise(err => console.log(err));
+        }
+        getUniqueTreeNames() {
             this.layer.queryFeatures({
                 outFields: [tree_1.attr.nameDE],
                 returnDistinctValues: true,
                 where: '1=1'
             })
-                .then(function (result) {
-                _this.uniqueTreeNames = result.features.map(function (feature) {
+                .then((result) => {
+                this.uniqueTreeNames = result.features.map(feature => {
                     return feature.attributes[tree_1.attr.nameDE];
                 });
             })
-                .otherwise(function (err) { return console.log(err); });
-        };
-        MapDataService.prototype.getRandomTreeNames = function (n) {
-            var randomTreeNames = [];
-            var length = this.uniqueTreeNames.length;
-            for (var i = 0; i < n; i++) {
-                randomTreeNames.push(this.uniqueTreeNames[Math.floor(Math.random() * length)]);
+                .otherwise(err => console.log(err));
+        }
+        getRandomTreeNames(n, selected = null) {
+            const randomTreeNames = [];
+            if (selected)
+                randomTreeNames.push(selected);
+            const length = this.uniqueTreeNames.length;
+            for (let i = 0; i < n; i++) {
+                let randomTreeName = this.uniqueTreeNames[Math.floor(Math.random() * length)];
+                while (utils_1.Utils.contains(randomTreeNames, randomTreeName)) {
+                    randomTreeName = this.uniqueTreeNames[Math.floor(Math.random() * length)];
+                }
+                randomTreeNames.push(randomTreeName);
             }
             return randomTreeNames;
-        };
-        MapDataService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [])
-        ], MapDataService);
-        return MapDataService;
-    }());
+        }
+    };
+    MapDataService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], MapDataService);
     exports.MapDataService = MapDataService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -25692,7 +25690,7 @@ var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(9);
 var util_3 = __webpack_require__(1);
 var AuthTokenProvider_1 = __webpack_require__(444);
-var StatsManager_1 = __webpack_require__(158);
+var StatsManager_1 = __webpack_require__(159);
 var StatsReporter_1 = __webpack_require__(446);
 var StatsListener_1 = __webpack_require__(239);
 var EventQueue_1 = __webpack_require__(447);
@@ -26299,18 +26297,18 @@ exports.CacheNode = CacheNode;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return VIEWPORT_RULER_PROVIDER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ScrollDispatchModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_fromEvent__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_observable_fromEvent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_observable_fromEvent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators_auditTime__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators_auditTime___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators_auditTime__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_observable_merge__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_observable_merge__);
@@ -26899,7 +26897,7 @@ var ScrollDispatchModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_a11y__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_tslib__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_platform__ = __webpack_require__(33);
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -27173,7 +27171,63 @@ var MatButtonModule = /** @class */ (function () {
 
 
 /***/ }),
-/* 119 */,
+/* 119 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    class Utils {
+        static contains(stringArray, word) {
+            let i = stringArray.length;
+            while (i--) {
+                if (stringArray[i] === word) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //delta: days
+        static getDate(delta = 0) {
+            let newDate = new Date(Date.now() + delta * 1000 * 3600 * 24);
+            let dd = ("0" + newDate.getDate()).slice(-2);
+            let mm = ("0" + (newDate.getMonth() + 1)).slice(-2);
+            let yy = ("0" + (newDate.getFullYear())).slice(-2);
+            // let yyyy = newDate.getFullYear();
+            return yy.toString() + mm + dd;
+        }
+        static getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        // delta: minutes
+        static getTime(delta = 0) {
+            let newDate = new Date(Date.now() + delta * 1000 * 60);
+            let dd = ("0" + newDate.getSeconds()).slice(-2);
+            let mm = ("0" + (newDate.getMinutes())).slice(-2);
+            let yy = ("0" + (newDate.getHours())).slice(-2);
+            // let yyyy = newDate.getFullYear();
+            return yy.toString() + mm + dd;
+        }
+        static shuffle(array) {
+            let m = array.length, t, i;
+            // While there remain elements to shuffle…
+            while (m) {
+                // Pick a remaining element…
+                i = Math.floor(Math.random() * m--);
+                // And swap it with the current element.
+                t = array[m];
+                array[m] = array[i];
+                array[i] = t;
+            }
+            return array;
+        }
+    }
+    exports.Utils = Utils;
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
 /* 120 */,
 /* 121 */,
 /* 122 */,
@@ -27196,7 +27250,8 @@ var MatButtonModule = /** @class */ (function () {
 /* 139 */,
 /* 140 */,
 /* 141 */,
-/* 142 */
+/* 142 */,
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -27208,11 +27263,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(33), __webpack_require__(45), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, router_animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(29), __webpack_require__(45), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, router_animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var EmailComponent = (function () {
-        function EmailComponent(auth, router) {
+    let EmailComponent = class EmailComponent {
+        constructor(auth, router) {
             this.auth = auth;
             this.router = router;
             this.state = '';
@@ -27221,46 +27276,43 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 this.router.navigateByUrl('/members');
             }
         }
-        EmailComponent.prototype.resetTool = function (event) {
+        resetTool(event) {
             this.eventData.emit(event);
-        };
-        EmailComponent.prototype.onSubmit = function (formData) {
-            var _this = this;
+        }
+        onSubmit(formData) {
             if (formData.valid) {
                 this.auth.signInWithEmail(formData)
-                    .then(function (success) {
+                    .then((success) => {
                     console.log(success);
-                    _this.resetTool('hide');
-                }).catch(function (err) {
-                    _this.error = err;
+                    this.resetTool('hide');
+                }).catch((err) => {
+                    this.error = err;
                 });
             }
-        };
-        EmailComponent.prototype.ngOnInit = function () {
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], EmailComponent.prototype, "eventData", void 0);
-        EmailComponent = __decorate([
-            core_1.Component({
-                selector: 'app-email',
-                template: __webpack_require__(486),
-                styles: [__webpack_require__(487)],
-                animations: [router_animations_1.moveIn(), router_animations_1.fallIn()],
-                host: { '[@moveIn]': '' }
-            }),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], EmailComponent);
-        return EmailComponent;
-    }());
+        }
+        ngOnInit() {
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], EmailComponent.prototype, "eventData", void 0);
+    EmailComponent = __decorate([
+        core_1.Component({
+            selector: 'app-email',
+            template: __webpack_require__(486),
+            styles: [__webpack_require__(487)],
+            animations: [router_animations_1.moveIn(), router_animations_1.fallIn()],
+            host: { '[@moveIn]': '' }
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], EmailComponent);
     exports.EmailComponent = EmailComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
-/* 143 */,
 /* 144 */,
 /* 145 */,
 /* 146 */,
@@ -27270,7 +27322,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /* 150 */,
 /* 151 */,
 /* 152 */,
-/* 153 */
+/* 153 */,
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27313,7 +27366,7 @@ exports.CONSTANTS = {
 
 
 /***/ }),
-/* 154 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27628,7 +27681,7 @@ SyncPoint_1.SyncPoint.__referenceConstructor = Reference;
 
 
 /***/ }),
-/* 155 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -27808,7 +27861,7 @@ exports.DataSnapshot = DataSnapshot;
 
 
 /***/ }),
-/* 156 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28172,7 +28225,7 @@ exports.ImmutableTree = ImmutableTree;
 
 
 /***/ }),
-/* 157 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28195,7 +28248,7 @@ exports.ImmutableTree = ImmutableTree;
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
 var Change_1 = __webpack_require__(63);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var PriorityIndex_1 = __webpack_require__(28);
 /**
  * Doesn't really filter nodes but applies an index to the node and keeps track of any changes
@@ -28312,7 +28365,7 @@ exports.IndexedFilter = IndexedFilter;
 
 
 /***/ }),
-/* 158 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28361,7 +28414,7 @@ exports.StatsManager = StatsManager;
 
 
 /***/ }),
-/* 159 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -28501,7 +28554,6 @@ exports.RepoManager = RepoManager;
 
 
 /***/ }),
-/* 160 */,
 /* 161 */,
 /* 162 */,
 /* 163 */,
@@ -28509,7 +28561,8 @@ exports.RepoManager = RepoManager;
 /* 165 */,
 /* 166 */,
 /* 167 */,
-/* 168 */
+/* 168 */,
+/* 169 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28519,9 +28572,9 @@ exports.RepoManager = RepoManager;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__(256);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_merge__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_merge__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_scan__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_scan__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_scan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_scan__);
 
 
@@ -28539,106 +28592,6 @@ function stateChanges(query, events) {
 //# sourceMappingURL=state-changes.js.map
 
 /***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(33), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, router_animations_1) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var LoginComponent = (function () {
-        function LoginComponent(authService, router) {
-            this.authService = authService;
-            this.router = router;
-            this.show = false;
-            this.eventData = new core_1.EventEmitter();
-        }
-        LoginComponent.prototype.resetTool = function (event) {
-            this.eventData.emit(event);
-        };
-        LoginComponent.prototype.logout = function () {
-            this.authService.logout();
-        };
-        LoginComponent.prototype.toggleShow = function () {
-            this.show = !this.show;
-        };
-        LoginComponent.prototype.signInWithFacebook = function () {
-            var _this = this;
-            this.authService.signInWithFacebook()
-                .then(function (res) {
-                _this.resetTool('hide');
-            })
-                .catch(function (err) { return _this.error = err; });
-        };
-        LoginComponent.prototype.signInWithGoogle = function () {
-            var _this = this;
-            this.authService.signInWithGoogle()
-                .then(function (res) {
-                _this.resetTool('hide');
-            })
-                .catch(function (err) { return _this.error = err; });
-        };
-        LoginComponent.prototype.signInWithTwitter = function () {
-            var _this = this;
-            this.authService.signInWithTwitter()
-                .then(function (res) {
-                _this.resetTool('hide');
-            })
-                .catch(function (err) { return _this.error = err; });
-        };
-        LoginComponent.prototype.signInWithEmail = function () {
-            this.resetTool('email');
-        };
-        LoginComponent.prototype.signUpNewAccount = function () {
-            this.resetTool('signup');
-        };
-        LoginComponent.prototype.signInWithGithub = function () {
-            var _this = this;
-            this.authService.signInWithGithub()
-                .then(function (res) {
-                _this.resetTool('hide');
-            })
-                .catch(function (err) {
-                console.log(err);
-                _this.error = err;
-            });
-        };
-        LoginComponent.prototype.ngOnInit = function () {
-            // if(this.authService.isLoggedIn()){
-            //   this.router.navigateByUrl('/members')
-            // }
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], LoginComponent.prototype, "eventData", void 0);
-        LoginComponent = __decorate([
-            core_1.Component({
-                selector: 'app-login',
-                template: __webpack_require__(500),
-                styles: [__webpack_require__(502)],
-                animations: [router_animations_1.moveIn()],
-                host: { '[@moveIn]': '' }
-            }),
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], LoginComponent);
-        return LoginComponent;
-    }());
-    exports.LoginComponent = LoginComponent;
-}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ }),
 /* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -28651,69 +28604,162 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(33), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, router_animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(29), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, router_animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var SignupComponent = (function () {
-        function SignupComponent(auth, router) {
+    let LoginComponent = class LoginComponent {
+        constructor(authService, router) {
+            this.authService = authService;
+            this.router = router;
+            this.show = false;
+            this.eventData = new core_1.EventEmitter();
+        }
+        resetTool(event) {
+            this.eventData.emit(event);
+        }
+        logout() {
+            this.authService.logout();
+        }
+        toggleShow() {
+            this.show = !this.show;
+        }
+        signInWithFacebook() {
+            this.authService.signInWithFacebook()
+                .then((res) => {
+                this.resetTool('hide');
+            })
+                .catch((err) => this.error = err);
+        }
+        signInWithGoogle() {
+            this.authService.signInWithGoogle()
+                .then((res) => {
+                this.resetTool('hide');
+            })
+                .catch((err) => this.error = err);
+        }
+        signInWithTwitter() {
+            this.authService.signInWithTwitter()
+                .then((res) => {
+                this.resetTool('hide');
+            })
+                .catch((err) => this.error = err);
+        }
+        signInWithEmail() {
+            this.resetTool('email');
+        }
+        signUpNewAccount() {
+            this.resetTool('signup');
+        }
+        signInWithGithub() {
+            this.authService.signInWithGithub()
+                .then((res) => {
+                this.resetTool('hide');
+            })
+                .catch((err) => {
+                console.log(err);
+                this.error = err;
+            });
+        }
+        ngOnInit() {
+            // if(this.authService.isLoggedIn()){
+            //   this.router.navigateByUrl('/members')
+            // }
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], LoginComponent.prototype, "eventData", void 0);
+    LoginComponent = __decorate([
+        core_1.Component({
+            selector: 'app-login',
+            template: __webpack_require__(500),
+            styles: [__webpack_require__(502)],
+            animations: [router_animations_1.moveIn()],
+            host: { '[@moveIn]': '' }
+        }),
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], LoginComponent);
+    exports.LoginComponent = LoginComponent;
+}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(29), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, router_animations_1) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    let SignupComponent = class SignupComponent {
+        constructor(auth, router) {
             this.auth = auth;
             this.router = router;
             this.state = '';
             this.eventData = new core_1.EventEmitter();
         }
-        SignupComponent.prototype.resetTool = function (event) {
+        resetTool(event) {
             console.log(event);
             this.eventData.emit(event);
-        };
-        SignupComponent.prototype.onSubmit = function (formData) {
-            var _this = this;
+        }
+        onSubmit(formData) {
             if (formData.valid) {
                 this.auth.signupNewUser(formData)
-                    .then(function (res) {
+                    .then((res) => {
                     console.log(res);
-                    var dispName = formData.value.first.concat(' '.concat(formData.value.last));
-                    var user = res.updateProfile({
+                    let dispName = formData.value.first.concat(' '.concat(formData.value.last));
+                    let user = res.updateProfile({
                         displayName: dispName,
                         photoURL: res.photoURL
-                    }).then(function (nothing) {
+                    }).then((nothing) => {
                         console.log(nothing);
-                        _this.auth.updateUser(res);
-                        _this.resetTool('hide');
-                    }).catch(function (err) {
-                        _this.error = err;
+                        this.auth.updateUser(res);
+                        this.resetTool('hide');
+                    }).catch((err) => {
+                        this.error = err;
                     });
-                }).catch(function (err) {
-                    _this.error = err;
+                }).catch((err) => {
+                    this.error = err;
                 });
             }
-        };
-        SignupComponent.prototype.ngOnInit = function () {
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], SignupComponent.prototype, "eventData", void 0);
-        SignupComponent = __decorate([
-            core_1.Component({
-                selector: 'app-signup',
-                template: __webpack_require__(510),
-                styles: [__webpack_require__(511)],
-                animations: [router_animations_1.moveIn(), router_animations_1.moveInLeft(), router_animations_1.fallIn()],
-                host: { '[@moveIn]': '' }
-            }),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], SignupComponent);
-        return SignupComponent;
-    }());
+        }
+        ngOnInit() {
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], SignupComponent.prototype, "eventData", void 0);
+    SignupComponent = __decorate([
+        core_1.Component({
+            selector: 'app-signup',
+            template: __webpack_require__(510),
+            styles: [__webpack_require__(511)],
+            animations: [router_animations_1.moveIn(), router_animations_1.moveInLeft(), router_animations_1.fallIn()],
+            host: { '[@moveIn]': '' }
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], SignupComponent);
     exports.SignupComponent = SignupComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 
 /***/ }),
-/* 171 */,
 /* 172 */,
-/* 173 */
+/* 173 */,
+/* 174 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -28932,60 +28978,7 @@ var ObserversModule = /** @class */ (function () {
 
 
 /***/ }),
-/* 174 */,
-/* 175 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    var Utils = (function () {
-        function Utils() {
-        }
-        //delta: days
-        Utils.getDate = function (delta) {
-            if (delta === void 0) { delta = 0; }
-            var newDate = new Date(Date.now() + delta * 1000 * 3600 * 24);
-            var dd = ("0" + newDate.getDate()).slice(-2);
-            var mm = ("0" + (newDate.getMonth() + 1)).slice(-2);
-            var yy = ("0" + (newDate.getFullYear())).slice(-2);
-            // let yyyy = newDate.getFullYear();
-            return yy.toString() + mm + dd;
-        };
-        Utils.getRandomInt = function (min, max) {
-            return Math.floor(Math.random() * (max - min + 1)) + min;
-        };
-        // delta: minutes
-        Utils.getTime = function (delta) {
-            if (delta === void 0) { delta = 0; }
-            var newDate = new Date(Date.now() + delta * 1000 * 60);
-            var dd = ("0" + newDate.getSeconds()).slice(-2);
-            var mm = ("0" + (newDate.getMinutes())).slice(-2);
-            var yy = ("0" + (newDate.getHours())).slice(-2);
-            // let yyyy = newDate.getFullYear();
-            return yy.toString() + mm + dd;
-        };
-        Utils.shuffle = function (array) {
-            var m = array.length, t, i;
-            // While there remain elements to shuffle…
-            while (m) {
-                // Pick a remaining element…
-                i = Math.floor(Math.random() * m--);
-                // And swap it with the current element.
-                t = array[m];
-                array[m] = array[i];
-                array[i] = t;
-            }
-            return array;
-        };
-        return Utils;
-    }());
-    exports.Utils = Utils;
-}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-
-
-/***/ }),
+/* 175 */,
 /* 176 */,
 /* 177 */,
 /* 178 */,
@@ -29120,7 +29113,7 @@ module.exports = __webpack_require__(413);
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = __webpack_require__(153);
+var constants_1 = __webpack_require__(154);
 /**
  * Throws an error if the provided assertion is falsy
  * @param {*} assertion The assertion to be tested for falsiness
@@ -29644,9 +29637,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(9);
 var parser_1 = __webpack_require__(223);
 var Path_1 = __webpack_require__(14);
-var Reference_1 = __webpack_require__(154);
+var Reference_1 = __webpack_require__(155);
 var Repo_1 = __webpack_require__(109);
-var RepoManager_1 = __webpack_require__(159);
+var RepoManager_1 = __webpack_require__(160);
 var util_2 = __webpack_require__(1);
 var validation_1 = __webpack_require__(57);
 /**
@@ -31197,7 +31190,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(9);
 var Index_1 = __webpack_require__(106);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var Node_1 = __webpack_require__(34);
 var nodeFromJSON_1 = __webpack_require__(79);
 /**
@@ -31742,7 +31735,7 @@ exports.Overwrite = Overwrite;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var CacheNode_1 = __webpack_require__(110);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(1);
 var ViewCache_1 = __webpack_require__(238);
@@ -31998,7 +31991,7 @@ exports.SyncPoint = SyncPoint;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var CacheNode_1 = __webpack_require__(110);
 /**
  * Stores the data we have cached for a view.
@@ -33557,7 +33550,7 @@ exports.Connection = Connection;
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(9);
 var CountedSet_1 = __webpack_require__(235);
-var StatsManager_1 = __webpack_require__(158);
+var StatsManager_1 = __webpack_require__(159);
 var PacketReceiver_1 = __webpack_require__(451);
 var Constants_1 = __webpack_require__(105);
 var util_2 = __webpack_require__(1);
@@ -34194,7 +34187,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var app_1 = __webpack_require__(77);
 var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(9);
-var StatsManager_1 = __webpack_require__(158);
+var StatsManager_1 = __webpack_require__(159);
 var Constants_1 = __webpack_require__(105);
 var util_3 = __webpack_require__(1);
 var storage_1 = __webpack_require__(104);
@@ -34629,10 +34622,10 @@ exports.ServerActions = ServerActions;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var IndexedFilter_1 = __webpack_require__(157);
+var IndexedFilter_1 = __webpack_require__(158);
 var PriorityIndex_1 = __webpack_require__(28);
 var Node_1 = __webpack_require__(34);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 /**
  * Filters nodes by range and uses an IndexFilter to track any changes after filtering the node
  *
@@ -34826,7 +34819,7 @@ module.exports = __webpack_require__(77).default;
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = createListReference;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__snapshot_changes__ = __webpack_require__(251);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state_changes__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__state_changes__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__audit_trail__ = __webpack_require__(257);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__data_operation__ = __webpack_require__(477);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__remove__ = __webpack_require__(478);
@@ -34884,9 +34877,9 @@ function snapshotChanges(query, events) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils__ = __webpack_require__(82);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_scan__ = __webpack_require__(165);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_scan__ = __webpack_require__(166);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_scan___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_scan__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__ = __webpack_require__(166);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__ = __webpack_require__(167);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_merge__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_of__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_of__);
@@ -34894,7 +34887,7 @@ function snapshotChanges(query, events) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter__ = __webpack_require__(254);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_delay__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_delay__ = __webpack_require__(164);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_add_operator_delay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_distinctUntilChanged__ = __webpack_require__(255);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_distinctUntilChanged___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_add_operator_distinctUntilChanged__);
@@ -35015,7 +35008,7 @@ function validateEventsArray(events) {
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["b"] = createAuditTrail;
 /* harmony export (immutable) */ __webpack_exports__["a"] = auditTrail;
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state_changes__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__state_changes__ = __webpack_require__(169);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__observable_fromRef__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_skipWhile__ = __webpack_require__(258);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_skipWhile___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_skipWhile__);
@@ -35092,7 +35085,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_observeOn__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_observeOn__ = __webpack_require__(163);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_observeOn___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_observeOn__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_switchMap__ = __webpack_require__(114);
@@ -35205,21 +35198,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var PageNotFoundComponent = (function () {
-        function PageNotFoundComponent() {
+    let PageNotFoundComponent = class PageNotFoundComponent {
+        constructor() { }
+        ngOnInit() {
         }
-        PageNotFoundComponent.prototype.ngOnInit = function () {
-        };
-        PageNotFoundComponent = __decorate([
-            core_1.Component({
-                selector: 'app-page-not-found',
-                template: __webpack_require__(492),
-                styles: [__webpack_require__(493)]
-            }),
-            __metadata("design:paramtypes", [])
-        ], PageNotFoundComponent);
-        return PageNotFoundComponent;
-    }());
+    };
+    PageNotFoundComponent = __decorate([
+        core_1.Component({
+            selector: 'app-page-not-found',
+            template: __webpack_require__(492),
+            styles: [__webpack_require__(493)]
+        }),
+        __metadata("design:paramtypes", [])
+    ], PageNotFoundComponent);
     exports.PageNotFoundComponent = PageNotFoundComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -35241,14 +35232,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(84)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MapComponent = (function () {
-        function MapComponent(appState) {
+    let MapComponent = class MapComponent {
+        constructor(appState) {
             this.appState = appState;
         }
-        MapComponent.prototype.selectedTreeChange = function (tree) {
+        selectedTreeChange(tree) {
             this.selectedTree = tree;
-        };
-        MapComponent.prototype.toggleAddInteraction = function () {
+        }
+        toggleAddInteraction() {
             if (this.appState.getInteraction() !== 'add') {
                 this.appState.setInteraction('add');
                 // remove the existing selection when user wants to add a tree
@@ -35257,21 +35248,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             else {
                 this.appState.setInteraction('none');
             }
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", Object)
-        ], MapComponent.prototype, "selectedTree", void 0);
-        MapComponent = __decorate([
-            core_1.Component({
-                selector: 'map-component',
-                template: __webpack_require__(496),
-                styles: [__webpack_require__(497)]
-            }),
-            __metadata("design:paramtypes", [app_state_service_1.AppStateService])
-        ], MapComponent);
-        return MapComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], MapComponent.prototype, "selectedTree", void 0);
+    MapComponent = __decorate([
+        core_1.Component({
+            selector: 'map-component',
+            template: __webpack_require__(496),
+            styles: [__webpack_require__(497)]
+        }),
+        __metadata("design:paramtypes", [app_state_service_1.AppStateService])
+    ], MapComponent);
     exports.MapComponent = MapComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -35293,26 +35283,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(271)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, users_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AdminComponent = (function () {
-        function AdminComponent() {
+    let AdminComponent = class AdminComponent {
+        constructor() {
             this.show = '';
         }
-        AdminComponent.prototype.showSection = function (section) {
+        showSection(section) {
             this.show = section;
-        };
-        AdminComponent.prototype.ngOnInit = function () {
-        };
-        AdminComponent = __decorate([
-            core_1.Component({
-                selector: 'app-admin',
-                template: __webpack_require__(514),
-                styles: [__webpack_require__(515)],
-                providers: [users_service_1.UsersService]
-            }),
-            __metadata("design:paramtypes", [])
-        ], AdminComponent);
-        return AdminComponent;
-    }());
+        }
+        ngOnInit() {
+        }
+    };
+    AdminComponent = __decorate([
+        core_1.Component({
+            selector: 'app-admin',
+            template: __webpack_require__(514),
+            styles: [__webpack_require__(515)],
+            providers: [users_service_1.UsersService]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AdminComponent);
     exports.AdminComponent = AdminComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -35331,22 +35320,21 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(50)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var UsersService = (function () {
-        function UsersService(db) {
+    let UsersService = class UsersService {
+        constructor(db) {
             this.db = db;
         }
-        UsersService.prototype.getUsers = function () {
+        getUsers() {
             return this.db.list('users').valueChanges();
-        };
-        UsersService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [database_1.AngularFireDatabase])
-        ], UsersService);
-        return UsersService;
-    }());
+        }
+    };
+    UsersService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [database_1.AngularFireDatabase])
+    ], UsersService);
     exports.UsersService = UsersService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -35365,27 +35353,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(33)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AdminGuard = (function () {
-        function AdminGuard(_as, router) {
+    let AdminGuard = class AdminGuard {
+        constructor(_as, router) {
             this._as = _as;
             this.router = router;
         }
-        AdminGuard.prototype.canActivate = function () {
+        canActivate() {
             if (!this._as.hasRole('admin')) {
                 this.router.navigate(['/maps']);
                 return false;
             }
             return true;
-        };
-        AdminGuard = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], AdminGuard);
-        return AdminGuard;
-    }());
+        }
+    };
+    AdminGuard = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], AdminGuard);
     exports.AdminGuard = AdminGuard;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -35428,11 +35415,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵe", function() { return XSRF_COOKIE_NAME; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ɵf", function() { return XSRF_HEADER_NAME; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_concatMap__ = __webpack_require__(143);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_concatMap__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_operator_concatMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_operator_concatMap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_filter__ = __webpack_require__(152);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_filter__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operator_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operator_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operator_map__);
@@ -38690,7 +38677,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["Version"]('5.2.1'
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_observable_defer__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_observable_defer___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_observable_defer__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_startWith__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operators_startWith__);
@@ -38698,7 +38685,7 @@ var VERSION = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["Version"]('5.2.1'
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_animations__ = __webpack_require__(27);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_cdk_keycodes__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_rxjs_operators_take__);
@@ -39934,7 +39921,7 @@ var MatDialogModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MatInput; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return getMatInputUnsupportedTypeError; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MAT_INPUT_VALUE_ACCESSOR; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material_form_field__ = __webpack_require__(67);
@@ -40932,21 +40919,21 @@ var MatDividerModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators_catchError__ = __webpack_require__(146);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators_catchError__ = __webpack_require__(147);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_operators_catchError___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_operators_catchError__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_operators_tap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators_finalize__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators_finalize__ = __webpack_require__(175);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_operators_finalize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_operators_finalize__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators_map__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_operators_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_operators_map__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_share__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_share__ = __webpack_require__(141);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_share___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operators_share__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(273);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_platform_browser__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_observable_forkJoin__ = __webpack_require__(171);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_observable_forkJoin__ = __webpack_require__(172);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_observable_forkJoin___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_observable_forkJoin__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_throw__ = __webpack_require__(280);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_observable_throw__);
@@ -42033,7 +42020,7 @@ var MatIconModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_overlay__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operators_take__);
@@ -43893,7 +43880,7 @@ var MatSelectModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return matTooltipAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material_core__ = __webpack_require__(10);
@@ -44849,7 +44836,7 @@ var MatTooltipModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return Breakpoints; });
 /* unused harmony export MediaMatcher */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_map__ = __webpack_require__(38);
@@ -45201,7 +45188,7 @@ var LayoutModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_observable_of__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(6);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__["a"]; });
@@ -46336,11 +46323,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(33), __webpack_require__(45), __webpack_require__(56), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, router_animations_1, tree_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(29), __webpack_require__(45), __webpack_require__(56), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, router_animations_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MembersComponent = (function () {
-        function MembersComponent(auth, router) {
+    let MembersComponent = class MembersComponent {
+        constructor(auth, router) {
             this.auth = auth;
             this.router = router;
             this.state = '';
@@ -46351,40 +46338,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 this.name = this.auth.getUser();
             }
         }
-        MembersComponent.prototype.resetTool = function (event) {
+        resetTool(event) {
             this.done = true;
             console.log(this.done);
             this.eventData.emit(event);
-        };
-        MembersComponent.prototype.logout = function () {
+        }
+        logout() {
             this.auth.logout();
-        };
-        MembersComponent.prototype.ngOnInit = function () {
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", String)
-        ], MembersComponent.prototype, "subComponent", void 0);
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", tree_1.MapClickEvent)
-        ], MembersComponent.prototype, "mapClickData", void 0);
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], MembersComponent.prototype, "eventData", void 0);
-        MembersComponent = __decorate([
-            core_1.Component({
-                selector: 'app-members',
-                template: __webpack_require__(553),
-                styles: [__webpack_require__(554)],
-                animations: [router_animations_1.moveIn(), router_animations_1.fallIn(), router_animations_1.moveInLeft()],
-                host: { '[@moveIn]': '' }
-            }),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], MembersComponent);
-        return MembersComponent;
-    }());
+        }
+        ngOnInit() {
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", String)
+    ], MembersComponent.prototype, "subComponent", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", tree_1.MapClickEvent)
+    ], MembersComponent.prototype, "mapClickData", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], MembersComponent.prototype, "eventData", void 0);
+    MembersComponent = __decorate([
+        core_1.Component({
+            selector: 'app-members',
+            template: __webpack_require__(553),
+            styles: [__webpack_require__(554)],
+            animations: [router_animations_1.moveIn(), router_animations_1.fallIn(), router_animations_1.moveInLeft()],
+            host: { '[@moveIn]': '' }
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], MembersComponent);
     exports.MembersComponent = MembersComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -46409,28 +46395,26 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(50), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1, tree_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(46), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var TreeService = (function () {
-        function TreeService(db) {
-            var _this = this;
+    let TreeService = class TreeService {
+        constructor(db) {
             this.db = db;
             this.dataLoaded = new core_1.EventEmitter();
-            this.db.list('features', function (ref) { return ref.limitToFirst(4000); }).valueChanges()
-                .subscribe(function (trees) {
-                _this.trees = trees.map(function (tree) {
+            this.db.list('features', ref => ref.limitToFirst(4000)).valueChanges()
+                .subscribe(trees => {
+                this.trees = trees.map((tree) => {
                     return new tree_1.Tree(tree);
                 });
-                _this.dataLoaded.emit(_this.trees);
+                this.dataLoaded.emit(this.trees);
             });
         }
-        TreeService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [database_1.AngularFireDatabase])
-        ], TreeService);
-        return TreeService;
-    }());
+    };
+    TreeService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [database_1.AngularFireDatabase])
+    ], TreeService);
     exports.TreeService = TreeService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -46449,23 +46433,22 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(50), __webpack_require__(0), __webpack_require__(175)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1, Observable_1, utils_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(46), __webpack_require__(0), __webpack_require__(119)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, database_1, Observable_1, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var TreeNameService = (function () {
-        function TreeNameService(db) {
+    let TreeNameService = class TreeNameService {
+        constructor(db) {
             this.db = db;
             this.dataLoaded = false;
         }
-        TreeNameService.prototype.getSelectionOfNames = function (size, clicked) {
-            if (clicked === void 0) { clicked = null; }
-            var set = Array();
-            var clickedNameId = 0;
-            this.loadTreeNames().subscribe(function (treenames) {
+        getSelectionOfNames(size, clicked = null) {
+            let set = Array();
+            let clickedNameId = 0;
+            this.loadTreeNames().subscribe((treenames) => {
                 // console.log(treenames);
-                var length = treenames.length;
-                for (var i = 0; i < size; i++) {
-                    var index = utils_1.Utils.getRandomInt(1, length);
+                let length = treenames.length;
+                for (let i = 0; i < size; i++) {
+                    let index = utils_1.Utils.getRandomInt(1, length);
                     while (index === clicked.id) {
                         index = utils_1.Utils.getRandomInt(1, length);
                     }
@@ -46478,11 +46461,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 console.log(set);
             });
             return set;
-        };
-        TreeNameService.prototype.getTreenameId = function (nameLat, nameDeu) {
-            var id = 0;
-            this.loadTreeNames().subscribe(function (treenames) {
-                for (var i = 0; i < treenames.length; i++) {
+        }
+        getTreenameId(nameLat, nameDeu) {
+            let id = 0;
+            this.loadTreeNames().subscribe((treenames) => {
+                for (let i = 0; i < treenames.length; i++) {
                     if ((treenames[i].baumnamelat === nameLat) && (treenames[i].baumnamedeu === nameDeu)) {
                         id = treenames[i].id;
                         break;
@@ -46490,31 +46473,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 }
             });
             return id;
-        };
-        TreeNameService.prototype.loadTreeNames = function () {
-            var _this = this;
+        }
+        loadTreeNames() {
             if (this.dataLoaded) {
-                return Observable_1.Observable.create(function (observer) {
-                    observer.next(_this.treenames);
+                return Observable_1.Observable.create((observer) => {
+                    observer.next(this.treenames);
                     // console.log('treenames read');
                     observer.complete();
                 });
             }
-            var dbs = this.db.list('treenames').valueChanges();
-            dbs.subscribe(function (trees) {
-                _this.treenames = trees;
-                _this.dataLoaded = true;
+            let dbs = this.db.list('treenames').valueChanges();
+            dbs.subscribe(trees => {
+                this.treenames = trees;
+                this.dataLoaded = true;
                 // console.log(trees);
-                return _this.treenames;
+                return this.treenames;
             });
             return dbs;
-        };
-        TreeNameService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [database_1.AngularFireDatabase])
-        ], TreeNameService);
-        return TreeNameService;
-    }());
+        }
+    };
+    TreeNameService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [database_1.AngularFireDatabase])
+    ], TreeNameService);
     exports.TreeNameService = TreeNameService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -46643,7 +46624,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
         core_1.enableProdMode();
     }
     platform_browser_dynamic_1.platformBrowserDynamic().bootstrapModule(app_module_1.AppModule)
-        .catch(function (err) { return console.log(err); });
+        .catch(err => console.log(err));
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -46661,62 +46642,59 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(267), __webpack_require__(37), __webpack_require__(2), __webpack_require__(64), __webpack_require__(50), __webpack_require__(262), __webpack_require__(491), __webpack_require__(22), __webpack_require__(22), __webpack_require__(519), __webpack_require__(273), __webpack_require__(521), __webpack_require__(552), __webpack_require__(269), __webpack_require__(288), __webpack_require__(169), __webpack_require__(268), __webpack_require__(170), __webpack_require__(142), __webpack_require__(562), __webpack_require__(563), __webpack_require__(270), __webpack_require__(568), __webpack_require__(574), __webpack_require__(579), __webpack_require__(584), __webpack_require__(589), __webpack_require__(599), __webpack_require__(604), __webpack_require__(609), __webpack_require__(615), __webpack_require__(272), __webpack_require__(90), __webpack_require__(290), __webpack_require__(291), __webpack_require__(33), __webpack_require__(84)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, mode_selector_component_1, admin_component_1, treenames_component_1, guess_component_1, add_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, admin_guard_1, map_data_service_1, tree_service_1, tree_name_service_1, auth_service_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(267), __webpack_require__(37), __webpack_require__(2), __webpack_require__(64), __webpack_require__(46), __webpack_require__(262), __webpack_require__(491), __webpack_require__(22), __webpack_require__(22), __webpack_require__(519), __webpack_require__(273), __webpack_require__(521), __webpack_require__(552), __webpack_require__(269), __webpack_require__(288), __webpack_require__(170), __webpack_require__(268), __webpack_require__(171), __webpack_require__(143), __webpack_require__(562), __webpack_require__(563), __webpack_require__(270), __webpack_require__(568), __webpack_require__(574), __webpack_require__(579), __webpack_require__(584), __webpack_require__(589), __webpack_require__(599), __webpack_require__(604), __webpack_require__(609), __webpack_require__(615), __webpack_require__(272), __webpack_require__(90), __webpack_require__(290), __webpack_require__(291), __webpack_require__(29), __webpack_require__(84)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, mode_selector_component_1, admin_component_1, treenames_component_1, guess_component_1, add_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, admin_guard_1, map_data_service_1, tree_service_1, tree_name_service_1, auth_service_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AppModule = (function () {
-        function AppModule() {
-        }
-        AppModule = __decorate([
-            core_1.NgModule({
-                imports: [
-                    // modules, everything declared here and under declarations may be used in component templates
-                    platform_browser_1.BrowserModule,
-                    angularfire2_1.AngularFireModule.initializeApp(environment_1.environment.firebase, 'my-app-name'),
-                    database_1.AngularFireDatabaseModule,
-                    app_routing_module_1.AppRoutingModule,
-                    auth_1.AngularFireAuthModule,
-                    forms_1.FormsModule,
-                    forms_2.ReactiveFormsModule,
-                    animations_1.BrowserAnimationsModule,
-                    http_1.HttpClientModule,
-                    material_module_1.MaterialModule
-                ],
-                declarations: [
-                    // declarables: directives (Attribute, Structural), components, pipes.
-                    app_component_1.AppComponent,
-                    map_component_1.MapComponent,
-                    members_component_1.MembersComponent,
-                    login_component_1.LoginComponent,
-                    page_not_found_component_1.PageNotFoundComponent,
-                    signup_component_1.SignupComponent,
-                    email_component_1.EmailComponent,
-                    mode_selector_component_1.ModeSelectorComponent,
-                    admin_component_1.AdminComponent,
-                    treenames_component_1.TreenamesComponent,
-                    guess_component_1.GuessComponent,
-                    add_component_1.AddComponent,
-                    users_component_1.UsersComponent,
-                    esri_map_component_1.EsriMapComponent,
-                    side_panel_component_1.SidePanelComponent,
-                    editor_panel_component_1.EditorPanelComponent,
-                    add_tree_panel_component_1.AddTreePanelComponent,
-                    guess_panel_component_1.GuessPanelComponent
-                ],
-                bootstrap: [app_component_1.AppComponent],
-                providers: [
-                    // services
-                    map_data_service_1.MapDataService, tree_service_1.TreeService, auth_service_1.AuthService, auth_guard_1.AuthGuard, tree_name_service_1.TreeNameService, admin_guard_1.AdminGuard,
-                    app_state_service_1.AppStateService
-                ],
-                entryComponents: [
-                    // components to be dynamically loaded
-                    login_component_1.LoginComponent, email_component_1.EmailComponent, signup_component_1.SignupComponent, members_component_1.MembersComponent
-                ]
-            })
-        ], AppModule);
-        return AppModule;
-    }());
+    let AppModule = class AppModule {
+    };
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                // modules, everything declared here and under declarations may be used in component templates
+                platform_browser_1.BrowserModule,
+                angularfire2_1.AngularFireModule.initializeApp(environment_1.environment.firebase, 'my-app-name'),
+                database_1.AngularFireDatabaseModule,
+                app_routing_module_1.AppRoutingModule,
+                auth_1.AngularFireAuthModule,
+                forms_1.FormsModule,
+                forms_2.ReactiveFormsModule,
+                animations_1.BrowserAnimationsModule,
+                http_1.HttpClientModule,
+                material_module_1.MaterialModule
+            ],
+            declarations: [
+                // declarables: directives (Attribute, Structural), components, pipes.
+                app_component_1.AppComponent,
+                map_component_1.MapComponent,
+                members_component_1.MembersComponent,
+                login_component_1.LoginComponent,
+                page_not_found_component_1.PageNotFoundComponent,
+                signup_component_1.SignupComponent,
+                email_component_1.EmailComponent,
+                mode_selector_component_1.ModeSelectorComponent,
+                admin_component_1.AdminComponent,
+                treenames_component_1.TreenamesComponent,
+                guess_component_1.GuessComponent,
+                add_component_1.AddComponent,
+                users_component_1.UsersComponent,
+                esri_map_component_1.EsriMapComponent,
+                side_panel_component_1.SidePanelComponent,
+                editor_panel_component_1.EditorPanelComponent,
+                add_tree_panel_component_1.AddTreePanelComponent,
+                guess_panel_component_1.GuessPanelComponent
+            ],
+            bootstrap: [app_component_1.AppComponent],
+            providers: [
+                // services
+                map_data_service_1.MapDataService, tree_service_1.TreeService, auth_service_1.AuthService, auth_guard_1.AuthGuard, tree_name_service_1.TreeNameService, admin_guard_1.AdminGuard,
+                app_state_service_1.AppStateService
+            ],
+            entryComponents: [
+                // components to be dynamically loaded
+                login_component_1.LoginComponent, email_component_1.EmailComponent, signup_component_1.SignupComponent, members_component_1.MembersComponent
+            ]
+        })
+    ], AppModule);
     exports.AppModule = AppModule;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -46729,8 +46707,8 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var User = (function () {
-        function User(authData) {
+    class User {
+        constructor(authData) {
             if (authData.uid) {
                 this.id = authData.uid;
             }
@@ -46742,8 +46720,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
             this.displayName = authData.displayName;
             this.roles = { user: true };
         }
-        return User;
-    }());
+    }
     exports.User = User;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -46764,7 +46741,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "h", function() { return __WEBPACK_IMPORTED_MODULE_2__list_create_reference__["a"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__list_snapshot_changes__ = __webpack_require__(251);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "l", function() { return __WEBPACK_IMPORTED_MODULE_3__list_snapshot_changes__["a"]; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_state_changes__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__list_state_changes__ = __webpack_require__(169);
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "i", function() { return __WEBPACK_IMPORTED_MODULE_4__list_state_changes__["a"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "m", function() { return __WEBPACK_IMPORTED_MODULE_4__list_state_changes__["b"]; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__list_audit_trail__ = __webpack_require__(257);
@@ -46814,11 +46791,11 @@ var Database_1 = __webpack_require__(222);
 exports.Database = Database_1.Database;
 var Query_1 = __webpack_require__(226);
 exports.Query = Query_1.Query;
-var Reference_1 = __webpack_require__(154);
+var Reference_1 = __webpack_require__(155);
 exports.Reference = Reference_1.Reference;
 var util_1 = __webpack_require__(9);
 exports.enableLogging = util_1.enableLogging;
-var RepoManager_1 = __webpack_require__(159);
+var RepoManager_1 = __webpack_require__(160);
 var INTERNAL = __webpack_require__(457);
 var TEST_ACCESS = __webpack_require__(458);
 var util_2 = __webpack_require__(1);
@@ -46843,7 +46820,7 @@ function registerDatabase(instance) {
 }
 exports.registerDatabase = registerDatabase;
 registerDatabase(app_1.default);
-var DataSnapshot_1 = __webpack_require__(155);
+var DataSnapshot_1 = __webpack_require__(156);
 exports.DataSnapshot = DataSnapshot_1.DataSnapshot;
 var onDisconnect_1 = __webpack_require__(225);
 exports.OnDisconnect = onDisconnect_1.OnDisconnect;
@@ -47394,7 +47371,7 @@ exports.Deferred = Deferred;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var constants_1 = __webpack_require__(153);
+var constants_1 = __webpack_require__(154);
 /**
  * Returns navigator.userAgent string or '' if it's not defined.
  * @return {string} user agent string
@@ -48826,7 +48803,7 @@ exports.nextPushId = (function () {
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var DataSnapshot_1 = __webpack_require__(155);
+var DataSnapshot_1 = __webpack_require__(156);
 var Event_1 = __webpack_require__(431);
 var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(1);
@@ -49170,9 +49147,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
 var util_2 = __webpack_require__(9);
 var AckUserWrite_1 = __webpack_require__(433);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var util_3 = __webpack_require__(1);
-var ImmutableTree_1 = __webpack_require__(156);
+var ImmutableTree_1 = __webpack_require__(157);
 var ListenComplete_1 = __webpack_require__(434);
 var Merge_1 = __webpack_require__(435);
 var Operation_1 = __webpack_require__(58);
@@ -50093,9 +50070,9 @@ exports.Merge = Merge;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var IndexedFilter_1 = __webpack_require__(157);
+var IndexedFilter_1 = __webpack_require__(158);
 var ViewProcessor_1 = __webpack_require__(437);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var CacheNode_1 = __webpack_require__(110);
 var ViewCache_1 = __webpack_require__(238);
 var EventGenerator_1 = __webpack_require__(440);
@@ -50312,9 +50289,9 @@ var Operation_1 = __webpack_require__(58);
 var util_1 = __webpack_require__(1);
 var ChildChangeAccumulator_1 = __webpack_require__(438);
 var Change_1 = __webpack_require__(63);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var KeyIndex_1 = __webpack_require__(78);
-var ImmutableTree_1 = __webpack_require__(156);
+var ImmutableTree_1 = __webpack_require__(157);
 var Path_1 = __webpack_require__(14);
 var CompleteChildSource_1 = __webpack_require__(439);
 /**
@@ -51250,7 +51227,7 @@ var util_2 = __webpack_require__(1);
 var Path_1 = __webpack_require__(14);
 var CompoundWrite_1 = __webpack_require__(442);
 var PriorityIndex_1 = __webpack_require__(28);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 /**
  * WriteTree tracks all pending user-initiated writes and has methods to calculate the result of merging them
  * with underlying server data (to create "event cache" data).  Pending writes are added with addOverwrite()
@@ -51885,7 +51862,7 @@ exports.WriteTreeRef = WriteTreeRef;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ImmutableTree_1 = __webpack_require__(156);
+var ImmutableTree_1 = __webpack_require__(157);
 var Path_1 = __webpack_require__(14);
 var util_1 = __webpack_require__(1);
 var Node_1 = __webpack_require__(34);
@@ -52109,7 +52086,7 @@ exports.CompoundWrite = CompoundWrite;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 /**
  * Mutable object which basically just stores a reference to the "latest" immutable snapshot.
  *
@@ -53143,7 +53120,7 @@ var KeyIndex_1 = __webpack_require__(78);
 var PriorityIndex_1 = __webpack_require__(28);
 var ValueIndex_1 = __webpack_require__(228);
 var PathIndex_1 = __webpack_require__(232);
-var IndexedFilter_1 = __webpack_require__(157);
+var IndexedFilter_1 = __webpack_require__(158);
 var LimitedFilter_1 = __webpack_require__(454);
 var RangedFilter_1 = __webpack_require__(247);
 var util_3 = __webpack_require__(1);
@@ -53551,7 +53528,7 @@ exports.QueryParams = QueryParams;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var RangedFilter_1 = __webpack_require__(247);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var Node_1 = __webpack_require__(34);
 var util_1 = __webpack_require__(1);
 var Change_1 = __webpack_require__(63);
@@ -53817,8 +53794,8 @@ exports.LimitedFilter = LimitedFilter;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
-var Reference_1 = __webpack_require__(154);
-var DataSnapshot_1 = __webpack_require__(155);
+var Reference_1 = __webpack_require__(155);
+var DataSnapshot_1 = __webpack_require__(156);
 var Path_1 = __webpack_require__(14);
 var Tree_1 = __webpack_require__(456);
 var PriorityIndex_1 = __webpack_require__(28);
@@ -53827,7 +53804,7 @@ var ServerValues_1 = __webpack_require__(233);
 var validation_1 = __webpack_require__(57);
 var util_3 = __webpack_require__(1);
 var nodeFromJSON_1 = __webpack_require__(79);
-var ChildrenNode_1 = __webpack_require__(31);
+var ChildrenNode_1 = __webpack_require__(32);
 var Repo_1 = __webpack_require__(109);
 // TODO: This is pretty messy.  Ideally, a lot of this would move into FirebaseData, or a transaction-specific
 // component used by FirebaseData, but it has ties to user callbacks (transaction update and onComplete) as well
@@ -54685,7 +54662,7 @@ exports.interceptServerData = function (ref, callback) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var RepoInfo_1 = __webpack_require__(224);
 var PersistentConnection_1 = __webpack_require__(240);
-var RepoManager_1 = __webpack_require__(159);
+var RepoManager_1 = __webpack_require__(160);
 var Connection_1 = __webpack_require__(242);
 exports.DataConnection = PersistentConnection_1.PersistentConnection;
 /**
@@ -54776,7 +54753,7 @@ exports.forceRestClient = function (forceRestClient) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return FirebaseAppName; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__firebase_app_module__ = __webpack_require__(248);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_scheduler_queue__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_scheduler_queue__ = __webpack_require__(162);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_scheduler_queue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_scheduler_queue__);
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__firebase_app_module__["a"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__firebase_app_module__["b"]; });
@@ -55140,7 +55117,7 @@ if (typeof Promise === 'undefined') {
 
 })(this);
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(160).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(161).setImmediate))
 
 /***/ }),
 /* 464 */,
@@ -55931,7 +55908,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(269), __webpack_require__(169), __webpack_require__(268), __webpack_require__(170), __webpack_require__(142), __webpack_require__(270), __webpack_require__(272)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, map_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, admin_component_1, admin_guard_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(269), __webpack_require__(170), __webpack_require__(268), __webpack_require__(171), __webpack_require__(143), __webpack_require__(270), __webpack_require__(272)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, map_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, admin_component_1, admin_guard_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.routes = [
@@ -55944,21 +55921,18 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
         { path: '', redirectTo: '/map', pathMatch: 'full' },
         { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
     ];
-    var AppRoutingModule = (function () {
-        function AppRoutingModule() {
-        }
-        AppRoutingModule = __decorate([
-            core_1.NgModule({
-                imports: [
-                    router_1.RouterModule.forRoot(exports.routes, { enableTracing: true, useHash: true })
-                ],
-                exports: [
-                    router_1.RouterModule
-                ]
-            })
-        ], AppRoutingModule);
-        return AppRoutingModule;
-    }());
+    let AppRoutingModule = class AppRoutingModule {
+    };
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                router_1.RouterModule.forRoot(exports.routes, { enableTracing: true, useHash: true })
+            ],
+            exports: [
+                router_1.RouterModule
+            ]
+        })
+    ], AppRoutingModule);
     exports.AppRoutingModule = AppRoutingModule;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -63526,40 +63500,37 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(6), __webpack_require__(274)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, common_1, material_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MaterialModule = (function () {
-        function MaterialModule() {
-        }
-        MaterialModule = __decorate([
-            core_1.NgModule({
-                imports: [
-                    common_1.CommonModule,
-                    material_1.MatDividerModule,
-                    material_1.MatButtonModule,
-                    material_1.MatListModule,
-                    material_1.MatIconModule,
-                    material_1.MatFormFieldModule,
-                    material_1.MatInputModule,
-                    material_1.MatSnackBarModule,
-                    material_1.MatToolbarModule,
-                    material_1.MatStepperModule,
-                    material_1.MatSelectModule
-                ],
-                exports: [
-                    material_1.MatDividerModule,
-                    material_1.MatButtonModule,
-                    material_1.MatListModule,
-                    material_1.MatIconModule,
-                    material_1.MatFormFieldModule,
-                    material_1.MatInputModule,
-                    material_1.MatSnackBarModule,
-                    material_1.MatToolbarModule,
-                    material_1.MatStepperModule,
-                    material_1.MatSelectModule
-                ]
-            })
-        ], MaterialModule);
-        return MaterialModule;
-    }());
+    let MaterialModule = class MaterialModule {
+    };
+    MaterialModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                common_1.CommonModule,
+                material_1.MatDividerModule,
+                material_1.MatButtonModule,
+                material_1.MatListModule,
+                material_1.MatIconModule,
+                material_1.MatFormFieldModule,
+                material_1.MatInputModule,
+                material_1.MatSnackBarModule,
+                material_1.MatToolbarModule,
+                material_1.MatStepperModule,
+                material_1.MatSelectModule
+            ],
+            exports: [
+                material_1.MatDividerModule,
+                material_1.MatButtonModule,
+                material_1.MatListModule,
+                material_1.MatIconModule,
+                material_1.MatFormFieldModule,
+                material_1.MatInputModule,
+                material_1.MatSnackBarModule,
+                material_1.MatToolbarModule,
+                material_1.MatStepperModule,
+                material_1.MatSelectModule
+            ]
+        })
+    ], MaterialModule);
     exports.MaterialModule = MaterialModule;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -63594,7 +63565,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_cdk_portal__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_operators_take__);
@@ -63602,7 +63573,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_switchMap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_operators_switchMap__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_tap__ = __webpack_require__(86);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_tap___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_operators_tap__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_delay__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_delay__ = __webpack_require__(165);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_operators_delay___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_operators_delay__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_material_form_field__ = __webpack_require__(67);
@@ -63614,7 +63585,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_rxjs_observable_fromEvent___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_rxjs_observable_fromEvent__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_observable_merge__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_20_rxjs_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_21_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_21_rxjs_observable_of__);
 /**
  * @license
@@ -65657,7 +65628,7 @@ var MatCardModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_observers__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_observers__ = __webpack_require__(174);
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -68136,7 +68107,7 @@ var MatChipsModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__angular_cdk_portal__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_Subscription__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_Subscription___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_Subscription__);
@@ -68145,7 +68116,7 @@ var MatChipsModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__angular_material_form_field__ = __webpack_require__(67);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__angular_material_input__ = __webpack_require__(277);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19_rxjs_observable_of__);
 /**
  * @license
@@ -70973,7 +70944,7 @@ var MatDatepickerModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators_take__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_startWith__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_operators_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_operators_startWith__);
@@ -74087,9 +74058,9 @@ var MatListModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_Subject___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_Subject__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__angular_cdk_bidi__ = __webpack_require__(26);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17_rxjs_operators_filter__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18_rxjs_observable_of__);
 /**
  * @license
@@ -76238,7 +76209,7 @@ var MatProgressBarModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MatProgressSpinner; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return MatSpinner; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_material_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(6);
@@ -77572,14 +77543,14 @@ var MatRadioModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_scrolling__ = __webpack_require__(115);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_observable_merge__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_observable_merge__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_filter__ = __webpack_require__(30);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_take__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_rxjs_operators_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_rxjs_operators_take__);
@@ -78825,8 +78796,8 @@ var MatSidenavModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return MatSlideToggleBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return _MatSlideToggleMixinBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MatSlideToggle; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_observers__ = __webpack_require__(173);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_observers__ = __webpack_require__(174);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_material_core__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_platform_browser__ = __webpack_require__(37);
@@ -84245,7 +84216,7 @@ var MatTableDataSource = /** @class */ (function (_super) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "v", function() { return MatTabNavBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "y", function() { return _MatTabLinkMixinBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "w", function() { return _MatTabNavMixinBase; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_observers__ = __webpack_require__(173);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_observers__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_portal__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_scrolling__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(6);
@@ -84262,9 +84233,9 @@ var MatTableDataSource = /** @class */ (function (_super) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_merge__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_rxjs_observable_merge___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12_rxjs_observable_merge__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__angular_cdk_keycodes__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_observable_of__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_observable_of__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_rxjs_observable_of___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_rxjs_observable_of__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_operators_takeUntil__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16_rxjs_operators_takeUntil___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16_rxjs_operators_takeUntil__);
 /**
@@ -86359,7 +86330,7 @@ var MatTabsModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return throwToolbarMixedModesError; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_material_core__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_common__ = __webpack_require__(6);
 /**
@@ -86540,11 +86511,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(290), __webpack_require__(169), __webpack_require__(142), __webpack_require__(170), __webpack_require__(33), __webpack_require__(288), __webpack_require__(557), __webpack_require__(84)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, tree_service_1, login_component_1, email_component_1, signup_component_1, auth_service_1, members_component_1, map_event_service_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(290), __webpack_require__(170), __webpack_require__(143), __webpack_require__(171), __webpack_require__(29), __webpack_require__(288), __webpack_require__(557), __webpack_require__(84)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, tree_service_1, login_component_1, email_component_1, signup_component_1, auth_service_1, members_component_1, map_event_service_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AppComponent = (function () {
-        function AppComponent(treeService, _cfr, authService, 
+    let AppComponent = class AppComponent {
+        constructor(treeService, _cfr, authService, 
             // private _mes: MapEventService,
             appState) {
             this.treeService = treeService;
@@ -86560,40 +86531,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
               }
             ) */
         }
-        AppComponent.prototype.ngOnInit = function () {
-            var _this = this;
-            this.authService.userChanged.subscribe(function () {
-                _this.loggedIn = _this.authService.isLoggedIn();
+        ngOnInit() {
+            this.authService.userChanged.subscribe(() => {
+                this.loggedIn = this.authService.isLoggedIn();
             });
-        };
-        AppComponent.prototype.userHasRole = function (role) {
+        }
+        userHasRole(role) {
             return this.authService.hasRole(role);
-        };
+        }
         // rescue button, if something does not work
-        AppComponent.prototype.logout = function () {
+        logout() {
             this.authService.logout();
             this.addTool('hide');
             console.log(this.authService.getUser());
-        };
-        AppComponent.prototype.toggleLogin = function () {
+        }
+        toggleLogin() {
             if (this.loggedIn) {
                 this.authService.logout();
             }
             else {
                 this.addTool('login');
             }
-        };
-        AppComponent.prototype.loginEvent = function (event) {
+        }
+        loginEvent(event) {
             console.log(event);
             this.addTool(event);
-        };
-        AppComponent.prototype.setMode = function (mode) {
+        }
+        setMode(mode) {
             this.appState.setMode(mode);
             // console.log('select mode');
             /* this.memberSubComponent = "mode-selector";
             this.addTool('member'); */
-        };
-        AppComponent.prototype.mapClicked = function (event) {
+        }
+        mapClicked(event) {
             console.log(event);
             this.mapClickData = event;
             if (event.attr && (this.authService.mode === 'play')) {
@@ -86604,10 +86574,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 this.memberSubComponent = "add";
                 this.addTool('member');
             }
-        };
+        }
         // creates a component and shows it in the browser
-        AppComponent.prototype.addTool = function (tool) {
-            var _this = this;
+        addTool(tool) {
             // first remove previously shown component
             if (this.cmpRef) {
                 this.cmpRef.destroy();
@@ -86632,36 +86601,35 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 default: this.toolComponent = null;
             }
             if (this.toolComponent) {
-                var comp = this._cfr.resolveComponentFactory(this.toolComponent);
+                let comp = this._cfr.resolveComponentFactory(this.toolComponent);
                 this.cmpRef = this.container.createComponent(comp);
                 this.cmpRef.instance.subComponent = this.memberSubComponent;
                 this.cmpRef.instance.mapClickData = this.mapClickData;
-                this.cmpRef.instance.eventData.subscribe(function (data) {
+                this.cmpRef.instance.eventData.subscribe((data) => {
                     console.log(data);
-                    _this.addTool(data);
-                    _this.mapClickData = null;
-                    _this.memberSubComponent = '';
+                    this.addTool(data);
+                    this.mapClickData = null;
+                    this.memberSubComponent = '';
                 });
             }
-        };
-        __decorate([
-            core_1.ViewChild('tools', { read: core_1.ViewContainerRef }),
-            __metadata("design:type", core_1.ViewContainerRef)
-        ], AppComponent.prototype, "container", void 0);
-        AppComponent = __decorate([
-            core_1.Component({
-                selector: 'app-root',
-                template: __webpack_require__(558),
-                styles: [__webpack_require__(559)],
-                providers: [map_event_service_1.MapEventService]
-            }),
-            __metadata("design:paramtypes", [tree_service_1.TreeService,
-                core_1.ComponentFactoryResolver,
-                auth_service_1.AuthService,
-                app_state_service_1.AppStateService])
-        ], AppComponent);
-        return AppComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.ViewChild('tools', { read: core_1.ViewContainerRef }),
+        __metadata("design:type", core_1.ViewContainerRef)
+    ], AppComponent.prototype, "container", void 0);
+    AppComponent = __decorate([
+        core_1.Component({
+            selector: 'app-root',
+            template: __webpack_require__(558),
+            styles: [__webpack_require__(559)],
+            providers: [map_event_service_1.MapEventService]
+        }),
+        __metadata("design:paramtypes", [tree_service_1.TreeService,
+            core_1.ComponentFactoryResolver,
+            auth_service_1.AuthService,
+            app_state_service_1.AppStateService])
+    ], AppComponent);
     exports.AppComponent = AppComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -86745,11 +86713,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(33)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var MapEventService = (function () {
-        function MapEventService(_aS) {
+    let MapEventService = class MapEventService {
+        constructor(_aS) {
             this._aS = _aS;
             // Observable MapClickEvent source
             this.mapEventSource = new Subject_1.Subject();
@@ -86757,17 +86725,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.mapEvent$ = this.mapEventSource.asObservable();
         }
         // Service event command
-        MapEventService.prototype.emitMapEvent = function (event) {
+        emitMapEvent(event) {
             if (this._aS.isLoggedIn()) {
                 this.mapEventSource.next(event);
             }
-        };
-        MapEventService = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_service_1.AuthService])
-        ], MapEventService);
-        return MapEventService;
-    }());
+        }
+    };
+    MapEventService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
+    ], MapEventService);
     exports.MapEventService = MapEventService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -86851,11 +86818,11 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(33)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(45), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AuthGuard = (function () {
-        function AuthGuard(auth, router) {
+    let AuthGuard = class AuthGuard {
+        constructor(auth, router) {
             this.auth = auth;
             this.router = router;
         }
@@ -86864,20 +86831,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
             return true;
           }*/
-        AuthGuard.prototype.canActivate = function (route, state) {
+        canActivate(route, state) {
             //return true;
             if (!this.auth.isLoggedIn()) {
                 this.router.navigate(['/login']);
                 return false;
             }
             return true;
-        };
-        AuthGuard = __decorate([
-            core_1.Injectable(),
-            __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
-        ], AuthGuard);
-        return AuthGuard;
-    }());
+        }
+    };
+    AuthGuard = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
+    ], AuthGuard);
     exports.AuthGuard = AuthGuard;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -86896,34 +86862,33 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(33), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(29), __webpack_require__(56)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var ModeSelectorComponent = (function () {
-        function ModeSelectorComponent(auth) {
+    let ModeSelectorComponent = class ModeSelectorComponent {
+        constructor(auth) {
             this.auth = auth;
             this.eventData = new core_1.EventEmitter();
         }
-        ModeSelectorComponent.prototype.resetTool = function (event) {
+        resetTool(event) {
             this.eventData.emit(event);
-        };
-        ModeSelectorComponent.prototype.ngOnInit = function () {
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], ModeSelectorComponent.prototype, "eventData", void 0);
-        ModeSelectorComponent = __decorate([
-            core_1.Component({
-                selector: 'app-mode-selector',
-                template: __webpack_require__(564),
-                styles: [__webpack_require__(565)],
-                animations: [router_animations_1.moveIn(), router_animations_1.fallIn(), router_animations_1.moveInLeft()],
-            }),
-            __metadata("design:paramtypes", [auth_service_1.AuthService])
-        ], ModeSelectorComponent);
-        return ModeSelectorComponent;
-    }());
+        }
+        ngOnInit() {
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], ModeSelectorComponent.prototype, "eventData", void 0);
+    ModeSelectorComponent = __decorate([
+        core_1.Component({
+            selector: 'app-mode-selector',
+            template: __webpack_require__(564),
+            styles: [__webpack_require__(565)],
+            animations: [router_animations_1.moveIn(), router_animations_1.fallIn(), router_animations_1.moveInLeft()],
+        }),
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
+    ], ModeSelectorComponent);
     exports.ModeSelectorComponent = ModeSelectorComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87007,46 +86972,45 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(569), __webpack_require__(50)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, treenames_1, database_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(569), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, treenames_1, database_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var TreenamesComponent = (function () {
-        function TreenamesComponent(db) {
+    let TreenamesComponent = class TreenamesComponent {
+        constructor(db) {
             this.db = db;
             this.treenames = treenames_1.TREENAMES;
         }
-        TreenamesComponent.prototype.ngOnInit = function () {
-        };
-        TreenamesComponent.prototype.import = function () {
-            for (var i = 0; i < this.treenames.length; i++) {
+        ngOnInit() {
+        }
+        import() {
+            for (let i = 0; i < this.treenames.length; i++) {
                 this.updateTreename(this.treenames[i]);
                 // console.log(this.treenames[i].baumnamedeu);
             }
-        };
-        TreenamesComponent.prototype.updateTreename = function (treename) {
+        }
+        updateTreename(treename) {
             // let newName = new User (treename);
             // console.log(newName);
-            var ref = this.db.object("treenames/" + treename.id);
+            let ref = this.db.object(`treenames/${treename.id}`);
             ref.valueChanges().take(1)
-                .subscribe(function (tname) {
+                .subscribe(tname => {
                 if (!tname) {
                     ref.update(treename)
-                        .then(function (tr) {
+                        .then(tr => {
                         console.log(tr);
                     });
                 }
             });
-        };
-        TreenamesComponent = __decorate([
-            core_1.Component({
-                selector: 'app-treenames',
-                template: __webpack_require__(570),
-                styles: [__webpack_require__(571)]
-            }),
-            __metadata("design:paramtypes", [database_1.AngularFireDatabase])
-        ], TreenamesComponent);
-        return TreenamesComponent;
-    }());
+        }
+    };
+    TreenamesComponent = __decorate([
+        core_1.Component({
+            selector: 'app-treenames',
+            template: __webpack_require__(570),
+            styles: [__webpack_require__(571)]
+        }),
+        __metadata("design:paramtypes", [database_1.AngularFireDatabase])
+    ], TreenamesComponent);
     exports.TreenamesComponent = TreenamesComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87142,12 +87106,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(56), __webpack_require__(291), __webpack_require__(53), __webpack_require__(33), __webpack_require__(50), __webpack_require__(175)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_animations_1, tree_name_service_1, tree_1, auth_service_1, database_1, utils_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(56), __webpack_require__(291), __webpack_require__(53), __webpack_require__(29), __webpack_require__(46), __webpack_require__(119)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_animations_1, tree_name_service_1, tree_1, auth_service_1, database_1, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var GuessComponent = (function () {
+    let GuessComponent = class GuessComponent {
         // @Output() eventData: EventEmitter<string> = new EventEmitter<string>();
-        function GuessComponent(_tNS, _aS, _db) {
+        constructor(_tNS, _aS, _db) {
             this._tNS = _tNS;
             this._aS = _aS;
             this._db = _db;
@@ -87159,9 +87123,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
            alert(d.toString());
            // this.eventData.emit(event);
          }*/
-        GuessComponent.prototype.ngOnInit = function () {
+        ngOnInit() {
             this.treeNameId = this._tNS.getTreenameId(this.treeData.attr.baumnamelat, this.treeData.attr.baumnamedeu);
-            var tree = {
+            let tree = {
                 id: this.treeNameId,
                 baumartlat: this.treeData.attr.baumartlat,
                 baumgattunglat: this.treeData.attr.baumgattunglat,
@@ -87170,17 +87134,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             };
             this.selection = this._tNS.getSelectionOfNames(this._aS.level - 1, tree);
             // console.log(this.selection);
-        };
-        GuessComponent.prototype.ngOnChanges = function (changes) {
+        }
+        ngOnChanges(changes) {
             console.log(changes);
-        };
-        GuessComponent.prototype.ngOnDestroy = function () {
+        }
+        ngOnDestroy() {
             console.log('beeing destroyed');
             if (!(this.points === 0)) {
                 this.updateGuess();
             }
-        };
-        GuessComponent.prototype.selectTreeName = function (id) {
+        }
+        selectTreeName(id) {
             if (this.clicks[id] === undefined) {
                 if (id === this.treeNameId) {
                     this.points = this.points + this._aS.level;
@@ -87191,90 +87155,86 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     this.clicks[id] = -1;
                 }
             }
-        };
-        GuessComponent.prototype.getScore = function (period) {
+        }
+        getScore(period) {
             if (period === 'day') {
                 return this._aS.dayScore;
             }
             else {
                 return this._aS.totScore;
             }
-        };
-        GuessComponent.prototype.updateGuess = function () {
-            var _this = this;
-            var guess = {
+        }
+        updateGuess() {
+            let guess = {
                 treeId: this.treeData.attr.ObjectID,
-                treeNameId: this.treeNameId,
+                treeNameId: this.treeNameId.toString(),
                 points: this.points
             };
-            var d = utils_1.Utils.getDate();
-            var t = utils_1.Utils.getTime();
-            var refLast = this._db.object("guess/" + this._aS.getUserId() + "/" + d + "/" + t);
-            var refScore = this._db.object("guess/" + this._aS.getUserId() + "/" + d + "/score");
-            var refTot = this._db.object("guess/" + this._aS.getUserId() + "/score");
+            let d = utils_1.Utils.getDate();
+            let t = utils_1.Utils.getTime();
+            let refLast = this._db.object(`guess/${this._aS.getUserId()}/${d}/${t}`);
+            let refScore = this._db.object(`guess/${this._aS.getUserId()}/${d}/score`);
+            let refTot = this._db.object(`guess/${this._aS.getUserId()}/score`);
             refLast.valueChanges().take(1)
-                .subscribe(function (last) {
+                .subscribe(last => {
                 if (!last) {
                     refLast.update(guess)
-                        .catch(function (err) {
-                        return console.log(err);
-                    });
+                        .catch((err) => console.log(err));
                 }
             });
             refScore.valueChanges().take(1)
-                .subscribe(function (score) {
-                var s = { p: _this.points };
+                .subscribe(score => {
+                let s = { p: this.points };
                 if (score) {
                     console.log(score);
                     s.p += score.p;
                 }
                 refScore.update(s)
-                    .then(function (res) {
+                    .then(res => {
                     console.log(s);
-                    _this._aS.dayScore = s.p;
+                    this._aS.dayScore = s.p;
                 })
-                    .catch(function (err) {
+                    .catch((err) => {
                     console.log(err);
                 });
             });
             refTot.valueChanges().take(1)
-                .subscribe(function (tot) {
-                var t = { p: _this.points };
+                .subscribe(tot => {
+                let t = { p: this.points };
                 if (tot) {
                     console.log(tot);
                     t.p += tot.p;
                 }
                 refTot.update(t)
-                    .then(function (res) {
+                    .then(res => {
                     console.log(t);
-                    _this._aS.totScore = t.p;
+                    this._aS.totScore = t.p;
                 })
-                    .catch(function (err) {
+                    .catch((err) => {
                     console.log(err);
                 });
             });
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", tree_1.MapClickEvent)
-        ], GuessComponent.prototype, "treeData", void 0);
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", Boolean)
-        ], GuessComponent.prototype, "done", void 0);
-        GuessComponent = __decorate([
-            core_1.Component({
-                selector: 'app-guess',
-                template: __webpack_require__(575),
-                styles: [__webpack_require__(576)],
-                animations: [router_animations_1.moveIn()],
-            }),
-            __metadata("design:paramtypes", [tree_name_service_1.TreeNameService,
-                auth_service_1.AuthService,
-                database_1.AngularFireDatabase])
-        ], GuessComponent);
-        return GuessComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", tree_1.MapClickEvent)
+    ], GuessComponent.prototype, "treeData", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Boolean)
+    ], GuessComponent.prototype, "done", void 0);
+    GuessComponent = __decorate([
+        core_1.Component({
+            selector: 'app-guess',
+            template: __webpack_require__(575),
+            styles: [__webpack_require__(576)],
+            animations: [router_animations_1.moveIn()],
+        }),
+        __metadata("design:paramtypes", [tree_name_service_1.TreeNameService,
+            auth_service_1.AuthService,
+            database_1.AngularFireDatabase])
+    ], GuessComponent);
     exports.GuessComponent = GuessComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87361,27 +87321,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(56), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_animations_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AddComponent = (function () {
-        function AddComponent() {
+    let AddComponent = class AddComponent {
+        constructor() { }
+        ngOnInit() {
         }
-        AddComponent.prototype.ngOnInit = function () {
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", tree_1.MapClickEvent)
-        ], AddComponent.prototype, "treeData", void 0);
-        AddComponent = __decorate([
-            core_1.Component({
-                selector: 'app-add',
-                template: __webpack_require__(580),
-                styles: [__webpack_require__(581)],
-                animations: [router_animations_1.moveIn()],
-                host: { '[@moveIn]': '' }
-            }),
-            __metadata("design:paramtypes", [])
-        ], AddComponent);
-        return AddComponent;
-    }());
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", tree_1.MapClickEvent)
+    ], AddComponent.prototype, "treeData", void 0);
+    AddComponent = __decorate([
+        core_1.Component({
+            selector: 'app-add',
+            template: __webpack_require__(580),
+            styles: [__webpack_require__(581)],
+            animations: [router_animations_1.moveIn()],
+            host: { '[@moveIn]': '' }
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddComponent);
     exports.AddComponent = AddComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87465,49 +87423,45 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(271), __webpack_require__(50)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, users_service_1, database_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(271), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, users_service_1, database_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var UsersComponent = (function () {
-        function UsersComponent(_us, _db) {
+    let UsersComponent = class UsersComponent {
+        constructor(_us, _db) {
             this._us = _us;
             this._db = _db;
         }
-        UsersComponent.prototype.ngOnInit = function () {
-            var _this = this;
+        ngOnInit() {
             this._us.getUsers()
-                .subscribe(function (users) {
-                return _this.users = users;
-            });
-        };
-        UsersComponent.prototype.update = function () {
+                .subscribe(users => this.users = users);
+        }
+        update() {
             // console.log(this.users);
-            for (var i = 0; i < this.users.length; i++) {
+            for (let i = 0; i < this.users.length; i++) {
                 this.updateUser(this.users[i]);
             }
-        };
-        UsersComponent.prototype.updateUser = function (user) {
+        }
+        updateUser(user) {
             console.log(user);
-            var ref = this._db.object("users/" + user.id);
+            const ref = this._db.object(`users/${user.id}`);
             ref.valueChanges().take(1)
-                .subscribe(function (usr) {
+                .subscribe(usr => {
                 ref.update(user)
-                    .then(function (usr) {
+                    .then(usr => {
                     console.log(usr);
                 });
             });
-        };
-        UsersComponent = __decorate([
-            core_1.Component({
-                selector: 'app-users',
-                template: __webpack_require__(585),
-                styles: [__webpack_require__(586)]
-            }),
-            __metadata("design:paramtypes", [users_service_1.UsersService,
-                database_1.AngularFireDatabase])
-        ], UsersComponent);
-        return UsersComponent;
-    }());
+        }
+    };
+    UsersComponent = __decorate([
+        core_1.Component({
+            selector: 'app-users',
+            template: __webpack_require__(585),
+            styles: [__webpack_require__(586)]
+        }),
+        __metadata("design:paramtypes", [users_service_1.UsersService,
+            database_1.AngularFireDatabase])
+    ], UsersComponent);
     exports.UsersComponent = UsersComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87594,104 +87548,98 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(90), __webpack_require__(84), __webpack_require__(590)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, app_state_service_1, MapView) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var EsriMapComponent = (function () {
-        function EsriMapComponent(mapDataService, elementRef, appState) {
+    let EsriMapComponent = class EsriMapComponent {
+        constructor(mapDataService, elementRef, appState) {
             this.mapDataService = mapDataService;
             this.elementRef = elementRef;
             this.appState = appState;
             this.selectedTreeChange = new core_1.EventEmitter();
         }
-        Object.defineProperty(EsriMapComponent.prototype, "selectedTree", {
-            get: function () {
-                return this._selectedTree;
-            },
-            set: function (tree) {
-                this._selectedTree = tree;
-            },
-            enumerable: true,
-            configurable: true
-        });
-        EsriMapComponent.prototype.ngOnInit = function () {
-            var _this = this;
-            var map = this.mapDataService.map;
-            var mapViewProperties = {
+        set selectedTree(tree) {
+            this._selectedTree = tree;
+        }
+        get selectedTree() {
+            return this._selectedTree;
+        }
+        ngOnInit() {
+            const map = this.mapDataService.map;
+            const mapViewProperties = {
                 container: this.elementRef.nativeElement.firstChild,
-                map: map
+                map
             };
             this.mapView = new MapView(mapViewProperties);
-            var view = this.mapView;
-            view.on("click", function (event) {
-                view.hitTest(event).then(function (response) {
+            const view = this.mapView;
+            view.on("click", (event) => {
+                view.hitTest(event).then((response) => {
                     // user is in the editor mode and he clicked on a tree
                     if (response.results.length > 0) {
-                        var result = response.results[0];
+                        const result = response.results[0];
                         if (result.graphic) {
                             // zoom to selected feature
                             view.goTo({
                                 target: result.graphic.geometry,
                                 zoom: 18
                             });
-                            _this.appState.setInteraction('view');
-                            _this.selectedTree = result.graphic;
-                            _this.selectedTreeChange.emit(result.graphic);
+                            this.appState.setInteraction('view');
+                            this.selectedTree = result.graphic;
+                            this.selectedTreeChange.emit(result.graphic);
                         }
                         // user is in the editor mode and he clicked next to a tree
                     }
                     else {
                         // in case he is in the add mode then the coordinates should be added
-                        if (_this.appState.getInteraction() === 'add') {
-                            _this.mapDataService.mapEventSource.next(event.mapPoint);
+                        if (this.appState.getInteraction() === 'add') {
+                            this.mapDataService.mapEventSource.next(event.mapPoint);
                         }
                         else {
                             // in case he was just viewing a tree or editing a tree the selection
                             // is canceled
-                            _this.appState.setInteraction('none');
-                            _this.selectedTree = null;
-                            _this.selectedTreeChange.emit(null);
+                            this.appState.setInteraction('none');
+                            this.selectedTree = null;
+                            this.selectedTreeChange.emit(null);
                         }
                     }
                 });
             });
-            this.appState.interactionChanged.subscribe(function (interaction) {
+            this.appState.interactionChanged.subscribe((interaction) => {
                 if (interaction === 'none') {
-                    _this.changePadding(0);
+                    this.changePadding(0);
                 }
                 else {
-                    _this.changePadding(400);
+                    this.changePadding(400);
                 }
             });
-        };
-        EsriMapComponent.prototype.changePadding = function (padding) {
+        }
+        changePadding(padding) {
             this.mapView.padding = {
                 right: padding
             };
-        };
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", Object)
-        ], EsriMapComponent.prototype, "selectedTreeChange", void 0);
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", Object),
-            __metadata("design:paramtypes", [Object])
-        ], EsriMapComponent.prototype, "selectedTree", null);
-        EsriMapComponent = __decorate([
-            core_1.Component({
-                selector: 'esri-map',
-                template: __webpack_require__(595),
-                styles: [__webpack_require__(596)]
-            }),
-            __metadata("design:paramtypes", [map_data_service_1.MapDataService,
-                core_1.ElementRef,
-                app_state_service_1.AppStateService])
-        ], EsriMapComponent);
-        return EsriMapComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], EsriMapComponent.prototype, "selectedTreeChange", void 0);
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], EsriMapComponent.prototype, "selectedTree", null);
+    EsriMapComponent = __decorate([
+        core_1.Component({
+            selector: 'esri-map',
+            template: __webpack_require__(595),
+            styles: [__webpack_require__(596)]
+        }),
+        __metadata("design:paramtypes", [map_data_service_1.MapDataService,
+            core_1.ElementRef,
+            app_state_service_1.AppStateService])
+    ], EsriMapComponent);
     exports.EsriMapComponent = EsriMapComponent;
     // function that calculates map view padding depending on viewport width
     function getMaxPadding(fixPadding) {
-        var w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0], x = w.innerWidth || e.clientWidth || g.clientWidth;
-        var maxPadding = 30 / 100 * x;
+        const w = window, d = document, e = d.documentElement, g = d.getElementsByTagName('body')[0], x = w.innerWidth || e.clientWidth || g.clientWidth;
+        let maxPadding = 30 / 100 * x;
         if (fixPadding > maxPadding) {
             maxPadding = fixPadding;
         }
@@ -87812,34 +87760,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(84), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var SidePanelComponent = (function () {
-        function SidePanelComponent(appState) {
+    let SidePanelComponent = class SidePanelComponent {
+        constructor(appState) {
             this.appState = appState;
             this.inEditMode = false;
             this.attr = tree_1.attr;
         }
-        SidePanelComponent.prototype.toggleEditMode = function (value) {
+        toggleEditMode(value) {
             this.inEditMode = value;
             console.log(this.inEditMode);
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", Object)
-        ], SidePanelComponent.prototype, "selectedTree", void 0);
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", Object)
-        ], SidePanelComponent.prototype, "inEditMode", void 0);
-        SidePanelComponent = __decorate([
-            core_1.Component({
-                selector: 'side-panel',
-                template: __webpack_require__(600),
-                styles: [__webpack_require__(601)]
-            }),
-            __metadata("design:paramtypes", [app_state_service_1.AppStateService])
-        ], SidePanelComponent);
-        return SidePanelComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], SidePanelComponent.prototype, "selectedTree", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", Object)
+    ], SidePanelComponent.prototype, "inEditMode", void 0);
+    SidePanelComponent = __decorate([
+        core_1.Component({
+            selector: 'side-panel',
+            template: __webpack_require__(600),
+            styles: [__webpack_require__(601)]
+        }),
+        __metadata("design:paramtypes", [app_state_service_1.AppStateService])
+    ], SidePanelComponent);
     exports.SidePanelComponent = SidePanelComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -87905,7 +87852,7 @@ exports = module.exports = __webpack_require__(15)(undefined);
 
 
 // module
-exports.push([module.i, ".side-panel {\n  position: absolute;\n  top: 64px;\n  right: 0;\n  bottom: 0;\n  width: 30%;\n  min-width: 370px;\n  padding: 10px;\n  box-sizing: border-box;\n  background-color: rgba(255, 255, 255, 0.95); }\n  .side-panel .btn-edit {\n    position: absolute;\n    top: 45px;\n    right: 10px; }\n", ""]);
+exports.push([module.i, ".side-panel {\n  position: absolute;\n  top: 64px;\n  right: 0;\n  bottom: 0;\n  width: 30%;\n  min-width: 370px;\n  padding: 10px;\n  box-sizing: border-box;\n  background-color: rgba(255, 255, 255, 0.9); }\n  .side-panel .btn-edit {\n    position: absolute;\n    top: 45px;\n    right: 10px; }\n", ""]);
 
 // exports
 
@@ -87926,58 +87873,56 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(274), __webpack_require__(90), __webpack_require__(53)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, material_1, map_data_service_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var EditorPanelComponent = (function () {
-        function EditorPanelComponent(mapDataService, snackBar) {
+    let EditorPanelComponent = class EditorPanelComponent {
+        constructor(mapDataService, snackBar) {
             this.mapDataService = mapDataService;
             this.snackBar = snackBar;
             this.editing = new core_1.EventEmitter();
         }
-        EditorPanelComponent.prototype.ngOnInit = function () {
-            var attributes = this.selectedTree.attributes;
+        ngOnInit() {
+            const attributes = this.selectedTree.attributes;
             this.form = new forms_1.FormGroup({
                 quartier: new forms_1.FormControl(attributes[tree_1.attr.quartier]),
                 status: new forms_1.FormControl(attributes[tree_1.attr.status]),
                 pflanzJahr: new forms_1.FormControl(attributes[tree_1.attr.pflanzJahr])
             });
-        };
-        EditorPanelComponent.prototype.onSubmit = function (form) {
-            var _this = this;
-            var editedTree = this.selectedTree;
+        }
+        onSubmit(form) {
+            const editedTree = this.selectedTree;
             editedTree.attributes[tree_1.attr.pflanzJahr] = form.pflanzJahr;
             this.mapDataService.updateTree(editedTree)
-                .then(function (tree) {
-                _this.editing.emit(false);
-                _this.snackBar.open('Baum Attributen erfolgreich gespeichert.', null, {
+                .then((tree) => {
+                this.editing.emit(false);
+                this.snackBar.open('Baum Attributen erfolgreich gespeichert.', null, {
                     duration: 2000,
                 });
-            }).otherwise(function (err) {
-                _this.snackBar.open('Ein Fehler ist aufgetretten.', null, {
+            }).otherwise((err) => {
+                this.snackBar.open('Ein Fehler ist aufgetretten.', null, {
                     duration: 2000,
                 });
             });
-        };
-        EditorPanelComponent.prototype.cancelEdit = function () {
+        }
+        cancelEdit() {
             this.editing.emit(false);
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", Object)
-        ], EditorPanelComponent.prototype, "selectedTree", void 0);
-        __decorate([
-            core_1.Output(),
-            __metadata("design:type", core_1.EventEmitter)
-        ], EditorPanelComponent.prototype, "editing", void 0);
-        EditorPanelComponent = __decorate([
-            core_1.Component({
-                selector: 'editor-panel',
-                template: __webpack_require__(605),
-                styles: [__webpack_require__(606)]
-            }),
-            __metadata("design:paramtypes", [map_data_service_1.MapDataService,
-                material_1.MatSnackBar])
-        ], EditorPanelComponent);
-        return EditorPanelComponent;
-    }());
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], EditorPanelComponent.prototype, "selectedTree", void 0);
+    __decorate([
+        core_1.Output(),
+        __metadata("design:type", core_1.EventEmitter)
+    ], EditorPanelComponent.prototype, "editing", void 0);
+    EditorPanelComponent = __decorate([
+        core_1.Component({
+            selector: 'editor-panel',
+            template: __webpack_require__(605),
+            styles: [__webpack_require__(606)]
+        }),
+        __metadata("design:paramtypes", [map_data_service_1.MapDataService,
+            material_1.MatSnackBar])
+    ], EditorPanelComponent);
     exports.EditorPanelComponent = EditorPanelComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -88064,14 +88009,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(90), __webpack_require__(53), __webpack_require__(289), __webpack_require__(610)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, tree_1, Point, Graphic) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var AddTreePanelComponent = (function () {
-        function AddTreePanelComponent(_formBuilder, mapDataService) {
+    let AddTreePanelComponent = class AddTreePanelComponent {
+        constructor(_formBuilder, mapDataService) {
             this._formBuilder = _formBuilder;
             this.mapDataService = mapDataService;
             this.treeNames = mapDataService.uniqueTreeNames;
         }
-        AddTreePanelComponent.prototype.ngOnInit = function () {
-            var _this = this;
+        ngOnInit() {
             this.locationFormGroup = this._formBuilder.group({
                 latitude: ['', forms_1.Validators.required],
                 longitude: ['', forms_1.Validators.required]
@@ -88082,16 +88026,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 quartier: ['', forms_1.Validators.required]
             });
             // add the coordinates to the form
-            this.mapDataService.mapEvent$.subscribe(function (value) {
-                _this.locationFormGroup.patchValue({
+            this.mapDataService.mapEvent$.subscribe(value => {
+                this.locationFormGroup.patchValue({
                     'latitude': value.latitude,
                     'longitude': value.longitude
                 });
             });
-        };
-        AddTreePanelComponent.prototype.saveTree = function () {
-            var attributes = this.attributeFormGroup.value;
-            var newTree = new Graphic({
+        }
+        saveTree() {
+            const attributes = this.attributeFormGroup.value;
+            const newTree = new Graphic({
                 geometry: new Point({
                     spatialReference: {
                         wkid: 4326
@@ -88105,18 +88049,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             newTree.attributes[tree_1.attr.pflanzJahr] = attributes.pflanzJahr;
             newTree.attributes[tree_1.attr.quartier] = attributes.quartier;
             this.mapDataService.addTree(newTree);
-        };
-        AddTreePanelComponent = __decorate([
-            core_1.Component({
-                selector: 'add-tree-panel',
-                template: __webpack_require__(611),
-                styles: [__webpack_require__(612)]
-            }),
-            __metadata("design:paramtypes", [forms_1.FormBuilder,
-                map_data_service_1.MapDataService])
-        ], AddTreePanelComponent);
-        return AddTreePanelComponent;
-    }());
+        }
+    };
+    AddTreePanelComponent = __decorate([
+        core_1.Component({
+            selector: 'add-tree-panel',
+            template: __webpack_require__(611),
+            styles: [__webpack_require__(612)]
+        }),
+        __metadata("design:paramtypes", [forms_1.FormBuilder,
+            map_data_service_1.MapDataService])
+    ], AddTreePanelComponent);
     exports.AddTreePanelComponent = AddTreePanelComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -88206,57 +88149,129 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(90), __webpack_require__(175)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, utils_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(90), __webpack_require__(119), __webpack_require__(46), __webpack_require__(29)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, utils_1, database_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var GuessPanelComponent = (function () {
-        function GuessPanelComponent(mapDataService) {
+    let GuessPanelComponent = class GuessPanelComponent {
+        constructor(mapDataService, _db, _aS) {
             this.mapDataService = mapDataService;
+            this._db = _db;
+            this._aS = _aS;
             this.selection = [];
             this.correctAnswer = false;
             this.buttonState = {};
+            this.points = 0;
         }
-        GuessPanelComponent.prototype.ngOnChanges = function (values) {
+        ngOnChanges(values) {
+            console.log(values);
+            if (!(this.points === 0)) {
+                this.updateGuess();
+            }
             if (values.selectedTree.currentValue) {
                 this.correctAnswer = false;
-                this.selection = this.mapDataService.getRandomTreeNames(3);
+                this.selectedTreeId = values.selectedTree.currentValue.attributes.OBJECTID;
+                this.selectedTreeName = values.selectedTree.currentValue.attributes.baumnamede;
+                this.selection = this.mapDataService.getRandomTreeNames(this._aS.level, this.selectedTreeName);
                 console.log(this.selection);
-                var name_1 = values.selectedTree.currentValue.attributes.baumnamede;
-                this.selection.push(name_1);
                 this.selection = utils_1.Utils.shuffle(this.selection);
                 this.initButtonState();
+                this.points = 0;
             }
-        };
-        GuessPanelComponent.prototype.initButtonState = function () {
-            var _this = this;
-            this.selection.forEach(function (name) {
-                _this.buttonState[name] = 'not-guessed';
+        }
+        ngOnDestroy() {
+            console.log('on destroy');
+            if (!(this.points === 0)) {
+                this.updateGuess();
+            }
+        }
+        initButtonState() {
+            this.selection.forEach(name => {
+                this.buttonState[name] = 'not-guessed';
             });
-        };
-        GuessPanelComponent.prototype.selectTreeName = function (name, event) {
+        }
+        selectTreeName(name, event) {
             if (this.selectedTree.attributes.baumnamede === name) {
                 this.correctAnswer = true;
+                this.points += this._aS.level;
                 this.buttonState[name] = 'correct';
             }
             else {
                 this.correctAnswer = false;
+                this.points--;
                 this.buttonState[name] = 'false';
             }
-        };
-        __decorate([
-            core_1.Input(),
-            __metadata("design:type", Object)
-        ], GuessPanelComponent.prototype, "selectedTree", void 0);
-        GuessPanelComponent = __decorate([
-            core_1.Component({
-                selector: 'guess-panel',
-                template: __webpack_require__(616),
-                styles: [__webpack_require__(617)]
-            }),
-            __metadata("design:paramtypes", [map_data_service_1.MapDataService])
-        ], GuessPanelComponent);
-        return GuessPanelComponent;
-    }());
+        }
+        getScore(period) {
+            if (period === 'day') {
+                return this._aS.dayScore;
+            }
+            else {
+                return this._aS.totScore;
+            }
+        }
+        updateGuess() {
+            let guess = {
+                treeId: this.selectedTreeId,
+                treeNameId: this.selectedTreeName,
+                points: this.points
+            };
+            let d = utils_1.Utils.getDate();
+            let t = utils_1.Utils.getTime();
+            console.log(d + " " + t);
+            let refLast = this._db.object(`guess/${this._aS.getUserId()}/${d}/${t}`);
+            let refScore = this._db.object(`guess/${this._aS.getUserId()}/${d}/score`);
+            let refTot = this._db.object(`guess/${this._aS.getUserId()}/score`);
+            refLast.valueChanges().take(1)
+                .subscribe(last => {
+                if (!last) {
+                    refLast.update(guess)
+                        .catch((err) => console.log(err));
+                }
+            });
+            refScore.valueChanges().take(1)
+                .subscribe(score => {
+                let s = { p: guess.points };
+                if (score) {
+                    s.p += score.p;
+                }
+                refScore.update(s)
+                    .then(res => {
+                    this._aS.dayScore = s.p;
+                })
+                    .catch((err) => {
+                    console.log(err);
+                });
+            });
+            refTot.valueChanges().take(1)
+                .subscribe(tot => {
+                let t = { p: guess.points };
+                if (tot) {
+                    t.p += tot.p;
+                }
+                refTot.update(t)
+                    .then(res => {
+                    this._aS.totScore = t.p;
+                })
+                    .catch((err) => {
+                    console.log(err);
+                });
+            });
+        }
+    };
+    __decorate([
+        core_1.Input(),
+        __metadata("design:type", Object)
+    ], GuessPanelComponent.prototype, "selectedTree", void 0);
+    GuessPanelComponent = __decorate([
+        core_1.Component({
+            selector: 'guess-panel',
+            template: __webpack_require__(616),
+            styles: [__webpack_require__(617)]
+        }),
+        __metadata("design:paramtypes", [map_data_service_1.MapDataService,
+            database_1.AngularFireDatabase,
+            auth_service_1.AuthService])
+    ], GuessPanelComponent);
     exports.GuessPanelComponent = GuessPanelComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -88266,7 +88281,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /* 616 */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='selectedTree' class='guess-panel'>\n\n  <h1>What kind of tree did you click on?</h1>\n\n  <span class=\"error\" *ngIf=\"error\">{{ error }}</span>\n\n  <button *ngFor=\"let name of selection\" mat-raised-button\n    (click)=\"selectTreeName(name, $event)\" id=\"{{name}}\"\n    [ngClass]=\"buttonState[name]\">\n    {{name}}\n  </button>\n\n</div>\n\n<div *ngIf='!selectedTree'>\n  Click on a tree to guess what type of tree it is.\n</div>";
+module.exports = "<div *ngIf='selectedTree' class='guess-panel'>\n\n  <h1>What kind of tree did you click on?</h1>\n\n  <span class=\"error\" *ngIf=\"error\">{{ error }}</span>\n\n  <button *ngFor=\"let name of selection\" mat-raised-button\n    (click)=\"selectTreeName(name, $event)\" id=\"{{name}}\"\n    [ngClass]=\"buttonState[name]\">\n    {{name}}\n  </button>\n\n  <span class=\"score\"><br>Points: {{points}}</span>\n\n</div>\n\n<div *ngIf=\"getScore('day')>0\" class=\"guess-panel\">\n  <h4>Your current score:</h4>\n  <span class=\"score\">Today: {{getScore('day')}}<br></span>\n  <span *ngIf=\"getScore('tot')!==getScore('day')\" class=\"score\">Total: {{getScore('tot')}}<br></span>\n</div>\n\n<div *ngIf='!selectedTree'>\n  Click on a tree to guess what type of tree it is.\n</div>\n";
 
 /***/ }),
 /* 617 */

@@ -1,6 +1,14 @@
 export class Utils {
 
-
+  static contains(stringArray: Array<string>,word: string): boolean{
+    let i = stringArray.length;
+    while (i--){
+      if (stringArray[i]===word){
+        return true;
+      }
+    }
+    return false;
+  }
 
   //delta: days
   static getDate(delta: number = 0): string {
