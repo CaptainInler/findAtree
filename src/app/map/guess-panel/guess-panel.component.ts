@@ -36,13 +36,6 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
               private _aS: AuthService) { }
 
   ngOnInit(){
-    // let db = this._db.list<Score>('score/total',ref=>ref.orderByChild('p').limitToLast(1)).valueChanges().subscribe(last=>{
-    //   console.log(last);
-    //   if(last) {
-    //     this.maxScore = last[0].p;
-    //   }
-    // });
-
     this.today = Utils.getDate();
     this.dayScoreRef$ = this._db.object<Score>(`score/day/${this._aS.getUserId()}/${this.today}`);
     this.totScoreRef$ = this._db.object<Score>(`score/total/${this._aS.getUserId()}`);
