@@ -6,7 +6,6 @@
 
   <div *ngIf="show" class="child-container">
     <app-mode-selector *ngIf="subComponent==='mode-selector'"></app-mode-selector>
-    <app-guess [treeData]="mapClickData" [done]="done" *ngIf="subComponent==='guess'"></app-guess>
     <app-add [treeData]="mapClickData" *ngIf="subComponent==='add'"></app-add>
   </div>
 
