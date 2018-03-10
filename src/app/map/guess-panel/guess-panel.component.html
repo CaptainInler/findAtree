@@ -14,10 +14,11 @@
 
 </div>
 
-<div *ngIf="getScore('day')>0" class="guess-panel">
+<div *ngIf="getScore('total')>0" class="guess-panel">
   <h4>Your current score:</h4>
   <span class="score">Today: {{getScore('day')}}<br></span>
-  <span *ngIf="getScore('tot')!==getScore('day')" class="score">Total: {{getScore('tot')}}<br></span>
+  <span *ngIf="getScore('total')!==getScore('day')" class="score">Total: {{getScore('total')}}<br></span>
+  <span *ngIf="getScore('best')>0" class="score">Best: {{getScore('best')}}<br></span>
 </div>
 
 <div *ngIf='!selectedTree'>
