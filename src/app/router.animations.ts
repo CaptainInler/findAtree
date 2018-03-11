@@ -37,6 +37,15 @@ export function moveInLeft() {
   ]);
 }
 
+export function showMap() {
+  return trigger('showMap', [
+    state('hide', style({transform: 'translateX(-400%)'})),
+    state('show', style({transform: 'translateX(0)'})),
+    transition('hide => show', animate('1.6s')),
+    transition('void => *', [style ({transform: 'translateX(-400%)'}), animate(10)])
+    ]);
+}
+
 export function moveInRight() {
   return trigger('moveInRight', [
     transition(':enter', [

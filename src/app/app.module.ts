@@ -32,6 +32,7 @@ import { SidePanelComponent } from './map/side-panel/side-panel.component';
 import { EditorPanelComponent } from './map/editor-panel/editor-panel.component';
 import { AddTreePanelComponent } from './map/add-tree-panel/add-tree-panel.component';
 import { GuessPanelComponent } from './map/guess-panel/guess-panel.component';
+import { LoadingPageComponent} from './map/loading-page/loading-page.component';
 
 // services
 import { AdminGuard } from './services/admin.guard';
@@ -74,7 +75,8 @@ import { AppStateService } from './services/app-state.service';
     SidePanelComponent,
     EditorPanelComponent,
     AddTreePanelComponent,
-    GuessPanelComponent
+    GuessPanelComponent,
+    LoadingPageComponent
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [

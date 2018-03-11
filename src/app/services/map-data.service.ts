@@ -9,9 +9,10 @@ import * as Point from 'esri/geometry/Point';
 
 import { attr } from '../tree';
 import {Utils} from '../classes/utils';
+import {AppStateService} from './app-state.service';
 
 @Injectable()
-export class MapDataService {
+export class MapDataService{
 
   map: WebMap;
   layer: FeatureLayer;
@@ -19,7 +20,8 @@ export class MapDataService {
   mapEventSource = new Subject<Point>();
   mapEvent$ = this.mapEventSource.asObservable();
 
-  constructor() {
+  constructor(
+    public appState: AppStateService) {
     this.map = new WebMap({
       portalItem: {
         id: '0486802a73cb4e5f9fff5f24927e5915'
@@ -31,11 +33,11 @@ export class MapDataService {
       outFields: [ attr.gattungLat, attr.artLat, attr.nameLat, attr.nameDE, attr.status, attr.pflanzJahr, attr.quartier],
       renderer: new SimpleRenderer({
         symbol: new PictureMarkerSymbol({
-         url: "./src/assets/images/tree.png",
-         width: 15,
-         height: 15
-       })
-     })
+          url: "./src/assets/images/tree.png",
+          width: 15,
+          height: 15
+        })
+      })
     });
 
     this.map.add(this.layer);
@@ -66,6 +68,7 @@ export class MapDataService {
       this.uniqueTreeNames = result.features.map(feature => {
         return feature.attributes[attr.nameDE];
       });
+      this.appState.showMap = 'show';
     })
     .otherwise(err => console.log(err));
   }

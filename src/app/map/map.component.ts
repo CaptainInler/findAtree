@@ -1,10 +1,12 @@
 import { Component, Output } from '@angular/core';
 import { AppStateService } from '../services/app-state.service';
+import {moveInRight, showMap} from '../router.animations';
 
 @Component({
   selector: 'map-component',
   templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  styleUrls: ['./map.component.scss'],
+  animations: [showMap(), moveInRight()],
 })
 export class MapComponent {
 

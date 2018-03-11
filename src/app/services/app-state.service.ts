@@ -8,6 +8,8 @@ type modeType = 'game' | 'editor' | 'dashboard';
 @Injectable()
 export class AppStateService {
 
+  public showMap: string = 'hide';
+
   private mode: modeType;
   private modeSource = new Subject<modeType>();
   public modeChanged = this.modeSource.asObservable();

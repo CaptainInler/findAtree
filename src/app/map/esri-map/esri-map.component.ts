@@ -4,11 +4,13 @@ import { AppStateService } from '../../services/app-state.service';
 
 import * as MapView from 'esri/views/MapView';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
+import {moveInRight, showMap} from '../../router.animations';
 
 @Component({
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
-  styleUrls: ['./esri-map.component.scss']
+  styleUrls: ['./esri-map.component.scss'],
+  animations: [showMap(), moveInRight()],
 })
 export class EsriMapComponent implements OnInit {
 
@@ -35,6 +37,7 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
+    this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {
@@ -89,6 +92,8 @@ export class EsriMapComponent implements OnInit {
         this.changePadding(400);
       }
     });
+
+    // this.appState.showMap = 'show';
   }
 
   changePadding(padding: number) {
