@@ -36,3 +36,16 @@ export function moveInLeft() {
     ])
   ]);
 }
+
+export function moveInRight() {
+  return trigger('moveInRight', [
+    transition(':enter', [
+      style({opacity:'0', transform: 'translateX(200px)'}),
+      animate('1.2s .2s ease-in-out', style({opacity:'1', transform: 'translateX(0)'}))
+    ]),
+    transition(':leave', [
+      style({opacity:'1', transform: 'translateX(0px)'}),
+      animate('1.2s .2s ease-in-out', style({opacity:'0', transform: 'translateX(200px)'}))
+    ])
+  ]);
+}
