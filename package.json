@@ -4,7 +4,8 @@
   "description": "An application for viewing and editing trees in the city of Zurich.",
   "scripts": {
     "start": "webpack-dev-server --progress --open",
-    "build": "webpack --progress --colors"
+    "build": "webpack --progress --colors",
+    "test": "karma start --single-run"
   },
   "keywords": [
     "community-app",
@@ -58,8 +59,10 @@
     "karma-chrome-launcher": "~2.1.1",
     "karma-cli": "~1.0.1",
     "karma-coverage-istanbul-reporter": "^1.4.2",
+    "karma-dojo": "0.0.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-webpack": "^2.0.13",
     "node-sass": "^4.7.2",
     "protractor": "~5.1.2",
     "sass-loader": "^6.0.7",

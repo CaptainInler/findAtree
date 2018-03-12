@@ -19,6 +19,12 @@ declare const require: any;
 // Prevent Karma from running prematurely.
 __karma__.loaded = function () {};
 
+(<any>window).dojoConfig.packages = [
+  { name: "esri", location: "http://js.arcgis.com/4.6/esri"},
+  { name: "dojo", location: "http://js.arcgis.com/4.6/dojo" },
+]
+
+
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
   BrowserDynamicTestingModule,
@@ -29,4 +35,4 @@ const context = require.context('./', true, /\.spec\.ts$/);
 // And load the modules.
 context.keys().map(context);
 // Finally, start Karma to run the tests.
-__karma__.start();
+__karma__.dojoStart()
