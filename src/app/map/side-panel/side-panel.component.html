@@ -1,4 +1,4 @@
-<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'  [@moveInRight]="state">
+<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'  [@moveInRight]="sidePanelPosition" fatWindowWidth (position)="setPosition($event)">
   <div *ngIf='appState.getMode() === "editor"'>
     <div *ngIf='selectedTree' class='tree-detail'>
 

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AuthService} from './auth.service';
 
@@ -9,6 +9,7 @@ type modeType = 'game' | 'editor' | 'dashboard';
 export class AppStateService {
 
   public showMap: string = 'hide';
+  public winWidth: number = 0;
 
   private mode: modeType;
   private modeSource = new Subject<modeType>();
@@ -21,6 +22,7 @@ export class AppStateService {
   constructor(private _aS: AuthService) {
     this.mode = 'editor';
     this.interaction = 'none';
+    this.winWidth = window.innerWidth;
   }
 
   setInteraction(interaction: interactionType) {

@@ -48,6 +48,8 @@ export function showMap() {
 
 export function moveInRight() {
   return trigger('moveInRight', [
+    state('right', style({})),
+    state('bottom', style({ backgroundColor: '#AA0000'})),
     transition(':enter', [
       style({opacity:'0', transform: 'translateX(200px)'}),
       animate('1.2s .2s ease-in-out', style({opacity:'1', transform: 'translateX(0)'}))
@@ -55,6 +57,7 @@ export function moveInRight() {
     transition(':leave', [
       style({opacity:'1', transform: 'translateX(0px)'}),
       animate('1.2s .2s ease-in-out', style({opacity:'0', transform: 'translateX(200px)'}))
-    ])
+    ]),
+    transition('right => bottom', animate('100ms ease-in'))
   ]);
 }
