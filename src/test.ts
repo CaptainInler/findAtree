@@ -20,8 +20,7 @@ declare const require: any;
 __karma__.loaded = function () {};
 
 (<any>window).dojoConfig.packages = [
-  { name: "esri", location: "http://js.arcgis.com/4.6/esri"},
-  { name: "dojo", location: "http://js.arcgis.com/4.6/dojo" },
+  { name: "esri", location: "http://js.arcgis.com/4.6/esri/"}
 ]
 
 

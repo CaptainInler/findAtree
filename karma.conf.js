@@ -27,8 +27,19 @@ module.exports = function (config) {
       environment: 'dev'
     },
     webpack: webpackConfig,
+    files: [{
+        pattern: './src/**/*.ts',
+        included: false,
+        watched: false
+      },
+      {
+        pattern: 'karma-test-shim.js',
+        included: false
+      },
+      'karma-test-main.js'
+    ],
     preprocessors: {
-      './src/test.ts': ['webpack']
+      './src/karma-test-shim.js': ['webpack']
   },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
