@@ -5,8 +5,8 @@ var webpackConfig = require('./karma.webpack.js');
 
 module.exports = function (config) {
   config.set({
-    basePath: '',
-    frameworks: ['jasmine', '@angular/cli', 'dojo'],
+    basePath: './',
+    frameworks: ['jasmine', 'dojo'],
     plugins: [
       require('karma-jasmine'),
       require('karma-webpack'),
@@ -39,7 +39,7 @@ module.exports = function (config) {
       'karma-test-main.js'
     ],
     preprocessors: {
-      './src/karma-test-shim.js': ['webpack']
+      './karma-test-shim.js': ['webpack']
   },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
