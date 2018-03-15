@@ -1,8 +1,8 @@
 var tests = [];
 for (var file in window.__karma__.files) {
   if (window.__karma__.files.hasOwnProperty(file)) {
-    if (/\.spec\.ts/.test(file)) {
-    //if (/karma-test-shim\.js$/.test(file)) {
+    //if (/\.spec\.ts/.test(file)) {
+    if (/karma-test-shim\.js$/.test(file)) {
       tests.push(file);
     }
   }
@@ -18,6 +18,16 @@ window.dojoConfig = {
   }, {
     name: "dojo",
     location: "http://js.arcgis.com/4.6/dojo"
+  }, {
+    name: "dojox",
+    location: "http://js.arcgis.com/4.6/dojox"
+  }, {
+    name: "dijit",
+    location: "http://js.arcgis.com/4.6/dijit"
+  }, {
+    name: 'moment',
+    location: 'http://js.arcgis.com/4.6/moment',
+    main: 'moment'
   }],
   async: true
 };

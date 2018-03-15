@@ -16,11 +16,11 @@ module.exports = function (config) {
       require('karma-coverage-istanbul-reporter'),
       require('@angular/cli/plugins/karma')
     ],
-    client:{
+    client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
     coverageIstanbulReporter: {
-      reports: [ 'html', 'lcovonly' ],
+      reports: ['html', 'lcovonly'],
       fixWebpackSourcePaths: true
     },
     angularCli: {
@@ -28,19 +28,26 @@ module.exports = function (config) {
     },
     webpack: webpackConfig,
     files: [{
-        pattern: './src/**/*.ts',
-        included: false,
-        watched: false
-      },
-      {
-        pattern: 'karma-test-shim.js',
-        included: false
-      },
+      pattern: './src/**/*.html',
+      included: false,
+      watched: false
+    }, {
+      pattern: './src/**/*.scss',
+      included: false,
+      watched: false
+    }, {
+      pattern: './src/**/*.ts',
+      included: false,
+      watched: false
+    }, {
+      pattern: 'karma-test-shim.js',
+      included: false
+    },
       'karma-test-main.js'
     ],
     preprocessors: {
       './karma-test-shim.js': ['webpack']
-  },
+    },
     reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
