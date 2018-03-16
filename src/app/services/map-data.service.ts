@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import * as WebMap from 'esri/WebMap';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
 import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
-import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
+import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import * as Point from 'esri/geometry/Point';
 
 import * as esriConfig from 'esri/config';
@@ -35,10 +35,14 @@ export class MapDataService{
       url: 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/AlteBaeumeZuerich/FeatureServer',
       outFields: [ attr.gattungLat, attr.artLat, attr.nameLat, attr.nameDE, attr.status, attr.pflanzJahr, attr.quartier],
       renderer: new SimpleRenderer({
-        symbol: new PictureMarkerSymbol({
-          url: "./src/assets/images/tree.png",
-          width: 15,
-          height: 15
+        symbol: new SimpleMarkerSymbol({
+          style: 'circle',
+          size: 10,
+          color: [8, 219, 187, 0.3],
+          outline: {
+            color: [8, 147, 126, 0.5],
+            width: 1
+          }
         })
       })
     });

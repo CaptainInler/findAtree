@@ -1,4 +1,4 @@
-define(["esri/geometry/Point","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/PictureMarkerSymbol","esri/views/MapView","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_291__, __WEBPACK_EXTERNAL_MODULE_588__, __WEBPACK_EXTERNAL_MODULE_589__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_608__) { return webpackJsonp([1],[
+define(["esri/geometry/Point","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/SimpleMarkerSymbol","esri/views/MapView","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_291__, __WEBPACK_EXTERNAL_MODULE_588__, __WEBPACK_EXTERNAL_MODULE_589__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_608__) { return webpackJsonp([1],[
 /* 0 */,
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -24802,7 +24802,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(589), __webpack_require__(590), __webpack_require__(588), __webpack_require__(591), __webpack_require__(60), __webpack_require__(176), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, PictureMarkerSymbol, tree_1, utils_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(589), __webpack_require__(590), __webpack_require__(588), __webpack_require__(591), __webpack_require__(60), __webpack_require__(176), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, tree_1, utils_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MapDataService = class MapDataService {
@@ -24819,10 +24819,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 url: 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/AlteBaeumeZuerich/FeatureServer',
                 outFields: [tree_1.attr.gattungLat, tree_1.attr.artLat, tree_1.attr.nameLat, tree_1.attr.nameDE, tree_1.attr.status, tree_1.attr.pflanzJahr, tree_1.attr.quartier],
                 renderer: new SimpleRenderer({
-                    symbol: new PictureMarkerSymbol({
-                        url: "./src/assets/images/tree.png",
-                        width: 15,
-                        height: 15
+                    symbol: new SimpleMarkerSymbol({
+                        style: 'circle',
+                        size: 10,
+                        color: [8, 219, 187, 0.3],
+                        outline: {
+                            color: [8, 147, 126, 0.5],
+                            width: 1
+                        }
                     })
                 })
             });
@@ -88050,7 +88054,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             const map = this.mapDataService.map;
             const mapViewProperties = {
                 container: this.elementRef.nativeElement.firstChild,
-                map
+                map,
+                constraints: {
+                    minZoom: 13
+                }
             };
             this.mapView = new MapView(mapViewProperties);
             const view = this.mapView;

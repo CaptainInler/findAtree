@@ -42,7 +42,10 @@ export class EsriMapComponent implements OnInit {
 
     const mapViewProperties: any = {
       container: this.elementRef.nativeElement.firstChild,
-      map
+      map,
+      constraints: {
+        minZoom: 13
+      }
     };
     this.mapView = new MapView(mapViewProperties);
 
