@@ -55,7 +55,7 @@ export class EsriMapComponent implements OnInit {
         // user is in the editor mode and he clicked on a tree
         if (response.results.length > 0) {
           const result = response.results[0];
-          if (result.graphic) {
+          if (result.graphic && result.graphic.layer.title === "AlteBaeumeZuerich") {
 
             // zoom to selected feature
             view.goTo({
@@ -69,7 +69,8 @@ export class EsriMapComponent implements OnInit {
             this.selectedTreeChange.emit(result.graphic);
           }
           // user is in the editor mode and he clicked next to a tree
-        } else {
+          else {
+          console.log(this.appState.getInteraction(), event.mapPoint);
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
             this.mapDataService.mapEventSource.next(event.mapPoint);
@@ -81,6 +82,7 @@ export class EsriMapComponent implements OnInit {
             this.selectedTreeChange.emit(null);
           }
         }
+      }
       });
 
     });

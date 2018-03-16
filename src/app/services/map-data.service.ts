@@ -7,6 +7,8 @@ import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
 import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
 import * as Point from 'esri/geometry/Point';
 
+import * as esriConfig from 'esri/config';
+
 import { attr } from '../tree';
 import {Utils} from '../classes/utils';
 import {AppStateService} from './app-state.service';
@@ -22,9 +24,10 @@ export class MapDataService{
 
   constructor(
     public appState: AppStateService) {
+
     this.map = new WebMap({
       portalItem: {
-        id: '0486802a73cb4e5f9fff5f24927e5915'
+        id: 'b96769f9ffbf43c3bfb0603832bf2def'
       }
     });
 
