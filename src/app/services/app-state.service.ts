@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AuthService} from './auth.service';
 
@@ -7,6 +7,9 @@ type modeType = 'game' | 'editor' | 'dashboard';
 
 @Injectable()
 export class AppStateService {
+
+  public showMap: string = 'hide';
+  public sidePanelPosition: string  = '';
 
   private mode: modeType;
   private modeSource = new Subject<modeType>();

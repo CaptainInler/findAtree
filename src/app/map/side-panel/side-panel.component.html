@@ -1,4 +1,4 @@
-<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'>
+<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'  [@showSidePanel]="appState.sidePanelPosition">
   <div *ngIf='appState.getMode() === "editor"'>
     <div *ngIf='selectedTree' class='tree-detail'>
 
