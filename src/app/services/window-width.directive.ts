@@ -5,24 +5,14 @@ import {Directive, EventEmitter, HostBinding, HostListener, Output} from '@angul
 })
 export class WindowWidthDirective {
 
-  @Output() position:EventEmitter<string> = new EventEmitter();
+  @Output() winWidth:EventEmitter<number> = new EventEmitter();
 
-  constructor() {
-    this.setPosition(window.innerWidth);
-  }
+  constructor() { }
 
 
   @HostListener('window:resize',['$event']) onResize(event) {
-    console.log(event.target.innerWidth);
-    this.setPosition(event.target.innerWidth);
-  }
-
-  setPosition(size: number){
-    if (size > 600){
-      this.position.emit('right');
-    }else{
-      this.position.emit('bottom');
-    }
+    // console.log(event.target.innerWidth);
+    this.winWidth.emit(event.target.innerWidth);
   }
 
 

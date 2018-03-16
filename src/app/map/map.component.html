@@ -1,4 +1,4 @@
-<esri-map [(selectedTree)]='selectedTree'></esri-map>
+<esri-map [(selectedTree)]='selectedTree'  fatWindowWidth (winWidth)="setSidePanelPosition($event)"></esri-map>
 <side-panel [selectedTree]='selectedTree'></side-panel>
 <button mat-raised-button color='accent' class='btn-add-tree'
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"

@@ -4,13 +4,13 @@ import { AppStateService } from '../../services/app-state.service';
 
 import * as MapView from 'esri/views/MapView';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
-import {moveInRight, showMap} from '../../router.animations';
+import { showMap} from '../../router.animations';
 
 @Component({
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
   styleUrls: ['./esri-map.component.scss'],
-  animations: [showMap(), moveInRight()],
+  animations: [showMap()],
 })
 export class EsriMapComponent implements OnInit {
 
