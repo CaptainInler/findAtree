@@ -31,10 +31,7 @@ export class EditorPanelComponent implements OnInit {
     const attributes = this.selectedTree.attributes;
     this.form = new FormGroup({
       name: new FormControl(attributes[attr.nameDE], [Validators.required]),
-      quartier: new FormControl(attributes[attr.quartier], [
-        Validators.required
-      ]),
-      status: new FormControl(attributes[attr.status]),
+      quartier: new FormControl(attributes[attr.quartier], [Validators.required]),
       pflanzJahr: new FormControl(attributes[attr.pflanzJahr])
     });
   }
@@ -45,7 +42,6 @@ export class EditorPanelComponent implements OnInit {
 
     editedTree.attributes[attr.nameDE] = form.name;
     editedTree.attributes[attr.pflanzJahr] = form.pflanzJahr;
-    editedTree.attributes[attr.status] = form.status;
     editedTree.attributes[attr.quartier] = form.quartier;
 
     this.mapDataService.updateTree(editedTree)
