@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapDataService } from '../../services/map-data.service';
 
-import { yearValidator } from '../../shared/year-validator.directive';
+import { yearValidator, zurichLatitudeValidator, zurichLongitudeValidator } from '../../shared/validators.directive';
 
 import { attr } from '../../tree';
 
@@ -30,8 +30,8 @@ export class AddTreePanelComponent implements OnInit {
   ngOnInit() {
 
     this.locationFormGroup = new FormGroup({
-      latitude: new FormControl('', [Validators.required]),
-      longitude: new FormControl('', [Validators.required])
+      latitude: new FormControl('', [Validators.required, zurichLatitudeValidator()]),
+      longitude: new FormControl('', [Validators.required, zurichLongitudeValidator()])
     });
 
     this.attributeFormGroup = new FormGroup({

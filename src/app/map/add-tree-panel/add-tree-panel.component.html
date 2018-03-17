@@ -5,9 +5,15 @@
       Click on the map at the location of the tree to fill up the coordinates:
       <mat-form-field>
         <input matInput placeholder="Latitude" formControlName="latitude" required>
+        <mat-error *ngIf="locationFormGroup.root.controls.latitude.errors">
+          Please enter a valid latitude.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Longitude" formControlName="longitude" required>
+        <mat-error *ngIf="locationFormGroup.root.controls.longitude.errors">
+          Please enter a valid longitude.
+        </mat-error>
       </mat-form-field>
       <div>
         <button mat-raised-button matStepperNext color='primary'>Next</button>
