@@ -1,4 +1,4 @@
-define(["esri/geometry/Point","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/SimpleMarkerSymbol","esri/views/MapView","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_291__, __WEBPACK_EXTERNAL_MODULE_588__, __WEBPACK_EXTERNAL_MODULE_589__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_608__) { return webpackJsonp([1],[
+define(["esri/geometry/Point","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/SimpleMarkerSymbol","esri/request","esri/views/MapView","esri/Graphic"], function(__WEBPACK_EXTERNAL_MODULE_291__, __WEBPACK_EXTERNAL_MODULE_588__, __WEBPACK_EXTERNAL_MODULE_589__, __WEBPACK_EXTERNAL_MODULE_590__, __WEBPACK_EXTERNAL_MODULE_591__, __WEBPACK_EXTERNAL_MODULE_592__, __WEBPACK_EXTERNAL_MODULE_593__, __WEBPACK_EXTERNAL_MODULE_609__) { return webpackJsonp([1],[
 /* 0 */,
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -24802,7 +24802,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(589), __webpack_require__(590), __webpack_require__(588), __webpack_require__(591), __webpack_require__(60), __webpack_require__(176), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, tree_1, utils_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(589), __webpack_require__(590), __webpack_require__(588), __webpack_require__(591), __webpack_require__(592), __webpack_require__(60), __webpack_require__(176), __webpack_require__(68)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, SimpleMarkerSymbol, esriRequest, tree_1, utils_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MapDataService = class MapDataService {
@@ -24815,9 +24815,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     id: 'b96769f9ffbf43c3bfb0603832bf2def'
                 }
             });
-            this.layer = new FeatureLayer({
-                url: 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/AlteBaeumeZuerich/FeatureServer',
+            this.layer = this.getTreeLayer();
+            this.map.add(this.layer);
+            this.getUniqueTreeNames();
+        }
+        updateTree(tree) {
+            const request = esriRequest(`https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer/0/applyEdits`, {
+                method: "post",
+                responseType: "json",
+                query: {
+                    updates: [JSON.stringify(tree)],
+                    f: "json"
+                },
+            })
+                .then((tree) => {
+                this.recreateLayer();
+                return tree;
+            });
+            return request;
+        }
+        addTree(tree) {
+            return this.layer.applyEdits({
+                addFeatures: [tree]
+            })
+                .then((tree) => {
+                this.recreateLayer();
+                return tree;
+            })
+                .otherwise(err => console.log(err));
+        }
+        // this function is just a hack to
+        // force the layer to take the updates
+        recreateLayer() {
+            this.map.remove(this.layer);
+            this.layer = this.getTreeLayer();
+            this.map.add(this.layer);
+        }
+        getTreeLayer() {
+            return new FeatureLayer({
+                url: 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer',
                 outFields: [tree_1.attr.gattungLat, tree_1.attr.artLat, tree_1.attr.nameLat, tree_1.attr.nameDE, tree_1.attr.status, tree_1.attr.pflanzJahr, tree_1.attr.quartier],
+                title: "Tree layer",
                 renderer: new SimpleRenderer({
                     symbol: new SimpleMarkerSymbol({
                         style: 'circle',
@@ -24827,23 +24865,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                             color: [8, 147, 126, 0.5],
                             width: 1
                         }
-                    })
-                })
+                    }),
+                    visualVariables: [{
+                            type: "size",
+                            field: tree_1.attr.pflanzJahr,
+                            minDataValue: 2000,
+                            maxDataValue: 2000,
+                            minSize: {
+                                type: "size",
+                                valueExpression: "$view.scale",
+                                stops: [{
+                                        value: 500,
+                                        size: 20
+                                    }, {
+                                        value: 10000,
+                                        size: 5
+                                    }]
+                            },
+                            maxSize: {
+                                type: "size",
+                                valueExpression: "$view.scale",
+                                stops: [{
+                                        value: 500,
+                                        size: 20
+                                    }, {
+                                        value: 10000,
+                                        size: 5
+                                    }]
+                            }
+                        }]
+                }),
             });
-            this.map.add(this.layer);
-            this.getUniqueTreeNames();
-        }
-        updateTree(tree) {
-            return this.layer.applyEdits({
-                updateFeatures: [tree]
-            });
-        }
-        addTree(tree) {
-            return this.layer.applyEdits({
-                addFeatures: [tree]
-            })
-                .then((tree) => console.log(tree))
-                .otherwise(err => console.log(err));
         }
         getUniqueTreeNames() {
             this.layer.queryFeatures({
@@ -47191,7 +47243,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(269), __webpack_require__(37), __webpack_require__(2), __webpack_require__(66), __webpack_require__(52), __webpack_require__(264), __webpack_require__(494), __webpack_require__(22), __webpack_require__(22), __webpack_require__(522), __webpack_require__(275), __webpack_require__(524), __webpack_require__(555), __webpack_require__(271), __webpack_require__(290), __webpack_require__(170), __webpack_require__(270), __webpack_require__(171), __webpack_require__(143), __webpack_require__(565), __webpack_require__(566), __webpack_require__(272), __webpack_require__(571), __webpack_require__(577), __webpack_require__(582), __webpack_require__(587), __webpack_require__(597), __webpack_require__(602), __webpack_require__(607), __webpack_require__(613), __webpack_require__(618), __webpack_require__(274), __webpack_require__(91), __webpack_require__(292), __webpack_require__(623), __webpack_require__(33), __webpack_require__(68), __webpack_require__(624)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, mode_selector_component_1, admin_component_1, treenames_component_1, add_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, loading_page_component_1, admin_guard_1, map_data_service_1, tree_service_1, tree_name_service_1, auth_service_1, app_state_service_1, window_width_directive_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(269), __webpack_require__(37), __webpack_require__(2), __webpack_require__(66), __webpack_require__(52), __webpack_require__(264), __webpack_require__(494), __webpack_require__(22), __webpack_require__(22), __webpack_require__(522), __webpack_require__(275), __webpack_require__(524), __webpack_require__(555), __webpack_require__(271), __webpack_require__(290), __webpack_require__(170), __webpack_require__(270), __webpack_require__(171), __webpack_require__(143), __webpack_require__(565), __webpack_require__(566), __webpack_require__(272), __webpack_require__(571), __webpack_require__(577), __webpack_require__(582), __webpack_require__(587), __webpack_require__(598), __webpack_require__(603), __webpack_require__(608), __webpack_require__(614), __webpack_require__(619), __webpack_require__(274), __webpack_require__(91), __webpack_require__(292), __webpack_require__(624), __webpack_require__(33), __webpack_require__(68), __webpack_require__(625)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, mode_selector_component_1, admin_component_1, treenames_component_1, add_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, loading_page_component_1, admin_guard_1, map_data_service_1, tree_service_1, tree_name_service_1, auth_service_1, app_state_service_1, window_width_directive_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AppModule = class AppModule {
@@ -88033,7 +88085,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(91), __webpack_require__(68), __webpack_require__(592), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, app_state_service_1, MapView, router_animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(91), __webpack_require__(68), __webpack_require__(593), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, app_state_service_1, MapView, router_animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let EsriMapComponent = class EsriMapComponent {
@@ -88066,7 +88118,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     // user is in the editor mode and he clicked on a tree
                     if (response.results.length > 0) {
                         const result = response.results[0];
-                        if (result.graphic && result.graphic.layer.title === "AlteBaeumeZuerich") {
+                        if (result.graphic && result.graphic.layer.title === "Tree layer") {
                             // zoom to selected feature
                             view.goTo({
                                 target: result.graphic.geometry,
@@ -88121,8 +88173,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     EsriMapComponent = __decorate([
         core_1.Component({
             selector: 'esri-map',
-            template: __webpack_require__(593),
-            styles: [__webpack_require__(594)],
+            template: __webpack_require__(594),
+            styles: [__webpack_require__(595)],
             animations: [router_animations_1.showMap()],
         }),
         __metadata("design:paramtypes", [map_data_service_1.MapDataService,
@@ -88177,14 +88229,20 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_592__;
 /* 593 */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"viewDiv\" [@showMap]=\"appState.showMap\"></div>\n";
+module.exports = __WEBPACK_EXTERNAL_MODULE_593__;
 
 /***/ }),
 /* 594 */
+/***/ (function(module, exports) {
+
+module.exports = "<div id=\"viewDiv\" [@showMap]=\"appState.showMap\"></div>\n";
+
+/***/ }),
+/* 595 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(595);
+        var result = __webpack_require__(596);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88194,13 +88252,13 @@ module.exports = "<div id=\"viewDiv\" [@showMap]=\"appState.showMap\"></div>\n";
     
 
 /***/ }),
-/* 595 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(596);
+var content = __webpack_require__(597);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88225,7 +88283,7 @@ if(false) {
 }
 
 /***/ }),
-/* 596 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88239,7 +88297,7 @@ exports.push([module.i, "#viewDiv {\n  position: absolute;\n  width: 100%;\n  to
 
 
 /***/ }),
-/* 597 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88276,8 +88334,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     SidePanelComponent = __decorate([
         core_1.Component({
             selector: 'side-panel',
-            template: __webpack_require__(598),
-            styles: [__webpack_require__(599)],
+            template: __webpack_require__(599),
+            styles: [__webpack_require__(600)],
             animations: [router_animations_1.showSidePanel()],
         }),
         __metadata("design:paramtypes", [app_state_service_1.AppStateService])
@@ -88288,17 +88346,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 598 */
+/* 599 */
 /***/ (function(module, exports) {
 
 module.exports = "<section *ngIf='appState.getInteraction() !== \"none\"' class='side-panel'  [@showSidePanel]=\"appState.sidePanelPosition\">\n  <div *ngIf='appState.getMode() === \"editor\"'>\n    <div *ngIf='selectedTree' class='tree-detail'>\n\n      <div *ngIf='!inEditMode' class='tree-read-only'>\n        <mat-list>\n          <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>Name Lateinisch: {{ selectedTree.attributes[attr.gattungLat] }} - {{ selectedTree.attributes[attr.artLat] }}</mat-list-item>\n          <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>\n          <mat-list-item>Pflanz Jahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>\n          <mat-list-item>Status: {{ selectedTree.attributes[attr.status] }}</mat-list-item>\n        </mat-list>\n\n        <button mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>\n          <mat-icon>mode_edit</mat-icon>\n        </button>\n      </div>\n\n      <editor-panel *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></editor-panel>\n    </div>\n\n    <div *ngIf='appState.getInteraction() === \"add\"'>\n      <add-tree-panel></add-tree-panel>\n    </div>\n  </div>\n\n  <div *ngIf='appState.getMode() === \"game\"'>\n    <div *ngIf='selectedTree' class='tree-detail'>\n      <guess-panel [selectedTree]='selectedTree'></guess-panel>\n    </div>\n  </div>\n\n</section>\n";
 
 /***/ }),
-/* 599 */
+/* 600 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(600);
+        var result = __webpack_require__(601);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88308,13 +88366,13 @@ module.exports = "<section *ngIf='appState.getInteraction() !== \"none\"' class=
     
 
 /***/ }),
-/* 600 */
+/* 601 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(601);
+var content = __webpack_require__(602);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88339,7 +88397,7 @@ if(false) {
 }
 
 /***/ }),
-/* 601 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88353,7 +88411,7 @@ exports.push([module.i, ".side-panel {\n  position: absolute;\n  right: 0;\n  bo
 
 
 /***/ }),
-/* 602 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88387,11 +88445,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             editedTree.attributes[tree_1.attr.pflanzJahr] = form.pflanzJahr;
             this.mapDataService.updateTree(editedTree)
                 .then((tree) => {
+                console.log(tree);
                 this.editing.emit(false);
                 this.snackBar.open('Baum Attributen erfolgreich gespeichert.', null, {
                     duration: 2000,
                 });
             }).otherwise((err) => {
+                console.log(err);
                 this.snackBar.open('Ein Fehler ist aufgetretten.', null, {
                     duration: 2000,
                 });
@@ -88412,8 +88472,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     EditorPanelComponent = __decorate([
         core_1.Component({
             selector: 'editor-panel',
-            template: __webpack_require__(603),
-            styles: [__webpack_require__(604)]
+            template: __webpack_require__(604),
+            styles: [__webpack_require__(605)]
         }),
         __metadata("design:paramtypes", [map_data_service_1.MapDataService,
             material_1.MatSnackBar])
@@ -88424,17 +88484,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 603 */
+/* 604 */
 /***/ (function(module, exports) {
 
 module.exports = "<form [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>\n  <mat-form-field>\n    <input matInput placeholder='Quartier' formControlName='quartier'>\n  </mat-form-field>\n  <mat-form-field>\n    <input matInput placeholder='PflanzJahr' formControlName='pflanzJahr'>\n  </mat-form-field>\n  <mat-form-field>\n    <input matInput placeholder='Status' formControlName='status'>\n  </mat-form-field>\n  <mat-divider></mat-divider>\n  <button mat-raised-button color=\"accent\" type='submit'>Speichern</button>\n  <button mat-raised-button color=\"accent\" type='button' (click)='cancelEdit()'>Abbrechen</button>\n  <button mat-raised-button color=\"warn\" type='button'>Baum löschen</button>\n</form>";
 
 /***/ }),
-/* 604 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(605);
+        var result = __webpack_require__(606);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88444,13 +88504,13 @@ module.exports = "<form [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>\n 
     
 
 /***/ }),
-/* 605 */
+/* 606 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(606);
+var content = __webpack_require__(607);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88475,7 +88535,7 @@ if(false) {
 }
 
 /***/ }),
-/* 606 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88489,7 +88549,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 607 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88501,7 +88561,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(91), __webpack_require__(60), __webpack_require__(291), __webpack_require__(608)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, tree_1, Point, Graphic) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(91), __webpack_require__(60), __webpack_require__(291), __webpack_require__(609)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, tree_1, Point, Graphic) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AddTreePanelComponent = class AddTreePanelComponent {
@@ -88549,8 +88609,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     AddTreePanelComponent = __decorate([
         core_1.Component({
             selector: 'add-tree-panel',
-            template: __webpack_require__(609),
-            styles: [__webpack_require__(610)]
+            template: __webpack_require__(610),
+            styles: [__webpack_require__(611)]
         }),
         __metadata("design:paramtypes", [forms_1.FormBuilder,
             map_data_service_1.MapDataService])
@@ -88561,23 +88621,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 608 */
+/* 609 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_608__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_609__;
 
 /***/ }),
-/* 609 */
+/* 610 */
 /***/ (function(module, exports) {
 
 module.exports = "<mat-vertical-stepper linear>\n  <mat-step [stepControl]=\"locationFormGroup\">\n    <form [formGroup]=\"locationFormGroup\">\n      <ng-template matStepLabel>Localization</ng-template>\n      Click on the map at the location of the tree to fill up the coordinates:\n      <mat-form-field>\n        <input matInput placeholder=\"Latitude\" formControlName=\"latitude\" required>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Longitude\" formControlName=\"longitude\" required>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step [stepControl]=\"attributeFormGroup\">\n    <form [formGroup]=\"attributeFormGroup\">\n      <ng-template matStepLabel>Attributes</ng-template>\n      <mat-form-field>\n        <mat-select placeholder=\"Tree type\" formControlName=\"nameDE\" required>\n          <mat-option *ngFor=\"let name of treeNames\" [value]=\"name\">\n            {{name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Planting year\" formControlName=\"pflanzJahr\" required>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Neighbourhood\" formControlName=\"quartier\" required>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step>\n    <ng-template matStepLabel>Save</ng-template>\n    <div>\n      <button mat-raised-button color='primary' (click)='saveTree()'>Save</button>\n      <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n    </div>\n  </mat-step>\n</mat-vertical-stepper>\n";
 
 /***/ }),
-/* 610 */
+/* 611 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(611);
+        var result = __webpack_require__(612);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88587,13 +88647,13 @@ module.exports = "<mat-vertical-stepper linear>\n  <mat-step [stepControl]=\"loc
     
 
 /***/ }),
-/* 611 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(612);
+var content = __webpack_require__(613);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88618,7 +88678,7 @@ if(false) {
 }
 
 /***/ }),
-/* 612 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88632,7 +88692,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 613 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88778,8 +88838,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     GuessPanelComponent = __decorate([
         core_1.Component({
             selector: 'guess-panel',
-            template: __webpack_require__(614),
-            styles: [__webpack_require__(615)]
+            template: __webpack_require__(615),
+            styles: [__webpack_require__(616)]
         }),
         __metadata("design:paramtypes", [map_data_service_1.MapDataService,
             database_1.AngularFireDatabase,
@@ -88791,17 +88851,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 614 */
+/* 615 */
 /***/ (function(module, exports) {
 
 module.exports = "<div *ngIf='selectedTree' class='guess-panel'>\n\n  <h1>What kind of tree did you click on?</h1>\n\n  <span class=\"error\" *ngIf=\"error\">{{ error }}</span>\n\n  <button *ngFor=\"let name of selection\" mat-raised-button\n    (click)=\"selectTreeName(name, $event)\" id=\"{{name}}\"\n    [ngClass]=\"buttonState[name]\">\n    {{name}}\n  </button>\n\n  <span class=\"score\"><br>Points: {{points}}</span>\n\n</div>\n\n<div *ngIf=\"getScore('total')>0\" class=\"guess-panel\">\n  <h4>Your current score:</h4>\n  <span class=\"score\">Today: {{getScore('day')}}<br></span>\n  <span *ngIf=\"getScore('total')!==getScore('day')\" class=\"score\">Total: {{getScore('total')}}<br></span>\n  <span *ngIf=\"getScore('best')>0\" class=\"score\">Best: {{getScore('best')}}<br></span>\n</div>\n\n<div *ngIf='!selectedTree'>\n  Click on a tree to guess what type of tree it is.\n</div>\n";
 
 /***/ }),
-/* 615 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(616);
+        var result = __webpack_require__(617);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88811,13 +88871,13 @@ module.exports = "<div *ngIf='selectedTree' class='guess-panel'>\n\n  <h1>What k
     
 
 /***/ }),
-/* 616 */
+/* 617 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(617);
+var content = __webpack_require__(618);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88842,7 +88902,7 @@ if(false) {
 }
 
 /***/ }),
-/* 617 */
+/* 618 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88856,7 +88916,7 @@ exports.push([module.i, "/**\n * Applies styles for users in high contrast mode.
 
 
 /***/ }),
-/* 618 */
+/* 619 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88879,8 +88939,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     LoadingPageComponent = __decorate([
         core_1.Component({
             selector: 'loading-page',
-            template: __webpack_require__(619),
-            styles: [__webpack_require__(620)]
+            template: __webpack_require__(620),
+            styles: [__webpack_require__(621)]
         }),
         __metadata("design:paramtypes", [])
     ], LoadingPageComponent);
@@ -88890,17 +88950,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 619 */
+/* 620 */
 /***/ (function(module, exports) {
 
 module.exports = "\n<div class=\"spinner\">\n  <div class=\"rect1\"></div>\n  <div class=\"rect2\"></div>\n  <div class=\"rect3\"></div>\n  <div class=\"rect4\"></div>\n  <div class=\"rect5\"></div>\n</div>\n";
 
 /***/ }),
-/* 620 */
+/* 621 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(621);
+        var result = __webpack_require__(622);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88910,13 +88970,13 @@ module.exports = "\n<div class=\"spinner\">\n  <div class=\"rect1\"></div>\n  <d
     
 
 /***/ }),
-/* 621 */
+/* 622 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(622);
+var content = __webpack_require__(623);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88941,7 +89001,7 @@ if(false) {
 }
 
 /***/ }),
-/* 622 */
+/* 623 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(15)(undefined);
@@ -88955,7 +89015,7 @@ exports.push([module.i, ".spinner {\n  margin: 100px auto;\n  width: 50px;\n  he
 
 
 /***/ }),
-/* 623 */
+/* 624 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -89036,7 +89096,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 624 */
+/* 625 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
