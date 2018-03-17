@@ -1,5 +1,12 @@
 <form [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>
   <mat-form-field>
+      <mat-select placeholder="Tree type" formControlName="name">
+        <mat-option *ngFor="let name of treeNames | sortAlphabetical" [value]="name">
+          {{name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <mat-form-field>
     <input matInput placeholder='Quartier' formControlName='quartier'>
   </mat-form-field>
   <mat-form-field>

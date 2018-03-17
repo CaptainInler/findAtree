@@ -34,6 +34,8 @@ import { AddTreePanelComponent } from './map/add-tree-panel/add-tree-panel.compo
 import { GuessPanelComponent } from './map/guess-panel/guess-panel.component';
 import { LoadingPageComponent} from './map/loading-page/loading-page.component';
 
+import { SortAlphabeticalPipe } from './shared/sort-alphabetical.pipe';
+
 // services
 import { AdminGuard } from './services/admin.guard';
 import { MapDataService } from './services/map-data.service';
@@ -78,7 +80,8 @@ import { WindowWidthDirective } from './services/window-width.directive';
     AddTreePanelComponent,
     GuessPanelComponent,
     LoadingPageComponent,
-    WindowWidthDirective
+    WindowWidthDirective,
+    SortAlphabeticalPipe
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [
