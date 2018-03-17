@@ -48,7 +48,6 @@ export class EsriMapComponent implements OnInit {
       }
     };
     this.mapView = new MapView(mapViewProperties);
-
     const view = this.mapView;
 
     view.on("click", (event) => {
@@ -58,7 +57,7 @@ export class EsriMapComponent implements OnInit {
         // user is in the editor mode and he clicked on a tree
         if (response.results.length > 0) {
           const result = response.results[0];
-          if (result.graphic && result.graphic.layer.title === "AlteBaeumeZuerich") {
+          if (result.graphic && result.graphic.layer.title === "Tree layer") {
 
             // zoom to selected feature
             view.goTo({

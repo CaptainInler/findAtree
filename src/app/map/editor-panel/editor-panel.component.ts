@@ -38,11 +38,13 @@ export class EditorPanelComponent implements OnInit {
 
     this.mapDataService.updateTree(editedTree)
       .then((tree) => {
+        console.log(tree);
         this.editing.emit(false);
         this.snackBar.open('Baum Attributen erfolgreich gespeichert.', null, {
           duration: 2000,
         });
       }).otherwise((err) => {
+        console.log(err);
         this.snackBar.open('Ein Fehler ist aufgetretten.', null, {
           duration: 2000,
         });
