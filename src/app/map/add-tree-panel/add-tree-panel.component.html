@@ -25,10 +25,17 @@
         </mat-select>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Planting year" formControlName="pflanzJahr" required>
+        <input matInput placeholder="Planting year" formControlName="pflanzJahr"required>
+        <mat-error *ngIf="attributeFormGroup.root.controls.pflanzJahr.errors">
+          Please enter a valid year.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Neighbourhood" formControlName="quartier" required>
+        <mat-select placeholder='Neighbourhood' formControlName='quartier'>
+          <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>
+            {{quartier}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-raised-button matStepperPrevious color='primary'>Back</button>

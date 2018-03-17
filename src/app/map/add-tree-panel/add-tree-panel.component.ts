@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapDataService } from '../../services/map-data.service';
+
+import { yearValidator } from '../../shared/year-validator.directive';
 
 import { attr } from '../../tree';
 
@@ -16,26 +18,28 @@ export class AddTreePanelComponent implements OnInit {
 
   locationFormGroup: FormGroup;
   attributeFormGroup: FormGroup;
-  treeNames;
+  treeNames: string[];
+  quartiers: string[];
 
-  constructor(private _formBuilder: FormBuilder,
-  private mapDataService: MapDataService) {
+  constructor(private mapDataService: MapDataService) {
 
     this.treeNames = mapDataService.uniqueTreeNames;
+    this.quartiers = mapDataService.uniqueQuartiers;
   }
 
   ngOnInit() {
 
-    this.locationFormGroup = this._formBuilder.group({
-      latitude: ['', Validators.required],
-      longitude: ['', Validators.required]
+    this.locationFormGroup = new FormGroup({
+      latitude: new FormControl('', [Validators.required]),
+      longitude: new FormControl('', [Validators.required])
     });
 
-    this.attributeFormGroup = this._formBuilder.group({
-      nameDE: ['', Validators.required],
-      pflanzJahr: ['', Validators.required],
-      quartier: ['', Validators.required]
+    this.attributeFormGroup = new FormGroup({
+      nameDE: new FormControl('', [Validators.required]),
+      pflanzJahr: new FormControl('', [Validators.required, yearValidator()]),
+      quartier: new FormControl('', [Validators.required])
     });
+    console.log("group: !!!!", this.attributeFormGroup);
 
     // add the coordinates to the form
     this.mapDataService.mapEvent$.subscribe(value => {

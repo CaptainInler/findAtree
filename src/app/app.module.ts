@@ -35,6 +35,7 @@ import { GuessPanelComponent } from './map/guess-panel/guess-panel.component';
 import { LoadingPageComponent} from './map/loading-page/loading-page.component';
 
 import { SortAlphabeticalPipe } from './shared/sort-alphabetical.pipe';
+import { yearValidator } from './shared/year-validator.directive';
 
 // services
 import { AdminGuard } from './services/admin.guard';
