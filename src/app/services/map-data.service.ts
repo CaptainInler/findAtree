@@ -19,7 +19,8 @@ export class MapDataService {
 
   map: WebMap;
   layer: FeatureLayer;
-  uniqueTreeNames: any[];
+  uniqueTreeNames: string[];
+  uniqueQuartiers: string[];
   mapEventSource = new Subject<Point>();
   mapEvent$ = this.mapEventSource.asObservable();
 
@@ -37,6 +38,7 @@ export class MapDataService {
 
     this.map.add(this.layer);
     this.getUniqueTreeNames();
+    this.getUniqueQuartiers();
   }
 
   updateTree(tree) {
@@ -132,6 +134,20 @@ export class MapDataService {
           return feature.attributes[attr.nameDE];
         });
         this.appState.showMap = 'show';
+      })
+      .otherwise(err => console.log(err));
+  }
+
+  private getUniqueQuartiers() {
+    this.layer.queryFeatures({
+      outFields: [attr.quartier],
+      returnDistinctValues: true,
+      where: '1=1'
+    })
+      .then((result) => {
+        this.uniqueQuartiers = result.features.map(feature => {
+          return feature.attributes[attr.quartier];
+        });
       })
       .otherwise(err => console.log(err));
   }

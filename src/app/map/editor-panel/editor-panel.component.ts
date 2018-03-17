@@ -14,6 +14,7 @@ export class EditorPanelComponent implements OnInit {
 
   form: FormGroup;
   treeNames;
+  quartiers;
 
   @Input() selectedTree;
   @Output() editing: EventEmitter<boolean> = new EventEmitter();
@@ -22,6 +23,7 @@ export class EditorPanelComponent implements OnInit {
     private snackBar: MatSnackBar) {
 
       this.treeNames = mapDataService.uniqueTreeNames;
+      this.quartiers = mapDataService.uniqueQuartiers;
     }
 
   ngOnInit() {
