@@ -9,7 +9,6 @@ import { EmailComponent } from './members/email/email.component';
 import { SignupComponent } from './members/signup/signup.component';
 import { AuthService } from './services/auth.service';
 import { MembersComponent } from './members/members.component';
-import { GuessComponent } from './members/guess/guess.component';
 import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 import { subscribeToResult } from 'rxjs/util/subscribeToResult';
 import { MapClickEvent } from './tree';

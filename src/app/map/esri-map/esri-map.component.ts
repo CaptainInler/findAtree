@@ -4,11 +4,13 @@ import { AppStateService } from '../../services/app-state.service';
 
 import * as MapView from 'esri/views/MapView';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
+import { showMap} from '../../router.animations';
 
 @Component({
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
-  styleUrls: ['./esri-map.component.scss']
+  styleUrls: ['./esri-map.component.scss'],
+  animations: [showMap()],
 })
 export class EsriMapComponent implements OnInit {
 
@@ -35,11 +37,15 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
+    this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {
       container: this.elementRef.nativeElement.firstChild,
-      map
+      map,
+      constraints: {
+        minZoom: 13
+      }
     };
     this.mapView = new MapView(mapViewProperties);
 
@@ -52,7 +58,7 @@ export class EsriMapComponent implements OnInit {
         // user is in the editor mode and he clicked on a tree
         if (response.results.length > 0) {
           const result = response.results[0];
-          if (result.graphic) {
+          if (result.graphic && result.graphic.layer.title === "AlteBaeumeZuerich") {
 
             // zoom to selected feature
             view.goTo({
@@ -66,7 +72,8 @@ export class EsriMapComponent implements OnInit {
             this.selectedTreeChange.emit(result.graphic);
           }
           // user is in the editor mode and he clicked next to a tree
-        } else {
+          else {
+          console.log(this.appState.getInteraction(), event.mapPoint);
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
             this.mapDataService.mapEventSource.next(event.mapPoint);
@@ -78,6 +85,7 @@ export class EsriMapComponent implements OnInit {
             this.selectedTreeChange.emit(null);
           }
         }
+      }
       });
 
     });
@@ -89,6 +97,8 @@ export class EsriMapComponent implements OnInit {
         this.changePadding(400);
       }
     });
+
+    // this.appState.showMap = 'show';
   }
 
   changePadding(padding: number) {

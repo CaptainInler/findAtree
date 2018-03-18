@@ -2,9 +2,9 @@
 
 @include mat-core();
 
-$tree-theme-primary: mat-palette($mat-brown);
-$tree-theme-accent: mat-palette($mat-teal);
-$tree-theme-warn: mat-palette($mat-red);
+$tree-theme-primary: mat-palette($mat-amber);
+$tree-theme-accent: mat-palette($mat-blue-grey);
+$tree-theme-warn: mat-palette($mat-deep-orange);
 
 $tree-theme: mat-light-theme($tree-theme-primary, $tree-theme-accent, $tree-theme-warn);
 
