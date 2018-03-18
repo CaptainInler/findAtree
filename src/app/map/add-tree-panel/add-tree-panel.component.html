@@ -26,7 +26,7 @@
       <mat-form-field>
         <mat-select placeholder="Tree type" formControlName="nameDE" required>
           <mat-option *ngFor="let name of treeNames" [value]="name">
-            {{name}}
+            {{ name }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -39,7 +39,7 @@
       <mat-form-field>
         <mat-select placeholder='Neighbourhood' formControlName='quartier'>
           <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>
-            {{quartier}}
+            {{ quartier }}
           </mat-option>
         </mat-select>
       </mat-form-field>

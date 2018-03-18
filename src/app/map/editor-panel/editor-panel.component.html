@@ -20,7 +20,7 @@
     </mat-error>
   </mat-form-field>
   <mat-divider></mat-divider>
-  <button mat-raised-button color='accent' type='submit'>Save</button>
+  <button mat-raised-button color='accent' type='submit' [disabled]="!form.valid">Save</button>
   <button mat-raised-button color='accent' type='button' (click)='cancelEdit()'>Cancel</button>
   <button mat-raised-button color='warn' type='button' (click)='deleteTree()'>Delete tree</button>
 </form>

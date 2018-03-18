@@ -42,6 +42,8 @@ export class EditorPanelComponent implements OnInit {
 
   onSubmit(form) {
 
+    console.log(form);
+
     const editedTree = this.selectedTree;
 
     editedTree.attributes[attr.nameDE] = form.name;
