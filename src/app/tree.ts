@@ -121,5 +121,6 @@ export enum attr {
   nameDE = 'baumnamede',
   status = 'status',
   pflanzJahr = 'pflanzjahr',
-  quartier = 'quartier'
+  quartier = 'quartier',
+  id= 'FID'
 }

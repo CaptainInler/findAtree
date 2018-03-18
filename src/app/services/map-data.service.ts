@@ -14,6 +14,8 @@ import { attr } from '../tree';
 import { Utils } from '../classes/utils';
 import { AppStateService } from './app-state.service';
 
+const treeServiceURL = 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer/0';
+
 @Injectable()
 export class MapDataService {
 
@@ -66,6 +68,22 @@ export class MapDataService {
         return tree;
       })
       .otherwise(err => console.log(err));
+  }
+
+  deleteTree(tree) {
+    const request = esriRequest(`${treeServiceURL}/applyEdits`, {
+      method: "post",
+      responseType: "json",
+      query: {
+          deletes: [tree.attributes[attr.id]],
+          f: "json"
+        },
+      })
+      .then((tree) => {
+        this.recreateLayer();
+        return tree;
+      })
+    return request;
   }
 
   // this function is just a hack to

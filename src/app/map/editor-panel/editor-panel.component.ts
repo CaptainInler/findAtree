@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material';
 import { yearValidator } from '../../shared/validators.directive';
 
 import { MapDataService } from '../../services/map-data.service';
+import { AppStateService } from '../../services/app-state.service';
 import { attr } from '../../tree';
 
 @Component({
@@ -21,7 +22,8 @@ export class EditorPanelComponent implements OnInit {
   @Input() selectedTree;
   @Output() editing: EventEmitter<boolean> = new EventEmitter();
 
-  constructor(private mapDataService: MapDataService,
+  constructor(private appState: AppStateService,
+    private mapDataService: MapDataService,
     private snackBar: MatSnackBar) {
 
       this.treeNames = mapDataService.uniqueTreeNames;
@@ -53,8 +55,7 @@ export class EditorPanelComponent implements OnInit {
           duration: 5000,
         });
       }).otherwise((err) => {
-        console.log(err);
-        this.snackBar.open('An error was encountered.', null, {
+        this.snackBar.open(`An error occured: ${err.message}`, null, {
           duration: 5000,
         });
       });
@@ -62,6 +63,22 @@ export class EditorPanelComponent implements OnInit {
 
   cancelEdit() {
     this.editing.emit(false);
+  }
+
+  deleteTree() {
+    this.mapDataService.deleteTree(this.selectedTree)
+      .then(tree => {
+        this.selectedTree = null;
+        this.appState.setInteraction('none');
+        this.snackBar.open('Tree was succesfully removed', null, {
+          duration: 5000,
+        });
+      })
+      .otherwise((err) => {
+        this.snackBar.open(`An error occured: ${err.message}`, null, {
+          duration: 5000,
+        });
+      });
   }
 
 }
