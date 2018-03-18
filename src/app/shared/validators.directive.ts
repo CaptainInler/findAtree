@@ -1,6 +1,6 @@
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
-/** A hero's name can't match the given regular expression */
+/** The year must be a positive number, smaller than current year */
 export function yearValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     const allowed = control.value >= 0 && control.value <= 2018;
@@ -8,6 +8,7 @@ export function yearValidator(): ValidatorFn {
   };
 }
 
+/** The latitude must correspond to values around Zurich */
 export function zurichLatitudeValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     let allowed = false;
@@ -18,6 +19,7 @@ export function zurichLatitudeValidator(): ValidatorFn {
   };
 }
 
+/** The longitude must correspond to values around Zurich */
 export function zurichLongitudeValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
     let allowed = false;

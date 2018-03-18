@@ -39,7 +39,6 @@ export class AddTreePanelComponent implements OnInit {
       pflanzJahr: new FormControl('', [Validators.required, yearValidator()]),
       quartier: new FormControl('', [Validators.required])
     });
-    console.log("group: !!!!", this.attributeFormGroup);
 
     // add the coordinates to the form
     this.mapDataService.mapEvent$.subscribe(value => {

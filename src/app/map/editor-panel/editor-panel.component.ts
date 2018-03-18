@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
+import { yearValidator } from '../../shared/validators.directive';
+
 import { MapDataService } from '../../services/map-data.service';
 import { attr } from '../../tree';
 
@@ -32,7 +34,7 @@ export class EditorPanelComponent implements OnInit {
     this.form = new FormGroup({
       name: new FormControl(attributes[attr.nameDE], [Validators.required]),
       quartier: new FormControl(attributes[attr.quartier], [Validators.required]),
-      pflanzJahr: new FormControl(attributes[attr.pflanzJahr])
+      pflanzJahr: new FormControl(attributes[attr.pflanzJahr], [yearValidator()])
     });
   }
 
