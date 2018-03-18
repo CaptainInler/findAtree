@@ -44,7 +44,7 @@ export class MapDataService {
   }
 
   updateTree(tree) {
-    const request = esriRequest(`https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer/0/applyEdits`, {
+    return esriRequest(`${treeServiceURL}/applyEdits`, {
       method: "post",
       responseType: "json",
       query: {
@@ -52,26 +52,24 @@ export class MapDataService {
           f: "json"
         },
       })
-      .then((tree) => {
+      .then((result) => {
         this.recreateLayer();
-        return tree;
+        return result;
       });
-    return request;
   }
 
   addTree(tree) {
     return this.layer.applyEdits({
       addFeatures: [tree]
     })
-      .then((tree) => {
+      .then((result) => {
         this.recreateLayer();
-        return tree;
-      })
-      .otherwise(err => console.log(err));
+        return result;
+      });
   }
 
   deleteTree(tree) {
-    const request = esriRequest(`${treeServiceURL}/applyEdits`, {
+    return esriRequest(`${treeServiceURL}/applyEdits`, {
       method: "post",
       responseType: "json",
       query: {
@@ -79,16 +77,15 @@ export class MapDataService {
           f: "json"
         },
       })
-      .then((tree) => {
+      .then((result) => {
         this.recreateLayer();
-        return tree;
-      })
-    return request;
+        return result;
+      });
   }
 
   // this function is just a hack to
   // force the layer to take the updates
-  private recreateLayer(){
+  private recreateLayer() {
     this.map.remove(this.layer);
     this.layer = this.getTreeLayer();
     this.map.add(this.layer);
@@ -96,7 +93,7 @@ export class MapDataService {
 
   private getTreeLayer() {
     return new FeatureLayer({
-      url: 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer',
+      url: treeServiceURL,
       outFields: [attr.gattungLat, attr.artLat, attr.nameLat, attr.nameDE, attr.status, attr.pflanzJahr, attr.quartier],
       title: "Tree layer",
       renderer: new SimpleRenderer({
@@ -172,7 +169,9 @@ export class MapDataService {
 
   public getRandomTreeNames(n: number, selected: string = null): Array<string> {
     const randomTreeNames = [];
-    if (selected) randomTreeNames.push(selected);
+    if (selected) {
+      randomTreeNames.push(selected);
+    }
     const length = this.uniqueTreeNames.length;
     for (let i = 0; i < n; i++) {
       let randomTreeName: string = this.uniqueTreeNames[Math.floor(Math.random() * length)];
