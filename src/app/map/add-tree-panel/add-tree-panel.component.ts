@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MapDataService } from '../../services/map-data.service';
+import { AppStateService } from '../../services/app-state.service';
 
 import { yearValidator, zurichLatitudeValidator, zurichLongitudeValidator } from '../../shared/validators.directive';
 
@@ -8,6 +9,7 @@ import { attr } from '../../tree';
 
 import * as Point from 'esri/geometry/Point';
 import * as Graphic from 'esri/Graphic';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'add-tree-panel',
@@ -21,7 +23,11 @@ export class AddTreePanelComponent implements OnInit {
   treeNames: string[];
   quartiers: string[];
 
-  constructor(private mapDataService: MapDataService) {
+  @Input() selectedTree;
+
+  constructor(private appState: AppStateService,
+    private mapDataService: MapDataService,
+    private snackBar: MatSnackBar) {
 
     this.treeNames = mapDataService.uniqueTreeNames;
     this.quartiers = mapDataService.uniqueQuartiers;
@@ -64,7 +70,20 @@ export class AddTreePanelComponent implements OnInit {
     newTree.attributes[attr.nameDE] = attributes.nameDE;
     newTree.attributes[attr.pflanzJahr] = attributes.pflanzJahr;
     newTree.attributes[attr.quartier] = attributes.quartier;
-    this.mapDataService.addTree(newTree);
+
+    this.mapDataService.addTree(newTree)
+      .then(result => {
+        this.appState.setSelectedTree(newTree);
+        this.appState.setInteraction("view");
+        this.snackBar.open('Tree was succesfully added', null, {
+          duration: 5000,
+        });
+      })
+      .otherwise((err) => {
+        this.snackBar.open(`An error occured: ${err.message}`, null, {
+          duration: 5000,
+        });
+      });
   }
 
 

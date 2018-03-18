@@ -48,6 +48,7 @@ export class EsriMapComponent implements OnInit {
       }
     };
     this.mapView = new MapView(mapViewProperties);
+    this.appState.mapView = this.mapView;
     const view = this.mapView;
 
     view.on("click", (event) => {
@@ -95,6 +96,12 @@ export class EsriMapComponent implements OnInit {
       } else {
         this.changePadding(400);
       }
+    });
+
+    this.appState.selectedTreeChanged.subscribe((tree) => {
+      console.log('tree changed', tree);
+      this.selectedTree = tree;
+      this.selectedTreeChange.emit(tree);
     });
 
     // this.appState.showMap = 'show';

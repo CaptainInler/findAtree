@@ -1,3 +1,4 @@
+import * as Geometry from 'esri/geometry/Geometry';
 import * as Point from 'esri/geometry/Point';
 
 export const attributeNames = [{
@@ -98,7 +99,7 @@ export interface FirebaseFeature {
   },
   properties: Attributes
 }
-
+/*
 export class Tree {
   static index: number = 0;
   geometry: Point;
@@ -112,7 +113,7 @@ export class Tree {
     this.attributes = feature.properties;
     this.attributes.ObjectID = Tree.index++;
   }
-}
+} */
 
 export enum attr {
   gattungLat = 'baumgattun',
@@ -123,4 +124,10 @@ export enum attr {
   pflanzJahr = 'pflanzjahr',
   quartier = 'quartier',
   id= 'FID'
+}
+
+
+export interface Tree {
+  geometry: Geometry;
+  attributes: attr;
 }
