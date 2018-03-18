@@ -88579,7 +88579,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(91), __webpack_require__(609), __webpack_require__(60), __webpack_require__(291), __webpack_require__(610)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, year_validator_directive_1, tree_1, Point, Graphic) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(91), __webpack_require__(609), __webpack_require__(60), __webpack_require__(291), __webpack_require__(610)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, validators_directive_1, tree_1, Point, Graphic) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AddTreePanelComponent = class AddTreePanelComponent {
@@ -88590,14 +88590,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         }
         ngOnInit() {
             this.locationFormGroup = new forms_1.FormGroup({
-                latitude: new forms_1.FormControl('', [forms_1.Validators.required]),
-                longitude: new forms_1.FormControl('', [forms_1.Validators.required])
+                latitude: new forms_1.FormControl('', [forms_1.Validators.required, validators_directive_1.zurichLatitudeValidator()]),
+                longitude: new forms_1.FormControl('', [forms_1.Validators.required, validators_directive_1.zurichLongitudeValidator()])
             });
             this.attributeFormGroup = new forms_1.FormGroup({
                 nameDE: new forms_1.FormControl('', [forms_1.Validators.required]),
-                pflanzJahr: new forms_1.FormControl('', [forms_1.Validators.required, year_validator_directive_1.yearValidator()]),
+                pflanzJahr: new forms_1.FormControl('', [forms_1.Validators.required, validators_directive_1.yearValidator()]),
                 quartier: new forms_1.FormControl('', [forms_1.Validators.required])
             });
+            console.log("group: !!!!", this.attributeFormGroup);
             // add the coordinates to the form
             this.mapDataService.mapEvent$.subscribe(value => {
                 this.locationFormGroup.patchValue({
@@ -88647,11 +88648,31 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
     /** A hero's name can't match the given regular expression */
     function yearValidator() {
         return (control) => {
-            const allowed = control.value >= 0 && control.value < 2018;
+            const allowed = control.value >= 0 && control.value <= 2018;
             return allowed ? null : { 'invalidYear': { value: control.value } };
         };
     }
     exports.yearValidator = yearValidator;
+    function zurichLatitudeValidator() {
+        return (control) => {
+            let allowed = false;
+            if (Number(control.value) && (control.value >= 46) && (control.value <= 48)) {
+                allowed = true;
+            }
+            return allowed ? null : { 'invalidLatitude': { value: control.value } };
+        };
+    }
+    exports.zurichLatitudeValidator = zurichLatitudeValidator;
+    function zurichLongitudeValidator() {
+        return (control) => {
+            let allowed = false;
+            if (Number(control.value) && (control.value >= 7) && (control.value <= 9)) {
+                allowed = true;
+            }
+            return allowed ? null : { 'invalidLongitude': { value: control.value } };
+        };
+    }
+    exports.zurichLongitudeValidator = zurichLongitudeValidator;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
@@ -88666,7 +88687,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_610__;
 /* 611 */
 /***/ (function(module, exports) {
 
-module.exports = "<mat-vertical-stepper linear>\n  <mat-step [stepControl]=\"locationFormGroup\">\n    <form [formGroup]=\"locationFormGroup\">\n      <ng-template matStepLabel>Localization</ng-template>\n      Click on the map at the location of the tree to fill up the coordinates:\n      <mat-form-field>\n        <input matInput placeholder=\"Latitude\" formControlName=\"latitude\" required>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Longitude\" formControlName=\"longitude\" required>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step [stepControl]=\"attributeFormGroup\">\n    <form [formGroup]=\"attributeFormGroup\">\n      <ng-template matStepLabel>Attributes</ng-template>\n      <mat-form-field>\n        <mat-select placeholder=\"Tree type\" formControlName=\"nameDE\" required>\n          <mat-option *ngFor=\"let name of treeNames\" [value]=\"name\">\n            {{name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Planting year\" formControlName=\"pflanzJahr\" required>\n        <mat-error *ngIf=\"pflanzJahr.errors.invalidYear\">\n          Please enter a valid year.\n        </mat-error>\n      </mat-form-field>\n      <mat-form-field>\n        <mat-select placeholder='Neighbourhood' formControlName='quartier'>\n          <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>\n            {{quartier}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step>\n    <ng-template matStepLabel>Save</ng-template>\n    <div>\n      <button mat-raised-button color='primary' (click)='saveTree()'>Save</button>\n      <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n    </div>\n  </mat-step>\n</mat-vertical-stepper>";
+module.exports = "<mat-vertical-stepper linear>\n  <mat-step [stepControl]=\"locationFormGroup\">\n    <form [formGroup]=\"locationFormGroup\">\n      <ng-template matStepLabel>Localization</ng-template>\n      Click on the map at the location of the tree to fill up the coordinates:\n      <mat-form-field>\n        <input matInput placeholder=\"Latitude\" formControlName=\"latitude\" required>\n        <mat-error *ngIf=\"locationFormGroup.root.controls.latitude.errors\">\n          Please enter a valid latitude.\n        </mat-error>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Longitude\" formControlName=\"longitude\" required>\n        <mat-error *ngIf=\"locationFormGroup.root.controls.longitude.errors\">\n          Please enter a valid longitude.\n        </mat-error>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step [stepControl]=\"attributeFormGroup\">\n    <form [formGroup]=\"attributeFormGroup\">\n      <ng-template matStepLabel>Attributes</ng-template>\n      <mat-form-field>\n        <mat-select placeholder=\"Tree type\" formControlName=\"nameDE\" required>\n          <mat-option *ngFor=\"let name of treeNames\" [value]=\"name\">\n            {{name}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Planting year\" formControlName=\"pflanzJahr\"required>\n        <mat-error *ngIf=\"attributeFormGroup.root.controls.pflanzJahr.errors\">\n          Please enter a valid year.\n        </mat-error>\n      </mat-form-field>\n      <mat-form-field>\n        <mat-select placeholder='Neighbourhood' formControlName='quartier'>\n          <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>\n            {{quartier}}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n        <button mat-raised-button matStepperNext color='primary'>Next</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step>\n    <ng-template matStepLabel>Save</ng-template>\n    <div>\n      <button mat-raised-button color='primary' (click)='saveTree()'>Save</button>\n      <button mat-raised-button matStepperPrevious color='primary'>Back</button>\n    </div>\n  </mat-step>\n</mat-vertical-stepper>";
 
 /***/ }),
 /* 612 */
