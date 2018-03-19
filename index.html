@@ -7,19 +7,7 @@
   <title>FindATree</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
-  <style type="text/css">
-  #infoPage {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    background-color: white;
-    text-align: center;
-  }
-  </style>
+  <link rel="stylesheet" href="loading-style.css">
   <script>
     var dojoConfig = {
       // get rid of the nasty console messages about compatibility with promises
@@ -38,9 +26,21 @@
 <body>
   <app-root></app-root>
   <div id="infoPage">
-    FindATree is an application for discovering trees in Zurich.
+    <h2>FindATree</h2>
+    <p>This web application is a prototype for tree data exploration and editing in the city of Zurich.</p>
     <div>🌲🌲🌲🌲🌲</div>
     <button onClick="this.parentElement.style.display = 'none';">Go to map</button>
+    <div id='extraInfos'>
+      <p>A prototype made based on:
+        <a href="https://data.stadt-zuerich.ch/dataset/baumkataster" target="_blank"> Baumkataster der Stadt Zürich dataset </a> provided by
+        <a href="https://data.stadt-zuerich.ch/" target="_blank">Stadt Zürich Open Data Katalog</a>, using
+        <a href="https://angular.io/" target="_blank">Angular</a>,
+        <a href="https://developers.arcgis.com/javascript/" target="_blank">ArcGIS API for JavaScript</a>, and
+        <a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank">Wikipedia API / MediaWiki</a> to retrieve a description of the tree type.</p>
+      <p>
+        Made by Beat, Raluca and Daniel for <a hred="https://www.hsr.ch/de/weiterbildung/technik-und-it/cas/cas-frontend-engineering/" target="_blank">FEE CAS</a> at HSR.
+      </p>
+    </div>
   </div>
   <script type="text/javascript">
     document.write("<base href='" + document.location.href + "' />");
