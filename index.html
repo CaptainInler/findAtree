@@ -7,6 +7,19 @@
   <title>FindATree</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://js.arcgis.com/4.6/esri/css/main.css">
+  <style type="text/css">
+  #infoPage {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    text-align: center;
+  }
+  </style>
   <script>
     var dojoConfig = {
       // get rid of the nasty console messages about compatibility with promises
@@ -23,8 +36,12 @@
 </head>
 
 <body>
-  <app-root/>
-
+  <app-root></app-root>
+  <div id="infoPage">
+    FindATree is an application for discovering trees in Zurich.
+    <div>🌲🌲🌲🌲🌲</div>
+    <button onClick="this.parentElement.style.display = 'none';">Go to map</button>
+  </div>
   <script type="text/javascript">
     document.write("<base href='" + document.location.href + "' />");
   </script>
