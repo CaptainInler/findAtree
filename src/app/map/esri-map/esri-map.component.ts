@@ -45,6 +45,9 @@ export class EsriMapComponent implements OnInit {
       map,
       constraints: {
         minZoom: 13
+      },
+      padding: {
+        right: 370
       }
     };
     this.mapView = new MapView(mapViewProperties);
@@ -63,7 +66,7 @@ export class EsriMapComponent implements OnInit {
             // zoom to selected feature
             view.goTo({
               target: result.graphic.geometry,
-              zoom: 18
+              zoom: 15
             });
 
             this.appState.setInteraction('view');
@@ -90,13 +93,13 @@ export class EsriMapComponent implements OnInit {
 
     });
 
-    this.appState.interactionChanged.subscribe((interaction) => {
+   /*  this.appState.interactionChanged.subscribe((interaction) => {
       if (interaction === 'none') {
         this.changePadding(0);
       } else {
         this.changePadding(400);
       }
-    });
+    }); */
 
     this.appState.selectedTreeChanged.subscribe((tree) => {
       console.log('tree changed', tree);
