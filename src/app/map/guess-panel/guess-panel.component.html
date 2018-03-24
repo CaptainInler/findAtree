@@ -1,6 +1,6 @@
-<div *ngIf='selectedTree' class='guess-panel'>
+<div *ngIf='selectedTree' class='guess-panel mat-typography'>
 
-  <h1>What kind of tree did you click on?</h1>
+  <h2>What kind of tree did you click on?</h2>
 
   <span class="error" *ngIf="error">{{ error }}</span>
 
@@ -10,15 +10,40 @@
     {{name}}
   </button>
 
-  <span class="score"><br>Points: {{points}}</span>
+  <div class="guess-points">
+    <table class="guess-score-table">
+      <tr>
+        <td class="guess-score-table-first">You will get:</td>
+        <td class="guess-score-table-second">{{points}}</td>
+        <td>Points</td>
+      </tr>
+    </table>
+  </div>
+
+<div *ngIf="getScore('total')>0" class="guess-score">
+  <div class="guess-score-title">
+    Scores:
+  </div>
+  <table class="guess-score-table">
+    <tr>
+      <td class="guess-score-table-first">Your points today:</td>
+      <td class="guess-score-table-second">{{getScore('day')}}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="guess-score-table-first">Your total:</td>
+      <td class="guess-score-table-second">{{getScore('total')}}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="guess-score-table-first">Best total:</td>
+      <td class="guess-score-table-second">{{getScore('best')}}</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
 
 </div>
 
-<div *ngIf="getScore('total')>0" class="guess-panel">
-  <h4>Your current score:</h4>
-  <span class="score">Today: {{getScore('day')}}<br></span>
-  <span *ngIf="getScore('total')!==getScore('day')" class="score">Total: {{getScore('total')}}<br></span>
-  <span *ngIf="getScore('best')>0" class="score">Best: {{getScore('best')}}<br></span>
 </div>
 
 <div *ngIf='!selectedTree'>

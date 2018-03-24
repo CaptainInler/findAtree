@@ -1,6 +1,35 @@
 @import '../../tree-theme';
 
 .guess-panel {
+
+  .guess-points{
+    margin-top: 8px;
+    color: #BDBDBD;;
+  }
+
+  .guess-score-title{
+    width: 100%;
+    border-bottom: 1px solid #BDBDBD;
+    padding: 12px 0 0 5px;
+    margin-bottom: 6px;
+    height: 1.8em;
+  }
+
+  .guess-score-table{
+    padding-left: 5px;
+    table-layout: fixed;
+    width: 100%;
+  }
+  .guess-score-table-first{
+    width: 40%;
+  }
+
+  .guess-score-table-second{
+    text-align: right;
+    width: 20%;
+    padding-right: 5px;
+  }
+
   button {
     width: 100%;
     margin: 10px 0;

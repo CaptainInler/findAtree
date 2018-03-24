@@ -1,20 +1,22 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, OnInit, Output, HostBinding} from '@angular/core';
 import { AppStateService } from '../services/app-state.service';
-import { showMap } from '../router.animations';
+import { showMap, showSidePanel } from '../router.animations';
 
 @Component({
   selector: 'map-component',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss'],
-  animations: [showMap()],
+  animations: [showMap(), showSidePanel()],
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnInit {
 
+  // @HostBinding('[@showSidePanel]="appState.sidePanelPosition"')
+  // public showSidePanel = true;
   @Output() selectedTree;
-  public sidePanelPosition: string  = 'bottom';
+  // public sidePanelPosition: string  = 'bottom';
 
   constructor(
-    private appState: AppStateService
+    public appState: AppStateService
   ) {  }
 
   ngOnInit () {
@@ -35,12 +37,14 @@ export class MapComponent implements OnInit{
     }
   }
 
-  setSidePanelPosition(winWidth: number){
-    if (winWidth < 600){
+  setSidePanelPosition(winSize: any) {
+    console.log(winSize.width);
+    if (( winSize.height > ( 1.8 * winSize.width)) || (winSize.width < 600) ) {
       this.appState.sidePanelPosition = 'bottom';
-    }else{
+    }else {
       this.appState.sidePanelPosition = 'right';
     }
+    console.log(this.appState.sidePanelPosition);
   }
 
 }

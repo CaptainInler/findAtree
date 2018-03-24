@@ -41,7 +41,7 @@ import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
-import { WindowWidthDirective } from './services/window-width.directive';
+import { WindowSizeDirective } from './services/window-size.directive';
 
 
 @NgModule({
@@ -78,7 +78,7 @@ import { WindowWidthDirective } from './services/window-width.directive';
     AddTreePanelComponent,
     GuessPanelComponent,
     LoadingPageComponent,
-    WindowWidthDirective
+    WindowSizeDirective
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [
