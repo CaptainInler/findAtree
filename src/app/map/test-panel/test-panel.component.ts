@@ -5,18 +5,16 @@ import { Guess, Score } from '../../classes/guess';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { showSidePanelContent } from '../../router.animations';
 import { AppStateService } from '../../services/app-state.service';
 
 type scoreType = 'day' | 'total' | 'best';
 
 @Component({
-  selector: 'guess-panel',
-  templateUrl: './guess-panel.component.html',
-  styleUrls: ['./guess-panel.component.scss'],
-  // animations: [showSidePanelContent()],
+  selector: 'test-panel',
+  templateUrl: './test-panel.component.html',
+  styleUrls: ['./test-panel.component.scss']
 })
-export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
+export class TestPanelComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() selectedTree;
   error: any;
@@ -45,7 +43,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
     this.totScoreRef$ = this._db.object<Score>(`score/total/${this._aS.getUserId()}`);
     this.maxScoreRef$ = this._db.list<Score>('score/total', ref => ref.orderByChild('p').limitToLast(1));
     this.setScoreRefs();
-   }
+  }
 
   ngOnChanges(values) {
     console.log(values);
@@ -63,7 +61,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     console.log('on destroy');
-      this.updateGuess(this.points);
+    this.updateGuess(this.points);
   }
 
   initButtonState() {
@@ -136,9 +134,9 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
     const t = Utils.getTime();
     const refLast = this._db.object(`guess/${this._aS.getUserId()}/${this.today}/${t}`);
     refLast.set(guess)
-            .catch( (err) =>
-              console.log(err)
-            );
+      .catch( (err) =>
+        console.log(err)
+      );
   }
 
   updateScore(period: scoreType, points: number = 0) {

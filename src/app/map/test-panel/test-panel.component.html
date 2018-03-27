@@ -10,15 +10,7 @@
     {{name}}
   </button>
 
-  <div class="guess-points">
-    <table class="guess-score-table">
-      <tr>
-        <td class="guess-score-table-first">You will get:</td>
-        <td class="guess-score-table-second">{{points}}</td>
-        <td>Points</td>
-      </tr>
-    </table>
-  </div>
+
 
   <div *ngIf="getScore('total')>0" class="guess-score">
     <div class="guess-score-title">
