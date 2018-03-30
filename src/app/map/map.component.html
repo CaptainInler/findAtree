@@ -1,6 +1,7 @@
 <div class="content"   appWindowSize (winSize)="setSidePanelPosition($event)">
 <esri-map [(selectedTree)]='selectedTree'></esri-map>
 <side-panel [selectedTree]='selectedTree'></side-panel>
+  <!--<guess-panel [selectedTree]='selectedTree'></guess-panel>-->
 <button mat-raised-button color='accent' class='btn-add-tree'
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"
   (click)='toggleAddInteraction()'>

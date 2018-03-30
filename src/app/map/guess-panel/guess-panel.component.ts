@@ -5,8 +5,10 @@ import { Guess, Score } from '../../classes/guess';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { showSidePanelContent } from '../../router.animations';
+import {showSidePanel, showSidePanelContent} from '../../router.animations';
 import { AppStateService } from '../../services/app-state.service';
+import {Subscription} from "rxjs/Subscription";
+import {Observable} from "rxjs/Observable";
 
 type scoreType = 'day' | 'total' | 'best';
 
@@ -14,7 +16,7 @@ type scoreType = 'day' | 'total' | 'best';
   selector: 'guess-panel',
   templateUrl: './guess-panel.component.html',
   styleUrls: ['./guess-panel.component.scss'],
-  // animations: [showSidePanelContent()],
+  animations: [showSidePanel()],
 })
 export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
 
@@ -28,6 +30,10 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   private dayScoreRef$: AngularFireObject<Score>;
   private totScoreRef$: AngularFireObject<Score>;
   private maxScoreRef$: AngularFireList<Score>;
+  public maxScoreObs$: Observable<Score[]>;
+  private dayScoreRef$Subscription: Subscription;
+  private totScoreRef$Subscription: Subscription;
+  private maxScoreRef$Subscription: Subscription;
   private today = '';
   private dayScore = 0;
   private totScore = 0;
@@ -44,6 +50,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
     this.dayScoreRef$ = this._db.object<Score>(`score/day/${this._aS.getUserId()}/${this.today}`);
     this.totScoreRef$ = this._db.object<Score>(`score/total/${this._aS.getUserId()}`);
     this.maxScoreRef$ = this._db.list<Score>('score/total', ref => ref.orderByChild('p').limitToLast(1));
+    this.maxScoreObs$ = this._db.list<Score>('score/total', ref => ref.orderByChild('p').limitToLast(1)).valueChanges();
     this.setScoreRefs();
    }
 
@@ -64,6 +71,9 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   ngOnDestroy() {
     console.log('on destroy');
       this.updateGuess(this.points);
+      this.dayScoreRef$Subscription.unsubscribe();
+      this.totScoreRef$Subscription.unsubscribe();
+      this.maxScoreRef$Subscription.unsubscribe();
   }
 
   initButtonState() {
@@ -83,17 +93,17 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setScoreRefs() {
-    this.dayScoreRef$.valueChanges().subscribe(last => {
+    this.dayScoreRef$Subscription = this.dayScoreRef$.valueChanges().subscribe(last => {
       if (last) {
         this.dayScore = last.p;
       }
     });
-    this.totScoreRef$.valueChanges().subscribe(last => {
+    this.totScoreRef$Subscription = this.totScoreRef$.valueChanges().subscribe(last => {
       if (last) {
         this.totScore = last.p;
       }
     });
-    this.maxScoreRef$.valueChanges().subscribe(last => {
+    this.maxScoreRef$Subscription = this.maxScoreRef$.valueChanges().subscribe(last => {
       // console.log(last);
       if (last.length > 0) {
         this.maxScore = last[0].p;

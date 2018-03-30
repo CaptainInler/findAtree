@@ -1,8 +1,9 @@
 <div *ngIf='selectedTree' class='guess-panel mat-typography'>
 
-  <h2>What kind of tree did you click on?</h2>
+  <h1>What kind of tree did you click on?</h1>
 
   <span class="error" *ngIf="error">{{ error }}</span>
+
 
   <button *ngFor="let name of selection" mat-raised-button
           (click)="selectTreeName(name, $event)" id="{{name}}"
@@ -19,6 +20,7 @@
       </tr>
     </table>
   </div>
+
 
   <div *ngIf="getScore('total')>0" class="guess-score">
     <div class="guess-score-title">
@@ -41,6 +43,8 @@
         <td>&nbsp;</td>
       </tr>
     </table>
+
+    <span>{{maxScoreObs$ | async}}</span>
 
   </div>
 
