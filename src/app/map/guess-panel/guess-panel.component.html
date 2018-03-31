@@ -1,8 +1,8 @@
 <div *ngIf='selectedTree' class='guess-panel'>
 
-  <h1>What kind of tree did you click on?</h1>
+  <h1>Was ist das für einen Baumart?</h1>
 
-  <span class="error" *ngIf="error">{{ error }}</span>
+  <span class="error" *ngIf="error">{{error}}</span>
 
   <button *ngFor="let name of selection" mat-raised-button
     (click)="selectTreeName(name, $event)" id="{{name}}"
@@ -10,17 +10,17 @@
     {{name}}
   </button>
 
-  <span class="score"><br>Points: {{points}}</span>
+  <span class="score"><br>Punkte: {{points}}</span>
 
 </div>
 
 <div *ngIf="getScore('total')>0" class="guess-panel">
-  <h4>Your current score:</h4>
-  <span class="score">Today: {{getScore('day')}}<br></span>
+  <h4>Aktuelle Punktzahl:</h4>
+  <span class="score">Heute: {{dayScore}}<br></span>
   <span *ngIf="getScore('total')!==getScore('day')" class="score">Total: {{getScore('total')}}<br></span>
-  <span *ngIf="getScore('best')>0" class="score">Best: {{getScore('best')}}<br></span>
+  <span *ngIf="getScore('best')>0" class="score">Highscore: {{getScore('best')}}<br></span>
 </div>
 
 <div *ngIf='!selectedTree'>
-  Click on a tree to guess what type of tree it is.
+  Klick auf einen Baum und rate seine Art.
 </div>
