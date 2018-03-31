@@ -27,7 +27,7 @@
 </mat-toolbar>
 
 <section>
-  <loading-page></loading-page>
+  <loading-page *ngIf="appState.showMap === 'hide'"></loading-page>
   <router-outlet></router-outlet>
   <div #tools></div>
 </section>

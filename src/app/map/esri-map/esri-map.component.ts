@@ -70,9 +70,9 @@ export class EsriMapComponent implements OnInit {
 
             this.selectedTree = result.graphic;
             this.selectedTreeChange.emit(result.graphic);
-          }
-          // user is in the editor mode and he clicked next to a tree
-          else {
+
+            // user is in the editor mode and he clicked next to a tree
+          }else {
           console.log(this.appState.getInteraction(), event.mapPoint);
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {

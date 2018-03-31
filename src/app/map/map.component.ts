@@ -20,7 +20,7 @@ export class MapComponent implements OnInit {
   ) {  }
 
   ngOnInit () {
-    this.setSidePanelPosition(window.innerWidth);
+    this.setSidePanelPosition({ width: window.innerWidth, height: window.innerHeight });
   }
 
   selectedTreeChange(tree) {

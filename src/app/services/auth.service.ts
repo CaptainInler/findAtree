@@ -11,6 +11,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/take';
 import {catchError} from 'rxjs/operators';
+import { DeviceDetectorService } from "ngx-device-detector";
 
 
 @Injectable()
@@ -25,8 +26,9 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router) {
-
+              private router: Router,
+              private devDetector: DeviceDetectorService) {
+    console.log ( this.devDetector.getDeviceInfo());
     this.afAuth.authState
       .switchMap(auth => {
         if (auth) {
@@ -55,8 +57,6 @@ export class AuthService {
       return this.userDetails.roles[role];
     }
   }
-
-
   signupNewUser(formData) {
     return this.afAuth.auth.createUserWithEmailAndPassword(
       formData.value.email,
@@ -100,10 +100,22 @@ export class AuthService {
   }
 
   private authLoginPopup(provider) {
-    return this.afAuth.auth.signInWithPopup(provider)
-      .then((credential => {
-        this.updateUser(credential.user);
-      }));
+    const deviceInfo = this.devDetector.getDeviceInfo();
+    console.log(deviceInfo.device)
+    if (deviceInfo.device === 'unknown') {
+      return this.afAuth.auth.signInWithPopup(provider)
+        .then((credential => {
+          this.updateUser(credential.user);
+        }));
+    }else {
+      return this.afAuth.auth.signInWithRedirect(provider)
+        .then((credential => {
+          this.updateUser(credential.user);
+        }))
+        .catch((errr) => {
+          console.log(errr);
+        });
+    }
   }
 
 
@@ -120,7 +132,7 @@ export class AuthService {
             console.log(err);
           });
         }
-      })
+      });
   }
 
 

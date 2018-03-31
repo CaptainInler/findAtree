@@ -26,10 +26,10 @@ export class AppComponent implements OnInit {
   @ViewChild('tools', { read: ViewContainerRef })
   container: ViewContainerRef;
   toolComponent: any;
-  memberSubComponent: string = '';
+  memberSubComponent = '';
   mapClickData: MapClickEvent = null;
   cmpRef: ComponentRef<any>;
-  loggedIn: boolean = false;
+  loggedIn = false;
 
   constructor(private treeService: TreeService,
     private _cfr: ComponentFactoryResolver,
@@ -121,7 +121,7 @@ export class AppComponent implements OnInit {
       default: this.toolComponent = null;
     }
     if (this.toolComponent) {
-      let comp = this._cfr.resolveComponentFactory(this.toolComponent);
+      const comp = this._cfr.resolveComponentFactory(this.toolComponent);
       this.cmpRef = this.container.createComponent(comp);
       this.cmpRef.instance.subComponent = this.memberSubComponent;
       this.cmpRef.instance.mapClickData = this.mapClickData;

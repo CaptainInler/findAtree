@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
+import { DeviceDetectorModule } from "ngx-device-detector";
 
 // components
 import { AppComponent } from './app.component';
@@ -56,7 +57,8 @@ import { WindowSizeDirective } from './services/window-size.directive';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    DeviceDetectorModule.forRoot()
   ],
   declarations: [
     // declarables: directives (Attribute, Structural), components, pipes.

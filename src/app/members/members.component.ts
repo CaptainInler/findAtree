@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angular/core';
 import { FormsModule} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
@@ -9,18 +9,20 @@ import {MapClickEvent} from '../tree';
   selector: 'app-members',
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.scss'],
-  animations: [moveIn(),fallIn(),moveInLeft()],
-  host: {'[@moveIn]':''}
+  animations: [moveIn(), fallIn(), moveInLeft()],
 })
 export class MembersComponent implements OnInit {
   name: any;
-  state: string =  '';
-  show: boolean = true;
-  private done: boolean = false;
+  show = true;
+  private done = false;
   @Input() subComponent: string;
   @Input() mapClickData: MapClickEvent;
-  @Output() eventData:EventEmitter<string> = new EventEmitter();
-  constructor(private auth: AuthService, private router: Router) {
+  @Output() eventData: EventEmitter<string> = new EventEmitter();
+  @HostBinding('@moveIn')
+  public state = true;
+  constructor(
+    private auth: AuthService,
+    private router: Router) {
     if (this.auth.isLoggedIn()) {
       this.name = this.auth.getUser();
     }
