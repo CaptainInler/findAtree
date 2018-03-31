@@ -7,8 +7,12 @@
     display: flex;
     flex-direction: column;
   }
+
+  .guess-panel-score {
+    margin-top: 16px;
+  }
+
   .guess-points{
-    margin-top: 8px;
     color: #BDBDBD;;
   }
 
@@ -51,13 +55,56 @@
 
 
 @media (max-width: 840px) {
-.guess-panel {
-  .guess-panel-game {
-    flex-direction: row;
-  }
-  .guess-panel-score {
-    padding-top: 1em;
-    padding-left: 1em;
+  .guess-panel {
+    .guess-panel-game {
+      flex-direction: row;
+    }
+    .guess-panel-score {
+      padding-left: 1em;
+    }
   }
 }
+
+@media (max-width: 520px) {
+  .guess-panel {
+
+    h2 {
+      margin-bottom: 8px;
+    }
+    .guess-score-title {
+      display: none;
+    }
+    td:nth-child(odd) {
+      display: none;
+    }
+    td {
+      display: block;
+
+      &:before {
+        content: attr(data-title);
+        display: block;
+        font-size: 80%;
+      }
+    }
+
+    .guess-panel-score {
+      margin-top: 6px;
+      padding-left: 0;
+    }
+    .guess-panel-guess {
+      min-width: 75%;
+    }
+    .guess-score-table-second {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
+
+@media (max-height: 620px), (max-width: 840px) {
+  .guess-panel {
+    button {
+      margin: 2px 0;
+    }
+  }
 }
