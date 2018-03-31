@@ -8,7 +8,7 @@ export class UsersService {
   constructor(private db: AngularFireDatabase) {
   }
 
-  public getUsers(): Observable<Array<any>>{
+  public getUsers(): Observable<Array<any>> {
     return this.db.list('users').valueChanges();
   }
 }

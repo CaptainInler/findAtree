@@ -83,12 +83,14 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   selectTreeName(name: string, event) {
-    if (this.selectedTree.attributes.baumnamede === name) {
-      this.points += this._aS.level;
-      this.buttonState[name] = 'correct';
-    } else {
-      this.points--;
-      this.buttonState[name] = 'false';
+    if ( 'not-guessed' === this.buttonState[name]) {
+      if (this.selectedTree.attributes.baumnamede === name) {
+        this.points += this._aS.level;
+        this.buttonState[name] = 'correct';
+      } else {
+        this.points--;
+        this.buttonState[name] = 'false';
+      }
     }
   }
 

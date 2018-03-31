@@ -39,7 +39,8 @@ export class MapComponent implements OnInit {
 
   setSidePanelPosition(winSize: any) {
     console.log(winSize.width);
-    if (( winSize.height > ( 1.8 * winSize.width)) || (winSize.width < 600) ) {
+    console.log(winSize.height);
+    if (( winSize.height > ( 1.6 * winSize.width)) || (winSize.width < 840) ) {
       this.appState.sidePanelPosition = 'bottom';
     }else {
       this.appState.sidePanelPosition = 'right';

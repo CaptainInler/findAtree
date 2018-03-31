@@ -3,6 +3,10 @@
 
 .guess-panel {
 
+  .guess-panel-game {
+    display: flex;
+    flex-direction: column;
+  }
   .guess-points{
     margin-top: 8px;
     color: #BDBDBD;;
@@ -43,4 +47,17 @@
   .false {
     background-color: mat-color($tree-theme-warn);
   }
+}
+
+
+@media (max-width: 840px) {
+.guess-panel {
+  .guess-panel-game {
+    flex-direction: row;
+  }
+  .guess-panel-score {
+    padding-top: 1em;
+    padding-left: 1em;
+  }
+}
 }
