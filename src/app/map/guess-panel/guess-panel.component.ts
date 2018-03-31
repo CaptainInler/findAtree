@@ -21,14 +21,14 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
   buttonState = {};
   selectedTreeId: number;
   selectedTreeName: string;
-  private points: number = 0;
+  private points = 0;
   private dayScoreRef$: AngularFireObject<Score>;
   private totScoreRef$: AngularFireObject<Score>;
   private maxScoreRef$: AngularFireList<Score>;
-  private today: string = '';
-  private dayScore: number = 0;
-  private totScore: number = 0;
-  private maxScore: number = 0;
+  private today = '';
+  private dayScore = 0;
+  private totScore = 0;
+  private maxScore = 0;
 
 
   constructor(private mapDataService: MapDataService,
@@ -39,7 +39,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
     this.today = Utils.getDate();
     this.dayScoreRef$ = this._db.object<Score>(`score/day/${this._aS.getUserId()}/${this.today}`);
     this.totScoreRef$ = this._db.object<Score>(`score/total/${this._aS.getUserId()}`);
-    this.maxScoreRef$ = this._db.list<Score>('score/total',ref=>ref.orderByChild('p').limitToLast(1));
+    this.maxScoreRef$ = this._db.list<Score>('score/total', ref => ref.orderByChild('p').limitToLast(1));
     this.setScoreRefs();
    }
 
@@ -49,7 +49,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
     if (values.selectedTree.currentValue) {
       this.selectedTreeId = values.selectedTree.currentValue.attributes.OBJECTID;
       this.selectedTreeName = values.selectedTree.currentValue.attributes.baumnamede;
-      this.selection = this.mapDataService.getRandomTreeNames(this._aS.level,this.selectedTreeName );
+      this.selection = this.mapDataService.getRandomTreeNames(this._aS.level, this.selectedTreeName );
       console.log(this.selection);
       this.selection = Utils.shuffle(this.selection);
       this.initButtonState();
@@ -57,7 +57,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
     }
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     console.log('on destroy');
       this.updateGuess(this.points);
   }
@@ -87,29 +87,28 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
     });
   }
 
-
   setScoreRefs(){
-    this.dayScoreRef$.valueChanges().subscribe(last=>{
-      if(last) {
+    this.dayScoreRef$.valueChanges().subscribe(last => {
+      if (last) {
         this.dayScore = last.p;
       }
     });
-    this.totScoreRef$.valueChanges().subscribe(last=>{
-      if(last) {
+    this.totScoreRef$.valueChanges().subscribe(last => {
+      if (last) {
         this.totScore = last.p;
       }
     });
-    this.maxScoreRef$.valueChanges().subscribe(last=>{
+    this.maxScoreRef$.valueChanges().subscribe(last => {
       console.log(last);
-      if(last.length > 0) {
+      if (last.length > 0) {
         this.maxScore = last[0].p;
       }
-    })
+    });
   }
 
   getScore(period: scoreType): number{
     let score: number;
-    switch (period){
+    switch (period) {
       case 'day':
         score = this.dayScore;
         break;
@@ -126,8 +125,8 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
   }
 
   updateGuess(points: number) {
-    if (points!==0) {
-      let guess: Guess = {
+    if (points !== 0) {
+      const guess: Guess = {
         treeId: this.selectedTreeId,
         treeNameId: this.selectedTreeName,
         points: this.points
@@ -138,19 +137,19 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
     }
   }
 
-  setGuess ( guess: Guess){
-    let t = Utils.getTime();
-    let refLast = this._db.object(`guess/${this._aS.getUserId()}/${this.today}/${t}`);
+  setGuess ( guess: Guess) {
+    const t = Utils.getTime();
+    const refLast = this._db.object(`guess/${this._aS.getUserId()}/${this.today}/${t}`);
     refLast.set(guess)
             .catch( (err) =>
               console.log(err)
             );
   }
 
-  updateScore(period: scoreType, points: number = 0){
+  updateScore(period: scoreType, points: number = 0) {
     let refScore: AngularFireObject<Score>;
-    let pts: number = this.getScore(period) + points;
-    switch(period) {
+    const pts: number = this.getScore(period) + points;
+    switch (period) {
       case 'day':
         refScore = this.dayScoreRef$;
         break;
@@ -161,9 +160,9 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy{
         refScore = null;
     }
 
-    if(refScore !== null) {
+    if (refScore !== null) {
       refScore.set({p: pts})
-        .catch(err=>
+        .catch(err =>
           console.log(err));
     }
   }
