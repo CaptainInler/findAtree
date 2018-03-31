@@ -8,9 +8,11 @@
 
   .correct {
     background-color: mat-color($tree-theme-accent);
+    pointer-events: none;
   }
 
   .false {
     background-color: mat-color($tree-theme-warn);
+    pointer-events: none;
   }
 }
