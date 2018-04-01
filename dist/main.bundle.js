@@ -88260,30 +88260,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             });
             view.on("click", (event) => {
                 view.hitTest(event).then((response) => {
+                    console.log(this.appState.getInteraction(), response);
                     // user is in the editor mode and he clicked on a tree
-                    if (response.results.length > 0) {
-                        const result = response.results[0];
-                        if (result.graphic && result.graphic.layer.title === "Tree layer") {
-                            // zoom to selected feature
-                            view.goTo({
-                                target: result.graphic.geometry,
-                                zoom: view.zoom > 17 ? view.zoom : 17
-                            });
-                            this.appState.setInteraction('view');
-                            this.selectedTreeChanged(result.graphic);
+                    let results = response.results;
+                    if (results.length > 0 && results[0].graphic && results[0].graphic.layer.title === "Tree layer") {
+                        const graphic = results[0].graphic;
+                        // zoom to selected feature
+                        view.goTo({
+                            target: graphic.geometry,
+                            zoom: view.zoom > 17 ? view.zoom : 17
+                        });
+                        this.appState.setInteraction('view');
+                        this.selectedTreeChanged(graphic);
+                    }
+                    else {
+                        console.log(this.appState.getInteraction(), event.mapPoint);
+                        // in case he is in the add mode then the coordinates should be added
+                        if (this.appState.getInteraction() === 'add') {
+                            this.mapDataService.mapEventSource.next(event.mapPoint);
                         }
                         else {
-                            console.log(this.appState.getInteraction(), event.mapPoint);
-                            // in case he is in the add mode then the coordinates should be added
-                            if (this.appState.getInteraction() === 'add') {
-                                this.mapDataService.mapEventSource.next(event.mapPoint);
-                            }
-                            else {
-                                // in case he was just viewing a tree or editing a tree the selection
-                                // is canceled
-                                this.appState.setInteraction('none');
-                                this.selectedTreeChanged(null);
-                            }
+                            // in case he was just viewing a tree or editing a tree the selection
+                            // is canceled
+                            this.appState.setInteraction('none');
+                            this.selectedTreeChanged(null);
                         }
                     }
                 });
