@@ -3,16 +3,9 @@
 @include mat-core();
 
 $tree-theme-primary: mat-palette($mat-amber);
-$tree-theme-accent: mat-palette($mat-blue-grey);
+$tree-theme-accent: mat-palette($mat-brown);
 $tree-theme-warn: mat-palette($mat-deep-orange);
 
 $tree-theme: mat-light-theme($tree-theme-primary, $tree-theme-accent, $tree-theme-warn);
 
-
 @include angular-material-theme($tree-theme);
-/*
-$primary: map-get($tree-theme, primary);
-$accent: map-get($tree-theme, accent);
-
-$primary-color: mat-color($primary);
-$accent-color: mat-color($accent); */
