@@ -1,4 +1,4 @@
-<mat-vertical-stepper linear>
+<mat-vertical-stepper *ngIf="!loading" linear>
   <mat-step [stepControl]="locationFormGroup">
     <form [formGroup]="locationFormGroup">
       <ng-template matStepLabel>Localization</ng-template>
@@ -57,3 +57,5 @@
     </div>
   </mat-step>
 </mat-vertical-stepper>
+
+<loading-page *ngIf="loading"></loading-page>

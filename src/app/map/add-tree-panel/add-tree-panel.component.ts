@@ -20,6 +20,7 @@ export class AddTreePanelComponent implements OnInit {
 
   locationFormGroup: FormGroup;
   attributeFormGroup: FormGroup;
+  loading: Boolean = false;
   treeNames: string[];
   quartiers: string[];
 
@@ -56,6 +57,7 @@ export class AddTreePanelComponent implements OnInit {
   }
 
   saveTree() {
+    this.loading = true;
     const attributes = this.attributeFormGroup.value;
     const newTree = new Graphic({
       geometry: new Point({
@@ -73,6 +75,7 @@ export class AddTreePanelComponent implements OnInit {
 
     this.mapDataService.addTree(newTree)
       .then(result => {
+        this.loading = false;
         this.appState.setSelectedTree(newTree);
         this.appState.setInteraction("view");
         this.snackBar.open('Tree was succesfully added', null, {
@@ -80,6 +83,7 @@ export class AddTreePanelComponent implements OnInit {
         });
       })
       .otherwise((err) => {
+        this.loading = false;
         this.snackBar.open(`An error occured: ${err.message}`, null, {
           duration: 5000,
         });

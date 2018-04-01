@@ -16,6 +16,7 @@ import { attr } from '../../tree';
 export class EditorPanelComponent implements OnInit {
 
   form: FormGroup;
+  loading: Boolean = false;
   treeNames;
   quartiers;
 
@@ -42,7 +43,7 @@ export class EditorPanelComponent implements OnInit {
 
   onSubmit(form) {
 
-    console.log(form);
+    this.loading = true;
 
     const editedTree = this.selectedTree;
 
@@ -52,11 +53,13 @@ export class EditorPanelComponent implements OnInit {
 
     this.mapDataService.updateTree(editedTree)
       .then((tree) => {
+        this.loading = false;
         this.editing.emit(false);
         this.snackBar.open('Tree was succesfully updated', null, {
           duration: 5000,
         });
       }).otherwise((err) => {
+        this.loading = false;
         this.snackBar.open(`An error occured: ${err.message}`, null, {
           duration: 5000,
         });
