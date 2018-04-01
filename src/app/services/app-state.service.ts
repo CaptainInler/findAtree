@@ -34,8 +34,10 @@ export class AppStateService {
   }
 
   setInteraction(interaction: interactionType) {
-    this.interaction = interaction;
-    this.interactionSource.next(interaction);
+    if (this.interaction !== interaction) {
+      this.interaction = interaction;
+      this.interactionSource.next(interaction);
+    }
   }
 
   getInteraction(): interactionType {
@@ -51,8 +53,10 @@ export class AppStateService {
   }
 
   setMode(mode: modeType) {
-    this.mode = mode;
-    this.modeSource.next(mode);
+    if (this.mode !== mode) {
+      this.mode = mode;
+      this.modeSource.next(mode);
+    }
   }
 
   getMode(): modeType {

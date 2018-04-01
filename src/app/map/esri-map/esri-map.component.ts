@@ -5,6 +5,7 @@ import { attr } from '../../tree';
 
 import * as MapView from 'esri/views/MapView';
 import * as LayerView from 'esri/views/layers/FeatureLayerView';
+import * as VectorTileLayer from 'esri/layers/VectorTileLayer';
 import * as Graphic from 'esri/Graphic';
 import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import * as Locate from 'esri/widgets/Locate';
@@ -14,13 +15,14 @@ import { showMap} from '../../router.animations';
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
   styleUrls: ['./esri-map.component.scss'],
-  animations: [showMap()],
+  animations: [showMap()]
 })
 export class EsriMapComponent implements OnInit {
 
   private mapView: MapView;
   private treeLayerView: LayerView;
   private highlight = null;
+  private gameBasemap: VectorTileLayer;
 
   @Output()
   selectedTreeChange = new EventEmitter();
@@ -55,6 +57,12 @@ export class EsriMapComponent implements OnInit {
     this.mapView = new MapView(mapViewProperties);
     this.appState.mapView = this.mapView;
     const view = this.mapView;
+
+    this.gameBasemap = new VectorTileLayer({
+      portalItem: {
+        id: "7675d44bb1e4428aa2c30a9b68f97822"
+      }
+    });
 
     const locateWidget = new Locate({
       view: view,
@@ -102,7 +110,7 @@ export class EsriMapComponent implements OnInit {
             // zoom to selected feature
             view.goTo({
               target: result.graphic.geometry,
-              zoom: view.zoom > 15 ? view.zoom : 15
+              zoom: view.zoom > 17 ? view.zoom : 17
             });
 
             this.appState.setInteraction('view');
@@ -132,6 +140,19 @@ export class EsriMapComponent implements OnInit {
       } else {
         this.changePadding(400);
       }
+    });
+
+    this.appState.modeChanged.subscribe((mode) => {
+      const isGame = (mode === 'game');
+      this.mapView.map.basemap.baseLayers.forEach(layer => {
+        if (layer.title === 'GameBasemap') {
+          layer.visible = isGame;
+        }
+        else {
+          layer.visible = !isGame;
+        }
+      });
+
     });
 
     this.appState.selectedTreeChanged.subscribe((tree) => {
