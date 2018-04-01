@@ -23,75 +23,27 @@
   </script>
 
   <script src="https://js.arcgis.com/4.7/"></script>
-  <style type="text/css">
-
-    .spinner {
-      margin: 100px auto;
-      width: 50px;
-      height: 40px;
-      text-align: center;
-      font-size: 10px;
-    }
-
-    .spinner > div {
-      background-color: #617D8A;
-      height: 100%;
-      width: 6px;
-      display: inline-block;
-
-      -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
-      animation: sk-stretchdelay 1.2s infinite ease-in-out;
-    }
-
-    .spinner .rect2 {
-      -webkit-animation-delay: -1.1s;
-      animation-delay: -1.1s;
-    }
-
-    .spinner .rect3 {
-      -webkit-animation-delay: -1.0s;
-      animation-delay: -1.0s;
-    }
-
-    .spinner .rect4 {
-      -webkit-animation-delay: -0.9s;
-      animation-delay: -0.9s;
-    }
-
-    .spinner .rect5 {
-      -webkit-animation-delay: -0.8s;
-      animation-delay: -0.8s;
-    }
-
-    @-webkit-keyframes sk-stretchdelay {
-      0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
-      20% { -webkit-transform: scaleY(1.0) }
-    }
-
-    @keyframes sk-stretchdelay {
-      0%, 40%, 100% {
-        transform: scaleY(0.4);
-        -webkit-transform: scaleY(0.4);
-      }  20% {
-           transform: scaleY(1.0);
-           -webkit-transform: scaleY(1.0);
-         }
-    }
-
-  </style>
 </head>
 
 <body>
-  <app-root>
-    <div class="spinner">
-      <div class="rect1"></div>
-      <div class="rect2"></div>
-      <div class="rect3"></div>
-      <div class="rect4"></div>
-      <div class="rect5"></div>
+  <app-root></app-root>
+  <div id="infoPage">
+    <h2>FindATree</h2>
+    <p>This web application is a prototype for tree data exploration and editing in the city of Zurich.</p>
+    <div>🌲🌲🌲🌲🌲</div>
+    <button onClick="this.parentElement.style.display = 'none';">Go to map</button>
+    <div id='extraInfos'>
+      <p>A prototype made based on:
+        <a href="https://data.stadt-zuerich.ch/dataset/baumkataster" target="_blank"> Baumkataster der Stadt Zürich dataset </a> provided by
+        <a href="https://data.stadt-zuerich.ch/" target="_blank">Stadt Zürich Open Data Katalog</a>, using
+        <a href="https://angular.io/" target="_blank">Angular</a>,
+        <a href="https://developers.arcgis.com/javascript/" target="_blank">ArcGIS API for JavaScript</a>, and
+        <a href="https://www.mediawiki.org/wiki/API:Main_page" target="_blank">Wikipedia API / MediaWiki</a> to retrieve a description of the tree type.</p>
+      <p>
+        Made by Beat, Raluca and Daniel for <a hred="https://www.hsr.ch/de/weiterbildung/technik-und-it/cas/cas-frontend-engineering/" target="_blank">FEE CAS</a> at HSR.
+      </p>
     </div>
-
-  </app-root>
+  </div>
   <script type="text/javascript">
     document.write("<base href='" + document.location.href + "' />");
   </script>
