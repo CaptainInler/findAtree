@@ -5,6 +5,9 @@ import { attr } from '../../tree';
 
 import * as MapView from 'esri/views/MapView';
 import * as LayerView from 'esri/views/layers/FeatureLayerView';
+import * as Graphic from 'esri/Graphic';
+import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
+import * as Locate from 'esri/widgets/Locate';
 import { showMap} from '../../router.animations';
 
 @Component({
@@ -47,14 +50,28 @@ export class EsriMapComponent implements OnInit {
       map,
       constraints: {
         minZoom: 13
-      },
-      padding: {
-        right: 370
       }
     };
     this.mapView = new MapView(mapViewProperties);
     this.appState.mapView = this.mapView;
     const view = this.mapView;
+
+    const locateWidget = new Locate({
+      view: view,
+      graphic: new Graphic({
+        symbol: new SimpleMarkerSymbol({
+          style: 'circle',
+          size: 15,
+          color: [63, 137, 255, 0.2],
+          outline: {
+            color: [63, 137, 255, 1],
+            width: 1.5
+          }
+        })
+      })
+    });
+
+    view.ui.add(locateWidget, 'top-left');
 
     view.on('layerview-create', (evt) => {
 
@@ -123,6 +140,7 @@ export class EsriMapComponent implements OnInit {
 
       this.selectedTreeChange.emit(tree);
     });
+
 
     // this.appState.showMap = 'show';
   }
