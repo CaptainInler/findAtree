@@ -1,9 +1,10 @@
 import { Component, ElementRef, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
+import { attr } from '../../tree';
 
 import * as MapView from 'esri/views/MapView';
-import * as FeatureLayer from 'esri/layers/FeatureLayer';
+import * as LayerView from 'esri/views/layers/FeatureLayerView';
 import { showMap} from '../../router.animations';
 
 @Component({
@@ -15,7 +16,8 @@ import { showMap} from '../../router.animations';
 export class EsriMapComponent implements OnInit {
 
   private mapView: MapView;
-  private treeLayer: FeatureLayer;
+  private treeLayerView: LayerView;
+  private highlight = null;
 
   @Output()
   selectedTreeChange = new EventEmitter();
@@ -54,6 +56,23 @@ export class EsriMapComponent implements OnInit {
     this.appState.mapView = this.mapView;
     const view = this.mapView;
 
+    view.on('layerview-create', (evt) => {
+
+      if (evt.layer.title === "Tree layer") {
+        this.treeLayerView = <LayerView>evt.layerView;
+        if (this.selectedTree) {
+          console.log('layerview was created', this.selectedTree);
+          console.log(this.treeLayerView);
+          this.treeLayerView.watch('updating', (value) => {
+            if (!value) {
+              this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
+            }
+          })
+        }
+      }
+
+    });
+
     view.on("click", (event) => {
 
       view.hitTest(event).then((response) => {
@@ -66,13 +85,11 @@ export class EsriMapComponent implements OnInit {
             // zoom to selected feature
             view.goTo({
               target: result.graphic.geometry,
-              zoom: 15
+              zoom: view.zoom > 15 ? view.zoom : 15
             });
 
             this.appState.setInteraction('view');
-
-            this.selectedTree = result.graphic;
-            this.selectedTreeChange.emit(result.graphic);
+            this.selectedTreeChanged(result.graphic);
           }
           // user is in the editor mode and he clicked next to a tree
           else {
@@ -84,8 +101,7 @@ export class EsriMapComponent implements OnInit {
             // in case he was just viewing a tree or editing a tree the selection
             // is canceled
             this.appState.setInteraction('none');
-            this.selectedTree = null;
-            this.selectedTreeChange.emit(null);
+            this.selectedTreeChanged(null);
           }
         }
       }
@@ -104,6 +120,7 @@ export class EsriMapComponent implements OnInit {
     this.appState.selectedTreeChanged.subscribe((tree) => {
       console.log('tree changed', tree);
       this.selectedTree = tree;
+
       this.selectedTreeChange.emit(tree);
     });
 
@@ -114,6 +131,16 @@ export class EsriMapComponent implements OnInit {
     this.mapView.padding = {
       right: padding
     };
+  }
+
+  private selectedTreeChanged(tree) {
+    this.selectedTree = tree;
+    if (this.highlight) {
+      this.highlight.remove();
+    }
+    this.highlight = this.treeLayerView.highlight(tree.attributes[attr.id]);
+
+    this.selectedTreeChange.emit(tree);
   }
 
 }

@@ -76,6 +76,7 @@ export class AddTreePanelComponent implements OnInit {
     this.mapDataService.addTree(newTree)
       .then(result => {
         this.loading = false;
+        newTree.attributes[attr.id] = result.addFeatureResults[0].objectId;
         this.appState.setSelectedTree(newTree);
         this.appState.setInteraction("view");
         this.snackBar.open('Tree was succesfully added', null, {
