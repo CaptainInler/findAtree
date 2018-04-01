@@ -24,11 +24,12 @@
     <form [formGroup]="attributeFormGroup">
       <ng-template matStepLabel>Attributes</ng-template>
       <mat-form-field>
-        <mat-select placeholder="Tree type" formControlName="nameDE" required>
-          <mat-option *ngFor="let name of treeNames" [value]="name">
+        <mat-select [(value)]="nameDE" placeholder="Tree type" formControlName="nameDE" required>
+          <mat-option *ngFor="let name of treeNames | sortAlphabetical" [value]="name">
             {{ name }}
           </mat-option>
         </mat-select>
+        <mat-hint *ngIf="nameDE">{{ mapDataService.treeNamesMapping[nameDE].nameLat }}</mat-hint>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Planting year" formControlName="pflanzJahr"required>

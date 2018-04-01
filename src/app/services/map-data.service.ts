@@ -4,7 +4,7 @@ import { Subject } from 'rxjs/Subject';
 import * as WebMap from 'esri/WebMap';
 import * as FeatureLayer from 'esri/layers/FeatureLayer';
 import * as SimpleRenderer from 'esri/renderers/SimpleRenderer';
-import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
+import * as PictureMarkerSymbol from 'esri/symbols/PictureMarkerSymbol';
 import * as Point from 'esri/geometry/Point';
 
 import * as esriConfig from 'esri/config';
@@ -23,6 +23,7 @@ export class MapDataService {
   layer: FeatureLayer;
   uniqueTreeNames: string[];
   uniqueQuartiers: string[];
+  treeNamesMapping = {};
   mapEventSource = new Subject<Point>();
   mapEvent$ = this.mapEventSource.asObservable();
 
@@ -97,14 +98,8 @@ export class MapDataService {
       outFields: [attr.gattungLat, attr.artLat, attr.nameLat, attr.nameDE, attr.status, attr.pflanzJahr, attr.quartier],
       title: "Tree layer",
       renderer: new SimpleRenderer({
-        symbol: new SimpleMarkerSymbol({
-          style: 'circle',
-          size: 10,
-          color: [8, 219, 187, 0.3],
-          outline: {
-            color: [8, 147, 126, 0.5],
-            width: 1
-          }
+        symbol: new PictureMarkerSymbol({
+          url: "./src/assets/images/tree.png"
         }),
         visualVariables: [{
           type: "size",
@@ -116,10 +111,13 @@ export class MapDataService {
             valueExpression: "$view.scale",
             stops: [{
               value: 500,
-              size: 20
+              size: 40
             }, {
-              value: 10000,
-              size: 5
+              value: 3000,
+              size: 25
+            }, {
+              value: 20000,
+              size: 8
             }]
           },
           maxSize: {
@@ -127,10 +125,13 @@ export class MapDataService {
             valueExpression: "$view.scale",
             stops: [{
               value: 500,
-              size: 20
+              size: 40
             }, {
-              value: 10000,
-              size: 5
+              value: 3000,
+              size: 25
+            }, {
+              value: 20000,
+              size: 8
             }]
           }
         }]
@@ -140,14 +141,34 @@ export class MapDataService {
 
   private getUniqueTreeNames() {
     this.layer.queryFeatures({
-      outFields: [attr.nameDE],
+      outFields: [attr.nameDE, attr.nameLat, attr.gattungLat, attr.artLat],
       returnDistinctValues: true,
       where: '1=1'
     })
       .then((result) => {
-        this.uniqueTreeNames = result.features.map(feature => {
+
+        const treeNames = result.features.map(feature => {
           return feature.attributes[attr.nameDE];
         });
+
+        this.uniqueTreeNames = treeNames.filter((value, index, self) => {
+          return self.indexOf(value) === index;
+        });
+
+        this.uniqueTreeNames.forEach(name => {
+          for (let i = 0; i < result.features.length; i++) {
+            const feature = result.features[i];
+            if (feature.attributes[attr.nameDE] === name) {
+              this.treeNamesMapping[feature.attributes[attr.nameDE]] = {
+                nameLat: feature.attributes[attr.nameLat],
+                gattungLat: feature.attributes[attr.gattungLat],
+                artLat: feature.attributes[attr.artLat]
+              }
+              break;
+            }
+          }
+        });
+
         this.appState.showMap = 'show';
       })
       .otherwise(err => console.log(err));

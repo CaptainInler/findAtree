@@ -70,6 +70,7 @@ export class AddTreePanelComponent implements OnInit {
       attributes: {}
     });
     newTree.attributes[attr.nameDE] = attributes.nameDE;
+    newTree.attributes[attr.nameLat] = this.mapDataService.treeNamesMapping[attributes.nameDE].nameLat;
     newTree.attributes[attr.pflanzJahr] = attributes.pflanzJahr;
     newTree.attributes[attr.quartier] = attributes.quartier;
 
