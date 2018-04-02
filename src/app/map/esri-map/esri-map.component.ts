@@ -1,21 +1,28 @@
 import { Component, ElementRef, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
+import { attr } from '../../tree';
 
 import * as MapView from 'esri/views/MapView';
-import * as FeatureLayer from 'esri/layers/FeatureLayer';
-import { showMap} from '../../router.animations';
+import * as LayerView from 'esri/views/layers/FeatureLayerView';
+import * as VectorTileLayer from 'esri/layers/VectorTileLayer';
+import * as Graphic from 'esri/Graphic';
+import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
+import * as Locate from 'esri/widgets/Locate';
+import { showMap } from '../../router.animations';
 
 @Component({
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
   styleUrls: ['./esri-map.component.scss'],
-  animations: [showMap()],
+  animations: [showMap()]
 })
 export class EsriMapComponent implements OnInit {
 
   private mapView: MapView;
-  private treeLayer: FeatureLayer;
+  private treeLayerView: LayerView;
+  private highlight = null;
+  private gameBasemap: VectorTileLayer;
 
   @Output()
   selectedTreeChange = new EventEmitter();
@@ -48,32 +55,66 @@ export class EsriMapComponent implements OnInit {
       }
     };
     this.mapView = new MapView(mapViewProperties);
-
+    this.appState.mapView = this.mapView;
     const view = this.mapView;
+
+    this.gameBasemap = new VectorTileLayer({
+      portalItem: {
+        id: "7675d44bb1e4428aa2c30a9b68f97822"
+      }
+    });
+
+    const locateWidget = new Locate({
+      view: view,
+      graphic: new Graphic({
+        symbol: new SimpleMarkerSymbol({
+          style: 'circle',
+          size: 15,
+          color: [63, 137, 255, 0.2],
+          outline: {
+            color: [63, 137, 255, 1],
+            width: 1.5
+          }
+        })
+      })
+    });
+
+    view.ui.add(locateWidget, 'top-left');
+
+    view.on('layerview-create', (evt) => {
+
+      if (evt.layer.title === "Tree layer") {
+        this.treeLayerView = <LayerView>evt.layerView;
+        if (this.selectedTree) {
+          console.log('layerview was created', this.selectedTree);
+          console.log(this.treeLayerView);
+          this.treeLayerView.watch('updating', (value) => {
+            if (!value) {
+              this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
+            }
+          })
+        }
+      }
+
+    });
 
     view.on("click", (event) => {
 
       view.hitTest(event).then((response) => {
-
         // user is in the editor mode and he clicked on a tree
-        if (response.results.length > 0) {
-          const result = response.results[0];
-          if (result.graphic && result.graphic.layer.title === "AlteBaeumeZuerich") {
-
-            // zoom to selected feature
-            view.goTo({
-              target: result.graphic.geometry,
-              zoom: 18
-            });
-
-            this.appState.setInteraction('view');
-
-            this.selectedTree = result.graphic;
-            this.selectedTreeChange.emit(result.graphic);
-          }
-          // user is in the editor mode and he clicked next to a tree
-          else {
-          console.log(this.appState.getInteraction(), event.mapPoint);
+        let results = response.results;
+        if (results.length > 0 && results[0].graphic && results[0].graphic.layer.title === "Tree layer") {
+          const graphic = results[0].graphic;
+          // zoom to selected feature
+          view.goTo({
+            target: graphic.geometry,
+            zoom: view.zoom > 17 ? view.zoom : 17
+          });
+          this.appState.setInteraction('view');
+          this.selectedTreeChanged(graphic);
+        }
+        // user is in the editor mode and he clicked next to a tree
+        else {
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
             this.mapDataService.mapEventSource.next(event.mapPoint);
@@ -81,11 +122,9 @@ export class EsriMapComponent implements OnInit {
             // in case he was just viewing a tree or editing a tree the selection
             // is canceled
             this.appState.setInteraction('none');
-            this.selectedTree = null;
-            this.selectedTreeChange.emit(null);
+            this.selectedTreeChanged(null);
           }
         }
-      }
       });
 
     });
@@ -98,6 +137,27 @@ export class EsriMapComponent implements OnInit {
       }
     });
 
+    this.appState.modeChanged.subscribe((mode) => {
+      const isGame = (mode === 'game');
+      this.mapView.map.basemap.baseLayers.forEach(layer => {
+        if (layer.title === 'GameBasemap') {
+          layer.visible = isGame;
+        }
+        else {
+          layer.visible = !isGame;
+        }
+      });
+
+    });
+
+    this.appState.selectedTreeChanged.subscribe((tree) => {
+      console.log('tree changed', tree);
+      this.selectedTree = tree;
+
+      this.selectedTreeChange.emit(tree);
+    });
+
+
     // this.appState.showMap = 'show';
   }
 
@@ -105,6 +165,16 @@ export class EsriMapComponent implements OnInit {
     this.mapView.padding = {
       right: padding
     };
+  }
+
+  private selectedTreeChanged(tree) {
+    this.selectedTree = tree;
+    if (this.highlight) {
+      this.highlight.remove();
+    }
+    this.highlight = this.treeLayerView.highlight(tree.attributes[attr.id]);
+
+    this.selectedTreeChange.emit(tree);
   }
 
 }

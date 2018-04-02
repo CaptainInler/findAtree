@@ -12,9 +12,9 @@ export class TreeService {
   constructor(private db: AngularFireDatabase) {
     this.db.list('features', ref=>ref.limitToFirst(4000)).valueChanges()
       .subscribe(trees => {
-        this.trees = trees.map((tree:FirebaseFeature) => {
-          return new Tree(tree);
-        });
+        /* this.trees = trees.map((tree:FirebaseFeature) => {
+          //return new Tree(tree);
+        }); */
         this.dataLoaded.emit(this.trees);
       });
   }

@@ -1,6 +1,7 @@
 import { HostListener, Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AuthService} from './auth.service';
+import { Tree } from '../tree';
 
 type interactionType = 'none' | 'guess' | 'edit' | 'add' | 'view';
 type modeType = 'game' | 'editor' | 'dashboard';
@@ -11,6 +12,9 @@ export class AppStateService {
   public showMap: string = 'hide';
   public sidePanelPosition: string  = '';
 
+  // set the view here to get acces to it from everywhere
+  public mapView = null;
+
   private mode: modeType;
   private modeSource = new Subject<modeType>();
   public modeChanged = this.modeSource.asObservable();
@@ -19,15 +23,21 @@ export class AppStateService {
   private interactionSource = new Subject<interactionType>();
   public interactionChanged = this.interactionSource.asObservable();
 
+  public selectedTree: Tree;
+  private selectedTreeSource = new Subject<Tree>();
+  public selectedTreeChanged = this.selectedTreeSource.asObservable();
+
+
   constructor(private _aS: AuthService) {
     this.mode = 'editor';
     this.interaction = 'none';
   }
 
   setInteraction(interaction: interactionType) {
-    this.interaction = interaction;
-    this.interactionSource.next(interaction);
-    console.log(this.interaction);
+    if (this.interaction !== interaction) {
+      this.interaction = interaction;
+      this.interactionSource.next(interaction);
+    }
   }
 
   getInteraction(): interactionType {
@@ -43,13 +53,23 @@ export class AppStateService {
   }
 
   setMode(mode: modeType) {
-    this.mode = mode;
-    this.modeSource.next(mode);
-    console.log(this.mode);
+    if (this.mode !== mode) {
+      this.mode = mode;
+      this.modeSource.next(mode);
+    }
   }
 
   getMode(): modeType {
     return this.mode;
+  }
+
+  setSelectedTree(tree: Tree) {
+    this.selectedTree = tree;
+    this.selectedTreeSource.next(tree);
+  }
+
+  getSelectedTree(): Tree {
+    return this.selectedTree;
   }
 
 }

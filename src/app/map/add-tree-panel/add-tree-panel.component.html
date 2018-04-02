@@ -1,13 +1,19 @@
-<mat-vertical-stepper linear>
+<mat-vertical-stepper *ngIf="!loading" linear>
   <mat-step [stepControl]="locationFormGroup">
     <form [formGroup]="locationFormGroup">
       <ng-template matStepLabel>Localization</ng-template>
       Click on the map at the location of the tree to fill up the coordinates:
       <mat-form-field>
         <input matInput placeholder="Latitude" formControlName="latitude" required>
+        <mat-error *ngIf="locationFormGroup.root.controls.latitude.errors">
+          Please enter a valid latitude.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Longitude" formControlName="longitude" required>
+        <mat-error *ngIf="locationFormGroup.root.controls.longitude.errors">
+          Please enter a valid longitude.
+        </mat-error>
       </mat-form-field>
       <div>
         <button mat-raised-button matStepperNext color='primary'>Next</button>
@@ -18,17 +24,25 @@
     <form [formGroup]="attributeFormGroup">
       <ng-template matStepLabel>Attributes</ng-template>
       <mat-form-field>
-        <mat-select placeholder="Tree type" formControlName="nameDE" required>
-          <mat-option *ngFor="let name of treeNames" [value]="name">
-            {{name}}
+        <mat-select [(value)]="nameDE" placeholder="Tree type" formControlName="nameDE" required>
+          <mat-option *ngFor="let name of treeNames | sortAlphabetical" [value]="name">
+            {{ name }}
           </mat-option>
         </mat-select>
+        <mat-hint *ngIf="nameDE">{{ mapDataService.treeNamesMapping[nameDE].nameLat }}</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Planting year" formControlName="pflanzJahr" required>
+        <input matInput placeholder="Planting year" formControlName="pflanzJahr"required>
+        <mat-error *ngIf="attributeFormGroup.root.controls.pflanzJahr.errors">
+          Please enter a valid year.
+        </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Neighbourhood" formControlName="quartier" required>
+        <mat-select placeholder='Neighbourhood' formControlName='quartier'>
+          <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>
+            {{ quartier }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <div>
         <button mat-raised-button matStepperPrevious color='primary'>Back</button>
@@ -44,3 +58,5 @@
     </div>
   </mat-step>
 </mat-vertical-stepper>
+
+<loading-page *ngIf="loading"></loading-page>
