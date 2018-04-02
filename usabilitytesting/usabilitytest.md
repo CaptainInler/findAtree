@@ -5,10 +5,10 @@ Der Ablauf der Usablitytests basiert auf den Unterlagen der Vorlesung "UX: Usabi
 Einen Teil der Informationen sind auch unter folgendem Blog der Firma namics ersichtlich: [User Centered Design – What’s in?](https://blog.namics.com/2009/11/user-centered-d.html)
 
 ## Ziel
-Die Usablitytests erfolgen im Endstatidum der Produkterstellung. 
+Diese Usablitytests erfolgen im Endstatidum der Produkterstellung. 
 Wir kontrollierten damit die Umsetzung des Projekts und führten somit ein "Usability Controlling" durch.
-Sollten das Resultat gravierende Probleme im Code, Usability oder Design aufzeigen, 
-wäre noch Zeit vorhanden gewesen um Korrekturen anzubringen. 
+Sollten das Resultat gravierende Probleme im Code, der Usability oder dem Design aufzeigen, 
+wäre noch Zeit vorhanden um Korrekturen anzubringen. 
 
 ## Usability Test 1: Attribute eines Baumes auslesen
 Dieser Test ist dem Thema "Daten anzeige" gewidmet.
@@ -22,6 +22,7 @@ Die folgenden Teilziele sollen erreicht werden:
 Startpunkt, welcher der Testperson eingestellt wird:
 - [Startseite des Projekts](https://captaininler.github.io/findAtree).
 - Anzeige des Projekts an einem PC.
+- Die formulierung des Testzieles (genaue Definition siehe oben) wird der Testperson digital am Bildschirm angezeigt. Es erfolgen keine weitere Instruktionen.
 
 Damit das Testziel erfolgreich bestanden ist, muss die Testperson folgende Aufgaben lösen:
 - Interaktion mit der Karte:
@@ -40,6 +41,14 @@ Probleme die dem Testperson antreffen könnte:
 - er versteht nicht, was die Informationen im Sidepanel bedeuten
 
 ### Testdurchführung
+Angaben zur Testperson:
+- zwischen 25 und 35 Jahre alt
+- verfügt nicht über eine ausgeprägte Affinität zu technischen Problemstellungen
+
+
+
+
+
 
 ## Usability Test 2: Die Art eines Baumes im Spielmodus raten
 Mit diesem Test wird ein verhalten im Spiel geprüft
