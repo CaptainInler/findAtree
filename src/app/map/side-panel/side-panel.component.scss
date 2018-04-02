@@ -1,13 +1,16 @@
+@import '../../tree-theme';
+
 .side-panel {
   position: absolute;
   //top: 64px;
   right: 0;
   bottom: 0;
   //width: 30%;
-  min-width: 370px;
+  min-width: 360px;
   padding: 10px;
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.9);
+  overflow: scroll;
 
   .btn-edit {
     position: absolute;
@@ -15,3 +18,4 @@
     right: 10px;
   }
 }
+

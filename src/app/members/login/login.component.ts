@@ -9,13 +9,14 @@ import { AppComponent} from '../../app.component';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
   animations: [moveIn()],
-  host: {'[@moveIn]':'' }
 })
 @Injectable()
 export class LoginComponent implements OnInit {
   error: any;
-  show: boolean = false;
-  @Output() eventData:EventEmitter<string> = new EventEmitter();
+  show = false;
+  @Output() eventData: EventEmitter<string> = new EventEmitter();
+  @HostBinding('@moveIn')
+  public state = true;
   constructor(private authService: AuthService, private router: Router) {
   }
   resetTool(event: string) {

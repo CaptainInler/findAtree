@@ -12,6 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule} from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
+import { DeviceDetectorModule } from "ngx-device-detector";
 
 // components
 import { AppComponent } from './app.component';
@@ -43,7 +44,7 @@ import { TreeService } from './tree.service';
 import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
-import { WindowWidthDirective } from './services/window-width.directive';
+import { WindowSizeDirective } from './services/window-size.directive';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { WindowWidthDirective } from './services/window-width.directive';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    DeviceDetectorModule.forRoot()
   ],
   declarations: [
     // declarables: directives (Attribute, Structural), components, pipes.
@@ -80,8 +82,8 @@ import { WindowWidthDirective } from './services/window-width.directive';
     AddTreePanelComponent,
     GuessPanelComponent,
     LoadingPageComponent,
-    WindowWidthDirective,
-    SortAlphabeticalPipe
+    SortAlphabeticalPipe,
+    WindowSizeDirective,
   ],
   bootstrap: [ AppComponent ], // component to start with
   providers: [

@@ -92,17 +92,16 @@ export class EsriMapComponent implements OnInit {
             if (!value) {
               this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
             }
-          })
+          });
         }
       }
-
     });
 
     view.on("click", (event) => {
 
       view.hitTest(event).then((response) => {
         // user is in the editor mode and he clicked on a tree
-        let results = response.results;
+        const results = response.results;
         if (results.length > 0 && results[0].graphic && results[0].graphic.layer.title === "Tree layer") {
           const graphic = results[0].graphic;
           // zoom to selected feature
@@ -112,9 +111,8 @@ export class EsriMapComponent implements OnInit {
           });
           this.appState.setInteraction('view');
           this.selectedTreeChanged(graphic);
-        }
-        // user is in the editor mode and he clicked next to a tree
-        else {
+          // user is in the editor mode and he clicked next to a tree
+        }else {
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
             this.mapDataService.mapEventSource.next(event.mapPoint);
@@ -142,8 +140,7 @@ export class EsriMapComponent implements OnInit {
       this.mapView.map.basemap.baseLayers.forEach(layer => {
         if (layer.title === 'GameBasemap') {
           layer.visible = isGame;
-        }
-        else {
+        } else {
           layer.visible = !isGame;
         }
       });

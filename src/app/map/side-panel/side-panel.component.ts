@@ -3,7 +3,6 @@ import { AppStateService } from '../../services/app-state.service';
 import { attr } from '../../tree';
 import { trigger, state, style} from '@angular/animations';
 import { showSidePanel } from '../../router.animations';
-import { WindowWidthDirective } from '../../services/window-width.directive';
 
 @Component({
   selector: 'side-panel',

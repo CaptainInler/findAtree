@@ -1,8 +1,8 @@
-import { WindowWidthDirective } from './window-width.directive';
+import { WindowSizeDirective } from './window-size.directive';
 
 describe('WindowWidthDirective', () => {
   it('should create an instance', () => {
-    const directive = new WindowWidthDirective();
+    const directive = new WindowSizeDirective();
     expect(directive).toBeTruthy();
   });
 });

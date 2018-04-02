@@ -1,4 +1,4 @@
-<section *ngIf='appState.getInteraction() !== "none"' class='side-panel'  [@showSidePanel]="appState.sidePanelPosition">
+<section *ngIf='appState.getInteraction() !== "none"' class='side-panel' [@showSidePanel]="appState.sidePanelPosition">
   <div *ngIf='appState.getMode() === "editor"'>
     <div *ngIf='selectedTree' class='tree-detail'>
 
@@ -26,7 +26,7 @@
 
   <div *ngIf='appState.getMode() === "game"'>
     <div *ngIf='selectedTree' class='tree-detail'>
-      <guess-panel [selectedTree]='selectedTree'></guess-panel>
+      <guess-panel [selectedTree]="selectedTree"></guess-panel>
     </div>
   </div>
 
