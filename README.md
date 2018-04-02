@@ -1,25 +1,28 @@
 # find:evergreen_tree:tree - Projekt2 - Cas Fee - HSR
 
-Mobiles Geo-Spiel-App
+## Prototyp eines mobilen Geo-Spiel-App
+<p align="center">
+<img src="https://github.com/CaptainInler/findAtree-Presentation/blob/master/bilder/01_Baum.png" height="70"/></img>
+</p>
 
-Eine App womit die Einwohner der Stadt Zürich Bäume erfassen und editieren können. Wenn man seine Kenntnisse über Bäume erweitern will, kann man mit unserer App spielen: Bäume raten und so Punkte gewinnen.
+Eine App für die Einwohner der Stadt Zürich damit sie mehr über die Bäume im Stadtgbiet erfahren können.
+Um seine Kenntnisse über Bäume zu erweitern, ist in unserer App ein Spiel enthalten: Rate die Baumart korrekt und gewinne so Punkte.
+Sind die Angaben falsch oder fehlt ein Baum? Die Daten können auch bearbeitet oder neue Bäume erfasst werden.
 
-Haupt features:
-  - real-time 3D Visualisierung der Bäumen in Stadt Zürich
+Hauptfeatures:
+  - Real-time Visualisierung der Bäumen in der Stadt Zürich
   - editieren von Bäumen || neue Bäume erfassen || Bäume löschen
-  - spielen:
-      - Benutzern können raten was für eine Baumart es ist anhand von der 3D Visualisierung und verschiedene hints
-      - Benutzern erhalten Punkte
-  - mann kann spielen oder Bäume visualisieren ohne sich einzuloggen
-  - Benutzer die Admin sind haben eine Dashboard view von:
-     - letzten Änderungen
-     - alle Benutzer und ihre Ergänzungen
-     - alle Bäume mit Attributen und Editierungsdatum
+  - Spiel:
+      - Benutzer können die Baumart raten.
+      - Benutzern erhalten Punkte wenn sie die Baumart korrekt raten. Bei jedem falschen Versuch gibt einen Punkt abzug.
+      - Mit Vorteil spielt man das Spiel auf dem Smartphone und wandert damit durch Zürich.
+     
+  - Die Abfrage von Baumdaten ist ohne logging möglich. Um die Daten zu ergänzen, bearbeiten oder das Spiel zu Spielen ist es nötig sich einzuloggen.
 
 Daten:
 - [Baumkataster der Stadt Zürich](https://data.stadt-zuerich.ch/dataset/baumkataster)
 
 Frameworks/Tools:
-- 3D Visualisierung mit [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
-- Speichern der Punkte der Spieler auf einem Server via REST (z.b mit: https://firebase.google.com/ oder https://firebase.google.com/products/firestore/)
-- App auf Heroku laufen lassen: https://www.heroku.com/
+- Visualisierung mit [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
+- Speichern der Punkte der Spieler auf einem Server via REST (z.b mit: https://firebase.google.com/)
+- Die App läuft der GitHub Page: https://captaininler.github.io/findAtree
