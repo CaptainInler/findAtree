@@ -27,8 +27,7 @@ export class MapDataService {
   mapEventSource = new Subject<Point>();
   mapEvent$ = this.mapEventSource.asObservable();
 
-  constructor(
-    public appState: AppStateService) {
+  constructor() {
 
     this.map = new WebMap({
       portalItem: {
@@ -169,7 +168,6 @@ export class MapDataService {
           }
         });
 
-        this.appState.showMap = 'show';
       })
       .otherwise(err => console.log(err));
   }
