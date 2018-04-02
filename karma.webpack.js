@@ -12,11 +12,32 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.tsx?$/,
-                use: [
-                    'ts-loader'
-                ]
+                test: /\.ts?$/,
+                loaders: ['ts-loader', 'angular2-template-loader'],
+                exclude: /(node_modules)/
+            },
+            {
+            test: /\.scss$/,
+            use: ["to-string-loader", "style-loader", "css-loader", "sass-loader"]
+            },
+            // html
+            {
+            test: /\.html$/,
+            use: [
+                {
+                loader: 'html-loader'
+                }
+            ]
+            },
+            // images
+            {
+            test: /\.(jpe?g|gif|png)$/,
+            use: 'file-loader?emitFile=false&name=[path][name].[ext]'
             }
+        ],
+        loaders: [
+            { loader: 'raw', test: /\.(css|html)$/ },
+            { exclude: /node_modules/, loader: 'ts', test: /\.ts$/ }
         ]
     },
     externals: [
