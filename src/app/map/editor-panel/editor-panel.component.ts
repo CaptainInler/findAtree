@@ -13,7 +13,7 @@ import { attr } from '../../tree';
   templateUrl: './editor-panel.component.html',
   styleUrls: ['./editor-panel.component.scss']
 })
-export class EditorPanelComponent implements OnInit {
+export class EditorPanelComponent {
 
   form: FormGroup;
   loading: Boolean = false;
@@ -31,8 +31,7 @@ export class EditorPanelComponent implements OnInit {
       this.quartiers = mapDataService.uniqueQuartiers;
     }
 
-  ngOnInit() {
-
+  ngOnChanges(change) {
     const attributes = this.selectedTree.attributes;
     this.form = new FormGroup({
       name: new FormControl(attributes[attr.nameDE], [Validators.required]),

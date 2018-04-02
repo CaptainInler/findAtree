@@ -88260,7 +88260,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             });
             view.on("click", (event) => {
                 view.hitTest(event).then((response) => {
-                    console.log(this.appState.getInteraction(), response);
                     // user is in the editor mode and he clicked on a tree
                     let results = response.results;
                     if (results.length > 0 && results[0].graphic && results[0].graphic.layer.title === "Tree layer") {
@@ -88274,7 +88273,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                         this.selectedTreeChanged(graphic);
                     }
                     else {
-                        console.log(this.appState.getInteraction(), event.mapPoint);
                         // in case he is in the add mode then the coordinates should be added
                         if (this.appState.getInteraction() === 'add') {
                             this.mapDataService.mapEventSource.next(event.mapPoint);
@@ -88621,7 +88619,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.treeNames = mapDataService.uniqueTreeNames;
             this.quartiers = mapDataService.uniqueQuartiers;
         }
-        ngOnInit() {
+        ngOnChanges(change) {
             const attributes = this.selectedTree.attributes;
             this.form = new forms_1.FormGroup({
                 name: new forms_1.FormControl(attributes[tree_1.attr.nameDE], [forms_1.Validators.required]),

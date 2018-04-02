@@ -101,7 +101,6 @@ export class EsriMapComponent implements OnInit {
     view.on("click", (event) => {
 
       view.hitTest(event).then((response) => {
-        console.log(this.appState.getInteraction(), response);
         // user is in the editor mode and he clicked on a tree
         let results = response.results;
         if (results.length > 0 && results[0].graphic && results[0].graphic.layer.title === "Tree layer") {
@@ -116,7 +115,6 @@ export class EsriMapComponent implements OnInit {
         }
         // user is in the editor mode and he clicked next to a tree
         else {
-          console.log(this.appState.getInteraction(), event.mapPoint);
           // in case he is in the add mode then the coordinates should be added
           if (this.appState.getInteraction() === 'add') {
             this.mapDataService.mapEventSource.next(event.mapPoint);
