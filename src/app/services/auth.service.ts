@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -26,7 +25,6 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router,
               private devDetector: DeviceDetectorService) {
     console.log ( this.devDetector.getDeviceInfo());
     this.afAuth.authState
@@ -158,9 +156,6 @@ export class AuthService {
   logout() {
     this.afAuth.auth.signOut()
       .then((res) => {
-        // this.user = null;
-        // this.userDetails = null;
-        // this.router.navigate(['/map'])
       });
   }
 
