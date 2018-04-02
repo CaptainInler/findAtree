@@ -10,6 +10,8 @@ import { AppStateService } from '../../services/app-state.service';
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";
 
+import {attr} from '../../tree';
+
 type scoreType = 'day' | 'total' | 'best';
 
 @Component({
@@ -56,8 +58,8 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
     console.log(values);
     this.updateGuess(this.points);
     if (values.selectedTree.currentValue) {
-      this.selectedTreeId = values.selectedTree.currentValue.attributes.OBJECTID;
-      this.selectedTreeName = values.selectedTree.currentValue.attributes.baumnamede;
+      this.selectedTreeId = values.selectedTree.currentValue.attributes[attr.id];
+      this.selectedTreeName = values.selectedTree.currentValue.attributes[attr.nameDE];
       this.selection = this.mapDataService.getRandomTreeNames(this._aS.level, this.selectedTreeName );
       console.log(this.selection);
       this.selection = Utils.shuffle(this.selection);
@@ -82,7 +84,7 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
 
   selectTreeName(name: string, event) {
     if ( 'not-guessed' === this.buttonState[name]) {
-      if (this.selectedTree.attributes.baumnamede === name) {
+      if (this.selectedTree.attributes[attr.nameDE] === name) {
         this.points += this._aS.level;
         this.buttonState[name] = 'correct';
       } else {
