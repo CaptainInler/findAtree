@@ -35,7 +35,6 @@ export class MapDataService {
       }
     });
 
-
     this.layer = this.getTreeLayer();
 
     this.map.add(this.layer);
@@ -172,8 +171,8 @@ export class MapDataService {
       .otherwise(err => console.log(err));
   }
 
-  private getUniqueQuartiers() {
-    this.layer.queryFeatures({
+  getUniqueQuartiers() {
+    return this.layer.queryFeatures({
       outFields: [attr.quartier],
       returnDistinctValues: true,
       where: '1=1'
@@ -182,6 +181,7 @@ export class MapDataService {
         this.uniqueQuartiers = result.features.map(feature => {
           return feature.attributes[attr.quartier];
         });
+        return this.uniqueQuartiers;
       })
       .otherwise(err => console.log(err));
   }
