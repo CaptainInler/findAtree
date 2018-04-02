@@ -46,10 +46,35 @@ Angaben zur Testperson:
 - verfügt nicht über eine ausgeprägte Affinität zu technischen Problemstellungen
 
 
-
-
-
-
 ## Usability Test 2: Die Art eines Baumes im Spielmodus raten
 Mit diesem Test wird ein verhalten im Spiel geprüft
 ### Cognitive Walktrough
+Testziel: die Testperson kann zu einem vordefiniertem Baum in der Karte das Ratespiel spielen und versteht danach wie viele Scorerpunkte sie damit gewonnen hat.
+
+Die folgenden Teilziele sollen erreicht werden:
+- Es ist der Testperson möglich zu erkennen wie das Spiel funktioniert 
+- Die Testperson findet heraus, wie das Punktesystem funktioniert (Punkte für korrekte/falsche Antworten)
+
+Startpunkt, welcher der Testperson eingestellt wird:
+- Es wird einen neuen User erstellt und damit eingeloggt
+- Wechseln in den Spielmodus
+- Vom vordefiniertem Baum wird ein Bild angezeigt.
+- Die formulierung des Testzieles (genaue Definition siehe oben) wird der Testperson digital am Bildschirm angezeigt. Es erfolgen keine weitere Instruktionen.
+
+Damit das Testziel erfolgreich bestanden ist, muss die Testperson folgende Aufgaben lösen:
+- Klicken auf das Baumsymbol
+- Lesen der möglichen Antworten im Sidepanel
+- wählen einer Anwort im Sidepanel
+- eventuelles Wählen von weiteren Antworten sollte die korrekte Antwort nicht gefunden worden sein.
+- verstehen der Anzahl Scorerpunkte für das raten dieses Baumes
+
+Alternative Wege umd das Testziel zu erreichen:
+- Keine bekannt.
+
+Probleme die dem Testperson antreffen könnte:
+- sie versteht nicht, dass für zum Spielen ein Symbol angeklickt werden muss
+- sie versteht nicht, wie sie mit den Antworten umgehen muss (Klicken auf die möglichen Antworten)
+- sie versteht nicht, was die Scorerpunkte bedeuten
+- sie versteht nicht, wieso sie die Anzahl Scorerpunkte erhalten
+
+### Testdurchführung
