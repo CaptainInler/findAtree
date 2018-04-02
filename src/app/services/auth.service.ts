@@ -137,13 +137,8 @@ export class AuthService {
 
 
   isLoggedIn() {
-<<<<<<< HEAD
     if (this.userDetails === null ) {
       console.log('not logged in');
-=======
-    if (this.userDetails == null ) {
-      // console.log('not logged in');
->>>>>>> beat/editPanels
       return false;
     } else {
       //  console.log('logged in');
