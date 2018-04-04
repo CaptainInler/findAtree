@@ -34,7 +34,7 @@ describe('MapDataService', () => {
     inject([MapDataService], (service: MapDataService) => {
       service.getUniqueQuartiers().then((result: string[]) => {
         expect(result.length).toEqual(38);
-      })
+      });
     })
   ));
 
