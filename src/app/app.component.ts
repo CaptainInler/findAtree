@@ -9,17 +9,13 @@ import { EmailComponent } from './members/email/email.component';
 import { SignupComponent } from './members/signup/signup.component';
 import { AuthService } from './services/auth.service';
 import { MembersComponent } from './members/members.component';
-import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
-import { subscribeToResult } from 'rxjs/util/subscribeToResult';
 import { MapClickEvent } from './tree';
-import { MapEventService } from './services/map-event.service';
 import { AppStateService } from './services/app-state.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  providers: [MapEventService]
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
 
@@ -34,14 +30,7 @@ export class AppComponent implements OnInit {
   constructor(private treeService: TreeService,
     private _cfr: ComponentFactoryResolver,
     private authService: AuthService,
-    // private _mes: MapEventService,
     public appState: AppStateService) {
-
-    /* this._mes.mapEvent$.subscribe(
-      event => {
-        this.mapClicked(event);
-      }
-    ) */
   }
 
   ngOnInit() {
