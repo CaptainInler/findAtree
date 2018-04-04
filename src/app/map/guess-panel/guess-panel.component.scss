@@ -53,6 +53,14 @@
   }
 }
 
+@media (max-height: 900px) and (max-width: 840px) {
+  .guess-panel {
+    button {
+      margin: 2px 0;
+    }
+  }
+}
+
 
 @media (max-width: 840px) {
   .guess-panel {
@@ -97,14 +105,6 @@
     .guess-score-table-second {
       width: 100%;
       text-align: center;
-    }
-  }
-}
-
-@media (max-height: 620px), (max-width: 840px) {
-  .guess-panel {
-    button {
-      margin: 2px 0;
     }
   }
 }
