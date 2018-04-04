@@ -1,38 +1,28 @@
 import {GuessPanelComponent} from "./guess-panel.component";
 
+import { MapDataService } from '../../services/map-data.service';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { AuthService } from '../../services/auth.service';
+import { AppStateService } from '../../services/app-state.service';
+
+
 describe('GuessPanelComponent', () => {
+
+  let mapDataService: MapDataService;
+  let db: AngularFireDatabase;
+  let aS: AuthService;
+  let appState: AppStateService;
+
+
   it('initalisierung von #points', () => {
-    const comp = new GuessPanelComponent(null, null, null, null);
+    const comp = new GuessPanelComponent(mapDataService, db, aS, appState);
     expect(comp.points).toEqual(0);
   });
-
-  it('bei falscher auswahl einen punkt abzug', () => {
-    const comp = new GuessPanelComponent(null, null, null, null);
-    comp.selectedTree.attributes.baumnamedeu = "krawall";
-    comp.points = 1;
-    comp.selectTreeName("www");
-    expect(comp.points).toEqual(0);
-
-  });
-
 
   it('Rückgaben von getScore()', () => {
-    const comp = new GuessPanelComponent(null, null, null, null);
+    const comp = new GuessPanelComponent(mapDataService, db, aS, appState);
     comp.dayScore = 10;
     expect(comp.getScore("day")).toEqual(10);
 
   });
-
-  it('setzten von dayscore bei guess', () => {
-    const comp = new GuessPanelComponent(null, null, null, null);
-    comp.updateGuess(3);
-    comp.selectedTreeId = null;
-    comp.selectedTreeName = null;
-    comp.points = 0;
-    comp.dayScoreRef$ = null;
-    console.log(comp.dayScore);
-    expect(comp.dayScore).toEqual(3);
-
-  });
-
 });
