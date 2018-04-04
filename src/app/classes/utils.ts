@@ -1,24 +1,24 @@
 export class Utils {
 
-  static contains(stringArray: Array<string>,word: string): boolean{
+  static contains(stringArray: Array<string>, word: string): boolean {
     let i = stringArray.length;
-    while (i--){
-      if (stringArray[i]===word){
+    while (i--) {
+      if (stringArray[i] === word) {
         return true;
       }
     }
     return false;
   }
 
-  //delta: days
+  // delta: days
   static getDate(delta: number = 0): string {
-    let newDate = new Date(Date.now()+delta*1000*3600*24);
-    let dd = ("0"+newDate.getDate()).slice(-2);
-    let mm = ("0"+(newDate.getMonth()+1)).slice(-2);
-    let yy = ("0"+(newDate.getFullYear())).slice(-2);
+    const newDate = new Date(Date.now() + delta * 1000 * 3600 * 24);
+    const dd = ("0" + newDate.getDate()).slice(-2);
+    const mm = ("0" + (newDate.getMonth() + 1)).slice(-2);
+    const yy = ("0" + (newDate.getFullYear())).slice(-2);
     // let yyyy = newDate.getFullYear();
 
-    return yy.toString()+mm+dd;
+    return yy.toString() + mm + dd;
   }
 
   static getRandomInt(min, max) {
@@ -27,13 +27,13 @@ export class Utils {
 
   // delta: minutes
   static getTime(delta: number = 0): string {
-    let newDate = new Date(Date.now()+delta*1000*60);
-    let dd = ("0"+newDate.getSeconds()).slice(-2);
-    let mm = ("0"+(newDate.getMinutes())).slice(-2);
-    let yy = ("0"+(newDate.getHours())).slice(-2);
+    const newDate = new Date(Date.now() + delta * 1000 * 60);
+    const dd = ("0" + newDate.getSeconds()).slice(-2);
+    const mm = ("0" + (newDate.getMinutes())).slice(-2);
+    const yy = ("0" + (newDate.getHours())).slice(-2);
     // let yyyy = newDate.getFullYear();
 
-    return yy.toString()+mm+dd;
+    return yy.toString() + mm + dd;
   }
 
   static shuffle(array) {
