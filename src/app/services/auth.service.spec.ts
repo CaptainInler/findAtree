@@ -17,9 +17,9 @@ describe('AuthService', () => {
     auth: jasmine.createSpyObj('auth', {
       'signInWithPopup': Promise.reject({
         code: 'auth/operation-not-allowed'
-      }),
-      authState: Observable.of(authState)
-    })
+      })
+    }),
+    authState: Observable.of(authState)
   };
   const mockAngularDatabase: any = {
 
