@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "An application for viewing and editing trees in the city of Zurich.",
   "scripts": {
-    "start": "webpack-dev-server --progress --open",
+    "start": "webpack-dev-server --progress --open --https",
     "build": "webpack --progress --colors",
     "test": "karma start --single-run"
   },

@@ -8,9 +8,8 @@ import { CommonModule } from '@angular/common';
 import {
   MatDividerModule, MatListModule, MatButtonModule, MatIconModule,
   MatFormFieldModule, MatInputModule, MatSnackBarModule, MatToolbarModule,
-  MatStepperModule, MatSelectModule, MatGridListModule,
+  MatStepperModule, MatSelectModule, MatMenuModule, MatGridListModule,
 } from '@angular/material';
-
 
 @NgModule({
   imports: [
@@ -25,6 +24,7 @@ import {
     MatToolbarModule,
     MatStepperModule,
     MatSelectModule,
+    MatMenuModule,
     MatGridListModule,
   ],
   exports: [
@@ -38,6 +38,7 @@ import {
     MatToolbarModule,
     MatStepperModule,
     MatSelectModule,
+    MatMenuModule,
     MatGridListModule,
   ]
 })

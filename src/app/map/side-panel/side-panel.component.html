@@ -6,13 +6,12 @@
         <mat-list>
           <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>
           <mat-divider></mat-divider>
-          <mat-list-item>Name Lateinisch: {{ selectedTree.attributes[attr.gattungLat] }} - {{ selectedTree.attributes[attr.artLat] }}</mat-list-item>
-          <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>
-          <mat-list-item>Pflanz Jahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>
-          <mat-list-item>Status: {{ selectedTree.attributes[attr.status] }}</mat-list-item>
+          <mat-list-item>Latin name: {{ selectedTree.attributes[attr.nameLat] }}</mat-list-item>
+          <mat-list-item>Neighbouhood: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>
+          <mat-list-item>Planting year: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>
         </mat-list>
 
-        <button mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>
+        <button *ngIf="appState.userHasRole('user')" mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>
           <mat-icon>mode_edit</mat-icon>
         </button>
       </div>

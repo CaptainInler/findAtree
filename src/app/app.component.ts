@@ -54,6 +54,10 @@ export class AppComponent implements OnInit {
 
   }
 
+  displayInfoPage() {
+    document.getElementById('infoPage').style.display='';
+  }
+
   userHasRole(role: string){
     return this.authService.hasRole(role);
   }
