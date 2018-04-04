@@ -46,8 +46,14 @@ describe('Utils class test', () => {
     expect(Utils.shuffle(array).length).toBe(length);
   });
   it('array should contain the same elements after shuffling', function () {
-    const array = ['one', 'two', 'three'];
-    expect(Utils.shuffle(array).sort()).toEqual(array.sort());
+    const array1 = ['one', 'two', 'three'];
+    const array2 = ['one', 'two', 'three'];
+    expect(Utils.shuffle(array1).sort()).toEqual(array2.sort());
+  });
+  it('array should not be in same order after shuffling', function () {
+    const array1 = ['one', 'two', 'three'];
+    const array2 = ['one', 'two', 'three'];
+    expect(Utils.shuffle(array1)).not.toEqual(array2);
   });
   afterEach(() => {
     utils = null;

@@ -8,8 +8,8 @@ type modeType = 'game' | 'editor' | 'dashboard';
 @Injectable()
 export class AppStateService {
 
-  public showMap: string = 'hide';
-  public sidePanelPosition: string  = '';
+  public showMap = 'hide';
+  public sidePanelPosition  = '';
 
   private mode: modeType;
   private modeSource = new Subject<modeType>();
@@ -27,25 +27,23 @@ export class AppStateService {
   setInteraction(interaction: interactionType) {
     this.interaction = interaction;
     this.interactionSource.next(interaction);
-    console.log(this.interaction);
   }
 
   getInteraction(): interactionType {
     return this.interaction;
   }
 
-  userIsLoggedIn():boolean{
+  userIsLoggedIn(): boolean {
     return this._aS.isLoggedIn();
   }
 
-  userHasRole(role: string){
+  userHasRole(role: string) {
     return this._aS.hasRole(role);
   }
 
   setMode(mode: modeType) {
     this.mode = mode;
     this.modeSource.next(mode);
-    console.log(this.mode);
   }
 
   getMode(): modeType {
