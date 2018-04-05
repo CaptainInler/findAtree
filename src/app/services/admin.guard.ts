@@ -9,7 +9,7 @@ export class AdminGuard implements CanActivate {
 
   }
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
-    if (!this._as.hasRole('admin')){
+    if (!this._as.hasRole('admin')) {
       this.router.navigate(['/map']);
         return false;
     }
