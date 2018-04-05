@@ -5,6 +5,6 @@
 <button mat-raised-button color='accent' class='btn-add-tree'
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"
   (click)='toggleAddInteraction()'>
-  {{ appState.interaction !== 'add' ? 'Add new tree' : 'Cancel'}}
+  {{ appState.interaction !== 'add' ? 'Neuer Baum erfassen' : 'Abbrechen'}}
 </button>
 </div>

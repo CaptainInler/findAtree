@@ -1,6 +1,6 @@
 <div *ngIf='selectedTree' class='guess-panel mat-typography'>
 
-  <h2>What kind of tree did you click on?</h2>
+  <h2>Was ist das für einen Baum</h2>
 
   <span class="error" *ngIf="error">{{ error }}</span>
 
@@ -17,9 +17,9 @@
         <div class="guess-points">
           <table class="guess-score-table">
             <tr>
-              <td class="guess-score-table-first">You will get:</td>
+              <td class="guess-score-table-first">Gewonnene Punkte:</td>
               <td class="guess-score-table-second" data-title="Guess">{{points}}</td>
-              <td>Points</td>
+              <td> </td>
             </tr>
           </table>
         </div>
@@ -30,17 +30,17 @@
           </div>
           <table class="guess-score-table">
             <tr>
-              <td class="guess-score-table-first">Your points today:</td>
+              <td class="guess-score-table-first">Dein Total heute:</td>
               <td class="guess-score-table-second" data-title="Today">{{getScore('day')}}</td>
               <td>&nbsp;</td>
             </tr>
             <tr>
-              <td class="guess-score-table-first">Your total:</td>
+              <td class="guess-score-table-first">Dein Total:</td>
               <td class="guess-score-table-second" data-title="Total">{{getScore('total')}}</td>
               <td>&nbsp;</td>
             </tr>
             <tr>
-              <td class="guess-score-table-first">Best total:</td>
+              <td class="guess-score-table-first">Höchster Punktestand:</td>
               <td class="guess-score-table-second" data-title="Best">{{getScore('best')}}</td>
               <td>&nbsp;</td>
             </tr>
