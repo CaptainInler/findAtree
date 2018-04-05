@@ -3,7 +3,7 @@ import { AbstractControl, ValidatorFn } from '@angular/forms';
 /** The year must be a positive number, smaller than current year */
 export function yearValidator(): ValidatorFn {
   return (control: AbstractControl): {[key: string]: any} => {
-    const allowed = control.value >= 0 && control.value <= 2018;
+    const allowed = control.value >= 0 && control.value <= (new Date()).getFullYear();
     return allowed ? null : {'invalidYear': {value: control.value}};
   };
 }
