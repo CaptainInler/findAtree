@@ -1,7 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-import { moveIn, moveInLeft, fallIn} from  '../../classes/animations';
+import { moveIn, moveInLeft, fallIn} from  '../../shared/animations';
 
 @Component({
   selector: 'app-signup',

@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
-import { Utils } from '../../classes/utils';
-import { Guess, Score } from '../../classes/guess';
+import { Utils } from '../../shared/utils';
+import { Guess, Score } from '../../shared/guess';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { showSidePanel, showSidePanelContent} from '../../classes/animations';
+import { showSidePanel, showSidePanelContent} from '../../shared/animations';
 import { AppStateService } from '../../services/app-state.service';
 import {Subscription} from "rxjs/Subscription";
 import {Observable} from "rxjs/Observable";

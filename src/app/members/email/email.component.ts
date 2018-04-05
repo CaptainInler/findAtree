@@ -1,7 +1,7 @@
 import {Component, EventEmitter, HostBinding, OnInit, Output} from '@angular/core';
 import {AuthService} from '../../services/auth.service';
 import { Router} from '@angular/router';
-import { moveIn, fallIn} from '../../classes/animations';
+import { moveIn, fallIn} from '../../shared/animations';
 
 @Component({
   selector: 'app-email',

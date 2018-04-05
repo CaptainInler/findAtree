@@ -9,7 +9,7 @@ import * as VectorTileLayer from 'esri/layers/VectorTileLayer';
 import * as Graphic from 'esri/Graphic';
 import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import * as Locate from 'esri/widgets/Locate';
-import { showMap } from '../../router.animations';
+import { showMap } from '../../shared/animations';
 
 @Component({
   selector: 'esri-map',

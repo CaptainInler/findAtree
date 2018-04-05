@@ -60,7 +60,7 @@ export class AppStateService {
   }
 
   getMode(): modeType {
-    console.log('getMode');
+    // console.log('getMode');
     return this.mode;
   }
 
