@@ -26,10 +26,11 @@ export class AuthService {
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
               private devDetector: DeviceDetectorService) {
-    console.log ( this.devDetector.getDeviceInfo());
+    // console.log ( this.devDetector.getDeviceInfo());
     this.afAuth.authState
       .switchMap(auth => {
         if (auth) {
+          // console.log(auth);
           return this.db.object(`users/${auth.uid}`).valueChanges();
         }else {
           return Observable.of(null);
@@ -38,6 +39,7 @@ export class AuthService {
       .subscribe(user => {
         this.user.next(user);
         if (user) {
+          // console.log(user);
           this.userDetails = user;
         }else {
           this.userDetails = null;

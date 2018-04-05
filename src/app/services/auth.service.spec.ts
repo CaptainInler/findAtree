@@ -10,8 +10,19 @@ import { DeviceDetectorService } from "ngx-device-detector";
 describe('AuthService', () => {
   const authState: any = {
     displayName: 'Hans Mueller',
-    id: 'WDAeDeeD7oZCfLFxPNnrgj1tN7I3',
+    uid: 'WDAeDeeD7oZCfLFxPNnrgj1tN7I3',
+    isAnonymus: false,
     email: null
+  }
+  const user: any = {
+    displayName: 'Hans Mueller',
+    id: 'WDAeDeeD7oZCfLFxPNnrgj1tN7I3',
+    roles: {
+      user: true
+    },
+    valueChanges() {
+      return Observable.of(this);
+    }
   }
   const mockAngularFireAuth: any = {
     auth: jasmine.createSpyObj('auth', {
@@ -22,12 +33,13 @@ describe('AuthService', () => {
     authState: Observable.of(authState)
   };
   const mockAngularDatabase: any = {
-
+    object(path: string) {
+      return user;
+    },
+    list() {}
   };
   const mockDeviceDetector: any = {
-    getDeviceInfo() {
-      return 'unknown';
-    }
+    getDeviceInfo() { }
   };
   beforeEach(() => {
     TestBed.configureTestingModule({
