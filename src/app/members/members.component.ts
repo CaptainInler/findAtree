@@ -2,7 +2,7 @@ import {Component, EventEmitter, HostBinding, Input, OnInit, Output} from '@angu
 import { FormsModule} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
-import { moveIn, fallIn, moveInLeft } from '../router.animations';
+import { moveIn, fallIn, moveInLeft } from '../classes/animations';
 import {MapClickEvent} from '../tree';
 
 @Component({

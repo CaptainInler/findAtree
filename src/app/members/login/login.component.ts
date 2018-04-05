@@ -1,7 +1,7 @@
 import {Injectable, Component, OnInit, HostBinding, Output, EventEmitter} from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-import { moveIn} from '../../router.animations';
+import { moveIn} from '../../classes/animations';
 import { AppComponent} from '../../app.component';
 
 @Component({

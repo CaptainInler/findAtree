@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, HostBinding} from '@angular/core';
 import { AppStateService } from '../services/app-state.service';
-import { showMap, showSidePanel } from '../router.animations';
+import { showMap, showSidePanel } from '../classes/animations';
 
 @Component({
   selector: 'map-component',
