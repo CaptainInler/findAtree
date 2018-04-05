@@ -1,9 +1,6 @@
 import {
-  Component, ViewChild, ComponentFactory, ComponentFactoryResolver, ViewContainerRef, OnInit, Input, ComponentRef
+  Component, ViewChild, ComponentFactoryResolver, ViewContainerRef, OnInit, ComponentRef
 } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-import { TreeService } from './tree.service';
 import { LoginComponent } from './members/login/login.component';
 import { EmailComponent } from './members/email/email.component';
 import { SignupComponent } from './members/signup/signup.component';
@@ -27,7 +24,7 @@ export class AppComponent implements OnInit {
   cmpRef: ComponentRef<any>;
   loggedIn = false;
 
-  constructor(private treeService: TreeService,
+  constructor(
     private _cfr: ComponentFactoryResolver,
     private authService: AuthService,
     public appState: AppStateService) {
@@ -44,7 +41,7 @@ export class AppComponent implements OnInit {
   }
 
   displayInfoPage() {
-    document.getElementById('infoPage').style.display='';
+    document.getElementById('infoPage').style.display = '';
   }
 
   userHasRole(role: string){

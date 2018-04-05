@@ -38,7 +38,6 @@ import { SortAlphabeticalPipe } from './shared/sort-alphabetical.pipe';
 // services
 import { AdminGuard } from './services/admin.guard';
 import { MapDataService } from './services/map-data.service';
-import { TreeService } from './tree.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
 import { WindowSizeDirective } from './services/window-size.directive';
@@ -83,7 +82,7 @@ import { WindowSizeDirective } from './services/window-size.directive';
   bootstrap: [ AppComponent ], // component to start with
   providers: [
     // services
-    MapDataService, TreeService, AuthService, AuthGuard, AdminGuard,
+    MapDataService, AuthService, AuthGuard, AdminGuard,
     AppStateService
   ],
   entryComponents: [
