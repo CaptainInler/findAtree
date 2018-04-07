@@ -9,13 +9,13 @@ import * as VectorTileLayer from 'esri/layers/VectorTileLayer';
 import * as Graphic from 'esri/Graphic';
 import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import * as Locate from 'esri/widgets/Locate';
-import { showMap } from '../../router.animations';
+import { showMap, positionMap } from '../../router.animations';
 
 @Component({
   selector: 'esri-map',
   templateUrl: './esri-map.component.html',
   styleUrls: ['./esri-map.component.scss'],
-  animations: [showMap()]
+  animations: [showMap(), positionMap()]
 })
 export class EsriMapComponent implements OnInit {
 
@@ -128,11 +128,7 @@ export class EsriMapComponent implements OnInit {
     });
 
     this.appState.interactionChanged.subscribe((interaction) => {
-      if (interaction === 'none') {
-        this.changePadding(0);
-      } else {
-        this.changePadding(400);
-      }
+      this.changePosition();
     });
 
     this.appState.modeChanged.subscribe((mode) => {
@@ -144,7 +140,6 @@ export class EsriMapComponent implements OnInit {
           layer.visible = !isGame;
         }
       });
-
     });
 
     this.appState.selectedTreeChanged.subscribe((tree) => {
@@ -158,10 +153,13 @@ export class EsriMapComponent implements OnInit {
     // this.appState.showMap = 'show';
   }
 
-  changePadding(padding: number) {
-    this.mapView.padding = {
-      right: padding
-    };
+  changePosition() {
+    if (this.appState.sidePanelPosition === 'right') {
+      this.appState.mapPosition = (this.appState.interaction === 'none') ? 'right-closed' : 'right-open';
+    }
+    if (this.appState.sidePanelPosition === 'bottom'){
+      this.appState.mapPosition = (this.appState.interaction === 'none') ? 'bottom-closed' : 'bottom-open';
+    }
   }
 
   private selectedTreeChanged(tree) {

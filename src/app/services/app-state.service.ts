@@ -11,6 +11,7 @@ export class AppStateService {
 
   public showMap: string = 'hide';
   public sidePanelPosition: string  = '';
+  public mapPosition: string  = '';
 
   // set the view here to get acces to it from everywhere
   public mapView = null;
