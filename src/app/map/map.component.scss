@@ -1,8 +1,14 @@
 .content {
   overflow: hidden;
 }
-.btn-add-tree {
+.btn-add-tree-bottom {
   position: absolute !important;
   bottom: 25px;
   left: 10px;
+}
+
+.btn-add-tree-top {
+  position: absolute !important;
+  top: 70px;
+  right: 10px;
 }

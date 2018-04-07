@@ -3,6 +3,8 @@
 <side-panel [selectedTree]='selectedTree'></side-panel>
   <!--<guess-panel [selectedTree]='selectedTree'></guess-panel>-->
 <button mat-raised-button color='accent' class='btn-add-tree'
+  [ngClass]="{'btn-add-tree-bottom': appState.sidePanelPosition === 'right',
+  'btn-add-tree-top': appState.sidePanelPosition === 'bottom' }"
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"
   (click)='toggleAddInteraction()'>
   {{ appState.interaction !== 'add' ? 'Add new tree' : 'Cancel'}}
