@@ -31,7 +31,7 @@ export class EditorPanelComponent {
       this.quartiers = mapDataService.uniqueQuartiers;
     }
 
-  ngOnChanges(change) {
+  ngOnChanges() {
     const attributes = this.selectedTree.attributes;
     this.form = new FormGroup({
       name: new FormControl(attributes[attr.nameDE], [Validators.required]),
