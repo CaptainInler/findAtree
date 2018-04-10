@@ -56,6 +56,27 @@ export function showSidePanelContent() {
   ]);
 }
 
+export function positionMap() {
+  return trigger('positionMap', [
+    state('right-closed', style({ bottom: 0, width: '100%'})),
+    state('right-open', style({ bottom: 0, width: '70%'})),
+    state('bottom-closed', style({bottom: 0, width: '100%'})),
+    state('bottom-open', style({bottom: '40%', width: '100%'})),
+    transition('right-closed => right-open', [
+      animate('1.2s ease-out')
+    ]),
+    transition('bottom-open => bottom-closed', [
+      animate('1.2s .2s ease-in')
+    ]),
+    transition('right-open => right-closed', [
+      animate('1.2s .2s ease-in-out')
+    ]),
+    transition('bottom-closed => bottom-open', [
+      animate('1.2s .2s ease-in-out')
+    ])
+  ]);
+}
+
 export function showSidePanel() {
   return trigger('showSidePanel', [
     state('right', style({ top: '64px', width: '30%'})),

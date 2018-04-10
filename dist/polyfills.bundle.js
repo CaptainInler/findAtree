@@ -458,7 +458,7 @@ var forOf = __webpack_require__(95);
 var $iterDefine = __webpack_require__(379);
 var step = __webpack_require__(382);
 var setSpecies = __webpack_require__(383);
-var DESCRIPTORS = __webpack_require__(56);
+var DESCRIPTORS = __webpack_require__(57);
 var fastKey = __webpack_require__(97).fastKey;
 var validate = __webpack_require__(72);
 var SIZE = DESCRIPTORS ? '_s' : 'size';
@@ -599,7 +599,7 @@ module.exports = {
 /***/ 183:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = !__webpack_require__(56) && !__webpack_require__(63)(function () {
+module.exports = !__webpack_require__(57) && !__webpack_require__(63)(function () {
   return Object.defineProperty(__webpack_require__(184)('div'), 'a', { get: function () { return 7; } }).a != 7;
 });
 
@@ -925,7 +925,7 @@ var dP = __webpack_require__(62);
 var anObject = __webpack_require__(19);
 var getKeys = __webpack_require__(187);
 
-module.exports = __webpack_require__(56) ? Object.defineProperties : function defineProperties(O, Properties) {
+module.exports = __webpack_require__(57) ? Object.defineProperties : function defineProperties(O, Properties) {
   anObject(O);
   var keys = getKeys(Properties);
   var length = keys.length;
@@ -1218,7 +1218,7 @@ module.exports = function (done, value) {
 
 var global = __webpack_require__(49);
 var dP = __webpack_require__(62);
-var DESCRIPTORS = __webpack_require__(56);
+var DESCRIPTORS = __webpack_require__(57);
 var SPECIES = __webpack_require__(46)('species');
 
 module.exports = function (KEY) {
@@ -1320,7 +1320,7 @@ var has = __webpack_require__(50);
 var IE8_DOM_DEFINE = __webpack_require__(183);
 var gOPD = Object.getOwnPropertyDescriptor;
 
-exports.f = __webpack_require__(56) ? gOPD : function getOwnPropertyDescriptor(O, P) {
+exports.f = __webpack_require__(57) ? gOPD : function getOwnPropertyDescriptor(O, P) {
   O = toIObject(O);
   P = toPrimitive(P, true);
   if (IE8_DOM_DEFINE) try {
@@ -4946,7 +4946,7 @@ module.exports = function (it, key) {
 
 /***/ }),
 
-/***/ 56:
+/***/ 57:
 /***/ (function(module, exports, __webpack_require__) {
 
 // Thank's IE8 for his funny defineProperty
@@ -4965,7 +4965,7 @@ var IE8_DOM_DEFINE = __webpack_require__(183);
 var toPrimitive = __webpack_require__(185);
 var dP = Object.defineProperty;
 
-exports.f = __webpack_require__(56) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
+exports.f = __webpack_require__(57) ? Object.defineProperty : function defineProperty(O, P, Attributes) {
   anObject(O);
   P = toPrimitive(P, true);
   anObject(Attributes);
@@ -5116,7 +5116,7 @@ module.exports = function (key) {
 
 var dP = __webpack_require__(62);
 var createDesc = __webpack_require__(131);
-module.exports = __webpack_require__(56) ? function (object, key, value) {
+module.exports = __webpack_require__(57) ? function (object, key, value) {
   return dP.f(object, key, createDesc(1, value));
 } : function (object, key, value) {
   object[key] = value;

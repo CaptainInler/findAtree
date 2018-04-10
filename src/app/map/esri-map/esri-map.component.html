@@ -1,1 +1,3 @@
-<div id="viewDiv" [@showMap]="appState.showMap"></div>
+<div id="viewDiv" [@showMap]="appState.showMap"
+  appWindowSize (winSize)="changePosition()"
+  [@positionMap]="appState.mapPosition"></div>
