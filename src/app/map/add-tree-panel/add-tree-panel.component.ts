@@ -80,13 +80,13 @@ export class AddTreePanelComponent implements OnInit {
         newTree.attributes[attr.id] = result.addFeatureResults[0].objectId;
         this.appState.setSelectedTree(newTree);
         this.appState.setInteraction("view");
-        this.snackBar.open('Tree was succesfully added', null, {
+        this.snackBar.open('Baum erfolgreich hinzugefügt', null, {
           duration: 5000,
         });
       })
       .otherwise((err) => {
         this.loading = false;
-        this.snackBar.open(`An error occured: ${err.message}`, null, {
+        this.snackBar.open(`Ein Fehler ist aufgetreten: ${err.message}`, null, {
           duration: 5000,
         });
       });

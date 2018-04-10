@@ -2,7 +2,7 @@
   <mat-step [stepControl]="locationFormGroup">
     <form [formGroup]="locationFormGroup">
       <ng-template matStepLabel>Ort</ng-template>
-      Klicke auf die Karte um die Koordinaten automatisch auszufüllen:
+      Klicke in der Karte auf den Standort:
       <mat-form-field>
         <input matInput placeholder="Breitengrad" formControlName="latitude" required>
         <mat-error *ngIf="locationFormGroup.root.controls.latitude.errors">

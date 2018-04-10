@@ -55,12 +55,12 @@ export class EditorPanelComponent {
       .then((tree) => {
         this.loading = false;
         this.editing.emit(false);
-        this.snackBar.open('Tree was succesfully updated', null, {
+        this.snackBar.open('Baum erfolgreich aktualisiert', null, {
           duration: 5000,
         });
       }).otherwise((err) => {
         this.loading = false;
-        this.snackBar.open(`An error occured: ${err.message}`, null, {
+        this.snackBar.open(`Ein Fehler ist aufgetreten: ${err.message}`, null, {
           duration: 5000,
         });
       });
@@ -75,12 +75,12 @@ export class EditorPanelComponent {
       .then(tree => {
         this.selectedTree = null;
         this.appState.setInteraction('none');
-        this.snackBar.open('Tree was succesfully removed', null, {
+        this.snackBar.open('Baum erfolgreich gelöscht', null, {
           duration: 5000,
         });
       })
       .otherwise((err) => {
-        this.snackBar.open(`An error occured: ${err.message}`, null, {
+        this.snackBar.open(`Ein Fehler ist aufgetreten: ${err.message}`, null, {
           duration: 5000,
         });
       });
