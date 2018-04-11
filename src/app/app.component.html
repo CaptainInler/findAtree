@@ -12,15 +12,15 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item type="button" (click)="toggleLogin()">
         <mat-icon>supervisor_account</mat-icon>
-        <span>{{loggedIn?'Logout':'Login'}}</span>
+        <span>{{loggedIn?'Abmelden':'Anmelden'}}</span>
       </button>
       <button mat-menu-item [disabled]="!userHasRole('user')" (click)="appState.setMode('game')" [routerLink]="['./map']">
         <mat-icon>videogame_asset</mat-icon>
-        <span>Play the game</span>
+        <span>Spielen</span>
       </button>
       <button mat-menu-item [disabled]="!userHasRole('user')" (click)="appState.setMode('editor')" [routerLink]="['./map']">
         <mat-icon>mode_edit</mat-icon>
-        <span>Edit trees</span>
+        <span>Bäume bearbeiten</span>
       </button>
       <button mat-menu-item *ngIf="userHasRole('admin')" (click)="appState.setMode('dashboard')" [routerLink]="['./admin']">
         <mat-icon>dashboard</mat-icon>
@@ -28,7 +28,7 @@
       </button>
       <button mat-menu-item (click)="displayInfoPage()">
         <mat-icon>info</mat-icon>
-        <span>About this app</span>
+        <span>Über diese App</span>
       </button>
     </mat-menu>
 

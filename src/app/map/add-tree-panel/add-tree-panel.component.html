@@ -1,30 +1,30 @@
 <mat-vertical-stepper *ngIf="!loading" linear>
   <mat-step [stepControl]="locationFormGroup">
     <form [formGroup]="locationFormGroup">
-      <ng-template matStepLabel>Localization</ng-template>
-      Click on the map at the location of the tree to fill up the coordinates:
+      <ng-template matStepLabel>Ort</ng-template>
+      Klicke in der Karte auf den Standort:
       <mat-form-field>
-        <input matInput placeholder="Latitude" formControlName="latitude" required>
+        <input matInput placeholder="Breitengrad" formControlName="latitude" required>
         <mat-error *ngIf="locationFormGroup.root.controls.latitude.errors">
-          Please enter a valid latitude.
+          Bitte gültige Breitengrad eingeben.
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Longitude" formControlName="longitude" required>
+        <input matInput placeholder="Längengrad" formControlName="longitude" required>
         <mat-error *ngIf="locationFormGroup.root.controls.longitude.errors">
-          Please enter a valid longitude.
+          Bitte gültige Längengrad eingeben
         </mat-error>
       </mat-form-field>
       <div>
-        <button mat-raised-button matStepperNext color='primary'>Next</button>
+        <button mat-raised-button matStepperNext color='primary'>Weiter</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="attributeFormGroup">
     <form [formGroup]="attributeFormGroup">
-      <ng-template matStepLabel>Attributes</ng-template>
+      <ng-template matStepLabel>Attribute</ng-template>
       <mat-form-field>
-        <mat-select [(value)]="nameDE" placeholder="Tree type" formControlName="nameDE" required>
+        <mat-select [(value)]="nameDE" placeholder="Baumtyp" formControlName="nameDE" required>
           <mat-option *ngFor="let name of treeNames | sortAlphabetical" [value]="name">
             {{ name }}
           </mat-option>
@@ -32,29 +32,29 @@
         <mat-hint *ngIf="nameDE">{{ mapDataService.treeNamesMapping[nameDE].nameLat }}</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput placeholder="Planting year" formControlName="pflanzJahr"required>
+        <input matInput placeholder="Pflanzjahr" formControlName="pflanzJahr" required>
         <mat-error *ngIf="attributeFormGroup.root.controls.pflanzJahr.errors">
-          Please enter a valid year.
+          Bitte gültige Jahrszahl eingeben
         </mat-error>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder='Neighbourhood' formControlName='quartier'>
+        <mat-select placeholder='Quartier' formControlName='quartier'>
           <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>
             {{ quartier }}
           </mat-option>
         </mat-select>
       </mat-form-field>
       <div>
-        <button mat-raised-button matStepperPrevious color='primary'>Back</button>
-        <button mat-raised-button matStepperNext color='primary'>Next</button>
+        <button mat-raised-button matStepperPrevious color='primary'>Zurück</button>
+        <button mat-raised-button matStepperNext color='primary'>Weiter</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Save</ng-template>
+    <ng-template matStepLabel>Speichern</ng-template>
     <div>
-      <button mat-raised-button color='primary' (click)='saveTree()'>Save</button>
-      <button mat-raised-button matStepperPrevious color='primary'>Back</button>
+      <button mat-raised-button color='primary' (click)='saveTree()'>Speichern</button>
+      <button mat-raised-button matStepperPrevious color='primary'>Abbrechen</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

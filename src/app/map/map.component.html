@@ -7,6 +7,6 @@
   'btn-add-tree-top': appState.sidePanelPosition === 'bottom' }"
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"
   (click)='toggleAddInteraction()'>
-  {{ appState.interaction !== 'add' ? 'Add new tree' : 'Cancel'}}
+  {{ appState.interaction !== 'add' ? 'Neuen Baum erfassen' : 'Abbrechen'}}
 </button>
 </div>
