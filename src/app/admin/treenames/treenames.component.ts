@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TREENAMES } from './treenames';
+import { MapDataService } from '../../services/map-data.service';
 import { User } from '../../members/user';
 import { AngularFireDatabase} from 'angularfire2/database';
 
@@ -8,38 +8,18 @@ import { AngularFireDatabase} from 'angularfire2/database';
   templateUrl: './treenames.component.html',
   styleUrls: ['./treenames.component.scss']
 })
-export class TreenamesComponent implements OnInit {
+export class TreenamesComponent {
 
-  treenames: any = TREENAMES;
+  tn = {};
+  columnsToDisplay = ['nameDeu', 'nameLat', 'gattungLat', 'artLat'];
 
-  constructor(private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase,
+              private mapDataService: MapDataService) {
 
   }
-
-  ngOnInit() {
-  }
-
-  import() {
-    for ( let i = 0; i < this.treenames.length; i++ ) {
-      this.updateTreename(this.treenames[i]);
-      // console.log(this.treenames[i].baumnamedeu);
-    }
-  }
-
-  updateTreename(treename) {
-    // let newName = new User (treename);
-    // console.log(newName);
-    let ref = this.db.object(`treenames/${treename.id}`);
-    ref.valueChanges().take(1)
-      .subscribe(tname => {
-        if (!tname) {
-          ref.update(treename)
-            .then(tr=>{
-              console.log(tr);
-            });
-
-        }
-      })
+  getTreenames() {
+    this.tn = this.mapDataService.treeNamesMapping;
+    return this.mapDataService.uniqueTreeNames;
   }
 
 }

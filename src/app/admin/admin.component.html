@@ -1,11 +1,15 @@
-<h2>Admin</h2>
-<nav>
-  <button type="button" (click)="showSection('treenames')" class="nav_button"><span>TreeNames</span></button>
-  <button type="button" (click)="showSection('users')" class="nav_button"><span>Users</span></button>
-</nav>
-<div *ngIf="show==='treenames'">
-  <app-treenames></app-treenames>
-</div>
-<div *ngIf="show==='users'">
-  <app-users></app-users>
-</div>
+<section class="admin">
+  <header>
+    <h2>Admin</h2>
+    <nav>
+      <button  mat-raised-button (click)="setSection('treenames')" class="nav_button"><span>B&auml;ume</span></button>
+      <button  mat-raised-button (click)="setSection('users')" class="nav_button"><span>Benutzer</span></button>
+    </nav>
+  </header>
+  <div *ngIf="getSelection()==='treenames'">
+    <app-treenames></app-treenames>
+  </div>
+  <div *ngIf="getSelection()==='users'">
+    <app-users></app-users>
+  </div>
+</section>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UsersService} from '../services/users.service';
 
 @Component({
@@ -7,13 +7,16 @@ import { UsersService} from '../services/users.service';
   styleUrls: ['./admin.component.scss'],
   providers: [ UsersService ]
 })
-export class AdminComponent implements OnInit {
-private show: string = '';
-  constructor() { }
-showSection(section: string){
-    this.show = section;
-}
-  ngOnInit() {
+export class AdminComponent {
+private selection = '';
+
+  constructor() {
+  }
+  setSection(section: string) {
+      this.selection = section;
+  }
+  getSelection(): string {
+    return this.selection;
   }
 
 }
