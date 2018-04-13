@@ -7,11 +7,9 @@ import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
 import { showSidePanel, showSidePanelContent} from '../../shared/animations';
 import { AppStateService } from '../../services/app-state.service';
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
 import {Subject} from "rxjs/Subject";
 
-import {attr} from '../../tree';
+import {attr} from '../../shared/tree';
 
 type scoreType = 'day' | 'total' | 'best';
 

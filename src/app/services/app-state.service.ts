@@ -1,7 +1,7 @@
 import { HostListener, Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AuthService} from './auth.service';
-import { Tree } from '../tree';
+import { Tree } from '../shared/tree';
 
 type interactionType = 'none' | 'guess' | 'edit' | 'add' | 'view';
 type modeType = 'game' | 'editor' | 'dashboard';
@@ -9,7 +9,7 @@ type modeType = 'game' | 'editor' | 'dashboard';
 @Injectable()
 export class AppStateService {
 
-  public showMap = 'hide';
+  public showMap;
   public sidePanelPosition  = '';
 
   // set the view here to get acces to it from everywhere
@@ -31,6 +31,7 @@ export class AppStateService {
   constructor(private _aS: AuthService) {
     this.mode = 'editor';
     this.interaction = 'none';
+    this.showMap = 'hide';
   }
 
   setInteraction(interaction: interactionType) {

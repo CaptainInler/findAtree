@@ -10,7 +10,7 @@ import * as Point from 'esri/geometry/Point';
 import * as esriConfig from 'esri/config';
 import * as esriRequest from 'esri/request';
 
-import { attr } from '../tree';
+import { attr } from '../shared/tree';
 import { Utils } from '../shared/utils';
 import { AppStateService } from './app-state.service';
 

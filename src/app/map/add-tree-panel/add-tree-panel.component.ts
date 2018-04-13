@@ -5,7 +5,7 @@ import { AppStateService } from '../../services/app-state.service';
 
 import { yearValidator, zurichLatitudeValidator, zurichLongitudeValidator } from '../../shared/validators.directive';
 
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
 import * as Point from 'esri/geometry/Point';
 import * as Graphic from 'esri/Graphic';

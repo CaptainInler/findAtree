@@ -3,7 +3,6 @@ import { FormsModule} from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Router} from '@angular/router';
 import { moveIn, fallIn, moveInLeft } from '../shared/animations';
-import {MapClickEvent} from '../tree';
 
 @Component({
   selector: 'app-members',
@@ -16,7 +15,6 @@ export class MembersComponent implements OnInit {
   show = true;
   private done = false;
   @Input() subComponent: string;
-  @Input() mapClickData: MapClickEvent;
   @Output() eventData: EventEmitter<string> = new EventEmitter();
   @HostBinding('@moveIn')
   public state = true;

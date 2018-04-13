@@ -1,6 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { AppStateService } from '../../services/app-state.service';
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 import { trigger, state, style} from '@angular/animations';
 import { showSidePanel } from '../../shared/animations';
 

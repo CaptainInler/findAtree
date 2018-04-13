@@ -1,7 +1,7 @@
 import { Component, ElementRef, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
 import * as MapView from 'esri/views/MapView';
 import * as LayerView from 'esri/views/layers/FeatureLayerView';
@@ -44,7 +44,7 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appState.showMap = 'hide';
+    // this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {
