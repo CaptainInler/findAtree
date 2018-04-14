@@ -1,15 +1,54 @@
-<h4>Currently registered users</h4>
+<h3>Registrierte Benutzer</h3>
 
-<ul>
-  <li *ngFor="let user of users">
-    {{ user.id }}, {{ user.displayName }}, {{ user.email }}, Roles:
-    <label for="user">User</label> <input id="user" type="checkbox" [checked]="user.roles.user" (change)="user.roles.user = !user.roles.user"
-    />,
-    <label for="superuser"></label>Superuser<input id="superuser" type="checkbox" [checked]="user.roles.superuser" (change)="user.roles.superuser = !user.roles.superuser"
-    />,
-    <label for="admin">Admin</label> <input id="admin" type="checkbox" [checked]="user.roles.admin" (change)="user.roles.admin = !user.roles.admin" />
-  </li>
-</ul>
-<button (click)="update()" class="nav_button">
+
+<div class="table">
+  <mat-table [dataSource]="users">
+
+    <ng-container matColumnDef="usrName">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.displayName}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usrId">
+      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usrEmail">
+      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usrUser">
+      <mat-header-cell *matHeaderCellDef> Rollen </mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <label for="user">User</label>
+        <input id="user" type="checkbox" [checked]="user.roles.user" (change)="user.roles.user = !user.roles.user"/>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usrSuper">
+      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <label for="super">Super</label>
+        <input id="super" type="checkbox" [checked]="user.roles.superuser" (change)="user.roles.superuser = !user.roles.superuser"/>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="usrAdmin">
+      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>
+      <mat-cell *matCellDef="let user">
+        <label for="admin">Admin</label>
+        <input id="admin" type="checkbox" [checked]="user.roles.admin" (change)="user.roles.admin = !user.roles.admin"/>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+    <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+
+  </mat-table>
+</div>
+
+<button mat-raised-button color='accent' class='nav_button' (click)='update()'>
   <span>Update</span>
 </button>

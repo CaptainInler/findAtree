@@ -23,10 +23,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SignupComponent } from './members/signup/signup.component';
 import { EmailComponent } from './members/email/email.component';
 import { AuthGuard } from './services/auth.guard';
-import { ModeSelectorComponent } from './members/mode-selector/mode-selector.component';
 import { AdminComponent } from './admin/admin.component';
 import { TreenamesComponent } from './admin/treenames/treenames.component';
-import { AddComponent } from './members/add/add.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EsriMapComponent } from './map/esri-map/esri-map.component';
 import { SidePanelComponent } from './map/side-panel/side-panel.component';
@@ -40,8 +38,6 @@ import { SortAlphabeticalPipe } from './shared/sort-alphabetical.pipe';
 // services
 import { AdminGuard } from './services/admin.guard';
 import { MapDataService } from './services/map-data.service';
-import { TreeService } from './tree.service';
-import { TreeNameService } from './services/tree-name.service';
 import { AuthService} from './services/auth.service';
 import { AppStateService } from './services/app-state.service';
 import { WindowSizeDirective } from './services/window-size.directive';
@@ -71,10 +67,8 @@ import { WindowSizeDirective } from './services/window-size.directive';
     PageNotFoundComponent,
     SignupComponent,
     EmailComponent,
-    ModeSelectorComponent,
     AdminComponent,
     TreenamesComponent,
-    AddComponent,
     UsersComponent,
     EsriMapComponent,
     SidePanelComponent,
@@ -88,7 +82,7 @@ import { WindowSizeDirective } from './services/window-size.directive';
   bootstrap: [ AppComponent ], // component to start with
   providers: [
     // services
-    MapDataService, TreeService, AuthService, AuthGuard, TreeNameService, AdminGuard,
+    MapDataService, AuthService, AuthGuard, AdminGuard,
     AppStateService
   ],
   entryComponents: [

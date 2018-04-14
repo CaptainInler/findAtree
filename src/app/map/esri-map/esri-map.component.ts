@@ -1,7 +1,7 @@
 import { Component, ElementRef, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
 import * as MapView from 'esri/views/MapView';
 import * as LayerView from 'esri/views/layers/FeatureLayerView';
@@ -9,7 +9,7 @@ import * as VectorTileLayer from 'esri/layers/VectorTileLayer';
 import * as Graphic from 'esri/Graphic';
 import * as SimpleMarkerSymbol from 'esri/symbols/SimpleMarkerSymbol';
 import * as Locate from 'esri/widgets/Locate';
-import { showMap, positionMap } from '../../router.animations';
+import { showMap, positionMap } from '../../shared/animations';
 
 @Component({
   selector: 'esri-map',
@@ -44,7 +44,7 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
-    this.appState.showMap = 'hide';
+    // this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {

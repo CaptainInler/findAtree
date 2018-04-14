@@ -6,7 +6,7 @@ import { yearValidator } from '../../shared/validators.directive';
 
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
 @Component({
   selector: 'editor-panel',

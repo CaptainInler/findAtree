@@ -1,20 +1,20 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Router} from '@angular/router';
 import { AuthService} from '../../services/auth.service';
-import { moveIn, moveInLeft, fallIn} from  '../../router.animations';
+import { moveIn, moveInLeft, fallIn} from  '../../shared/animations';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
-  animations: [moveIn(), moveInLeft(),fallIn()],
-  host: {'[@moveIn]':''}
+  animations: [moveIn(), moveInLeft(), fallIn()],
+  host: {'[@moveIn]': ''}
 })
 export class SignupComponent implements OnInit {
-  state: string = '';
+  state = '';
   error: any;
   result: any;
-  @Output() eventData:EventEmitter<string> = new EventEmitter();
+  @Output() eventData: EventEmitter<string> = new EventEmitter();
 
   constructor(private auth: AuthService, private router: Router) {
 

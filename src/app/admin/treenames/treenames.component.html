@@ -1,9 +1,31 @@
-<h3>TreeNames from the file 'treenames.ts' to be imported to FireStore</h3>
-<p>
-  <button (click)="import()" class="nav_button"><span>Import</span></button>
-</p>
-<ul>
-<li *ngFor="let tree of treenames">
-  {{ tree.id }}, {{ tree.baumgattunglat }}, {{ tree.baumartlat }}, {{ tree.baumnamelat }}, {{ tree.baumnamedeu }}
-</li>
-</ul>
+
+  <h3>Baumarten, die auf der Karte vorkommen</h3>
+
+  <div class="table">
+    <mat-table [dataSource]="getTreenames() | sortAlphabetical">
+
+      <ng-container matColumnDef="nameDeu">
+        <mat-header-cell *matHeaderCellDef> Name (deutsch) </mat-header-cell>
+        <mat-cell *matCellDef="let tree"> {{tree}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="nameLat">
+        <mat-header-cell *matHeaderCellDef> Name (lateinisch) </mat-header-cell>
+        <mat-cell *matCellDef="let tree"> {{tn[tree].nameLat}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="gattungLat">
+        <mat-header-cell *matHeaderCellDef> Gattung </mat-header-cell>
+        <mat-cell *matCellDef="let tree"> {{tn[tree].gattungLat}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="artLat">
+        <mat-header-cell *matHeaderCellDef> Art </mat-header-cell>
+        <mat-cell *matCellDef="let tree"> {{tn[tree].artLat}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="columnsToDisplay"></mat-header-row>
+      <mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></mat-row>
+
+    </mat-table>
+  </div>

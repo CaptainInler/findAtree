@@ -1,16 +1,15 @@
 import { Component, Input } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
-import { Utils } from '../../classes/utils';
-import { Guess, Score } from '../../classes/guess';
+import { Utils } from '../../shared/utils';
+import { Guess, Score } from '../../shared/guess';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { showSidePanel, showSidePanelContent} from '../../router.animations';
+import { showSidePanel, showSidePanelContent} from '../../shared/animations';
 import { AppStateService } from '../../services/app-state.service';
-import {Subscription} from "rxjs/Subscription";
-import {Observable} from "rxjs/Observable";
+import {Subject} from "rxjs/Subject";
 
-import {attr} from '../../tree';
+import {attr} from '../../shared/tree';
 
 type scoreType = 'day' | 'total' | 'best';
 
@@ -32,10 +31,8 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   private dayScoreRef$: AngularFireObject<Score>;
   private totScoreRef$: AngularFireObject<Score>;
   private maxScoreRef$: AngularFireList<Score>;
-  private dayScoreRef$Subscription: Subscription;
-  private totScoreRef$Subscription: Subscription;
-  private maxScoreRef$Subscription: Subscription;
-  private today = '';
+  private unsubscribe$: Subject<boolean> = new Subject();
+  private today = '';           // date as string
   private dayScore = 0;
   private totScore = 0;
   private maxScore = 0;
@@ -70,10 +67,9 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnDestroy() {
     console.log('on destroy');
-      this.updateGuess(this.points);
-      this.dayScoreRef$Subscription.unsubscribe();
-      this.totScoreRef$Subscription.unsubscribe();
-      this.maxScoreRef$Subscription.unsubscribe();
+    this.updateGuess(this.points);
+    this.unsubscribe$.next(true);
+    this.unsubscribe$.unsubscribe();
   }
 
   initButtonState() {
@@ -95,18 +91,17 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setScoreRefs() {
-    this.dayScoreRef$Subscription = this.dayScoreRef$.valueChanges().subscribe(last => {
+    this.dayScoreRef$.valueChanges().takeUntil(this.unsubscribe$).subscribe(last => {
       if (last) {
         this.dayScore = last.p;
       }
     });
-    this.totScoreRef$Subscription = this.totScoreRef$.valueChanges().subscribe(last => {
+    this.totScoreRef$.valueChanges().takeUntil(this.unsubscribe$).subscribe(last => {
       if (last) {
         this.totScore = last.p;
       }
     });
-    this.maxScoreRef$Subscription = this.maxScoreRef$.valueChanges().subscribe(last => {
-      // console.log(last);
+    this.maxScoreRef$.valueChanges().takeUntil(this.unsubscribe$).subscribe(last => {
       if (last.length > 0) {
         this.maxScore = last[0].p;
       }
@@ -139,8 +134,8 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
         points: this.points
       };
       this.setGuess(guess);
-      this.updateScore('day', points);
-      this.updateScore('total', points);
+      this.setScore('day', points);
+      this.setScore('total', points);
     }
   }
 
@@ -148,27 +143,27 @@ export class GuessPanelComponent implements OnInit, OnChanges, OnDestroy {
     const t = Utils.getTime();
     const refLast = this._db.object(`guess/${this._aS.getUserId()}/${this.today}/${t}`);
     refLast.set(guess)
-            .catch( (err) =>
-              console.log(err)
-            );
+      .catch( (err) =>
+        console.log(err)
+      );
   }
 
-  updateScore(period: scoreType, points: number = 0) {
-    let refScore: AngularFireObject<Score>;
+  setScore(period: scoreType, points: number = 0) {
+    let scoreRef: AngularFireObject<Score>;
     const pts: number = this.getScore(period) + points;
     switch (period) {
       case 'day':
-        refScore = this.dayScoreRef$;
+        scoreRef = this.dayScoreRef$;
         break;
       case 'total':
-        refScore = this.totScoreRef$;
+        scoreRef = this.totScoreRef$;
         break;
       default:
-        refScore = null;
+        scoreRef = null;
     }
 
-    if (refScore !== null) {
-      refScore.set({p: pts})
+    if (scoreRef !== null) {
+      scoreRef.set({p: pts})
         .catch(err =>
           console.log(err));
     }

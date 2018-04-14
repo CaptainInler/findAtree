@@ -10,8 +10,8 @@ import * as Point from 'esri/geometry/Point';
 import * as esriConfig from 'esri/config';
 import * as esriRequest from 'esri/request';
 
-import { attr } from '../tree';
-import { Utils } from '../classes/utils';
+import { attr } from '../shared/tree';
+import { Utils } from '../shared/utils';
 import { AppStateService } from './app-state.service';
 
 const treeServiceURL = 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer/0';

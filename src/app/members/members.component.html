@@ -4,11 +4,6 @@
     <h2>Hey {{ name.displayName }}!</h2>
   </div>
 
-  <div *ngIf="show" class="child-container">
-    <app-mode-selector *ngIf="subComponent==='mode-selector'"></app-mode-selector>
-    <app-add [treeData]="mapClickData" *ngIf="subComponent==='add'"></app-add>
-  </div>
-
   <div>
     <button (click)="resetTool('hide')" class="darkgrey">Done</button><br>
   </div>

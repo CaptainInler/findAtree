@@ -16,16 +16,16 @@ export const routes: Routes = [
   { path: 'map', component: MapComponent },
   { path: 'admin', component: AdminComponent, canActivate: [AdminGuard] },
   // { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'login/signup', component: SignupComponent },
-  { path: 'login/email', component: EmailComponent},
+  // { path: 'login', component: LoginComponent },
+  // { path: 'login/signup', component: SignupComponent },
+  // { path: 'login/email', component: EmailComponent},
   { path: '', redirectTo: '/map', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes,{enableTracing: true, useHash: true})
+    RouterModule.forRoot(routes, {enableTracing: true, useHash: true})
   ],
   exports: [
     RouterModule

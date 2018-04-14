@@ -43,7 +43,7 @@ export function showMap() {
     state('show', style({transform: 'translateX(0)'})),
     transition('hide => show', animate('1.6s')),
     transition('void => *', [style ({transform: 'translateX(-400%)'}), animate(10)])
-    ]);
+  ]);
 }
 
 export function showSidePanelContent() {

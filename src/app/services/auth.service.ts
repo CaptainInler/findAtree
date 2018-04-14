@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
 import { AngularFireDatabase} from 'angularfire2/database';
 import { AngularFireAuth} from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
@@ -26,12 +25,12 @@ export class AuthService {
 
   constructor(private afAuth: AngularFireAuth,
               private db: AngularFireDatabase,
-              private router: Router,
               private devDetector: DeviceDetectorService) {
-    console.log ( this.devDetector.getDeviceInfo());
+    // console.log ( this.devDetector.getDeviceInfo());
     this.afAuth.authState
       .switchMap(auth => {
         if (auth) {
+          // console.log(auth);
           return this.db.object(`users/${auth.uid}`).valueChanges();
         }else {
           return Observable.of(null);
@@ -40,8 +39,8 @@ export class AuthService {
       .subscribe(user => {
         this.user.next(user);
         if (user) {
+          // console.log(user);
           this.userDetails = user;
-          // console.log(this.userDetails);
         }else {
           this.userDetails = null;
         }
@@ -51,7 +50,6 @@ export class AuthService {
 
   hasRole(role: string) {
     if (this.userDetails === null) {
-      // console.log('not logged in');
       return false;
     }else {
       return this.userDetails.roles[role];
@@ -69,7 +67,6 @@ export class AuthService {
       formData.value.email,
       formData.value.password
     ).then((credential => {
-      // console.log(credential);
         this.updateUser(credential);
       }));
   }
@@ -121,7 +118,6 @@ export class AuthService {
 
   updateUser(authData) {
     const userData = new User (authData);
-    console.log(userData);
     const ref = this.db.object(`users/${authData.uid}`);
     ref.valueChanges().take(1)
       .subscribe(user => {
@@ -137,12 +133,9 @@ export class AuthService {
 
 
   isLoggedIn() {
-    if (this.userDetails === null ) {
-      console.log('not logged in');
+    if (this.userDetails == null ) {
       return false;
     } else {
-      //  console.log('logged in');
-      // console.log(this.userDetails.displayName);
       return true;
     }
   }
@@ -158,9 +151,6 @@ export class AuthService {
   logout() {
     this.afAuth.auth.signOut()
       .then((res) => {
-        // this.user = null;
-        // this.userDetails = null;
-        // this.router.navigate(['/map'])
       });
   }
 
