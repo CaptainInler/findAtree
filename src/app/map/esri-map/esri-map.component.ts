@@ -89,7 +89,7 @@ export class EsriMapComponent implements OnInit {
           console.log('layerview was created', this.selectedTree);
           console.log(this.treeLayerView);
           this.treeLayerView.watch('updating', (value) => {
-            if (!value) {
+            if (!value && this.selectedTree) {
               this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
             }
           });
