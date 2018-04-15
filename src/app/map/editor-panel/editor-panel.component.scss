@@ -2,3 +2,10 @@
   width: 100%;
   padding-bottom: 20px;
 }
+
+@media (max-width: 840px) {
+  .mat-form-field {
+    width: 100%;
+    padding-bottom: 0;
+  }
+}

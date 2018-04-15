@@ -88845,7 +88845,7 @@ exports = module.exports = __webpack_require__(20)(undefined);
 
 
 // module
-exports.push([module.i, ".mat-form-field {\n  width: 100%;\n  padding-bottom: 20px; }\n", ""]);
+exports.push([module.i, ".mat-form-field {\n  width: 100%;\n  padding-bottom: 20px; }\n\n@media (max-width: 840px) {\n  .mat-form-field {\n    width: 100%;\n    padding-bottom: 0; } }\n", ""]);
 
 // exports
 
