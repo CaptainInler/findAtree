@@ -27,15 +27,13 @@ export class MapDataService {
   mapEventSource = new Subject<Point>();
   mapEvent$ = this.mapEventSource.asObservable();
 
-  constructor(
-    public appState: AppStateService) {
+  constructor() {
 
     this.map = new WebMap({
       portalItem: {
         id: 'b96769f9ffbf43c3bfb0603832bf2def'
       }
     });
-
 
     this.layer = this.getTreeLayer();
 
@@ -169,13 +167,12 @@ export class MapDataService {
           }
         });
 
-        this.appState.showMap = 'show';
       })
       .otherwise(err => console.log(err));
   }
 
-  private getUniqueQuartiers() {
-    this.layer.queryFeatures({
+  getUniqueQuartiers() {
+    return this.layer.queryFeatures({
       outFields: [attr.quartier],
       returnDistinctValues: true,
       where: '1=1'
@@ -184,6 +181,7 @@ export class MapDataService {
         this.uniqueQuartiers = result.features.map(feature => {
           return feature.attributes[attr.quartier];
         });
+        return this.uniqueQuartiers;
       })
       .otherwise(err => console.log(err));
   }

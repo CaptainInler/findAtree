@@ -5,7 +5,7 @@
   "scripts": {
     "start": "webpack-dev-server --progress --open --https",
     "build": "webpack --progress --colors",
-    "test": "karma start --single-run"
+    "test": "ng test"
   },
   "keywords": [
     "community-app",
@@ -50,6 +50,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "^6.0.101",
     "angular2-template-loader": "^0.6.2",
+    "awesome-typescript-loader": "^4.0.1",
     "codelyzer": "^4.2.1",
     "css-loader": "0.28.7",
     "file-loader": "^1.1.11",

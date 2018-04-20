@@ -58,12 +58,6 @@ export class EsriMapComponent implements OnInit {
     this.appState.mapView = this.mapView;
     const view = this.mapView;
 
-    this.gameBasemap = new VectorTileLayer({
-      portalItem: {
-        id: "7675d44bb1e4428aa2c30a9b68f97822"
-      }
-    });
-
     const locateWidget = new Locate({
       view: view,
       graphic: new Graphic({
@@ -82,12 +76,10 @@ export class EsriMapComponent implements OnInit {
     view.ui.add(locateWidget, 'top-left');
 
     view.on('layerview-create', (evt) => {
-
       if (evt.layer.title === "Tree layer") {
+        this.appState.showMap = 'show';
         this.treeLayerView = <LayerView>evt.layerView;
         if (this.selectedTree) {
-          console.log('layerview was created', this.selectedTree);
-          console.log(this.treeLayerView);
           this.treeLayerView.watch('updating', (value) => {
             if (!value && this.selectedTree) {
               this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
@@ -148,9 +140,6 @@ export class EsriMapComponent implements OnInit {
 
       this.selectedTreeChange.emit(tree);
     });
-
-
-    // this.appState.showMap = 'show';
   }
 
   changePosition() {
