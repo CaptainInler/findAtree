@@ -1,11 +1,10 @@
 <div class="form-container">
-  <!--<a routerLink="/login" id="goback">Go back</a>-->
+
   <button (click)="resetTool('login')" id="goback">Zurück</button><br>
 
   <h2>Registrieren</h2>
 
   <span class="error" *ngIf="error" [@moveInLeft]='state'>{{ error }}</span>
-  <!--<span class="error" *ngIf="error" >{{ error }}</span>-->
 
   <form #formData='ngForm' (ngSubmit)="onSubmit(formData)">
 
@@ -18,3 +17,4 @@
     <button type="submit" [disabled]="!formData.valid" class="basic-btn">Benutzer erstellen</button>
   </form>
 </div>
+u

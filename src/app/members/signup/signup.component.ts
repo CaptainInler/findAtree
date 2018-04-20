@@ -11,7 +11,6 @@ import { moveIn, moveInLeft, fallIn } from '../../shared/animations';
 })
 export class SignupComponent {
   error: any;
-  result: any;
   @Output() eventData: EventEmitter<string> = new EventEmitter();
   @HostBinding('@moveIn')
   public state = true;

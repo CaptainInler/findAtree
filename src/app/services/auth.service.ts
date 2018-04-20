@@ -18,7 +18,6 @@ export class AuthService {
   private userDetails: User = null;
   userChanged: EventEmitter<any> = new EventEmitter();
 
-  mode = 'play';
   level = 4;
 
   constructor(private afAuth: AngularFireAuth,
