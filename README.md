@@ -10,7 +10,7 @@ Um seine Kenntnisse über Bäume zu erweitern, ist in unserer App ein Spiel enth
 Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können auch bearbeitet und neue Bäume hinzugefügt werden.
 
 Hauptfeatures:
-  - Real-time Visualisierung der Bäumen in der Stadt Zürich
+  - Real-time Visualisierung der Bäume in der Stadt Zürich
   - editieren von Bäumen || neue Bäume erfassen || Bäume löschen
   - Spiel:
       - Benutzer können die Baumart raten.
