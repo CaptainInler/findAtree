@@ -14,7 +14,8 @@ Hauptfeatures:
   - Editieren von Bäumen || neue Bäume erfassen || Bäume löschen.
   - Spiel:
       - Benutzer können die Baumart raten.
-      - Benutzer erhalten Punkte, wenn sie die Baumart korrekt raten. Bei jedem falschen Versuch gibt einen Punkt Abzug.
+      - Benutzer erhalten Punkte, wenn sie die Baumart korrekt raten.
+      - Bei jedem falschen Versuch gibt einen Punkt Abzug.
       - Mit Vorteil spielt man das Spiel auf dem Smartphone, während man durch Zürich spaziert.
      
   - Die Abfrage von Baumdaten ist ohne Login möglich. Um die Daten zu ergänzen, zu bearbeiten oder das Spiel zu Spielen, ist es nötig, sich einzuloggen.
