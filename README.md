@@ -1,6 +1,6 @@
 # find:evergreen_tree:tree - Projekt2 - Cas Fee - HSR
 
-## Prototyp eines mobilen Geo-Spiel-App
+## Prototyp einer mobilen Geo-Spiel-App
 <p align="center">
 <img src="https://github.com/CaptainInler/findAtree-Presentation/blob/master/bilder/01_Baum.png" height="70"/></img>
 </p>
