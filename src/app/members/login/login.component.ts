@@ -1,8 +1,7 @@
-import {Injectable, Component, OnInit, HostBinding, Output, EventEmitter} from '@angular/core';
-import {Router} from '@angular/router';
-import { AuthService} from '../../services/auth.service';
-import { moveIn} from '../../shared/animations';
-import { AppComponent} from '../../app.component';
+import { Injectable, Component, HostBinding, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
+import { moveIn } from '../../shared/animations';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +10,7 @@ import { AppComponent} from '../../app.component';
   animations: [moveIn()],
 })
 @Injectable()
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   error: any;
   show = false;
   @Output() eventData: EventEmitter<string> = new EventEmitter();
@@ -60,15 +59,6 @@ export class LoginComponent implements OnInit {
       .then((res) => {
         this.resetTool('hide');
       })
-      .catch((err) => {
-        console.log(err);
-        this.error = err;
-      } );
+      .catch((err) => this.error = err );
   }
-  ngOnInit() {
-    // if(this.authService.isLoggedIn()){
-    //   this.router.navigateByUrl('/members')
-    // }
-  }
-
 }

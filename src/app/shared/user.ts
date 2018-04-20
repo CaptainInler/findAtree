@@ -12,7 +12,7 @@ export class User {
   constructor(authData) {
     if (authData.uid) {
       this.id = authData.uid;
-    }else{
+    }else {
       this.id = authData.id;
     }
     this.email    = authData.email;

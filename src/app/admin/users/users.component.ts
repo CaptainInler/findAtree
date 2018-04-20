@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../services/users.service';
-import { User } from '../../members/user';
+import { User } from '../../shared/user';
 import { AngularFireDatabase } from 'angularfire2/database';
 
 @Component({
