@@ -7,7 +7,7 @@
 
 Eine App für die Einwohner der Stadt Zürich, um mehr über die Bäume im Stadtgbiet zu erfahren.
 Um seine Kenntnisse über Bäume zu erweitern, ist in unserer App ein Spiel enthalten: Rate die Baumart korrekt und gewinne so Punkte.
-Sind die Angaben falsch oder fehlt ein Baum? Die Daten können auch bearbeitet und neue Bäume hinzugefügt werden.
+Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können auch bearbeitet und neue Bäume hinzugefügt werden.
 
 Hauptfeatures:
   - Real-time Visualisierung der Bäumen in der Stadt Zürich
