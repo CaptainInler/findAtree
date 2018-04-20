@@ -29,8 +29,8 @@ export class AuthService {
     // console.log ( this.devDetector.getDeviceInfo());
     this.afAuth.authState
       .switchMap(auth => {
+        console.log(auth);
         if (auth) {
-          // console.log(auth);
           return this.db.object(`users/${auth.uid}`).valueChanges();
         }else {
           return Observable.of(null);
@@ -39,7 +39,6 @@ export class AuthService {
       .subscribe(user => {
         this.user.next(user);
         if (user) {
-          // console.log(user);
           this.userDetails = user;
         }else {
           this.userDetails = null;
@@ -52,7 +51,10 @@ export class AuthService {
     if (this.userDetails === null) {
       return false;
     }else {
-      return this.userDetails.roles[role];
+      if (this.userDetails.roles[role]) {
+        return true;
+      }
+      return false;
     }
   }
   signupNewUser(formData) {
@@ -98,7 +100,6 @@ export class AuthService {
 
   private authLoginPopup(provider) {
     const deviceInfo = this.devDetector.getDeviceInfo();
-    console.log(deviceInfo.device)
     if (deviceInfo.device === 'unknown') {
       return this.afAuth.auth.signInWithPopup(provider)
         .then((credential => {
@@ -133,6 +134,7 @@ export class AuthService {
 
 
   isLoggedIn() {
+    console.log(this.userDetails);
     if (this.userDetails == null ) {
       return false;
     } else {
@@ -140,12 +142,16 @@ export class AuthService {
     }
   }
 
-  getUser() {
-    return this.userDetails;
+  getUser(): User {
+      return this.userDetails;
   }
 
-  getUserId(): string {
-    return this.userDetails.id;
+  getUserId(): string | null {
+    if (this.userDetails == null ) {
+      return null;
+    } else {
+      return this.userDetails.id;
+    }
   }
 
   logout() {
