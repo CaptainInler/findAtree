@@ -44,7 +44,7 @@ Probleme, die die Testperson antreffen könnte:
 Angaben zur Testperson:
 - zwischen 25 und 35 Jahre alt
 - verfügt nicht über eine ausgeprägte Affinität zu technischen Problemstellungen
-- Der Test wird im Desktopmodus auf einem PC (MacOS und Safari 11.1) durchgeführt
+- Der Test wird im Desktopmodus auf einem Laptop (MacOS und Safari 11.1) durchgeführt
 
 ### Testergebnis
 Die Testperson ist folgend vorgegangen:
@@ -63,7 +63,7 @@ Die Testperson ist folgend vorgegangen:
 
 
 ## Usability Test 2: Die Art eines Baumes im Spielmodus raten
-Mit diesem Test wird ein verhalten im Spiel geprüft
+Mit diesem Test wird das Verhalten im Spiel geprüft.
 ### Cognitive Walktrough
 Testziel: die Testperson kann zu einem vordefiniertem Baum in der Karte das Ratespiel spielen und versteht danach, wie viele Scorerpunkte sie damit gewonnen hat.
 
@@ -91,11 +91,13 @@ Probleme, die die Testperson antreffen könnte:
 - sie versteht nicht, dass für zum Spielen ein Symbol angeklickt werden muss
 - sie versteht nicht, wie sie mit den Antworten umgehen muss (Klicken auf die möglichen Antworten)
 - sie versteht nicht, was die Scorerpunkte bedeuten
-- sie versteht nicht, wieso sie die Anzahl Scorerpunkte erhalten
+- sie versteht nicht, wieso sie die Anzahl Scorerpunkte erhält
 
 ### Testdurchführung
 Angaben zur Testperson:
 - gleiche Testperson wie bei Test 1
+- Der Test wird im Desktopmodus auf einem Laptop (MacOS und Safari 11.1) durchgeführt
+
 ![Test](Usabilitytest.jpg)
 
 ### Testergebnis
