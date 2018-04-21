@@ -26,12 +26,12 @@ Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können au
 
 ### Frameworks/Tools/Daten
 - Visualisierung mit [ArcGIS API for JavaScript](https://developers.arcgis.com/javascript/)
-- Speichern der Bäumen auf [ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/what-is-agol.htm) und Zugriff via [ArcGIS Rest Schnittstelle](https://developers.arcgis.com/rest/services-reference/working-with-services-you-ve-published.htm)
+- Speichern der Bäumen auf [ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/what-is-agol.htm) und Zugriff via [ArcGIS Rest API](https://developers.arcgis.com/rest/services-reference/working-with-services-you-ve-published.htm)
 - Authentifizierung und Speichern der Punkte der Spieler auf [Firebase](https://firebase.google.com/)
 - [Angular 5](https://angular.io/) für UI, Routing, Animationen
 - [Angular Material](https://material.angular.io/) für styling
-- Die App läuft auf der GitHub Page: https://captaininler.github.io/findAtree
-- [Daten von Baumkataster der Stadt Zürich](https://data.stadt-zuerich.ch/dataset/baumkataster)
+- Deployment mit Github Pages: https://captaininler.github.io/findAtree
+- Daten von [Baumkataster der Stadt Zürich](https://data.stadt-zuerich.ch/dataset/baumkataster)
 
 ---
 
@@ -64,10 +64,10 @@ ng lint
 
 *Responsive design*
 
-Mobile:
+Die App läuft auf mobile und desktop:
+
 ![screenshot](./src/assets/images/mobile-screenshot.png)
 
-und Desktop:
 ![screenshot](./src/assets/images/desktop-screenshot.png)
 
 
@@ -75,7 +75,7 @@ und Desktop:
 
 ![user_study_screenshot](./usabilitytesting/Usabilitytest.jpg)
 
-[Link zum Ergebniss](./usabilitytesting/usabilitytest.md)
+[Link zu den usability tests](./usabilitytesting/usabilitytest.md)
 
 
 
