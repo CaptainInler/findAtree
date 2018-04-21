@@ -1,6 +1,6 @@
 import { HostListener, Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
-import { Tree } from '../tree';
+import { Tree } from '../shared/tree';
 
 type interactionType = 'none' | 'guess' | 'edit' | 'add' | 'view';
 type modeType = 'game' | 'editor' | 'dashboard';

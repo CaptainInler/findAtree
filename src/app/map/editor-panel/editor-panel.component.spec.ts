@@ -16,9 +16,9 @@ import { AuthService} from '../../services/auth.service';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
 
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
-import { MockState } from '../../classes/MockState';
+import { MockState } from '../../shared/MockState';
 
 
 describe('EditorPanelComponent', () => {
@@ -73,7 +73,7 @@ describe('EditorPanelComponent', () => {
       }
       component.ngOnChanges();
       fixture.detectChanges();
-      expect(component.form.controls[name]).toEqual('Salcie');
+      expect(component.form.controls['name']).toEqual('Salcie');
     })
   });
 });

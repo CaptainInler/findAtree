@@ -9,7 +9,7 @@ export enum attr {
   status = 'status',
   pflanzJahr = 'pflanzjahr',
   quartier = 'quartier',
-  id= 'FID'
+  id = 'FID'
 }
 
 
