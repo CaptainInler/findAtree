@@ -10,10 +10,7 @@ import { showMap, showSidePanel } from '../shared/animations';
 })
 export class MapComponent implements OnInit {
 
-  // @HostBinding('[@showSidePanel]="appState.sidePanelPosition"')
-  // public showSidePanel = true;
   @Output() selectedTree;
-  // public sidePanelPosition: string  = 'bottom';
 
   constructor(
     public appState: AppStateService
@@ -38,14 +35,11 @@ export class MapComponent implements OnInit {
   }
 
   setSidePanelPosition(winSize: any) {
-    console.log(winSize.width);
-    console.log(winSize.height);
     if (( winSize.height > ( 1.6 * winSize.width)) || (winSize.width < 840) ) {
       this.appState.sidePanelPosition = 'bottom';
     }else {
       this.appState.sidePanelPosition = 'right';
     }
-    console.log(this.appState.sidePanelPosition);
   }
 
 }

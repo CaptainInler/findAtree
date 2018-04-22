@@ -1,7 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { AppStateService } from '../../services/app-state.service';
 import { attr } from '../../shared/tree';
-import { trigger, state, style} from '@angular/animations';
 import { showSidePanel } from '../../shared/animations';
 
 @Component({
@@ -9,7 +8,6 @@ import { showSidePanel } from '../../shared/animations';
   templateUrl: './side-panel.component.html',
   styleUrls: ['./side-panel.component.scss'],
   animations: [showSidePanel()],
-  // host: {'[@moveIn]':''}
 })
 export class SidePanelComponent {
 

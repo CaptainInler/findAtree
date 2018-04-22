@@ -44,7 +44,6 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {

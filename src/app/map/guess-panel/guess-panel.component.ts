@@ -5,7 +5,7 @@ import { Guess, Score } from '../../shared/guess';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { AuthService } from '../../services/auth.service';
 import { OnInit, OnChanges, OnDestroy } from '@angular/core';
-import { showSidePanel, showSidePanelContent} from '../../shared/animations';
+import { showSidePanel } from '../../shared/animations';
 import { AppStateService } from '../../services/app-state.service';
 import {Subject} from "rxjs/Subject";
 
