@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MapDataService } from '../../services/map-data.service';
-import { User } from '../../members/user';
 import { AngularFireDatabase} from 'angularfire2/database';
 
 @Component({

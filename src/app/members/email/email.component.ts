@@ -1,7 +1,7 @@
-import {Component, EventEmitter, HostBinding, OnInit, Output} from '@angular/core';
-import {AuthService} from '../../services/auth.service';
-import { Router} from '@angular/router';
-import { moveIn, fallIn} from '../../shared/animations';
+import { Component, EventEmitter, HostBinding, Output } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { moveIn, fallIn } from '../../shared/animations';
 
 @Component({
   selector: 'app-email',
@@ -9,7 +9,7 @@ import { moveIn, fallIn} from '../../shared/animations';
   styleUrls: ['./email.component.scss'],
   animations: [moveIn(), fallIn()],
 })
-export class EmailComponent implements OnInit {
+export class EmailComponent {
   error: any;
   @Output() eventData: EventEmitter<string> = new EventEmitter();
   @HostBinding('@moveIn')
@@ -38,7 +38,4 @@ export class EmailComponent implements OnInit {
       );
     }
   }
-  ngOnInit() {
-  }
-
 }

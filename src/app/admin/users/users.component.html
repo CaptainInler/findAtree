@@ -1,22 +1,21 @@
 <h3>Registrierte Benutzer</h3>
 
-
 <div class="table">
   <mat-table [dataSource]="users">
 
     <ng-container matColumnDef="usrName">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.displayName}} </mat-cell>
+      <mat-cell *matCellDef="let user"> {{ user.displayName }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="usrId">
       <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+      <mat-cell *matCellDef="let user"> {{ user.id }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="usrEmail">
       <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
+      <mat-cell *matCellDef="let user"> {{ user.email }} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="usrUser">
