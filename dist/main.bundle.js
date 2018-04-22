@@ -57248,7 +57248,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 /* 496 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"content\"   appWindowSize (winSize)=\"setSidePanelPosition($event)\">\n<esri-map [(selectedTree)]='selectedTree'></esri-map>\n<side-panel [selectedTree]='selectedTree'></side-panel>\n  <!--<guess-panel [selectedTree]='selectedTree'></guess-panel>-->\n<button mat-raised-button color='accent' class='btn-add-tree'\n  [ngClass]=\"{'btn-add-tree-bottom': appState.sidePanelPosition === 'right',\n  'btn-add-tree-top': appState.sidePanelPosition === 'bottom' }\"\n  *ngIf=\"appState.getMode() === 'editor' && appState.userHasRole('user')\"\n  (click)='toggleAddInteraction()'>\n  {{ appState.interaction !== 'add' ? 'Neuen Baum erfassen' : 'Abbrechen'}}\n</button>\n</div>\n";
+module.exports = "<div class=\"content\" appWindowSize (winSize)=\"setSidePanelPosition($event)\">\n<esri-map [(selectedTree)]='selectedTree'></esri-map>\n<side-panel [selectedTree]='selectedTree'></side-panel>\n  <!--<guess-panel [selectedTree]='selectedTree'></guess-panel>-->\n<button mat-raised-button color='accent' class='btn-add-tree'\n  [ngClass]=\"{'btn-add-tree-bottom': appState.sidePanelPosition === 'right',\n  'btn-add-tree-top': appState.sidePanelPosition === 'bottom' }\"\n  *ngIf=\"appState.getMode() === 'editor' && appState.userHasRole('user')\"\n  (click)='toggleAddInteraction()'>\n  {{ appState.interaction !== 'add' ? 'Neuen Baum erfassen' : 'Abbrechen' }}\n</button>\n</div>\n";
 
 /***/ }),
 /* 497 */
@@ -87533,6 +87533,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         ngOnInit() {
             this.authService.userChanged.subscribe(() => {
                 this.loggedIn = this.authService.isLoggedIn();
+                const user = this.authService.getUser();
+                if (user) {
+                    this.loggedInUser = user.displayName;
+                }
             });
         }
         displayInfoPage() {
@@ -87916,7 +87920,7 @@ exports.push([module.i, "", ""]);
 /* 561 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- header -->\n<mat-toolbar color=\"accent\">\n  <mat-toolbar-row>\n\n    <!-- title -->\n    <span>FindATree</span>\n    <span class=\"spacer\"></span>\n\n    <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item type=\"button\" (click)=\"toggleLogin()\">\n        <mat-icon>supervisor_account</mat-icon>\n        <span>{{ loggedIn?'Abmelden':'Anmelden' }}</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('game')\" [routerLink]=\"['./map']\">\n        <mat-icon>videogame_asset</mat-icon>\n        <span>Spielen</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('editor')\" [routerLink]=\"['./map']\">\n        <mat-icon>mode_edit</mat-icon>\n        <span>Bäume bearbeiten</span>\n      </button>\n      <button mat-menu-item *ngIf=\"userHasRole('admin')\" (click)=\"appState.setMode('dashboard')\" [routerLink]=\"['./admin']\">\n        <mat-icon>dashboard</mat-icon>\n        <span>Administrator dashboard</span>\n      </button>\n      <button mat-menu-item (click)=\"displayInfoPage()\">\n        <mat-icon>info</mat-icon>\n        <span>Über diese App</span>\n      </button>\n    </mat-menu>\n\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<section>\n  <loading-page *ngIf=\"appState.showMap === 'hide'\"></loading-page>\n  <router-outlet></router-outlet>\n  <div #tools></div>\n</section>\n";
+module.exports = "<!-- header -->\n<mat-toolbar color=\"accent\">\n  <mat-toolbar-row>\n\n    <!-- title -->\n    <span>FindATree</span>\n    <span class=\"spacer\"></span>\n\n    <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item type=\"button\" (click)=\"toggleLogin()\">\n        <mat-icon>supervisor_account</mat-icon>\n        <span>{{ loggedIn?loggedInUser + ' abmelden':'Anmelden' }}</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('game')\" [routerLink]=\"['./map']\">\n        <mat-icon>videogame_asset</mat-icon>\n        <span>Spielen</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('editor')\" [routerLink]=\"['./map']\">\n        <mat-icon>mode_edit</mat-icon>\n        <span>Bäume bearbeiten</span>\n      </button>\n      <button mat-menu-item *ngIf=\"userHasRole('admin')\" (click)=\"appState.setMode('dashboard')\" [routerLink]=\"['./admin']\">\n        <mat-icon>dashboard</mat-icon>\n        <span>Administrator dashboard</span>\n      </button>\n      <button mat-menu-item (click)=\"displayInfoPage()\">\n        <mat-icon>info</mat-icon>\n        <span>Über diese App</span>\n      </button>\n    </mat-menu>\n\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<section>\n  <loading-page *ngIf=\"appState.showMap === 'hide'\"></loading-page>\n  <router-outlet></router-outlet>\n  <div #tools></div>\n</section>\n";
 
 /***/ }),
 /* 562 */
