@@ -12,13 +12,13 @@ Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können au
 ---
 ### Hauptfeatures
 
-  - Real-time Visualisierung der Bäume in der Stadt Zürich.
-  - Editieren von Bäumen || neue Bäume erfassen || Bäume löschen.
+  - Real-time Visualisierung der Bäume in der Stadt Zürich
+  - Editieren von Bäumen || neue Bäume erfassen || Bäume löschen
   - Spiel:
-      - Benutzer können die Baumart raten.
-      - Benutzer erhalten Punkte, wenn sie die Baumart korrekt raten.
-      - Bei jedem falschen Versuch gibt einen Punkt Abzug.
-      - Mit Vorteil spielt man das Spiel auf dem Smartphone, während man durch Zürich spaziert.
+      - Benutzer können die Baumart raten
+      - Benutzer erhalten Punkte, wenn sie die Baumart korrekt raten
+      - Bei jedem falschen Versuch gibt einen Punkt Abzug
+      - Mit Vorteil spielt man das Spiel auf dem Smartphone, während man durch Zürich spaziert
 
   - Die Abfrage von Baumdaten ist ohne Login möglich. Um die Daten zu ergänzen, zu bearbeiten oder das Spiel zu Spielen, ist es nötig, sich einzuloggen.
 
@@ -29,7 +29,7 @@ Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können au
 - Speichern der Bäumen auf [ArcGIS Online](https://doc.arcgis.com/en/arcgis-online/reference/what-is-agol.htm) und Zugriff via [ArcGIS Rest API](https://developers.arcgis.com/rest/services-reference/working-with-services-you-ve-published.htm)
 - Authentifizierung und Speichern der Punkte der Spieler auf [Firebase](https://firebase.google.com/)
 - [Angular 5](https://angular.io/) für UI, Routing, Animationen
-- [Angular Material](https://material.angular.io/) für styling
+- [Angular Material](https://material.angular.io/) für Styling
 - Deployment mit Github Pages: https://captaininler.github.io/findAtree
 - Daten von [Baumkataster der Stadt Zürich](https://data.stadt-zuerich.ch/dataset/baumkataster)
 
@@ -40,6 +40,9 @@ Sind die Angaben zu den Bäumen falsch oder fehlt ein Baum? Die Daten können au
 ```
 git clone https://github.com/CaptainInler/findAtree.git
 cd findATree
+
+# Activate node version to use
+nvm use 8
 
 # Install node modules
 npm install
@@ -64,7 +67,7 @@ ng lint
 
 *Responsive design*
 
-Die App läuft auf mobile und desktop:
+Die App läuft auf Mobile und Desktop:
 
 ![screenshot](./src/assets/images/mobile-screenshot.png)
 
