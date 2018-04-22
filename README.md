@@ -65,20 +65,21 @@ ng lint
 
 ### Usability
 
-*Responsive design*
+*Responsive Design*
 
 Die App läuft auf Mobile und Desktop:
 
 ![screenshot](./src/assets/images/mobile-screenshot.png)
 
-![screenshot](./src/assets/images/desktop-screenshot.png)
+![screenshot](./src/assets/images/desktop-screenshot_test.png)
 
-
-*Usability test*
+<br />
+ 
+*Usability Test*
 
 ![user_study_screenshot](./usabilitytesting/Usabilitytest.jpg)
 
-[Link zu den usability tests](./usabilitytesting/usabilitytest.md)
+[Link zu den Usability Tests](./usabilitytesting/usabilitytest.md)
 
 
 
