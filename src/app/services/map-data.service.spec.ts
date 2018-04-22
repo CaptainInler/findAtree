@@ -4,8 +4,6 @@ import { MapDataService } from './map-data.service';
 
 describe('MapDataService', () => {
 
-  let service: MapDataService;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       providers: [MapDataService]

@@ -161,7 +161,7 @@ export class MapDataService {
                 nameLat: feature.attributes[attr.nameLat],
                 gattungLat: feature.attributes[attr.gattungLat],
                 artLat: feature.attributes[attr.artLat]
-              }
+              };
               break;
             }
           }

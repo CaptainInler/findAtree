@@ -1,4 +1,4 @@
-<div class="content"   appWindowSize (winSize)="setSidePanelPosition($event)">
+<div class="content" appWindowSize (winSize)="setSidePanelPosition($event)">
 <esri-map [(selectedTree)]='selectedTree'></esri-map>
 <side-panel [selectedTree]='selectedTree'></side-panel>
   <!--<guess-panel [selectedTree]='selectedTree'></guess-panel>-->
@@ -7,6 +7,6 @@
   'btn-add-tree-top': appState.sidePanelPosition === 'bottom' }"
   *ngIf="appState.getMode() === 'editor' && appState.userHasRole('user')"
   (click)='toggleAddInteraction()'>
-  {{ appState.interaction !== 'add' ? 'Neuen Baum erfassen' : 'Abbrechen'}}
+  {{ appState.interaction !== 'add' ? 'Neuen Baum erfassen' : 'Abbrechen' }}
 </button>
 </div>

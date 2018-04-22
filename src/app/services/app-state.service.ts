@@ -1,4 +1,4 @@
-import { HostListener, Injectable} from '@angular/core';
+import { Injectable} from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { AuthService} from './auth.service';
 import { Tree } from '../shared/tree';
@@ -61,7 +61,6 @@ export class AppStateService {
   }
 
   getMode(): modeType {
-    // console.log('getMode');
     return this.mode;
   }
 

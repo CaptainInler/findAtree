@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
@@ -13,7 +13,7 @@ import { attr } from '../../shared/tree';
   templateUrl: './editor-panel.component.html',
   styleUrls: ['./editor-panel.component.scss']
 })
-export class EditorPanelComponent {
+export class EditorPanelComponent implements OnChanges {
 
   form: FormGroup;
   loading: Boolean = false;

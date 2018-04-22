@@ -16,9 +16,9 @@ import { AuthService} from '../../services/auth.service';
 import { MapDataService } from '../../services/map-data.service';
 import { AppStateService } from '../../services/app-state.service';
 
-import { attr } from '../../tree';
+import { attr } from '../../shared/tree';
 
-import { MockState } from '../../classes/MockState';
+import { MockState } from '../../shared/stateMock';
 
 
 describe('EditorPanelComponent', () => {
@@ -54,26 +54,26 @@ describe('EditorPanelComponent', () => {
   it('should create', () => {
     inject([MapDataService, AppStateService], (
       mapDataService: MapDataService, appStateService: AppStateService) => {
-      let nameDE = attr['nameDE'];
+      const nameDE = attr['nameDE'];
       component.selectedTree = {
         nameDE: 'hello world'
-      }
+      };
       component.ngOnChanges();
       fixture.detectChanges();
       expect(component).toBeTruthy();
-    })
+    });
   });
 
   it('should update form ', () => {
     inject([MapDataService, AppStateService], (
       mapDataService: MapDataService, appStateService: AppStateService) => {
-      let nameDE = attr['nameDE'];
+      const nameDE = attr['nameDE'];
       component.selectedTree = {
         nameDE: 'Salcie'
-      }
+      };
       component.ngOnChanges();
       fixture.detectChanges();
-      expect(component.form.controls[name]).toEqual('Salcie');
-    })
+      expect(component.form.controls['name']).toEqual('Salcie');
+    });
   });
 });

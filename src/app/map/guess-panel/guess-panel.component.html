@@ -9,7 +9,7 @@
       <button *ngFor="let name of selection" mat-raised-button
               (click)="selectTreeName(name, $event)" id="{{name}}"
               [ngClass]="buttonState[name]">
-        {{name}}
+        {{ name }}
       </button>
     </div>
 
@@ -18,7 +18,7 @@
           <table class="guess-score-table">
             <tr>
               <td class="guess-score-table-first">Gewonnene Punkte:</td>
-              <td class="guess-score-table-second" data-title="Guess">{{points}}</td>
+              <td class="guess-score-table-second" data-title="Aktuell">{{ points }}</td>
               <td> </td>
             </tr>
           </table>
@@ -31,17 +31,17 @@
           <table class="guess-score-table">
             <tr>
               <td class="guess-score-table-first">Dein Total heute:</td>
-              <td class="guess-score-table-second" data-title="Today">{{getScore('day')}}</td>
+              <td class="guess-score-table-second" data-title="Heute">{{ getScore('day') }}</td>
               <td>&nbsp;</td>
             </tr>
             <tr>
               <td class="guess-score-table-first">Dein Total:</td>
-              <td class="guess-score-table-second" data-title="Total">{{getScore('total')}}</td>
+              <td class="guess-score-table-second" data-title="Total">{{ getScore('total') }}</td>
               <td>&nbsp;</td>
             </tr>
             <tr>
               <td class="guess-score-table-first">Höchster Punktestand:</td>
-              <td class="guess-score-table-second" data-title="Best">{{getScore('best')}}</td>
+              <td class="guess-score-table-second" data-title="Beste">{{ getScore('best') }}</td>
               <td>&nbsp;</td>
             </tr>
           </table>

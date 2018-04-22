@@ -12,7 +12,7 @@
     <mat-menu #menu="matMenu">
       <button mat-menu-item type="button" (click)="toggleLogin()">
         <mat-icon>supervisor_account</mat-icon>
-        <span>{{loggedIn?loggedInUser + ' abmelden':'Anmelden'}}</span>
+        <span>{{ loggedIn?loggedInUser + ' abmelden':'Anmelden' }}</span>
       </button>
       <button mat-menu-item [disabled]="!userHasRole('user')" (click)="appState.setMode('game')" [routerLink]="['./map']">
         <mat-icon>videogame_asset</mat-icon>

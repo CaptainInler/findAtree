@@ -1,4 +1,4 @@
-define(["esri/Graphic","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/PictureMarkerSymbol","esri/request","esri/views/MapView","esri/layers/VectorTileLayer","esri/symbols/SimpleMarkerSymbol","esri/widgets/Locate","esri/geometry/Point"], function(__WEBPACK_EXTERNAL_MODULE_292__, __WEBPACK_EXTERNAL_MODULE_567__, __WEBPACK_EXTERNAL_MODULE_568__, __WEBPACK_EXTERNAL_MODULE_569__, __WEBPACK_EXTERNAL_MODULE_570__, __WEBPACK_EXTERNAL_MODULE_571__, __WEBPACK_EXTERNAL_MODULE_582__, __WEBPACK_EXTERNAL_MODULE_583__, __WEBPACK_EXTERNAL_MODULE_584__, __WEBPACK_EXTERNAL_MODULE_585__, __WEBPACK_EXTERNAL_MODULE_601__) { return webpackJsonp([1],[
+define(["esri/Graphic","esri/renderers/SimpleRenderer","esri/WebMap","esri/layers/FeatureLayer","esri/symbols/PictureMarkerSymbol","esri/request","esri/symbols/SimpleMarkerSymbol","esri/views/MapView","esri/widgets/Locate","esri/geometry/Point"], function(__WEBPACK_EXTERNAL_MODULE_292__, __WEBPACK_EXTERNAL_MODULE_567__, __WEBPACK_EXTERNAL_MODULE_568__, __WEBPACK_EXTERNAL_MODULE_569__, __WEBPACK_EXTERNAL_MODULE_570__, __WEBPACK_EXTERNAL_MODULE_571__, __WEBPACK_EXTERNAL_MODULE_582__, __WEBPACK_EXTERNAL_MODULE_583__, __WEBPACK_EXTERNAL_MODULE_584__, __WEBPACK_EXTERNAL_MODULE_600__) { return webpackJsonp([1],[
 /* 0 */,
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -18256,16 +18256,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.db = db;
             this.devDetector = devDetector;
             this.user = new BehaviorSubject_1.BehaviorSubject(null);
-            //  private user: Observable<User>;
             this.userDetails = null;
             this.userChanged = new core_1.EventEmitter();
-            this.mode = 'play';
             this.level = 4;
-            // console.log ( this.devDetector.getDeviceInfo());
             this.afAuth.authState
                 .switchMap(auth => {
                 if (auth) {
-                    // console.log(auth);
                     return this.db.object(`users/${auth.uid}`).valueChanges();
                 }
                 else {
@@ -18275,7 +18271,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 .subscribe(user => {
                 this.user.next(user);
                 if (user) {
-                    // console.log(user);
                     this.userDetails = user;
                 }
                 else {
@@ -18289,7 +18284,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 return false;
             }
             else {
-                return this.userDetails.roles[role];
+                if (this.userDetails.roles[role]) {
+                    return true;
+                }
+                return false;
             }
         }
         signupNewUser(formData) {
@@ -18314,7 +18312,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         }
         authLoginPopup(provider) {
             const deviceInfo = this.devDetector.getDeviceInfo();
-            console.log(deviceInfo.device);
             if (deviceInfo.device === 'unknown') {
                 return this.afAuth.auth.signInWithPopup(provider)
                     .then((credential => {
@@ -18357,7 +18354,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             return this.userDetails;
         }
         getUserId() {
-            return this.userDetails.id;
+            if (this.userDetails == null) {
+                return null;
+            }
+            else {
+                return this.userDetails.id;
+            }
         }
         logout() {
             this.afAuth.auth.signOut()
@@ -19174,7 +19176,11 @@ var PortalInjector = /** @class */ (function () {
 /* 43 */,
 /* 44 */,
 /* 45 */,
-/* 46 */
+/* 46 */,
+/* 47 */,
+/* 48 */,
+/* 49 */,
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19228,7 +19234,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             }
         }
         getMode() {
-            // console.log('getMode');
             return this.mode;
         }
         setSelectedTree(tree) {
@@ -19249,12 +19254,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 47 */,
-/* 48 */,
-/* 49 */,
-/* 50 */,
-/* 51 */,
-/* 52 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(28)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, animations_1) {
@@ -19365,7 +19365,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;!(__WEBPACK_AMD_
 
 
 /***/ }),
-/* 53 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22515,7 +22515,7 @@ var FullscreenOverlayContainer = /** @class */ (function (_super) {
 
 
 /***/ }),
-/* 54 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -22977,9 +22977,9 @@ var UNIQUE_SELECTION_DISPATCHER_PROVIDER = {
 
 
 /***/ }),
+/* 54 */,
 /* 55 */,
-/* 56 */,
-/* 57 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23368,7 +23368,7 @@ exports.validateObjectContainsKey = function (fnName, argumentNumber, obj, key, 
 
 
 /***/ }),
-/* 58 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -23447,6 +23447,7 @@ exports.OperationSource = OperationSource;
 
 
 /***/ }),
+/* 58 */,
 /* 59 */,
 /* 60 */,
 /* 61 */,
@@ -24392,13 +24393,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(568), __webpack_require__(569), __webpack_require__(567), __webpack_require__(570), __webpack_require__(571), __webpack_require__(70), __webpack_require__(291), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, PictureMarkerSymbol, esriRequest, tree_1, utils_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(5), __webpack_require__(568), __webpack_require__(569), __webpack_require__(567), __webpack_require__(570), __webpack_require__(571), __webpack_require__(70), __webpack_require__(291)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, Subject_1, WebMap, FeatureLayer, SimpleRenderer, PictureMarkerSymbol, esriRequest, tree_1, utils_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     const treeServiceURL = 'https://services2.arcgis.com/cFEFS0EWrhfDeVw9/arcgis/rest/services/BaumkatasterStadtZuerich/FeatureServer/0';
     let MapDataService = class MapDataService {
-        constructor(appState) {
-            this.appState = appState;
+        constructor() {
             this.treeNamesMapping = {};
             this.mapEventSource = new Subject_1.Subject();
             this.mapEvent$ = this.mapEventSource.asObservable();
@@ -24528,12 +24528,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                         }
                     }
                 });
-                this.appState.showMap = 'show';
             })
                 .otherwise(err => console.log(err));
         }
         getUniqueQuartiers() {
-            this.layer.queryFeatures({
+            return this.layer.queryFeatures({
                 outFields: [tree_1.attr.quartier],
                 returnDistinctValues: true,
                 where: '1=1'
@@ -24542,6 +24541,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 this.uniqueQuartiers = result.features.map(feature => {
                     return feature.attributes[tree_1.attr.quartier];
                 });
+                return this.uniqueQuartiers;
             })
                 .otherwise(err => console.log(err));
         }
@@ -24563,7 +24563,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     };
     MapDataService = __decorate([
         core_1.Injectable(),
-        __metadata("design:paramtypes", [app_state_service_1.AppStateService])
+        __metadata("design:paramtypes", [])
     ], MapDataService);
     exports.MapDataService = MapDataService;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -27676,7 +27676,7 @@ var Query_1 = __webpack_require__(217);
 var Repo_1 = __webpack_require__(108);
 var Path_1 = __webpack_require__(14);
 var QueryParams_1 = __webpack_require__(471);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 var util_2 = __webpack_require__(1);
 var util_3 = __webpack_require__(1);
 var SyncPoint_1 = __webpack_require__(228);
@@ -27974,7 +27974,7 @@ SyncPoint_1.SyncPoint.__referenceConstructor = Reference;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 var Path_1 = __webpack_require__(14);
 var PriorityIndex_1 = __webpack_require__(27);
 /**
@@ -28710,7 +28710,7 @@ var util_1 = __webpack_require__(1);
 var Repo_1 = __webpack_require__(108);
 var util_2 = __webpack_require__(9);
 var parser_1 = __webpack_require__(214);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 __webpack_require__(473);
 /** @const {string} */
 var DATABASE_URL_OPTION = 'databaseURL';
@@ -30401,7 +30401,7 @@ var Reference_1 = __webpack_require__(146);
 var Repo_1 = __webpack_require__(108);
 var RepoManager_1 = __webpack_require__(151);
 var util_2 = __webpack_require__(1);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 /**
  * Class representing a firebase database.
  * @implements {FirebaseService}
@@ -31005,7 +31005,7 @@ exports.RepoInfo = RepoInfo;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 var util_2 = __webpack_require__(9);
 var util_3 = __webpack_require__(1);
 /**
@@ -31132,7 +31132,7 @@ var ValueIndex_1 = __webpack_require__(219);
 var PathIndex_1 = __webpack_require__(223);
 var util_2 = __webpack_require__(9);
 var Path_1 = __webpack_require__(14);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 var util_3 = __webpack_require__(1);
 var EventRegistration_1 = __webpack_require__(448);
 var util_4 = __webpack_require__(1);
@@ -32650,7 +32650,7 @@ exports.CountedSet = CountedSet;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var Path_1 = __webpack_require__(14);
 /**
  * @param {!OperationSource} source
@@ -36079,11 +36079,10 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(46), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(50), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MapComponent = class MapComponent {
-        // public sidePanelPosition: string  = 'bottom';
         constructor(appState) {
             this.appState = appState;
         }
@@ -36104,15 +36103,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             }
         }
         setSidePanelPosition(winSize) {
-            console.log(winSize.width);
-            console.log(winSize.height);
             if ((winSize.height > (1.6 * winSize.width)) || (winSize.width < 840)) {
                 this.appState.sidePanelPosition = 'bottom';
             }
             else {
                 this.appState.sidePanelPosition = 'right';
             }
-            console.log(this.appState.sidePanelPosition);
         }
     };
     __decorate([
@@ -36708,7 +36704,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(51), __webpack_require__(41)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(58), __webpack_require__(41)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AdminGuard = class AdminGuard {
@@ -39555,7 +39551,7 @@ var HttpClientJsonpModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "o", function() { return matDialogAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_portal__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_material_core__ = __webpack_require__(10);
@@ -42908,9 +42904,9 @@ var MatIconModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_coercion__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_keycodes__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_rxjs_operators_filter__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_rxjs_operators_take__ = __webpack_require__(25);
@@ -44770,7 +44766,7 @@ var MatSelectModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return TooltipComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "k", function() { return matTooltipAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_platform__ = __webpack_require__(32);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(2);
@@ -46070,7 +46066,7 @@ var LayoutModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return CdkTableModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_takeUntil__ = __webpack_require__(43);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_operators_takeUntil___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_operators_takeUntil__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_BehaviorSubject__ = __webpack_require__(67);
@@ -47218,14 +47214,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(41), __webpack_require__(51), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(41), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let MembersComponent = class MembersComponent {
-        constructor(auth, router) {
+        constructor(auth) {
             this.auth = auth;
-            this.router = router;
-            this.show = true;
             this.done = false;
             this.eventData = new core_1.EventEmitter();
             this.state = true;
@@ -47235,13 +47229,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
         }
         resetTool(event) {
             this.done = true;
-            console.log(this.done);
             this.eventData.emit(event);
         }
         logout() {
             this.auth.logout();
-        }
-        ngOnInit() {
         }
     };
     __decorate([
@@ -47263,8 +47254,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             styles: [__webpack_require__(540)],
             animations: [animations_1.moveIn(), animations_1.fallIn(), animations_1.moveInLeft()],
         }),
-        __metadata("design:paramtypes", [auth_service_1.AuthService,
-            router_1.Router])
+        __metadata("design:paramtypes", [auth_service_1.AuthService])
     ], MembersComponent);
     exports.MembersComponent = MembersComponent;
 }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
@@ -47284,7 +47274,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(51), __webpack_require__(41), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(58), __webpack_require__(41), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let LoginComponent = class LoginComponent {
@@ -47336,15 +47326,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 .then((res) => {
                 this.resetTool('hide');
             })
-                .catch((err) => {
-                console.log(err);
-                this.error = err;
-            });
-        }
-        ngOnInit() {
-            // if(this.authService.isLoggedIn()){
-            //   this.router.navigateByUrl('/members')
-            // }
+                .catch((err) => this.error = err);
         }
     };
     __decorate([
@@ -47383,7 +47365,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(41), __webpack_require__(51), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(41), __webpack_require__(58), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, auth_service_1, router_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let EmailComponent = class EmailComponent {
@@ -47409,8 +47391,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                     this.error = err;
                 });
             }
-        }
-        ngOnInit() {
         }
     };
     __decorate([
@@ -47448,31 +47428,28 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(51), __webpack_require__(41), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(58), __webpack_require__(41), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let SignupComponent = class SignupComponent {
         constructor(auth, router) {
             this.auth = auth;
             this.router = router;
-            this.state = '';
             this.eventData = new core_1.EventEmitter();
+            this.state = true;
         }
         resetTool(event) {
-            console.log(event);
             this.eventData.emit(event);
         }
         onSubmit(formData) {
             if (formData.valid) {
                 this.auth.signupNewUser(formData)
                     .then((res) => {
-                    console.log(res);
-                    let dispName = formData.value.first.concat(' '.concat(formData.value.last));
-                    let user = res.updateProfile({
+                    const dispName = formData.value.first.concat(' '.concat(formData.value.last));
+                    const user = res.updateProfile({
                         displayName: dispName,
                         photoURL: res.photoURL
                     }).then((nothing) => {
-                        console.log(nothing);
                         this.auth.updateUser(res);
                         this.resetTool('hide');
                     }).catch((err) => {
@@ -47483,20 +47460,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 });
             }
         }
-        ngOnInit() {
-        }
     };
     __decorate([
         core_1.Output(),
         __metadata("design:type", core_1.EventEmitter)
     ], SignupComponent.prototype, "eventData", void 0);
+    __decorate([
+        core_1.HostBinding('@moveIn'),
+        __metadata("design:type", Object)
+    ], SignupComponent.prototype, "state", void 0);
     SignupComponent = __decorate([
         core_1.Component({
             selector: 'app-signup',
             template: __webpack_require__(557),
             styles: [__webpack_require__(558)],
             animations: [animations_1.moveIn(), animations_1.moveInLeft(), animations_1.fallIn()],
-            host: { '[@moveIn]': '' }
         }),
         __metadata("design:paramtypes", [auth_service_1.AuthService, router_1.Router])
     ], SignupComponent);
@@ -47750,7 +47728,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(202), __webpack_require__(36), __webpack_require__(2), __webpack_require__(63), __webpack_require__(64), __webpack_require__(250), __webpack_require__(491), __webpack_require__(22), __webpack_require__(22), __webpack_require__(505), __webpack_require__(273), __webpack_require__(507), __webpack_require__(268), __webpack_require__(538), __webpack_require__(267), __webpack_require__(287), __webpack_require__(288), __webpack_require__(201), __webpack_require__(290), __webpack_require__(289), __webpack_require__(565), __webpack_require__(270), __webpack_require__(566), __webpack_require__(576), __webpack_require__(581), __webpack_require__(590), __webpack_require__(595), __webpack_require__(600), __webpack_require__(606), __webpack_require__(611), __webpack_require__(616), __webpack_require__(272), __webpack_require__(69), __webpack_require__(41), __webpack_require__(46), __webpack_require__(617)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, ngx_device_detector_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, admin_component_1, treenames_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, loading_page_component_1, sort_alphabetical_pipe_1, admin_guard_1, map_data_service_1, auth_service_1, app_state_service_1, window_size_directive_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(202), __webpack_require__(36), __webpack_require__(2), __webpack_require__(63), __webpack_require__(64), __webpack_require__(250), __webpack_require__(491), __webpack_require__(22), __webpack_require__(22), __webpack_require__(505), __webpack_require__(273), __webpack_require__(507), __webpack_require__(268), __webpack_require__(538), __webpack_require__(267), __webpack_require__(287), __webpack_require__(288), __webpack_require__(201), __webpack_require__(290), __webpack_require__(289), __webpack_require__(565), __webpack_require__(270), __webpack_require__(566), __webpack_require__(576), __webpack_require__(581), __webpack_require__(589), __webpack_require__(594), __webpack_require__(599), __webpack_require__(605), __webpack_require__(610), __webpack_require__(615), __webpack_require__(272), __webpack_require__(69), __webpack_require__(41), __webpack_require__(50), __webpack_require__(616)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, environment_1, platform_browser_1, core_1, angularfire2_1, database_1, auth_1, app_routing_module_1, forms_1, forms_2, animations_1, http_1, material_module_1, ngx_device_detector_1, app_component_1, map_component_1, members_component_1, login_component_1, page_not_found_component_1, signup_component_1, email_component_1, auth_guard_1, admin_component_1, treenames_component_1, users_component_1, esri_map_component_1, side_panel_component_1, editor_panel_component_1, add_tree_panel_component_1, guess_panel_component_1, loading_page_component_1, sort_alphabetical_pipe_1, admin_guard_1, map_data_service_1, auth_service_1, app_state_service_1, window_size_directive_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AppModule = class AppModule {
@@ -51168,7 +51146,7 @@ var util_3 = __webpack_require__(1);
 var ImmutableTree_1 = __webpack_require__(148);
 var ListenComplete_1 = __webpack_require__(452);
 var Merge_1 = __webpack_require__(453);
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var Overwrite_1 = __webpack_require__(227);
 var Path_1 = __webpack_require__(14);
 var SyncPoint_1 = __webpack_require__(228);
@@ -51880,7 +51858,7 @@ exports.SyncTree = SyncTree;
 Object.defineProperty(exports, "__esModule", { value: true });
 var util_1 = __webpack_require__(1);
 var Path_1 = __webpack_require__(14);
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var AckUserWrite = /** @class */ (function () {
     /**
      *
@@ -51948,7 +51926,7 @@ exports.AckUserWrite = AckUserWrite;
  */
 Object.defineProperty(exports, "__esModule", { value: true });
 var Path_1 = __webpack_require__(14);
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 /**
  * @param {!OperationSource} source
  * @param {!Path} path
@@ -51999,7 +51977,7 @@ exports.ListenComplete = ListenComplete;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var Overwrite_1 = __webpack_require__(227);
 var Path_1 = __webpack_require__(14);
 var util_1 = __webpack_require__(1);
@@ -52093,7 +52071,7 @@ var CacheNode_1 = __webpack_require__(109);
 var ViewCache_1 = __webpack_require__(229);
 var EventGenerator_1 = __webpack_require__(458);
 var util_1 = __webpack_require__(1);
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var Change_1 = __webpack_require__(65);
 var PriorityIndex_1 = __webpack_require__(27);
 /**
@@ -52301,7 +52279,7 @@ exports.View = View;
  * limitations under the License.
  */
 Object.defineProperty(exports, "__esModule", { value: true });
-var Operation_1 = __webpack_require__(58);
+var Operation_1 = __webpack_require__(57);
 var util_1 = __webpack_require__(1);
 var ChildChangeAccumulator_1 = __webpack_require__(456);
 var Change_1 = __webpack_require__(65);
@@ -55790,7 +55768,7 @@ var Tree_1 = __webpack_require__(474);
 var PriorityIndex_1 = __webpack_require__(27);
 var util_2 = __webpack_require__(9);
 var ServerValues_1 = __webpack_require__(224);
-var validation_1 = __webpack_require__(57);
+var validation_1 = __webpack_require__(56);
 var util_3 = __webpack_require__(1);
 var nodeFromJSON_1 = __webpack_require__(80);
 var ChildrenNode_1 = __webpack_require__(29);
@@ -57211,16 +57189,12 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(51), __webpack_require__(267), __webpack_require__(201), __webpack_require__(270), __webpack_require__(272)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, map_component_1, page_not_found_component_1, admin_component_1, admin_guard_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(58), __webpack_require__(267), __webpack_require__(201), __webpack_require__(270), __webpack_require__(272)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, map_component_1, page_not_found_component_1, admin_component_1, admin_guard_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.routes = [
         { path: 'map', component: map_component_1.MapComponent },
         { path: 'admin', component: admin_component_1.AdminComponent, canActivate: [admin_guard_1.AdminGuard] },
-        // { path: 'members', component: MembersComponent, canActivate: [AuthGuard] },
-        // { path: 'login', component: LoginComponent },
-        // { path: 'login/signup', component: SignupComponent },
-        // { path: 'login/email', component: EmailComponent},
         { path: '', redirectTo: '/map', pathMatch: 'full' },
         { path: '**', component: page_not_found_component_1.PageNotFoundComponent }
     ];
@@ -64570,7 +64544,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_coercion__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_cdk_portal__ = __webpack_require__(42);
@@ -65564,7 +65538,7 @@ var MatAutocompleteModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_coercion__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_material_core__ = __webpack_require__(10);
@@ -67312,7 +67286,7 @@ var MatCheckboxModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_bidi__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_coercion__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_startWith__ = __webpack_require__(39);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_operators_startWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_rxjs_operators_startWith__);
@@ -69106,7 +69080,7 @@ var MatChipsModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "r", function() { return MatYearView; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "s", function() { return MatMultiYearView; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_button__ = __webpack_require__(119);
@@ -71958,7 +71932,7 @@ var MatDatepickerModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return matExpansionAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_accordion__ = __webpack_require__(518);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_portal__ = __webpack_require__(42);
@@ -72580,7 +72554,7 @@ var MatExpansionModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CdkAccordion; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return CdkAccordionModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_coercion__ = __webpack_require__(11);
 /**
  * @license
@@ -74005,7 +73979,7 @@ var MatGridListModule = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_tslib__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_coercion__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__angular_cdk_keycodes__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_forms__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_rxjs_Subscription__ = __webpack_require__(12);
@@ -75065,7 +75039,7 @@ var MatListModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "n", function() { return MAT_MENU_SCROLL_STRATEGY_PROVIDER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "m", function() { return MAT_MENU_SCROLL_STRATEGY_PROVIDER_FACTORY; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_core__ = __webpack_require__(10);
@@ -77638,7 +77612,7 @@ var MatProgressSpinnerModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return _MatRadioButtonMixinBase; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return MatRadioButton; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_collections__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_collections__ = __webpack_require__(53);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_core__ = __webpack_require__(10);
@@ -78571,7 +78545,7 @@ var MatRadioModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return MatSidenavContainer; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return matDrawerAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_cdk_a11y__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_material_core__ = __webpack_require__(10);
@@ -81556,7 +81530,7 @@ var MatSliderModule = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "j", function() { return matSnackBarAnimations; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_overlay__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_cdk_overlay__ = __webpack_require__(52);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_cdk_portal__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_cdk_a11y__ = __webpack_require__(15);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__angular_cdk_layout__ = __webpack_require__(282);
@@ -87545,7 +87519,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(288), __webpack_require__(289), __webpack_require__(290), __webpack_require__(41), __webpack_require__(287), __webpack_require__(46)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, login_component_1, email_component_1, signup_component_1, auth_service_1, members_component_1, app_state_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(288), __webpack_require__(289), __webpack_require__(290), __webpack_require__(41), __webpack_require__(287), __webpack_require__(50)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, login_component_1, email_component_1, signup_component_1, auth_service_1, members_component_1, app_state_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AppComponent = class AppComponent {
@@ -87773,7 +87747,7 @@ exports = module.exports = __webpack_require__(20)(undefined);
 
 
 // module
-exports.push([module.i, "/* You can add global styles to this file, and also import other style files */\n/*@import \"~bootstrap/dist/css/bootstrap.min.css\"; */\n.basic-btn {\n  background: #3B8598;\n  color: white; }\n\ninput.txt {\n  background: #fff;\n  padding: 1em 0.4em;\n  font-size: 0.7em;\n  border: 1px solid #BBBBBB;\n  width: 94.6%; }\n\nh2 {\n  margin: 1.7em 0 .9em 0; }\n\n.alc {\n  text-align: center;\n  display: block;\n  margin: 15px 0 10px 0;\n  font-size: 0.9em; }\n\n.error {\n  background: #f1f0ef;\n  padding: 1em;\n  width: 84%;\n  display: block;\n  margin-bottom: 20px;\n  font-size: 0.8em; }\n\n#goback {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: .8em;\n  color: #3B8598; }\n\n#goback span {\n  font-size: 1em; }\n\n.loading {\n  width: 30px;\n  height: 30px;\n  border: 5px solid #ccc;\n  position: fixed;\n  left: 50%;\n  margin-left: -20px;\n  top: 50%;\n  margin-top: -20px;\n  border-radius: 50%; }\n\n.loading:after {\n  content: '';\n  position: absolute;\n  width: 40px;\n  height: 10px;\n  background: #E2E4E6;\n  top: 10px;\n  left: -5px;\n  animation: spin 1.2s infinite; }\n\n@keyframes spin {\n  100% {\n    transform: rotate(360deg); } }\n\n@media (max-width: 600px) {\n  body {\n    padding-top: 1.2em; }\n  .form-container {\n    padding: 1.2em;\n    width: 90%;\n    margin-left: -45%; }\n  button {\n    font-size: 1em; } }\n\n#lock {\n  width: 10%;\n  margin: 0.4em auto 1.1em auto;\n  display: block; }\n\n#fb {\n  background: #3B5998 url(" + __webpack_require__(548) + ") no-repeat 14px 6px;\n  background-size: 47px;\n  color: #fff; }\n\n#google {\n  border: 1px solid #95989A;\n  background: #fff url(" + __webpack_require__(549) + ") no-repeat 18px;\n  background-size: 40px; }\n\n#twitter {\n  border: 1px solid #95989A;\n  background: #fff url(" + __webpack_require__(550) + ") no-repeat 18px;\n  background-size: 40px; }\n\n#github {\n  border: 1px solid #990000;\n  background: #fff url(" + __webpack_require__(551) + ") no-repeat 18px;\n  background-size: 34px; }\n\n#email {\n  border: 1px solid #000080;\n  background: #ECECEC url(" + __webpack_require__(552) + ") no-repeat 18px;\n  background-size: 28px; }\n\n#signup {\n  border: none;\n  background: #FFF; }\n", ""]);
+exports.push([module.i, ".basic-btn {\n  background: #3B8598;\n  color: white; }\n\ninput.txt {\n  background: #fff;\n  padding: 1em 0.4em;\n  font-size: 0.7em;\n  border: 1px solid #BBBBBB;\n  width: 94.6%; }\n\nh2 {\n  margin: 1.7em 0 .9em 0; }\n\n.alc {\n  text-align: center;\n  display: block;\n  margin: 15px 0 10px 0;\n  font-size: 0.9em; }\n\n.error {\n  background: #f1f0ef;\n  padding: 1em;\n  width: 84%;\n  display: block;\n  margin-bottom: 20px;\n  font-size: 0.8em; }\n\n#goback {\n  font-weight: bold;\n  text-transform: uppercase;\n  font-size: .8em;\n  color: #3B8598; }\n\n#goback span {\n  font-size: 1em; }\n\n.loading {\n  width: 30px;\n  height: 30px;\n  border: 5px solid #ccc;\n  position: fixed;\n  left: 50%;\n  margin-left: -20px;\n  top: 50%;\n  margin-top: -20px;\n  border-radius: 50%; }\n\n.loading:after {\n  content: '';\n  position: absolute;\n  width: 40px;\n  height: 10px;\n  background: #E2E4E6;\n  top: 10px;\n  left: -5px;\n  animation: spin 1.2s infinite; }\n\n@keyframes spin {\n  100% {\n    transform: rotate(360deg); } }\n\n#lock {\n  width: 10%;\n  margin: 0.4em auto 1.1em auto;\n  display: block; }\n\n#fb {\n  background: #3B5998 url(" + __webpack_require__(548) + ") no-repeat 14px 6px;\n  background-size: 47px;\n  color: #fff; }\n\n#google {\n  border: 1px solid #95989A;\n  background: #fff url(" + __webpack_require__(549) + ") no-repeat 18px;\n  background-size: 40px; }\n\n#twitter {\n  border: 1px solid #95989A;\n  background: #fff url(" + __webpack_require__(550) + ") no-repeat 18px;\n  background-size: 40px; }\n\n#github {\n  border: 1px solid #990000;\n  background: #fff url(" + __webpack_require__(551) + ") no-repeat 18px;\n  background-size: 34px; }\n\n#email {\n  border: 1px solid #000080;\n  background: #ECECEC url(" + __webpack_require__(552) + ") no-repeat 18px;\n  background-size: 28px; }\n\n#signup {\n  border: none;\n  background: #FFF; }\n\n@media (max-width: 600px) {\n  body {\n    padding-top: 1.2em; }\n  .form-container {\n    padding: 1.2em;\n    width: 90%;\n    margin-left: -45%; }\n  button {\n    font-size: 1em; } }\n", ""]);
 
 // exports
 
@@ -87812,7 +87786,7 @@ module.exports = __webpack_require__.p + "src/assets/images/email.png";
 /* 553 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-container\">\n  <!--<a routerLink=\"/login\" id=\"goback\">Go back</a>-->\n  <button (click)=\"resetTool('login')\" id=\"goback\">Zurück</button><br>\n\n  <h2>Anmelden</h2>\n\n  <span class=\"error\" *ngIf=\"error\" [@fallIn]='state'>{{ error }}</span>\n  <!--<span class=\"error\" *ngIf=\"error\">{{ error }}</span>-->\n\n  <form #formData='ngForm' (ngSubmit)=\"onSubmit(formData)\">\n\n    <input type=\"text\" placeholder=\"Email..\" (ngModel)=\"email\" name=\"email\" class=\"txt\" required>\n    <input type=\"password\" placeholder=\"Passwort..\" (ngModel)=\"password\" name=\"password\" class=\"txt\" required>\n\n    <button type=\"submit\" [disabled]=\"!formData.valid\" class=\"basic-btn\">Login</button>\n    <!--<a routerLink=\"/login/signup\" class=\"alc\">Don't have an account?</a>-->\n  </form>\n  <button (click)=\"resetTool('signup')\" id=\"signup\">Kein Benutzer?</button><br>\n</div>\n";
+module.exports = "<div class=\"form-container\">\n  <button (click)=\"resetTool('login')\" id=\"goback\">Zurück</button><br>\n\n  <h2>Anmelden</h2>\n\n  <span class=\"error\" *ngIf=\"error\" [@fallIn]='state'>{{ error }}</span>\n\n  <form #formData='ngForm' (ngSubmit)=\"onSubmit(formData)\">\n\n    <input type=\"text\" placeholder=\"Email..\" (ngModel)=\"email\" name=\"email\" class=\"txt\" required>\n    <input type=\"password\" placeholder=\"Passwort..\" (ngModel)=\"password\" name=\"password\" class=\"txt\" required>\n\n    <button type=\"submit\" [disabled]=\"!formData.valid\" class=\"basic-btn\">Login</button>\n\n  </form>\n  <button (click)=\"resetTool('signup')\" id=\"signup\">Kein Benutzer?</button><br>\n</div>\n";
 
 /***/ }),
 /* 554 */
@@ -87877,7 +87851,7 @@ exports.push([module.i, "", ""]);
 /* 557 */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"form-container\">\n  <!--<a routerLink=\"/login\" id=\"goback\">Go back</a>-->\n  <button (click)=\"resetTool('login')\" id=\"goback\">Zurück</button><br>\n\n  <h2>Registrieren</h2>\n\n  <span class=\"error\" *ngIf=\"error\" [@moveInLeft]='state'>{{ error }}</span>\n  <!--<span class=\"error\" *ngIf=\"error\" >{{ error }}</span>-->\n\n  <form #formData='ngForm' (ngSubmit)=\"onSubmit(formData)\">\n\n    <input type=\"text\" placeholder=\"Vorname..\" (ngModel)=\"first\" name=\"first\" class=\"txt\" required>\n    <input type=\"text\" placeholder=\"Nachname..\" (ngModel)=\"last\" name=\"last\" class=\"txt\" required>\n    <input type=\"text\" placeholder=\"Email..\" (ngModel)=\"email\" name=\"email\" class=\"txt\" required>\n    <input type=\"password\" placeholder=\"Passwort..\" (ngModel)=\"password\" name=\"password\" class=\"txt\" required>\n\n\n    <button type=\"submit\" [disabled]=\"!formData.valid\" class=\"basic-btn\">Benutzer erstellen</button>\n  </form>\n</div>\n";
+module.exports = "<div class=\"form-container\">\n\n  <button (click)=\"resetTool('login')\" id=\"goback\">Zurück</button><br>\n\n  <h2>Registrieren</h2>\n\n  <span class=\"error\" *ngIf=\"error\" [@moveInLeft]='state'>{{ error }}</span>\n\n  <form #formData='ngForm' (ngSubmit)=\"onSubmit(formData)\">\n\n    <input type=\"text\" placeholder=\"Vorname..\" (ngModel)=\"first\" name=\"first\" class=\"txt\" required>\n    <input type=\"text\" placeholder=\"Nachname..\" (ngModel)=\"last\" name=\"last\" class=\"txt\" required>\n    <input type=\"text\" placeholder=\"Email..\" (ngModel)=\"email\" name=\"email\" class=\"txt\" required>\n    <input type=\"password\" placeholder=\"Passwort..\" (ngModel)=\"password\" name=\"password\" class=\"txt\" required>\n\n\n    <button type=\"submit\" [disabled]=\"!formData.valid\" class=\"basic-btn\">Benutzer erstellen</button>\n  </form>\n</div>\nu\n";
 
 /***/ }),
 /* 558 */
@@ -87942,7 +87916,7 @@ exports.push([module.i, "", ""]);
 /* 561 */
 /***/ (function(module, exports) {
 
-module.exports = "<!-- header -->\n<mat-toolbar color=\"accent\">\n  <mat-toolbar-row>\n\n    <!-- title -->\n    <span>FindATree</span>\n    <span class=\"spacer\"></span>\n\n    <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item type=\"button\" (click)=\"toggleLogin()\">\n        <mat-icon>supervisor_account</mat-icon>\n        <span>{{loggedIn?'Abmelden':'Anmelden'}}</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('game')\" [routerLink]=\"['./map']\">\n        <mat-icon>videogame_asset</mat-icon>\n        <span>Spielen</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('editor')\" [routerLink]=\"['./map']\">\n        <mat-icon>mode_edit</mat-icon>\n        <span>Bäume bearbeiten</span>\n      </button>\n      <button mat-menu-item *ngIf=\"userHasRole('admin')\" (click)=\"appState.setMode('dashboard')\" [routerLink]=\"['./admin']\">\n        <mat-icon>dashboard</mat-icon>\n        <span>Administrator dashboard</span>\n      </button>\n      <button mat-menu-item (click)=\"displayInfoPage()\">\n        <mat-icon>info</mat-icon>\n        <span>Über diese App</span>\n      </button>\n    </mat-menu>\n\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<section>\n  <loading-page *ngIf=\"appState.showMap === 'hide'\"></loading-page>\n  <router-outlet></router-outlet>\n  <div #tools></div>\n</section>\n";
+module.exports = "<!-- header -->\n<mat-toolbar color=\"accent\">\n  <mat-toolbar-row>\n\n    <!-- title -->\n    <span>FindATree</span>\n    <span class=\"spacer\"></span>\n\n    <button mat-icon-button [matMenuTriggerFor]=\"menu\">\n      <mat-icon>menu</mat-icon>\n    </button>\n    <mat-menu #menu=\"matMenu\">\n      <button mat-menu-item type=\"button\" (click)=\"toggleLogin()\">\n        <mat-icon>supervisor_account</mat-icon>\n        <span>{{ loggedIn?'Abmelden':'Anmelden' }}</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('game')\" [routerLink]=\"['./map']\">\n        <mat-icon>videogame_asset</mat-icon>\n        <span>Spielen</span>\n      </button>\n      <button mat-menu-item [disabled]=\"!userHasRole('user')\" (click)=\"appState.setMode('editor')\" [routerLink]=\"['./map']\">\n        <mat-icon>mode_edit</mat-icon>\n        <span>Bäume bearbeiten</span>\n      </button>\n      <button mat-menu-item *ngIf=\"userHasRole('admin')\" (click)=\"appState.setMode('dashboard')\" [routerLink]=\"['./admin']\">\n        <mat-icon>dashboard</mat-icon>\n        <span>Administrator dashboard</span>\n      </button>\n      <button mat-menu-item (click)=\"displayInfoPage()\">\n        <mat-icon>info</mat-icon>\n        <span>Über diese App</span>\n      </button>\n    </mat-menu>\n\n  </mat-toolbar-row>\n</mat-toolbar>\n\n<section>\n  <loading-page *ngIf=\"appState.showMap === 'hide'\"></loading-page>\n  <router-outlet></router-outlet>\n  <div #tools></div>\n</section>\n";
 
 /***/ }),
 /* 562 */
@@ -88016,7 +87990,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(51), __webpack_require__(41)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(58), __webpack_require__(41)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, router_1, auth_service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AuthGuard = class AuthGuard {
@@ -88024,13 +87998,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.auth = auth;
             this.router = router;
         }
-        /*  canActivate(
-            next: ActivatedRouteSnapshot,
-            state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-            return true;
-          }*/
         canActivate(route, state) {
-            // return true;
             if (!this.auth.isLoggedIn()) {
                 this.router.navigate(['/login']);
                 return false;
@@ -88123,7 +88091,7 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_571__;
 /* 572 */
 /***/ (function(module, exports) {
 
-module.exports = "\n  <h3>Baumarten, die auf der Karte vorkommen</h3>\n\n  <div class=\"table\">\n    <mat-table [dataSource]=\"getTreenames() | sortAlphabetical\">\n\n      <ng-container matColumnDef=\"nameDeu\">\n        <mat-header-cell *matHeaderCellDef> Name (deutsch) </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{tree}} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"nameLat\">\n        <mat-header-cell *matHeaderCellDef> Name (lateinisch) </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{tn[tree].nameLat}} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"gattungLat\">\n        <mat-header-cell *matHeaderCellDef> Gattung </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{tn[tree].gattungLat}} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"artLat\">\n        <mat-header-cell *matHeaderCellDef> Art </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{tn[tree].artLat}} </mat-cell>\n      </ng-container>\n\n      <mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></mat-header-row>\n      <mat-row *matRowDef=\"let myRowData; columns: columnsToDisplay\"></mat-row>\n\n    </mat-table>\n  </div>\n";
+module.exports = "  <h3>Baumarten, die auf der Karte vorkommen</h3>\n\n  <div class=\"table\">\n    <mat-table [dataSource]=\"getTreenames() | sortAlphabetical\">\n\n      <ng-container matColumnDef=\"nameDeu\">\n        <mat-header-cell *matHeaderCellDef> Name (deutsch) </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\" > {{ tree }} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"nameLat\">\n        <mat-header-cell *matHeaderCellDef> Name (lateinisch) </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{ tn[tree].nameLat }} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"gattungLat\">\n        <mat-header-cell *matHeaderCellDef> Gattung </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{ tn[tree].gattungLat }} </mat-cell>\n      </ng-container>\n\n      <ng-container matColumnDef=\"artLat\">\n        <mat-header-cell *matHeaderCellDef> Art </mat-header-cell>\n        <mat-cell *matCellDef=\"let tree\"> {{ tn[tree].artLat }} </mat-cell>\n      </ng-container>\n\n      <mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></mat-header-row>\n      <mat-row *matRowDef=\"let myRowData; columns: columnsToDisplay\"></mat-row>\n\n    </mat-table>\n  </div>\n";
 
 /***/ }),
 /* 573 */
@@ -88246,7 +88214,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 /* 577 */
 /***/ (function(module, exports) {
 
-module.exports = "<h3>Registrierte Benutzer</h3>\n\n\n<div class=\"table\">\n  <mat-table [dataSource]=\"users\">\n\n    <ng-container matColumnDef=\"usrName\">\n      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{user.displayName}} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrId\">\n      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{user.id}} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrEmail\">\n      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{user.email}} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrUser\">\n      <mat-header-cell *matHeaderCellDef> Rollen </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"user\">User</label>\n        <input id=\"user\" type=\"checkbox\" [checked]=\"user.roles.user\" (change)=\"user.roles.user = !user.roles.user\"/>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrSuper\">\n      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"super\">Super</label>\n        <input id=\"super\" type=\"checkbox\" [checked]=\"user.roles.superuser\" (change)=\"user.roles.superuser = !user.roles.superuser\"/>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrAdmin\">\n      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"admin\">Admin</label>\n        <input id=\"admin\" type=\"checkbox\" [checked]=\"user.roles.admin\" (change)=\"user.roles.admin = !user.roles.admin\"/>\n      </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></mat-header-row>\n    <mat-row *matRowDef=\"let myRowData; columns: columnsToDisplay\"></mat-row>\n\n  </mat-table>\n</div>\n\n<button mat-raised-button color='accent' class='nav_button' (click)='update()'>\n  <span>Update</span>\n</button>\n";
+module.exports = "<h3>Registrierte Benutzer</h3>\n\n<div class=\"table\">\n  <mat-table [dataSource]=\"users\">\n\n    <ng-container matColumnDef=\"usrName\">\n      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{ user.displayName }} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrId\">\n      <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{ user.id }} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrEmail\">\n      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\"> {{ user.email }} </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrUser\">\n      <mat-header-cell *matHeaderCellDef> Rollen </mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"user\">User</label>\n        <input id=\"user\" type=\"checkbox\" [checked]=\"user.roles.user\" (change)=\"user.roles.user = !user.roles.user\"/>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrSuper\">\n      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"super\">Super</label>\n        <input id=\"super\" type=\"checkbox\" [checked]=\"user.roles.superuser\" (change)=\"user.roles.superuser = !user.roles.superuser\"/>\n      </mat-cell>\n    </ng-container>\n\n    <ng-container matColumnDef=\"usrAdmin\">\n      <mat-header-cell *matHeaderCellDef>&nbsp;</mat-header-cell>\n      <mat-cell *matCellDef=\"let user\">\n        <label for=\"admin\">Admin</label>\n        <input id=\"admin\" type=\"checkbox\" [checked]=\"user.roles.admin\" (change)=\"user.roles.admin = !user.roles.admin\"/>\n      </mat-cell>\n    </ng-container>\n\n    <mat-header-row *matHeaderRowDef=\"columnsToDisplay\"></mat-header-row>\n    <mat-row *matRowDef=\"let myRowData; columns: columnsToDisplay\"></mat-row>\n\n  </mat-table>\n</div>\n\n<button mat-raised-button color='accent' class='nav_button' (click)='update()'>\n  <span>Update</span>\n</button>\n";
 
 /***/ }),
 /* 578 */
@@ -88320,7 +88288,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(69), __webpack_require__(46), __webpack_require__(70), __webpack_require__(582), __webpack_require__(583), __webpack_require__(292), __webpack_require__(584), __webpack_require__(585), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, app_state_service_1, tree_1, MapView, VectorTileLayer, Graphic, SimpleMarkerSymbol, Locate, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(69), __webpack_require__(50), __webpack_require__(70), __webpack_require__(583), __webpack_require__(292), __webpack_require__(582), __webpack_require__(584), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, app_state_service_1, tree_1, MapView, Graphic, SimpleMarkerSymbol, Locate, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let EsriMapComponent = class EsriMapComponent {
@@ -88338,7 +88306,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             return this._selectedTree;
         }
         ngOnInit() {
-            // this.appState.showMap = 'hide';
             const map = this.mapDataService.map;
             const mapViewProperties = {
                 container: this.elementRef.nativeElement.firstChild,
@@ -88350,11 +88317,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.mapView = new MapView(mapViewProperties);
             this.appState.mapView = this.mapView;
             const view = this.mapView;
-            this.gameBasemap = new VectorTileLayer({
-                portalItem: {
-                    id: "7675d44bb1e4428aa2c30a9b68f97822"
-                }
-            });
             const locateWidget = new Locate({
                 view: view,
                 graphic: new Graphic({
@@ -88372,10 +88334,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             view.ui.add(locateWidget, 'top-left');
             view.on('layerview-create', (evt) => {
                 if (evt.layer.title === "Tree layer") {
+                    this.appState.showMap = 'show';
                     this.treeLayerView = evt.layerView;
                     if (this.selectedTree) {
-                        console.log('layerview was created', this.selectedTree);
-                        console.log(this.treeLayerView);
                         this.treeLayerView.watch('updating', (value) => {
                             if (!value && this.selectedTree) {
                                 this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[tree_1.attr.id]);
@@ -88432,7 +88393,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
                 this.selectedTree = tree;
                 this.selectedTreeChange.emit(tree);
             });
-            // this.appState.showMap = 'show';
         }
         changePosition() {
             if (this.appState.sidePanelPosition === 'right') {
@@ -88463,8 +88423,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     EsriMapComponent = __decorate([
         core_1.Component({
             selector: 'esri-map',
-            template: __webpack_require__(586),
-            styles: [__webpack_require__(587)],
+            template: __webpack_require__(585),
+            styles: [__webpack_require__(586)],
             animations: [animations_1.showMap(), animations_1.positionMap()]
         }),
         __metadata("design:paramtypes", [map_data_service_1.MapDataService,
@@ -88507,20 +88467,14 @@ module.exports = __WEBPACK_EXTERNAL_MODULE_584__;
 /* 585 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_585__;
-
-/***/ }),
-/* 586 */
-/***/ (function(module, exports) {
-
 module.exports = "<div id=\"viewDiv\" [@showMap]=\"appState.showMap\"\n  appWindowSize (winSize)=\"changePosition()\"\n  [@positionMap]=\"appState.mapPosition\"></div>\n";
 
 /***/ }),
-/* 587 */
+/* 586 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(588);
+        var result = __webpack_require__(587);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88530,13 +88484,13 @@ module.exports = "<div id=\"viewDiv\" [@showMap]=\"appState.showMap\"\n  appWind
     
 
 /***/ }),
-/* 588 */
+/* 587 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(589);
+var content = __webpack_require__(588);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88561,7 +88515,7 @@ if(false) {
 }
 
 /***/ }),
-/* 589 */
+/* 588 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -88575,7 +88529,7 @@ exports.push([module.i, "#viewDiv {\n  position: absolute;\n  width: 100%;\n  to
 
 
 /***/ }),
-/* 590 */
+/* 589 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88587,7 +88541,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(46), __webpack_require__(70), __webpack_require__(52)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1, tree_1, animations_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(50), __webpack_require__(70), __webpack_require__(51)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, app_state_service_1, tree_1, animations_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let SidePanelComponent = class SidePanelComponent {
@@ -88612,8 +88566,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     SidePanelComponent = __decorate([
         core_1.Component({
             selector: 'side-panel',
-            template: __webpack_require__(591),
-            styles: [__webpack_require__(592)],
+            template: __webpack_require__(590),
+            styles: [__webpack_require__(591)],
             animations: [animations_1.showSidePanel()],
         }),
         __metadata("design:paramtypes", [app_state_service_1.AppStateService])
@@ -88624,17 +88578,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 591 */
+/* 590 */
 /***/ (function(module, exports) {
 
 module.exports = "<section *ngIf='appState.getInteraction() !== \"none\"' class='side-panel' [@showSidePanel]=\"appState.sidePanelPosition\">\n  <div *ngIf='appState.getMode() === \"editor\"'>\n    <div *ngIf='selectedTree' class='tree-detail'>\n\n      <div *ngIf='!inEditMode' class='tree-read-only'>\n        <mat-list>\n          <mat-list-item>{{ selectedTree.attributes[attr.nameDE] }}</mat-list-item>\n          <mat-divider></mat-divider>\n          <mat-list-item>Baumart (Latein): {{ selectedTree.attributes[attr.nameLat] }}</mat-list-item>\n          <mat-list-item>Quartier: {{ selectedTree.attributes[attr.quartier] }}</mat-list-item>\n          <mat-list-item>Pflanzjahr: {{ selectedTree.attributes[attr.pflanzJahr] }}</mat-list-item>\n        </mat-list>\n\n        <button *ngIf=\"appState.userHasRole('user')\" mat-mini-fab class='btn-edit' (click)='toggleEditMode(true)'>\n          <mat-icon>mode_edit</mat-icon>\n        </button>\n      </div>\n\n      <editor-panel *ngIf='inEditMode' [selectedTree]='selectedTree' (editing)='toggleEditMode($event)'></editor-panel>\n    </div>\n\n    <div *ngIf='appState.getInteraction() === \"add\"'>\n      <add-tree-panel></add-tree-panel>\n    </div>\n  </div>\n\n  <div *ngIf='appState.getMode() === \"game\"'>\n    <div *ngIf='selectedTree' class='tree-detail'>\n      <guess-panel [selectedTree]=\"selectedTree\"></guess-panel>\n    </div>\n  </div>\n\n</section>\n";
 
 /***/ }),
-/* 592 */
+/* 591 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(593);
+        var result = __webpack_require__(592);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88644,13 +88598,13 @@ module.exports = "<section *ngIf='appState.getInteraction() !== \"none\"' class=
     
 
 /***/ }),
-/* 593 */
+/* 592 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(594);
+var content = __webpack_require__(593);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88675,7 +88629,7 @@ if(false) {
 }
 
 /***/ }),
-/* 594 */
+/* 593 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -88689,7 +88643,7 @@ exports.push([module.i, "/**\n * Applies styles for users in high contrast mode.
 
 
 /***/ }),
-/* 595 */
+/* 594 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88701,7 +88655,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(170), __webpack_require__(293), __webpack_require__(69), __webpack_require__(46), __webpack_require__(70)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, material_1, validators_directive_1, map_data_service_1, app_state_service_1, tree_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(170), __webpack_require__(293), __webpack_require__(69), __webpack_require__(50), __webpack_require__(70)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, material_1, validators_directive_1, map_data_service_1, app_state_service_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let EditorPanelComponent = class EditorPanelComponent {
@@ -88714,7 +88668,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.treeNames = mapDataService.uniqueTreeNames;
             this.quartiers = mapDataService.uniqueQuartiers;
         }
-        ngOnChanges(change) {
+        ngOnChanges() {
             const attributes = this.selectedTree.attributes;
             this.form = new forms_1.FormGroup({
                 name: new forms_1.FormControl(attributes[tree_1.attr.nameDE], [forms_1.Validators.required]),
@@ -88773,8 +88727,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     EditorPanelComponent = __decorate([
         core_1.Component({
             selector: 'editor-panel',
-            template: __webpack_require__(596),
-            styles: [__webpack_require__(597)]
+            template: __webpack_require__(595),
+            styles: [__webpack_require__(596)]
         }),
         __metadata("design:paramtypes", [app_state_service_1.AppStateService,
             map_data_service_1.MapDataService,
@@ -88786,17 +88740,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 596 */
+/* 595 */
 /***/ (function(module, exports) {
 
 module.exports = "<form *ngIf=\"!loading\" [formGroup]='form' (ngSubmit)='onSubmit(form.value)'>\n  <mat-form-field>\n    <mat-select [(value)]=\"nameDE\" placeholder='Baumtyp' formControlName='name'>\n      <mat-option *ngFor='let name of treeNames | sortAlphabetical' [value]='name'>\n        {{ name }}\n      </mat-option>\n    </mat-select>\n    <mat-hint *ngIf=\"nameDE\">{{ mapDataService.treeNamesMapping[nameDE].nameLat }}</mat-hint>\n  </mat-form-field>\n  <mat-form-field>\n    <mat-select placeholder='Quartier' formControlName='quartier'>\n      <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>\n        {{ quartier }}\n      </mat-option>\n    </mat-select>\n  </mat-form-field>\n  <mat-form-field>\n    <input matInput placeholder='Pflanzjahr' formControlName='pflanzJahr'>\n    <mat-error *ngIf=\"form.root.controls.pflanzJahr.errors\">\n      Bitte ein gültiges Jahr eingeben\n    </mat-error>\n  </mat-form-field>\n  <button mat-raised-button color='accent' type='submit' [disabled]=\"!form.valid\">Speichern</button>\n  <button mat-raised-button color='accent' type='button' (click)='cancelEdit()'>Abbrechen</button>\n  <button mat-raised-button color='warn' type='button' (click)='deleteTree()'>Baum löschen</button>\n</form>\n\n<loading-page *ngIf=\"loading\"></loading-page>\n";
 
 /***/ }),
-/* 597 */
+/* 596 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(598);
+        var result = __webpack_require__(597);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88806,13 +88760,13 @@ module.exports = "<form *ngIf=\"!loading\" [formGroup]='form' (ngSubmit)='onSubm
     
 
 /***/ }),
-/* 598 */
+/* 597 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(599);
+var content = __webpack_require__(598);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -88837,7 +88791,7 @@ if(false) {
 }
 
 /***/ }),
-/* 599 */
+/* 598 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -88851,7 +88805,7 @@ exports.push([module.i, ".mat-form-field {\n  width: 100%;\n  padding-bottom: 20
 
 
 /***/ }),
-/* 600 */
+/* 599 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -88863,7 +88817,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(69), __webpack_require__(46), __webpack_require__(293), __webpack_require__(70), __webpack_require__(601), __webpack_require__(292), __webpack_require__(170)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, app_state_service_1, validators_directive_1, tree_1, Point, Graphic, material_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(22), __webpack_require__(69), __webpack_require__(50), __webpack_require__(293), __webpack_require__(70), __webpack_require__(600), __webpack_require__(292), __webpack_require__(170)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, forms_1, map_data_service_1, app_state_service_1, validators_directive_1, tree_1, Point, Graphic, material_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let AddTreePanelComponent = class AddTreePanelComponent {
@@ -88935,8 +88889,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     AddTreePanelComponent = __decorate([
         core_1.Component({
             selector: 'add-tree-panel',
-            template: __webpack_require__(602),
-            styles: [__webpack_require__(603)]
+            template: __webpack_require__(601),
+            styles: [__webpack_require__(602)]
         }),
         __metadata("design:paramtypes", [app_state_service_1.AppStateService,
             map_data_service_1.MapDataService,
@@ -88948,23 +88902,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 601 */
+/* 600 */
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE_601__;
+module.exports = __WEBPACK_EXTERNAL_MODULE_600__;
 
 /***/ }),
-/* 602 */
+/* 601 */
 /***/ (function(module, exports) {
 
 module.exports = "<mat-vertical-stepper *ngIf=\"!loading\" linear>\n  <mat-step [stepControl]=\"locationFormGroup\">\n    <form [formGroup]=\"locationFormGroup\">\n      <ng-template matStepLabel>Ort</ng-template>\n      Klicke in der Karte auf den Standort:\n      <mat-form-field>\n        <input matInput placeholder=\"Breitengrad\" formControlName=\"latitude\" required>\n        <mat-error *ngIf=\"locationFormGroup.root.controls.latitude.errors\">\n          Bitte gültige Breitengrad eingeben.\n        </mat-error>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Längengrad\" formControlName=\"longitude\" required>\n        <mat-error *ngIf=\"locationFormGroup.root.controls.longitude.errors\">\n          Bitte gültige Längengrad eingeben\n        </mat-error>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperNext color='primary'>Weiter</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step [stepControl]=\"attributeFormGroup\">\n    <form [formGroup]=\"attributeFormGroup\">\n      <ng-template matStepLabel>Attribute</ng-template>\n      <mat-form-field>\n        <mat-select [(value)]=\"nameDE\" placeholder=\"Baumtyp\" formControlName=\"nameDE\" required>\n          <mat-option *ngFor=\"let name of treeNames | sortAlphabetical\" [value]=\"name\">\n            {{ name }}\n          </mat-option>\n        </mat-select>\n        <mat-hint *ngIf=\"nameDE\">{{ mapDataService.treeNamesMapping[nameDE].nameLat }}</mat-hint>\n      </mat-form-field>\n      <mat-form-field>\n        <input matInput placeholder=\"Pflanzjahr\" formControlName=\"pflanzJahr\" required>\n        <mat-error *ngIf=\"attributeFormGroup.root.controls.pflanzJahr.errors\">\n          Bitte gültige Jahrszahl eingeben\n        </mat-error>\n      </mat-form-field>\n      <mat-form-field>\n        <mat-select placeholder='Quartier' formControlName='quartier'>\n          <mat-option *ngFor='let quartier of quartiers | sortAlphabetical' [value]='quartier'>\n            {{ quartier }}\n          </mat-option>\n        </mat-select>\n      </mat-form-field>\n      <div>\n        <button mat-raised-button matStepperPrevious color='primary'>Zurück</button>\n        <button mat-raised-button matStepperNext color='primary'>Weiter</button>\n      </div>\n    </form>\n  </mat-step>\n  <mat-step>\n    <ng-template matStepLabel>Speichern</ng-template>\n    <div>\n      <button mat-raised-button color='primary' (click)='saveTree()'>Speichern</button>\n      <button mat-raised-button matStepperPrevious color='primary'>Abbrechen</button>\n    </div>\n  </mat-step>\n</mat-vertical-stepper>\n\n<loading-page *ngIf=\"loading\"></loading-page>\n";
 
 /***/ }),
-/* 603 */
+/* 602 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(604);
+        var result = __webpack_require__(603);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -88974,13 +88928,13 @@ module.exports = "<mat-vertical-stepper *ngIf=\"!loading\" linear>\n  <mat-step 
     
 
 /***/ }),
-/* 604 */
+/* 603 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(605);
+var content = __webpack_require__(604);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -89005,7 +88959,7 @@ if(false) {
 }
 
 /***/ }),
-/* 605 */
+/* 604 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -89019,7 +88973,7 @@ exports.push([module.i, "", ""]);
 
 
 /***/ }),
-/* 606 */
+/* 605 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -89031,7 +88985,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(69), __webpack_require__(291), __webpack_require__(64), __webpack_require__(41), __webpack_require__(52), __webpack_require__(46), __webpack_require__(5), __webpack_require__(70)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, utils_1, database_1, auth_service_1, animations_1, app_state_service_1, Subject_1, tree_1) {
+!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__, exports, __webpack_require__(2), __webpack_require__(69), __webpack_require__(291), __webpack_require__(64), __webpack_require__(41), __webpack_require__(51), __webpack_require__(50), __webpack_require__(5), __webpack_require__(70)], __WEBPACK_AMD_DEFINE_RESULT__ = function (require, exports, core_1, map_data_service_1, utils_1, database_1, auth_service_1, animations_1, app_state_service_1, Subject_1, tree_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     let GuessPanelComponent = class GuessPanelComponent {
@@ -89170,8 +89124,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     GuessPanelComponent = __decorate([
         core_1.Component({
             selector: 'guess-panel',
-            template: __webpack_require__(607),
-            styles: [__webpack_require__(608)],
+            template: __webpack_require__(606),
+            styles: [__webpack_require__(607)],
             animations: [animations_1.showSidePanel()],
         }),
         __metadata("design:paramtypes", [map_data_service_1.MapDataService,
@@ -89185,17 +89139,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 607 */
+/* 606 */
 /***/ (function(module, exports) {
 
-module.exports = "<div *ngIf='selectedTree' class='guess-panel mat-typography'>\n\n  <h2>Was ist das für ein Baum?</h2>\n\n  <span class=\"error\" *ngIf=\"error\">{{ error }}</span>\n\n  <div class=\"guess-panel-game\">\n    <div class=\"guess-panel-guess\">\n      <button *ngFor=\"let name of selection\" mat-raised-button\n              (click)=\"selectTreeName(name, $event)\" id=\"{{name}}\"\n              [ngClass]=\"buttonState[name]\">\n        {{name}}\n      </button>\n    </div>\n\n      <div class=\"guess-panel-score\">\n        <div class=\"guess-points\">\n          <table class=\"guess-score-table\">\n            <tr>\n              <td class=\"guess-score-table-first\">Gewonnene Punkte:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Guess\">{{points}}</td>\n              <td> </td>\n            </tr>\n          </table>\n        </div>\n\n        <div *ngIf=\"getScore('total')>0\" class=\"guess-score\">\n          <div class=\"guess-score-title\">\n            Scores:\n          </div>\n          <table class=\"guess-score-table\">\n            <tr>\n              <td class=\"guess-score-table-first\">Dein Total heute:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Today\">{{getScore('day')}}</td>\n              <td>&nbsp;</td>\n            </tr>\n            <tr>\n              <td class=\"guess-score-table-first\">Dein Total:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Total\">{{getScore('total')}}</td>\n              <td>&nbsp;</td>\n            </tr>\n            <tr>\n              <td class=\"guess-score-table-first\">Höchster Punktestand:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Best\">{{getScore('best')}}</td>\n              <td>&nbsp;</td>\n            </tr>\n          </table>\n        </div>\n\n      </div>\n  </div>\n</div>\n\n<div *ngIf='!selectedTree'>\n  Klicke auf einen Baum und rate den Typ.\n</div>\n";
+module.exports = "<div *ngIf='selectedTree' class='guess-panel mat-typography'>\n\n  <h2>Was ist das für ein Baum?</h2>\n\n  <span class=\"error\" *ngIf=\"error\">{{ error }}</span>\n\n  <div class=\"guess-panel-game\">\n    <div class=\"guess-panel-guess\">\n      <button *ngFor=\"let name of selection\" mat-raised-button\n              (click)=\"selectTreeName(name, $event)\" id=\"{{name}}\"\n              [ngClass]=\"buttonState[name]\">\n        {{ name }}\n      </button>\n    </div>\n\n      <div class=\"guess-panel-score\">\n        <div class=\"guess-points\">\n          <table class=\"guess-score-table\">\n            <tr>\n              <td class=\"guess-score-table-first\">Gewonnene Punkte:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Aktuell\">{{ points }}</td>\n              <td> </td>\n            </tr>\n          </table>\n        </div>\n\n        <div *ngIf=\"getScore('total')>0\" class=\"guess-score\">\n          <div class=\"guess-score-title\">\n            Scores:\n          </div>\n          <table class=\"guess-score-table\">\n            <tr>\n              <td class=\"guess-score-table-first\">Dein Total heute:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Heute\">{{ getScore('day') }}</td>\n              <td>&nbsp;</td>\n            </tr>\n            <tr>\n              <td class=\"guess-score-table-first\">Dein Total:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Total\">{{ getScore('total') }}</td>\n              <td>&nbsp;</td>\n            </tr>\n            <tr>\n              <td class=\"guess-score-table-first\">Höchster Punktestand:</td>\n              <td class=\"guess-score-table-second\" data-title=\"Beste\">{{ getScore('best') }}</td>\n              <td>&nbsp;</td>\n            </tr>\n          </table>\n        </div>\n\n      </div>\n  </div>\n</div>\n\n<div *ngIf='!selectedTree'>\n  Klicke auf einen Baum und rate den Typ.\n</div>\n";
 
 /***/ }),
-/* 608 */
+/* 607 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(609);
+        var result = __webpack_require__(608);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -89205,13 +89159,13 @@ module.exports = "<div *ngIf='selectedTree' class='guess-panel mat-typography'>\
     
 
 /***/ }),
-/* 609 */
+/* 608 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(610);
+var content = __webpack_require__(609);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -89236,7 +89190,7 @@ if(false) {
 }
 
 /***/ }),
-/* 610 */
+/* 609 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -89244,13 +89198,13 @@ exports = module.exports = __webpack_require__(20)(undefined);
 
 
 // module
-exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n.mat-elevation-z0 {\n  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z1 {\n  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z2 {\n  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z3 {\n  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z4 {\n  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z5 {\n  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z6 {\n  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z7 {\n  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z8 {\n  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z9 {\n  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z10 {\n  box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z11 {\n  box-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.2), 0px 11px 15px 1px rgba(0, 0, 0, 0.14), 0px 4px 20px 3px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z12 {\n  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z13 {\n  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 13px 19px 2px rgba(0, 0, 0, 0.14), 0px 5px 24px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z14 {\n  box-shadow: 0px 7px 9px -4px rgba(0, 0, 0, 0.2), 0px 14px 21px 2px rgba(0, 0, 0, 0.14), 0px 5px 26px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z15 {\n  box-shadow: 0px 8px 9px -5px rgba(0, 0, 0, 0.2), 0px 15px 22px 2px rgba(0, 0, 0, 0.14), 0px 6px 28px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z16 {\n  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z17 {\n  box-shadow: 0px 8px 11px -5px rgba(0, 0, 0, 0.2), 0px 17px 26px 2px rgba(0, 0, 0, 0.14), 0px 6px 32px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z18 {\n  box-shadow: 0px 9px 11px -5px rgba(0, 0, 0, 0.2), 0px 18px 28px 2px rgba(0, 0, 0, 0.14), 0px 7px 34px 6px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z19 {\n  box-shadow: 0px 9px 12px -6px rgba(0, 0, 0, 0.2), 0px 19px 29px 2px rgba(0, 0, 0, 0.14), 0px 7px 36px 6px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z20 {\n  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2), 0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z21 {\n  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2), 0px 21px 33px 3px rgba(0, 0, 0, 0.14), 0px 8px 40px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z22 {\n  box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2), 0px 22px 35px 3px rgba(0, 0, 0, 0.14), 0px 8px 42px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z23 {\n  box-shadow: 0px 11px 14px -7px rgba(0, 0, 0, 0.2), 0px 23px 36px 3px rgba(0, 0, 0, 0.14), 0px 9px 44px 8px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z24 {\n  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); }\n\n.mat-h1, .mat-headline, .mat-typography h1 {\n  font: 400 24px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h2, .mat-title, .mat-typography h2 {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h3, .mat-subheading-2, .mat-typography h3 {\n  font: 400 16px/28px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h4, .mat-subheading-1, .mat-typography h4 {\n  font: 400 15px/24px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h5, .mat-typography h5 {\n  font: 400 11.62px/20px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 12px; }\n\n.mat-h6, .mat-typography h6 {\n  font: 400 9.38px/20px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 12px; }\n\n.mat-body-strong, .mat-body-2 {\n  font: 500 14px/24px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-body, .mat-body-1, .mat-typography {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n  .mat-body p, .mat-body-1 p, .mat-typography p {\n    margin: 0 0 12px; }\n\n.mat-small, .mat-caption {\n  font: 400 12px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-display-4, .mat-typography .mat-display-4 {\n  font: 300 112px/112px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 56px;\n  letter-spacing: -0.05em; }\n\n.mat-display-3, .mat-typography .mat-display-3 {\n  font: 400 56px/56px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px;\n  letter-spacing: -0.02em; }\n\n.mat-display-2, .mat-typography .mat-display-2 {\n  font: 400 45px/48px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px;\n  letter-spacing: -0.005em; }\n\n.mat-display-1, .mat-typography .mat-display-1 {\n  font: 400 34px/40px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px; }\n\n.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button,\n.mat-fab, .mat-mini-fab {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-button-toggle {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-card {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-card-title {\n  font-size: 24px;\n  font-weight: 400; }\n\n.mat-card-subtitle,\n.mat-card-content,\n.mat-card-header .mat-card-title {\n  font-size: 14px; }\n\n.mat-checkbox {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-checkbox-layout .mat-checkbox-label {\n  line-height: 24px; }\n\n.mat-chip {\n  font-size: 13px;\n  line-height: 18px; }\n  .mat-chip .mat-chip-remove.mat-icon {\n    font-size: 18px; }\n\n.mat-table {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-header-cell {\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-cell {\n  font-size: 14px; }\n\n.mat-calendar {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-calendar-body {\n  font-size: 13px; }\n\n.mat-calendar-body-label,\n.mat-calendar-period-button {\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-calendar-table-header th {\n  font-size: 11px;\n  font-weight: 400; }\n\n.mat-dialog-title {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-expansion-panel-header {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n\n.mat-expansion-panel-content {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-form-field {\n  font-size: inherit;\n  font-weight: 400;\n  line-height: 1.125;\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-form-field-wrapper {\n  padding-bottom: 1.25em; }\n\n.mat-form-field-prefix .mat-icon,\n.mat-form-field-suffix .mat-icon {\n  font-size: 150%;\n  line-height: 1.125; }\n\n.mat-form-field-prefix .mat-icon-button,\n.mat-form-field-suffix .mat-icon-button {\n  height: 1.5em;\n  width: 1.5em; }\n  .mat-form-field-prefix .mat-icon-button .mat-icon,\n  .mat-form-field-suffix .mat-icon-button .mat-icon {\n    height: 1.125em;\n    line-height: 1.125; }\n\n.mat-form-field-infix {\n  padding: 0.4375em 0;\n  border-top: 0.84375em solid transparent; }\n\n.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,\n.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);\n  -ms-transform: translateY(-1.28125em) scale(0.75);\n  width: 133.33333%; }\n\n.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper\n.mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00101px);\n  -ms-transform: translateY(-1.28124em) scale(0.75);\n  width: 133.33334%; }\n\n.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper\n.mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00102px);\n  -ms-transform: translateY(-1.28123em) scale(0.75);\n  width: 133.33335%; }\n\n.mat-form-field-label-wrapper {\n  top: -0.84375em;\n  padding-top: 0.84375em; }\n\n.mat-form-field-label {\n  top: 1.28125em; }\n\n.mat-form-field-underline {\n  bottom: 1.25em; }\n\n.mat-form-field-subscript-wrapper {\n  font-size: 75%;\n  margin-top: 0.54167em;\n  top: calc(100% - 1.66667em); }\n\n.mat-grid-tile-header,\n.mat-grid-tile-footer {\n  font-size: 14px; }\n  .mat-grid-tile-header .mat-line,\n  .mat-grid-tile-footer .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-grid-tile-header .mat-line:nth-child(n+2),\n    .mat-grid-tile-footer .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\ninput.mat-input-element {\n  margin-top: -0.0625em; }\n\n.mat-menu-item {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 16px;\n  font-weight: 400; }\n\n.mat-paginator,\n.mat-paginator-page-size .mat-select-trigger {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px; }\n\n.mat-radio-button {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-select {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-select-trigger {\n  height: 1.125em; }\n\n.mat-slide-toggle-content {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-slider-thumb-label-text {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-stepper-vertical, .mat-stepper-horizontal {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-step-label {\n  font-size: 14px;\n  font-weight: 400; }\n\n.mat-step-label-selected {\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-tab-group {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-tab-label, .mat-tab-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-toolbar,\n.mat-toolbar h1,\n.mat-toolbar h2,\n.mat-toolbar h3,\n.mat-toolbar h4,\n.mat-toolbar h5,\n.mat-toolbar h6 {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0; }\n\n.mat-tooltip {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 10px;\n  padding-top: 6px;\n  padding-bottom: 6px; }\n\n.mat-tooltip-handset {\n  font-size: 14px;\n  padding-top: 9px;\n  padding-bottom: 9px; }\n\n.mat-list-item {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-list-option {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {\n  font-size: 16px; }\n  .mat-list .mat-list-item .mat-line, .mat-nav-list .mat-list-item .mat-line, .mat-selection-list .mat-list-item .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list .mat-list-item .mat-line:nth-child(n+2), .mat-nav-list .mat-list-item .mat-line:nth-child(n+2), .mat-selection-list .mat-list-item .mat-line:nth-child(n+2) {\n      font-size: 14px; }\n\n.mat-list .mat-list-option, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-option {\n  font-size: 16px; }\n  .mat-list .mat-list-option .mat-line, .mat-nav-list .mat-list-option .mat-line, .mat-selection-list .mat-list-option .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list .mat-list-option .mat-line:nth-child(n+2), .mat-nav-list .mat-list-option .mat-line:nth-child(n+2), .mat-selection-list .mat-list-option .mat-line:nth-child(n+2) {\n      font-size: 14px; }\n\n.mat-list .mat-subheader, .mat-nav-list .mat-subheader, .mat-selection-list .mat-subheader {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-list[dense] .mat-list-item, .mat-nav-list[dense] .mat-list-item, .mat-selection-list[dense] .mat-list-item {\n  font-size: 12px; }\n  .mat-list[dense] .mat-list-item .mat-line, .mat-nav-list[dense] .mat-list-item .mat-line, .mat-selection-list[dense] .mat-list-item .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list[dense] .mat-list-item .mat-line:nth-child(n+2), .mat-nav-list[dense] .mat-list-item .mat-line:nth-child(n+2), .mat-selection-list[dense] .mat-list-item .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\n.mat-list[dense] .mat-list-option, .mat-nav-list[dense] .mat-list-option, .mat-selection-list[dense] .mat-list-option {\n  font-size: 12px; }\n  .mat-list[dense] .mat-list-option .mat-line, .mat-nav-list[dense] .mat-list-option .mat-line, .mat-selection-list[dense] .mat-list-option .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list[dense] .mat-list-option .mat-line:nth-child(n+2), .mat-nav-list[dense] .mat-list-option .mat-line:nth-child(n+2), .mat-selection-list[dense] .mat-list-option .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\n.mat-list[dense] .mat-subheader, .mat-nav-list[dense] .mat-subheader, .mat-selection-list[dense] .mat-subheader {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-option {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 16px; }\n\n.mat-optgroup-label {\n  font: 500 14px/24px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-simple-snackbar {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px; }\n\n.mat-simple-snackbar-action {\n  line-height: 1;\n  font-family: inherit;\n  font-size: inherit;\n  font-weight: 500; }\n\n.mat-ripple {\n  overflow: hidden; }\n  @media screen and (-ms-high-contrast: active) {\n    .mat-ripple {\n      display: none; } }\n\n.mat-ripple.mat-ripple-unbounded {\n  overflow: visible; }\n\n.mat-ripple-element {\n  position: absolute;\n  border-radius: 50%;\n  pointer-events: none;\n  transition: opacity, transform 0ms cubic-bezier(0, 0, 0.2, 1);\n  transform: scale(0); }\n\n.cdk-visually-hidden {\n  border: 0;\n  clip: rect(0 0 0 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px;\n  outline: 0;\n  -webkit-appearance: none;\n  -moz-appearance: none; }\n\n.cdk-overlay-container, .cdk-global-overlay-wrapper {\n  pointer-events: none;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%; }\n\n.cdk-overlay-container {\n  position: fixed;\n  z-index: 1000; }\n  .cdk-overlay-container:empty {\n    display: none; }\n\n.cdk-global-overlay-wrapper {\n  display: flex;\n  position: absolute;\n  z-index: 1000; }\n\n.cdk-overlay-pane {\n  position: absolute;\n  pointer-events: auto;\n  box-sizing: border-box;\n  z-index: 1000; }\n\n.cdk-overlay-backdrop {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1000;\n  pointer-events: auto;\n  -webkit-tap-highlight-color: transparent;\n  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);\n  opacity: 0; }\n  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {\n    opacity: 1; }\n\n.cdk-overlay-dark-backdrop {\n  background: rgba(0, 0, 0, 0.288); }\n\n.cdk-overlay-transparent-backdrop, .cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {\n  opacity: 0; }\n\n.cdk-global-scrollblock {\n  position: fixed;\n  width: 100%;\n  overflow-y: scroll; }\n\n.mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.1); }\n\n.mat-option {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled) {\n    background: rgba(0, 0, 0, 0.04); }\n  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #ffc107; }\n  .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #795548; }\n  .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #ff5722; }\n  .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {\n    background: rgba(0, 0, 0, 0.04); }\n  .mat-option.mat-active {\n    background: rgba(0, 0, 0, 0.04);\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-option.mat-option-disabled {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-optgroup-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-optgroup-disabled .mat-optgroup-label {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-pseudo-checkbox {\n  color: rgba(0, 0, 0, 0.54); }\n  .mat-pseudo-checkbox::after {\n    color: #fafafa; }\n\n.mat-pseudo-checkbox-checked,\n.mat-pseudo-checkbox-indeterminate,\n.mat-accent .mat-pseudo-checkbox-checked,\n.mat-accent .mat-pseudo-checkbox-indeterminate {\n  background: #795548; }\n\n.mat-primary .mat-pseudo-checkbox-checked,\n.mat-primary .mat-pseudo-checkbox-indeterminate {\n  background: #ffc107; }\n\n.mat-warn .mat-pseudo-checkbox-checked,\n.mat-warn .mat-pseudo-checkbox-indeterminate {\n  background: #ff5722; }\n\n.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,\n.mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {\n  background: #b0b0b0; }\n\n.mat-app-background {\n  background-color: #fafafa;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-theme-loaded-marker {\n  display: none; }\n\n.mat-autocomplete-panel {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {\n    background: white; }\n    .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover):not(.mat-option-disabled) {\n      color: rgba(0, 0, 0, 0.87); }\n\n.mat-button, .mat-icon-button, .mat-stroked-button {\n  background: transparent; }\n  .mat-button.mat-primary .mat-button-focus-overlay, .mat-icon-button.mat-primary .mat-button-focus-overlay, .mat-stroked-button.mat-primary .mat-button-focus-overlay {\n    background-color: rgba(255, 193, 7, 0.12); }\n  .mat-button.mat-accent .mat-button-focus-overlay, .mat-icon-button.mat-accent .mat-button-focus-overlay, .mat-stroked-button.mat-accent .mat-button-focus-overlay {\n    background-color: rgba(121, 85, 72, 0.12); }\n  .mat-button.mat-warn .mat-button-focus-overlay, .mat-icon-button.mat-warn .mat-button-focus-overlay, .mat-stroked-button.mat-warn .mat-button-focus-overlay {\n    background-color: rgba(255, 87, 34, 0.12); }\n  .mat-button[disabled] .mat-button-focus-overlay, .mat-icon-button[disabled] .mat-button-focus-overlay, .mat-stroked-button[disabled] .mat-button-focus-overlay {\n    background-color: transparent; }\n  .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {\n    color: #ffc107; }\n  .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {\n    color: #795548; }\n  .mat-button.mat-warn, .mat-icon-button.mat-warn, .mat-stroked-button.mat-warn {\n    color: #ff5722; }\n  .mat-button.mat-primary[disabled], .mat-button.mat-accent[disabled], .mat-button.mat-warn[disabled], .mat-button[disabled][disabled], .mat-icon-button.mat-primary[disabled], .mat-icon-button.mat-accent[disabled], .mat-icon-button.mat-warn[disabled], .mat-icon-button[disabled][disabled], .mat-stroked-button.mat-primary[disabled], .mat-stroked-button.mat-accent[disabled], .mat-stroked-button.mat-warn[disabled], .mat-stroked-button[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n\n.mat-raised-button, .mat-fab, .mat-mini-fab {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: white; }\n  .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {\n    color: white; }\n  .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {\n    color: white; }\n  .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n  .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {\n    background-color: #ffc107; }\n  .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {\n    background-color: #795548; }\n  .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {\n    background-color: #ff5722; }\n  .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {\n    background-color: rgba(0, 0, 0, 0.12); }\n  .mat-raised-button.mat-primary .mat-ripple-element, .mat-fab.mat-primary .mat-ripple-element, .mat-mini-fab.mat-primary .mat-ripple-element {\n    background-color: rgba(0, 0, 0, 0.2); }\n  .mat-raised-button.mat-accent .mat-ripple-element, .mat-fab.mat-accent .mat-ripple-element, .mat-mini-fab.mat-accent .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n  .mat-raised-button.mat-warn .mat-ripple-element, .mat-fab.mat-warn .mat-ripple-element, .mat-mini-fab.mat-warn .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n\n.mat-button.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.1); }\n\n.mat-button.mat-accent .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.1); }\n\n.mat-button.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.1); }\n\n.mat-flat-button {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: white; }\n  .mat-flat-button.mat-primary {\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-flat-button.mat-accent {\n    color: white; }\n  .mat-flat-button.mat-warn {\n    color: white; }\n  .mat-flat-button.mat-primary[disabled], .mat-flat-button.mat-accent[disabled], .mat-flat-button.mat-warn[disabled], .mat-flat-button[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n  .mat-flat-button.mat-primary {\n    background-color: #ffc107; }\n  .mat-flat-button.mat-accent {\n    background-color: #795548; }\n  .mat-flat-button.mat-warn {\n    background-color: #ff5722; }\n  .mat-flat-button.mat-primary[disabled], .mat-flat-button.mat-accent[disabled], .mat-flat-button.mat-warn[disabled], .mat-flat-button[disabled][disabled] {\n    background-color: rgba(0, 0, 0, 0.12); }\n  .mat-flat-button.mat-primary .mat-ripple-element {\n    background-color: rgba(0, 0, 0, 0.2); }\n  .mat-flat-button.mat-accent .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n  .mat-flat-button.mat-warn .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n\n.mat-icon-button.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.2); }\n\n.mat-icon-button.mat-accent .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.2); }\n\n.mat-icon-button.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.2); }\n\n.mat-button-toggle {\n  color: rgba(0, 0, 0, 0.38); }\n  .mat-button-toggle.cdk-focused .mat-button-toggle-focus-overlay {\n    background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-button-toggle-checked {\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-button-toggle-disabled {\n  background-color: #eeeeee;\n  color: rgba(0, 0, 0, 0.26); }\n  .mat-button-toggle-disabled.mat-button-toggle-checked {\n    background-color: #bdbdbd; }\n\n.mat-card {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-card-subtitle {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-checkbox-frame {\n  border-color: rgba(0, 0, 0, 0.54); }\n\n.mat-checkbox-checkmark {\n  fill: #fafafa; }\n\n.mat-checkbox-checkmark-path {\n  stroke: #fafafa !important; }\n\n.mat-checkbox-mixedmark {\n  background-color: #fafafa; }\n\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {\n  background-color: #ffc107; }\n\n.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {\n  background-color: #795548; }\n\n.mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .mat-checkbox-checked.mat-warn .mat-checkbox-background {\n  background-color: #ff5722; }\n\n.mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {\n  background-color: #b0b0b0; }\n\n.mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {\n  border-color: #b0b0b0; }\n\n.mat-checkbox-disabled .mat-checkbox-label {\n  color: #b0b0b0; }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.26); }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.26); }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.26); }\n\n.mat-chip:not(.mat-basic-chip) {\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-chip:not(.mat-basic-chip) .mat-chip-remove {\n    color: rgba(0, 0, 0, 0.87);\n    opacity: 0.4; }\n  .mat-chip:not(.mat-basic-chip) .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-primary {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-chip.mat-chip-selected.mat-primary .mat-chip-remove {\n    color: rgba(0, 0, 0, 0.87);\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-primary .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-warn {\n  background-color: #ff5722;\n  color: white; }\n  .mat-chip.mat-chip-selected.mat-warn .mat-chip-remove {\n    color: white;\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-warn .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-accent {\n  background-color: #795548;\n  color: white; }\n  .mat-chip.mat-chip-selected.mat-accent .mat-chip-remove {\n    color: white;\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-accent .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-table {\n  background: white; }\n\n.mat-row, .mat-header-row {\n  border-bottom-color: rgba(0, 0, 0, 0.12); }\n\n.mat-header-cell {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-cell {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-datepicker-content {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-arrow {\n  border-top-color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-next-button,\n.mat-calendar-previous-button {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-table-header {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-calendar-table-header-divider::after {\n  background: rgba(0, 0, 0, 0.12); }\n\n.mat-calendar-body-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-body-cell-content {\n  color: rgba(0, 0, 0, 0.87);\n  border-color: transparent; }\n  .mat-calendar-body-disabled > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {\n    color: rgba(0, 0, 0, 0.38); }\n\n:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),\n.cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),\n.cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {\n  background-color: rgba(0, 0, 0, 0.04); }\n\n.mat-calendar-body-selected {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-body-disabled > .mat-calendar-body-selected {\n  background-color: rgba(255, 193, 7, 0.4); }\n\n.mat-calendar-body-today:not(.mat-calendar-body-selected) {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-calendar-body-today.mat-calendar-body-selected {\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-body-disabled > .mat-calendar-body-today:not(.mat-calendar-body-selected) {\n  border-color: rgba(0, 0, 0, 0.18); }\n\n.mat-datepicker-toggle-active {\n  color: #ffc107; }\n\n.mat-dialog-container {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-divider {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-divider-vertical {\n  border-right-color: rgba(0, 0, 0, 0.12); }\n\n.mat-expansion-panel {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-action-row {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']):hover {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-expansion-panel-header-title {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-expansion-panel-header-description,\n.mat-expansion-indicator::after {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-expansion-panel-header[aria-disabled='true'] {\n  color: rgba(0, 0, 0, 0.26); }\n  .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-title,\n  .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-description {\n    color: inherit; }\n\n.mat-form-field-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-hint {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-focused .mat-form-field-label {\n  color: #ffc107; }\n  .mat-focused .mat-form-field-label.mat-accent {\n    color: #795548; }\n  .mat-focused .mat-form-field-label.mat-warn {\n    color: #ff5722; }\n\n.mat-focused .mat-form-field-required-marker {\n  color: #795548; }\n\n.mat-form-field-underline {\n  background-color: rgba(0, 0, 0, 0.42); }\n\n.mat-form-field-disabled .mat-form-field-underline {\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);\n  background-size: 4px 1px;\n  background-repeat: repeat-x; }\n\n.mat-form-field-ripple {\n  background-color: #ffc107; }\n  .mat-form-field-ripple.mat-accent {\n    background-color: #795548; }\n  .mat-form-field-ripple.mat-warn {\n    background-color: #ff5722; }\n\n.mat-form-field-invalid .mat-form-field-label {\n  color: #ff5722; }\n  .mat-form-field-invalid .mat-form-field-label.mat-accent,\n  .mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {\n    color: #ff5722; }\n\n.mat-form-field-invalid .mat-form-field-ripple {\n  background-color: #ff5722; }\n\n.mat-error {\n  color: #ff5722; }\n\n.mat-icon.mat-primary {\n  color: #ffc107; }\n\n.mat-icon.mat-accent {\n  color: #795548; }\n\n.mat-icon.mat-warn {\n  color: #ff5722; }\n\n.mat-input-element:disabled {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-input-element {\n  caret-color: #ffc107; }\n  .mat-input-element::placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element::-moz-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element::-webkit-input-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element:-ms-input-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n\n.mat-accent .mat-input-element {\n  caret-color: #795548; }\n\n.mat-warn .mat-input-element,\n.mat-form-field-invalid .mat-input-element {\n  caret-color: #ff5722; }\n\n.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-list .mat-list-option, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-option {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-list .mat-subheader, .mat-nav-list .mat-subheader, .mat-selection-list .mat-subheader {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-list-item-disabled {\n  background-color: #eeeeee; }\n\n.mat-list-option:hover, .mat-list-option.mat-list-item-focus,\n.mat-nav-list .mat-list-item:hover,\n.mat-nav-list .mat-list-item.mat-list-item-focus {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-menu-panel {\n  background: white; }\n\n.mat-menu-item {\n  background: transparent;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-menu-item[disabled] {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-menu-item .mat-icon:not([color]),\n.mat-menu-item-submenu-trigger::after {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-menu-item:hover:not([disabled]),\n.mat-menu-item.cdk-program-focused:not([disabled]),\n.mat-menu-item.cdk-keyboard-focused:not([disabled]),\n.mat-menu-item-highlighted:not([disabled]) {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-paginator {\n  background: white; }\n\n.mat-paginator,\n.mat-paginator-page-size .mat-select-trigger {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-paginator-decrement,\n.mat-paginator-increment {\n  border-top: 2px solid rgba(0, 0, 0, 0.54);\n  border-right: 2px solid rgba(0, 0, 0, 0.54); }\n\n.mat-paginator-first,\n.mat-paginator-last {\n  border-top: 2px solid rgba(0, 0, 0, 0.54); }\n\n.mat-icon-button[disabled] .mat-paginator-decrement,\n.mat-icon-button[disabled] .mat-paginator-increment,\n.mat-icon-button[disabled] .mat-paginator-first,\n.mat-icon-button[disabled] .mat-paginator-last {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-progress-bar-background {\n  fill: #ffecb3; }\n\n.mat-progress-bar-buffer {\n  background-color: #ffecb3; }\n\n.mat-progress-bar-fill::after {\n  background-color: #ffc107; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-background {\n  fill: #d7ccc8; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-buffer {\n  background-color: #d7ccc8; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-fill::after {\n  background-color: #795548; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-background {\n  fill: #ffccbc; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-buffer {\n  background-color: #ffccbc; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-fill::after {\n  background-color: #ff5722; }\n\n.mat-progress-spinner circle, .mat-spinner circle {\n  stroke: #ffc107; }\n\n.mat-progress-spinner.mat-accent circle, .mat-spinner.mat-accent circle {\n  stroke: #795548; }\n\n.mat-progress-spinner.mat-warn circle, .mat-spinner.mat-warn circle {\n  stroke: #ff5722; }\n\n.mat-radio-outer-circle {\n  border-color: rgba(0, 0, 0, 0.54); }\n\n.mat-radio-disabled .mat-radio-outer-circle {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-disabled .mat-radio-ripple .mat-ripple-element, .mat-radio-disabled .mat-radio-inner-circle {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-disabled .mat-radio-label-content {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #ffc107; }\n\n.mat-radio-button.mat-primary .mat-radio-inner-circle {\n  background-color: #ffc107; }\n\n.mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.26); }\n\n.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #795548; }\n\n.mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #795548; }\n\n.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.26); }\n\n.mat-radio-button.mat-warn.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #ff5722; }\n\n.mat-radio-button.mat-warn .mat-radio-inner-circle {\n  background-color: #ff5722; }\n\n.mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.26); }\n\n.mat-select-content, .mat-select-panel-done-animating {\n  background: white; }\n\n.mat-select-value {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-select-placeholder {\n  color: rgba(0, 0, 0, 0.42); }\n\n.mat-select-disabled .mat-select-value {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-select-arrow {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {\n  background: rgba(0, 0, 0, 0.12); }\n\n.mat-form-field.mat-focused.mat-primary .mat-select-arrow {\n  color: #ffc107; }\n\n.mat-form-field.mat-focused.mat-accent .mat-select-arrow {\n  color: #795548; }\n\n.mat-form-field.mat-focused.mat-warn .mat-select-arrow {\n  color: #ff5722; }\n\n.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {\n  color: #ff5722; }\n\n.mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-drawer-container {\n  background-color: #fafafa;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-drawer {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-drawer.mat-drawer-push {\n    background-color: white; }\n\n.mat-drawer-backdrop.mat-drawer-shown {\n  background-color: rgba(0, 0, 0, 0.6); }\n\n.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #795548; }\n\n.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(121, 85, 72, 0.5); }\n\n.mat-slide-toggle:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.12); }\n\n.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #ffc107; }\n\n.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(255, 193, 7, 0.5); }\n\n.mat-slide-toggle.mat-primary:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.12); }\n\n.mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #ff5722; }\n\n.mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(255, 87, 34, 0.5); }\n\n.mat-slide-toggle.mat-warn:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.12); }\n\n.mat-disabled .mat-slide-toggle-thumb {\n  background-color: #bdbdbd; }\n\n.mat-disabled .mat-slide-toggle-bar {\n  background-color: rgba(0, 0, 0, 0.1); }\n\n.mat-slide-toggle-thumb {\n  background-color: #fafafa; }\n\n.mat-slide-toggle-bar {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-primary .mat-slider-track-fill,\n.mat-primary .mat-slider-thumb,\n.mat-primary .mat-slider-thumb-label {\n  background-color: #ffc107; }\n\n.mat-primary .mat-slider-thumb-label-text {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-accent .mat-slider-track-fill,\n.mat-accent .mat-slider-thumb,\n.mat-accent .mat-slider-thumb-label {\n  background-color: #795548; }\n\n.mat-accent .mat-slider-thumb-label-text {\n  color: white; }\n\n.mat-warn .mat-slider-track-fill,\n.mat-warn .mat-slider-thumb,\n.mat-warn .mat-slider-thumb-label {\n  background-color: #ff5722; }\n\n.mat-warn .mat-slider-thumb-label-text {\n  color: white; }\n\n.mat-slider-focus-ring {\n  background-color: rgba(121, 85, 72, 0.2); }\n\n.mat-slider:hover .mat-slider-track-background,\n.cdk-focused .mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-disabled .mat-slider-track-background,\n.mat-slider-disabled .mat-slider-track-fill,\n.mat-slider-disabled .mat-slider-thumb {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-disabled:hover .mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-min-value .mat-slider-focus-ring {\n  background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb,\n.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {\n  background-color: rgba(0, 0, 0, 0.87); }\n\n.mat-slider-min-value.mat-slider-thumb-label-showing.cdk-focused .mat-slider-thumb,\n.mat-slider-min-value.mat-slider-thumb-label-showing.cdk-focused .mat-slider-thumb-label {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.26);\n  background-color: transparent; }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing):hover .mat-slider-thumb, .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing):hover.mat-slider-disabled .mat-slider-thumb, .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused.mat-slider-disabled .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-has-ticks .mat-slider-wrapper::after {\n  border-color: rgba(0, 0, 0, 0.7); }\n\n.mat-slider-horizontal .mat-slider-ticks {\n  background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent);\n  background-image: -moz-repeating-linear-gradient(0.0001deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent); }\n\n.mat-slider-vertical .mat-slider-ticks {\n  background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent); }\n\n.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused, .mat-step-header:hover {\n  background-color: rgba(0, 0, 0, 0.04); }\n\n.mat-step-header .mat-step-label,\n.mat-step-header .mat-step-optional {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-step-header .mat-step-icon {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-step-header .mat-step-icon-not-touched {\n  background-color: rgba(0, 0, 0, 0.38);\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-step-header .mat-step-label.mat-step-label-active {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-stepper-horizontal, .mat-stepper-vertical {\n  background-color: white; }\n\n.mat-stepper-vertical-line::before {\n  border-left-color: rgba(0, 0, 0, 0.12); }\n\n.mat-stepper-horizontal-line {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-tab-nav-bar,\n.mat-tab-header {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }\n\n.mat-tab-group-inverted-header .mat-tab-nav-bar,\n.mat-tab-group-inverted-header .mat-tab-header {\n  border-top: 1px solid rgba(0, 0, 0, 0.12);\n  border-bottom: none; }\n\n.mat-tab-label, .mat-tab-link {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-tab-label.mat-tab-disabled, .mat-tab-link.mat-tab-disabled {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-tab-group[class*='mat-background-'] .mat-tab-header,\n.mat-tab-nav-bar[class*='mat-background-'] {\n  border-bottom: none;\n  border-top: none; }\n\n.mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 236, 179, 0.3); }\n\n.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {\n  background-color: #ffc107; }\n\n.mat-tab-group.mat-primary.mat-background-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary.mat-background-primary .mat-ink-bar {\n  background-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-group.mat-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-accent .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-accent .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(215, 204, 200, 0.3); }\n\n.mat-tab-group.mat-accent .mat-ink-bar, .mat-tab-nav-bar.mat-accent .mat-ink-bar {\n  background-color: #795548; }\n\n.mat-tab-group.mat-accent.mat-background-accent .mat-ink-bar, .mat-tab-nav-bar.mat-accent.mat-background-accent .mat-ink-bar {\n  background-color: white; }\n\n.mat-tab-group.mat-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-warn .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-warn .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 204, 188, 0.3); }\n\n.mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {\n  background-color: #ff5722; }\n\n.mat-tab-group.mat-warn.mat-background-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn.mat-background-warn .mat-ink-bar {\n  background-color: white; }\n\n.mat-tab-group.mat-background-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-primary .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 236, 179, 0.3); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header, .mat-tab-group.mat-background-primary .mat-tab-links, .mat-tab-nav-bar.mat-background-primary .mat-tab-header, .mat-tab-nav-bar.mat-background-primary .mat-tab-links {\n  background-color: #ffc107; }\n\n.mat-tab-group.mat-background-primary .mat-tab-label, .mat-tab-group.mat-background-primary .mat-tab-link, .mat-tab-nav-bar.mat-background-primary .mat-tab-label, .mat-tab-nav-bar.mat-background-primary .mat-tab-link {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-tab-group.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled {\n    color: rgba(0, 0, 0, 0.4); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.4); }\n\n.mat-tab-group.mat-background-primary .mat-ripple-element, .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-tab-group.mat-background-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-accent .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-accent .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(215, 204, 200, 0.3); }\n\n.mat-tab-group.mat-background-accent .mat-tab-header, .mat-tab-group.mat-background-accent .mat-tab-links, .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .mat-tab-nav-bar.mat-background-accent .mat-tab-links {\n  background-color: #795548; }\n\n.mat-tab-group.mat-background-accent .mat-tab-label, .mat-tab-group.mat-background-accent .mat-tab-link, .mat-tab-nav-bar.mat-background-accent .mat-tab-label, .mat-tab-nav-bar.mat-background-accent .mat-tab-link {\n  color: white; }\n  .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {\n    color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-accent .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-chevron {\n  border-color: white; }\n\n.mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-accent .mat-ripple-element, .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {\n  background-color: rgba(255, 255, 255, 0.12); }\n\n.mat-tab-group.mat-background-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-warn .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-warn .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 204, 188, 0.3); }\n\n.mat-tab-group.mat-background-warn .mat-tab-header, .mat-tab-group.mat-background-warn .mat-tab-links, .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .mat-tab-nav-bar.mat-background-warn .mat-tab-links {\n  background-color: #ff5722; }\n\n.mat-tab-group.mat-background-warn .mat-tab-label, .mat-tab-group.mat-background-warn .mat-tab-link, .mat-tab-nav-bar.mat-background-warn .mat-tab-label, .mat-tab-nav-bar.mat-background-warn .mat-tab-link {\n  color: white; }\n  .mat-tab-group.mat-background-warn .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-warn .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-warn .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-warn .mat-tab-link.mat-tab-disabled {\n    color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-warn .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-chevron {\n  border-color: white; }\n\n.mat-tab-group.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-warn .mat-ripple-element, .mat-tab-nav-bar.mat-background-warn .mat-ripple-element {\n  background-color: rgba(255, 255, 255, 0.12); }\n\n.mat-toolbar {\n  background: whitesmoke;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-toolbar.mat-primary {\n    background: #ffc107;\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-toolbar.mat-accent {\n    background: #795548;\n    color: white; }\n  .mat-toolbar.mat-warn {\n    background: #ff5722;\n    color: white; }\n\n.mat-tooltip {\n  background: rgba(97, 97, 97, 0.9); }\n\n.mat-snack-bar-container {\n  background: #323232;\n  color: white; }\n\n.mat-simple-snackbar-action {\n  color: #795548; }\n\n.guess-panel .guess-panel-game {\n  display: flex;\n  flex-direction: column; }\n\n.guess-panel .guess-panel-score {\n  margin-top: 16px; }\n\n.guess-panel .guess-points {\n  color: #BDBDBD; }\n\n.guess-panel .guess-score-title {\n  width: 100%;\n  border-bottom: 1px solid #BDBDBD;\n  padding: 12px 0 0 5px;\n  margin-bottom: 6px;\n  height: 1.8em; }\n\n.guess-panel .guess-score-table {\n  padding-left: 5px;\n  table-layout: fixed;\n  width: 100%; }\n\n.guess-panel .guess-score-table-first {\n  width: 40%; }\n\n.guess-panel .guess-score-table-second {\n  text-align: right;\n  width: 20%;\n  padding-right: 5px; }\n\n.guess-panel button {\n  width: 100%;\n  margin: 10px 0; }\n\n.guess-panel .correct {\n  background-color: #795548; }\n\n.guess-panel .false {\n  background-color: #ff5722; }\n\n@media (max-height: 900px) and (max-width: 840px) {\n  .guess-panel button {\n    margin: 2px 0; } }\n\n@media (max-width: 840px) {\n  .guess-panel .guess-panel-game {\n    flex-direction: row; }\n  .guess-panel .guess-panel-score {\n    padding-left: 1em; } }\n\n@media (max-width: 520px) {\n  .guess-panel h2 {\n    margin-bottom: 8px; }\n  .guess-panel .guess-score-title {\n    display: none; }\n  .guess-panel td:nth-child(odd) {\n    display: none; }\n  .guess-panel td {\n    display: block; }\n    .guess-panel td:before {\n      content: attr(data-title);\n      display: block;\n      font-size: 80%; }\n  .guess-panel .guess-panel-score {\n    margin-top: 6px;\n    padding-left: 0; }\n  .guess-panel .guess-panel-guess {\n    min-width: 75%; }\n  .guess-panel .guess-score-table-second {\n    width: 100%;\n    text-align: center; } }\n", ""]);
+exports.push([module.i, "/**\n * Applies styles for users in high contrast mode. Note that this only applies\n * to Microsoft browsers. Chrome can be included by checking for the `html[hc]`\n * attribute, however Chrome handles high contrast differently.\n */\n/* Theme for the ripple elements.*/\n/* stylelint-disable material/no-prefixes */\n/* stylelint-enable */\n.mat-elevation-z0 {\n  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z1 {\n  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z2 {\n  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z3 {\n  box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z4 {\n  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z5 {\n  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z6 {\n  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z7 {\n  box-shadow: 0px 4px 5px -2px rgba(0, 0, 0, 0.2), 0px 7px 10px 1px rgba(0, 0, 0, 0.14), 0px 2px 16px 1px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z8 {\n  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z9 {\n  box-shadow: 0px 5px 6px -3px rgba(0, 0, 0, 0.2), 0px 9px 12px 1px rgba(0, 0, 0, 0.14), 0px 3px 16px 2px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z10 {\n  box-shadow: 0px 6px 6px -3px rgba(0, 0, 0, 0.2), 0px 10px 14px 1px rgba(0, 0, 0, 0.14), 0px 4px 18px 3px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z11 {\n  box-shadow: 0px 6px 7px -4px rgba(0, 0, 0, 0.2), 0px 11px 15px 1px rgba(0, 0, 0, 0.14), 0px 4px 20px 3px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z12 {\n  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 12px 17px 2px rgba(0, 0, 0, 0.14), 0px 5px 22px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z13 {\n  box-shadow: 0px 7px 8px -4px rgba(0, 0, 0, 0.2), 0px 13px 19px 2px rgba(0, 0, 0, 0.14), 0px 5px 24px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z14 {\n  box-shadow: 0px 7px 9px -4px rgba(0, 0, 0, 0.2), 0px 14px 21px 2px rgba(0, 0, 0, 0.14), 0px 5px 26px 4px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z15 {\n  box-shadow: 0px 8px 9px -5px rgba(0, 0, 0, 0.2), 0px 15px 22px 2px rgba(0, 0, 0, 0.14), 0px 6px 28px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z16 {\n  box-shadow: 0px 8px 10px -5px rgba(0, 0, 0, 0.2), 0px 16px 24px 2px rgba(0, 0, 0, 0.14), 0px 6px 30px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z17 {\n  box-shadow: 0px 8px 11px -5px rgba(0, 0, 0, 0.2), 0px 17px 26px 2px rgba(0, 0, 0, 0.14), 0px 6px 32px 5px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z18 {\n  box-shadow: 0px 9px 11px -5px rgba(0, 0, 0, 0.2), 0px 18px 28px 2px rgba(0, 0, 0, 0.14), 0px 7px 34px 6px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z19 {\n  box-shadow: 0px 9px 12px -6px rgba(0, 0, 0, 0.2), 0px 19px 29px 2px rgba(0, 0, 0, 0.14), 0px 7px 36px 6px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z20 {\n  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2), 0px 20px 31px 3px rgba(0, 0, 0, 0.14), 0px 8px 38px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z21 {\n  box-shadow: 0px 10px 13px -6px rgba(0, 0, 0, 0.2), 0px 21px 33px 3px rgba(0, 0, 0, 0.14), 0px 8px 40px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z22 {\n  box-shadow: 0px 10px 14px -6px rgba(0, 0, 0, 0.2), 0px 22px 35px 3px rgba(0, 0, 0, 0.14), 0px 8px 42px 7px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z23 {\n  box-shadow: 0px 11px 14px -7px rgba(0, 0, 0, 0.2), 0px 23px 36px 3px rgba(0, 0, 0, 0.14), 0px 9px 44px 8px rgba(0, 0, 0, 0.12); }\n\n.mat-elevation-z24 {\n  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2), 0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12); }\n\n.mat-h1, .mat-headline, .mat-typography h1 {\n  font: 400 24px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h2, .mat-title, .mat-typography h2 {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h3, .mat-subheading-2, .mat-typography h3 {\n  font: 400 16px/28px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h4, .mat-subheading-1, .mat-typography h4 {\n  font: 400 15px/24px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 16px; }\n\n.mat-h5, .mat-typography h5 {\n  font: 400 11.62px/20px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 12px; }\n\n.mat-h6, .mat-typography h6 {\n  font: 400 9.38px/20px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 12px; }\n\n.mat-body-strong, .mat-body-2 {\n  font: 500 14px/24px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-body, .mat-body-1, .mat-typography {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n  .mat-body p, .mat-body-1 p, .mat-typography p {\n    margin: 0 0 12px; }\n\n.mat-small, .mat-caption {\n  font: 400 12px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-display-4, .mat-typography .mat-display-4 {\n  font: 300 112px/112px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 56px;\n  letter-spacing: -0.05em; }\n\n.mat-display-3, .mat-typography .mat-display-3 {\n  font: 400 56px/56px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px;\n  letter-spacing: -0.02em; }\n\n.mat-display-2, .mat-typography .mat-display-2 {\n  font: 400 45px/48px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px;\n  letter-spacing: -0.005em; }\n\n.mat-display-1, .mat-typography .mat-display-1 {\n  font: 400 34px/40px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0 0 64px; }\n\n.mat-button, .mat-raised-button, .mat-icon-button, .mat-stroked-button, .mat-flat-button,\n.mat-fab, .mat-mini-fab {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-button-toggle {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-card {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-card-title {\n  font-size: 24px;\n  font-weight: 400; }\n\n.mat-card-subtitle,\n.mat-card-content,\n.mat-card-header .mat-card-title {\n  font-size: 14px; }\n\n.mat-checkbox {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-checkbox-layout .mat-checkbox-label {\n  line-height: 24px; }\n\n.mat-chip {\n  font-size: 13px;\n  line-height: 18px; }\n  .mat-chip .mat-chip-remove.mat-icon {\n    font-size: 18px; }\n\n.mat-table {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-header-cell {\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-cell {\n  font-size: 14px; }\n\n.mat-calendar {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-calendar-body {\n  font-size: 13px; }\n\n.mat-calendar-body-label,\n.mat-calendar-period-button {\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-calendar-table-header th {\n  font-size: 11px;\n  font-weight: 400; }\n\n.mat-dialog-title {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-expansion-panel-header {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 15px;\n  font-weight: 400; }\n\n.mat-expansion-panel-content {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-form-field {\n  font-size: inherit;\n  font-weight: 400;\n  line-height: 1.125;\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-form-field-wrapper {\n  padding-bottom: 1.25em; }\n\n.mat-form-field-prefix .mat-icon,\n.mat-form-field-suffix .mat-icon {\n  font-size: 150%;\n  line-height: 1.125; }\n\n.mat-form-field-prefix .mat-icon-button,\n.mat-form-field-suffix .mat-icon-button {\n  height: 1.5em;\n  width: 1.5em; }\n  .mat-form-field-prefix .mat-icon-button .mat-icon,\n  .mat-form-field-suffix .mat-icon-button .mat-icon {\n    height: 1.125em;\n    line-height: 1.125; }\n\n.mat-form-field-infix {\n  padding: 0.4375em 0;\n  border-top: 0.84375em solid transparent; }\n\n.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,\n.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.001px);\n  -ms-transform: translateY(-1.28125em) scale(0.75);\n  width: 133.33333%; }\n\n.mat-form-field-can-float .mat-form-field-autofill-control:-webkit-autofill + .mat-form-field-label-wrapper\n.mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00101px);\n  -ms-transform: translateY(-1.28124em) scale(0.75);\n  width: 133.33334%; }\n\n.mat-form-field-can-float .mat-input-server[label]:not(:label-shown) + .mat-form-field-label-wrapper\n.mat-form-field-label {\n  transform: translateY(-1.28125em) scale(0.75) perspective(100px) translateZ(0.00102px);\n  -ms-transform: translateY(-1.28123em) scale(0.75);\n  width: 133.33335%; }\n\n.mat-form-field-label-wrapper {\n  top: -0.84375em;\n  padding-top: 0.84375em; }\n\n.mat-form-field-label {\n  top: 1.28125em; }\n\n.mat-form-field-underline {\n  bottom: 1.25em; }\n\n.mat-form-field-subscript-wrapper {\n  font-size: 75%;\n  margin-top: 0.54167em;\n  top: calc(100% - 1.66667em); }\n\n.mat-grid-tile-header,\n.mat-grid-tile-footer {\n  font-size: 14px; }\n  .mat-grid-tile-header .mat-line,\n  .mat-grid-tile-footer .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-grid-tile-header .mat-line:nth-child(n+2),\n    .mat-grid-tile-footer .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\ninput.mat-input-element {\n  margin-top: -0.0625em; }\n\n.mat-menu-item {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 16px;\n  font-weight: 400; }\n\n.mat-paginator,\n.mat-paginator-page-size .mat-select-trigger {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px; }\n\n.mat-radio-button {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-select {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-select-trigger {\n  height: 1.125em; }\n\n.mat-slide-toggle-content {\n  font: 400 14px/20px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-slider-thumb-label-text {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-stepper-vertical, .mat-stepper-horizontal {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-step-label {\n  font-size: 14px;\n  font-weight: 400; }\n\n.mat-step-label-selected {\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-tab-group {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-tab-label, .mat-tab-link {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-toolbar,\n.mat-toolbar h1,\n.mat-toolbar h2,\n.mat-toolbar h3,\n.mat-toolbar h4,\n.mat-toolbar h5,\n.mat-toolbar h6 {\n  font: 500 20px/32px Roboto, \"Helvetica Neue\", sans-serif;\n  margin: 0; }\n\n.mat-tooltip {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 10px;\n  padding-top: 6px;\n  padding-bottom: 6px; }\n\n.mat-tooltip-handset {\n  font-size: 14px;\n  padding-top: 9px;\n  padding-bottom: 9px; }\n\n.mat-list-item {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-list-option {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {\n  font-size: 16px; }\n  .mat-list .mat-list-item .mat-line, .mat-nav-list .mat-list-item .mat-line, .mat-selection-list .mat-list-item .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list .mat-list-item .mat-line:nth-child(n+2), .mat-nav-list .mat-list-item .mat-line:nth-child(n+2), .mat-selection-list .mat-list-item .mat-line:nth-child(n+2) {\n      font-size: 14px; }\n\n.mat-list .mat-list-option, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-option {\n  font-size: 16px; }\n  .mat-list .mat-list-option .mat-line, .mat-nav-list .mat-list-option .mat-line, .mat-selection-list .mat-list-option .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list .mat-list-option .mat-line:nth-child(n+2), .mat-nav-list .mat-list-option .mat-line:nth-child(n+2), .mat-selection-list .mat-list-option .mat-line:nth-child(n+2) {\n      font-size: 14px; }\n\n.mat-list .mat-subheader, .mat-nav-list .mat-subheader, .mat-selection-list .mat-subheader {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px;\n  font-weight: 500; }\n\n.mat-list[dense] .mat-list-item, .mat-nav-list[dense] .mat-list-item, .mat-selection-list[dense] .mat-list-item {\n  font-size: 12px; }\n  .mat-list[dense] .mat-list-item .mat-line, .mat-nav-list[dense] .mat-list-item .mat-line, .mat-selection-list[dense] .mat-list-item .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list[dense] .mat-list-item .mat-line:nth-child(n+2), .mat-nav-list[dense] .mat-list-item .mat-line:nth-child(n+2), .mat-selection-list[dense] .mat-list-item .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\n.mat-list[dense] .mat-list-option, .mat-nav-list[dense] .mat-list-option, .mat-selection-list[dense] .mat-list-option {\n  font-size: 12px; }\n  .mat-list[dense] .mat-list-option .mat-line, .mat-nav-list[dense] .mat-list-option .mat-line, .mat-selection-list[dense] .mat-list-option .mat-line {\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: block;\n    box-sizing: border-box; }\n    .mat-list[dense] .mat-list-option .mat-line:nth-child(n+2), .mat-nav-list[dense] .mat-list-option .mat-line:nth-child(n+2), .mat-selection-list[dense] .mat-list-option .mat-line:nth-child(n+2) {\n      font-size: 12px; }\n\n.mat-list[dense] .mat-subheader, .mat-nav-list[dense] .mat-subheader, .mat-selection-list[dense] .mat-subheader {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 12px;\n  font-weight: 500; }\n\n.mat-option {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 16px; }\n\n.mat-optgroup-label {\n  font: 500 14px/24px Roboto, \"Helvetica Neue\", sans-serif; }\n\n.mat-simple-snackbar {\n  font-family: Roboto, \"Helvetica Neue\", sans-serif;\n  font-size: 14px; }\n\n.mat-simple-snackbar-action {\n  line-height: 1;\n  font-family: inherit;\n  font-size: inherit;\n  font-weight: 500; }\n\n.mat-ripple {\n  overflow: hidden; }\n  @media screen and (-ms-high-contrast: active) {\n    .mat-ripple {\n      display: none; } }\n\n.mat-ripple.mat-ripple-unbounded {\n  overflow: visible; }\n\n.mat-ripple-element {\n  position: absolute;\n  border-radius: 50%;\n  pointer-events: none;\n  transition: opacity, transform 0ms cubic-bezier(0, 0, 0.2, 1);\n  transform: scale(0); }\n\n.cdk-visually-hidden {\n  border: 0;\n  clip: rect(0 0 0 0);\n  height: 1px;\n  margin: -1px;\n  overflow: hidden;\n  padding: 0;\n  position: absolute;\n  width: 1px;\n  outline: 0;\n  -webkit-appearance: none;\n  -moz-appearance: none; }\n\n.cdk-overlay-container, .cdk-global-overlay-wrapper {\n  pointer-events: none;\n  top: 0;\n  left: 0;\n  height: 100%;\n  width: 100%; }\n\n.cdk-overlay-container {\n  position: fixed;\n  z-index: 1000; }\n  .cdk-overlay-container:empty {\n    display: none; }\n\n.cdk-global-overlay-wrapper {\n  display: flex;\n  position: absolute;\n  z-index: 1000; }\n\n.cdk-overlay-pane {\n  position: absolute;\n  pointer-events: auto;\n  box-sizing: border-box;\n  z-index: 1000; }\n\n.cdk-overlay-backdrop {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  left: 0;\n  right: 0;\n  z-index: 1000;\n  pointer-events: auto;\n  -webkit-tap-highlight-color: transparent;\n  transition: opacity 400ms cubic-bezier(0.25, 0.8, 0.25, 1);\n  opacity: 0; }\n  .cdk-overlay-backdrop.cdk-overlay-backdrop-showing {\n    opacity: 1; }\n\n.cdk-overlay-dark-backdrop {\n  background: rgba(0, 0, 0, 0.288); }\n\n.cdk-overlay-transparent-backdrop, .cdk-overlay-transparent-backdrop.cdk-overlay-backdrop-showing {\n  opacity: 0; }\n\n.cdk-global-scrollblock {\n  position: fixed;\n  width: 100%;\n  overflow-y: scroll; }\n\n.mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.1); }\n\n.mat-option {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-option:hover:not(.mat-option-disabled), .mat-option:focus:not(.mat-option-disabled) {\n    background: rgba(0, 0, 0, 0.04); }\n  .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #ffc107; }\n  .mat-accent .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #795548; }\n  .mat-warn .mat-option.mat-selected:not(.mat-option-disabled) {\n    color: #ff5722; }\n  .mat-option.mat-selected:not(.mat-option-multiple):not(.mat-option-disabled) {\n    background: rgba(0, 0, 0, 0.04); }\n  .mat-option.mat-active {\n    background: rgba(0, 0, 0, 0.04);\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-option.mat-option-disabled {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-optgroup-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-optgroup-disabled .mat-optgroup-label {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-pseudo-checkbox {\n  color: rgba(0, 0, 0, 0.54); }\n  .mat-pseudo-checkbox::after {\n    color: #fafafa; }\n\n.mat-pseudo-checkbox-checked,\n.mat-pseudo-checkbox-indeterminate,\n.mat-accent .mat-pseudo-checkbox-checked,\n.mat-accent .mat-pseudo-checkbox-indeterminate {\n  background: #795548; }\n\n.mat-primary .mat-pseudo-checkbox-checked,\n.mat-primary .mat-pseudo-checkbox-indeterminate {\n  background: #ffc107; }\n\n.mat-warn .mat-pseudo-checkbox-checked,\n.mat-warn .mat-pseudo-checkbox-indeterminate {\n  background: #ff5722; }\n\n.mat-pseudo-checkbox-checked.mat-pseudo-checkbox-disabled,\n.mat-pseudo-checkbox-indeterminate.mat-pseudo-checkbox-disabled {\n  background: #b0b0b0; }\n\n.mat-app-background {\n  background-color: #fafafa;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-theme-loaded-marker {\n  display: none; }\n\n.mat-autocomplete-panel {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover) {\n    background: white; }\n    .mat-autocomplete-panel .mat-option.mat-selected:not(.mat-active):not(:hover):not(.mat-option-disabled) {\n      color: rgba(0, 0, 0, 0.87); }\n\n.mat-button, .mat-icon-button, .mat-stroked-button {\n  background: transparent; }\n  .mat-button.mat-primary .mat-button-focus-overlay, .mat-icon-button.mat-primary .mat-button-focus-overlay, .mat-stroked-button.mat-primary .mat-button-focus-overlay {\n    background-color: rgba(255, 193, 7, 0.12); }\n  .mat-button.mat-accent .mat-button-focus-overlay, .mat-icon-button.mat-accent .mat-button-focus-overlay, .mat-stroked-button.mat-accent .mat-button-focus-overlay {\n    background-color: rgba(121, 85, 72, 0.12); }\n  .mat-button.mat-warn .mat-button-focus-overlay, .mat-icon-button.mat-warn .mat-button-focus-overlay, .mat-stroked-button.mat-warn .mat-button-focus-overlay {\n    background-color: rgba(255, 87, 34, 0.12); }\n  .mat-button[disabled] .mat-button-focus-overlay, .mat-icon-button[disabled] .mat-button-focus-overlay, .mat-stroked-button[disabled] .mat-button-focus-overlay {\n    background-color: transparent; }\n  .mat-button.mat-primary, .mat-icon-button.mat-primary, .mat-stroked-button.mat-primary {\n    color: #ffc107; }\n  .mat-button.mat-accent, .mat-icon-button.mat-accent, .mat-stroked-button.mat-accent {\n    color: #795548; }\n  .mat-button.mat-warn, .mat-icon-button.mat-warn, .mat-stroked-button.mat-warn {\n    color: #ff5722; }\n  .mat-button.mat-primary[disabled], .mat-button.mat-accent[disabled], .mat-button.mat-warn[disabled], .mat-button[disabled][disabled], .mat-icon-button.mat-primary[disabled], .mat-icon-button.mat-accent[disabled], .mat-icon-button.mat-warn[disabled], .mat-icon-button[disabled][disabled], .mat-stroked-button.mat-primary[disabled], .mat-stroked-button.mat-accent[disabled], .mat-stroked-button.mat-warn[disabled], .mat-stroked-button[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n\n.mat-raised-button, .mat-fab, .mat-mini-fab {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: white; }\n  .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {\n    color: white; }\n  .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {\n    color: white; }\n  .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n  .mat-raised-button.mat-primary, .mat-fab.mat-primary, .mat-mini-fab.mat-primary {\n    background-color: #ffc107; }\n  .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {\n    background-color: #795548; }\n  .mat-raised-button.mat-warn, .mat-fab.mat-warn, .mat-mini-fab.mat-warn {\n    background-color: #ff5722; }\n  .mat-raised-button.mat-primary[disabled], .mat-raised-button.mat-accent[disabled], .mat-raised-button.mat-warn[disabled], .mat-raised-button[disabled][disabled], .mat-fab.mat-primary[disabled], .mat-fab.mat-accent[disabled], .mat-fab.mat-warn[disabled], .mat-fab[disabled][disabled], .mat-mini-fab.mat-primary[disabled], .mat-mini-fab.mat-accent[disabled], .mat-mini-fab.mat-warn[disabled], .mat-mini-fab[disabled][disabled] {\n    background-color: rgba(0, 0, 0, 0.12); }\n  .mat-raised-button.mat-primary .mat-ripple-element, .mat-fab.mat-primary .mat-ripple-element, .mat-mini-fab.mat-primary .mat-ripple-element {\n    background-color: rgba(0, 0, 0, 0.2); }\n  .mat-raised-button.mat-accent .mat-ripple-element, .mat-fab.mat-accent .mat-ripple-element, .mat-mini-fab.mat-accent .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n  .mat-raised-button.mat-warn .mat-ripple-element, .mat-fab.mat-warn .mat-ripple-element, .mat-mini-fab.mat-warn .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n\n.mat-button.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.1); }\n\n.mat-button.mat-accent .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.1); }\n\n.mat-button.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.1); }\n\n.mat-flat-button {\n  color: rgba(0, 0, 0, 0.87);\n  background-color: white; }\n  .mat-flat-button.mat-primary {\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-flat-button.mat-accent {\n    color: white; }\n  .mat-flat-button.mat-warn {\n    color: white; }\n  .mat-flat-button.mat-primary[disabled], .mat-flat-button.mat-accent[disabled], .mat-flat-button.mat-warn[disabled], .mat-flat-button[disabled][disabled] {\n    color: rgba(0, 0, 0, 0.26); }\n  .mat-flat-button.mat-primary {\n    background-color: #ffc107; }\n  .mat-flat-button.mat-accent {\n    background-color: #795548; }\n  .mat-flat-button.mat-warn {\n    background-color: #ff5722; }\n  .mat-flat-button.mat-primary[disabled], .mat-flat-button.mat-accent[disabled], .mat-flat-button.mat-warn[disabled], .mat-flat-button[disabled][disabled] {\n    background-color: rgba(0, 0, 0, 0.12); }\n  .mat-flat-button.mat-primary .mat-ripple-element {\n    background-color: rgba(0, 0, 0, 0.2); }\n  .mat-flat-button.mat-accent .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n  .mat-flat-button.mat-warn .mat-ripple-element {\n    background-color: rgba(255, 255, 255, 0.2); }\n\n.mat-icon-button.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.2); }\n\n.mat-icon-button.mat-accent .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.2); }\n\n.mat-icon-button.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.2); }\n\n.mat-button-toggle {\n  color: rgba(0, 0, 0, 0.38); }\n  .mat-button-toggle.cdk-focused .mat-button-toggle-focus-overlay {\n    background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-button-toggle-checked {\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-button-toggle-disabled {\n  background-color: #eeeeee;\n  color: rgba(0, 0, 0, 0.26); }\n  .mat-button-toggle-disabled.mat-button-toggle-checked {\n    background-color: #bdbdbd; }\n\n.mat-card {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-card-subtitle {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-checkbox-frame {\n  border-color: rgba(0, 0, 0, 0.54); }\n\n.mat-checkbox-checkmark {\n  fill: #fafafa; }\n\n.mat-checkbox-checkmark-path {\n  stroke: #fafafa !important; }\n\n.mat-checkbox-mixedmark {\n  background-color: #fafafa; }\n\n.mat-checkbox-indeterminate.mat-primary .mat-checkbox-background, .mat-checkbox-checked.mat-primary .mat-checkbox-background {\n  background-color: #ffc107; }\n\n.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {\n  background-color: #795548; }\n\n.mat-checkbox-indeterminate.mat-warn .mat-checkbox-background, .mat-checkbox-checked.mat-warn .mat-checkbox-background {\n  background-color: #ff5722; }\n\n.mat-checkbox-disabled.mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-disabled.mat-checkbox-indeterminate .mat-checkbox-background {\n  background-color: #b0b0b0; }\n\n.mat-checkbox-disabled:not(.mat-checkbox-checked) .mat-checkbox-frame {\n  border-color: #b0b0b0; }\n\n.mat-checkbox-disabled .mat-checkbox-label {\n  color: #b0b0b0; }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-primary .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.26); }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-accent .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.26); }\n\n.mat-checkbox:not(.mat-checkbox-disabled).mat-warn .mat-checkbox-ripple .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.26); }\n\n.mat-chip:not(.mat-basic-chip) {\n  background-color: #e0e0e0;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-chip:not(.mat-basic-chip) .mat-chip-remove {\n    color: rgba(0, 0, 0, 0.87);\n    opacity: 0.4; }\n  .mat-chip:not(.mat-basic-chip) .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-primary {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-chip.mat-chip-selected.mat-primary .mat-chip-remove {\n    color: rgba(0, 0, 0, 0.87);\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-primary .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-warn {\n  background-color: #ff5722;\n  color: white; }\n  .mat-chip.mat-chip-selected.mat-warn .mat-chip-remove {\n    color: white;\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-warn .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-chip.mat-chip-selected.mat-accent {\n  background-color: #795548;\n  color: white; }\n  .mat-chip.mat-chip-selected.mat-accent .mat-chip-remove {\n    color: white;\n    opacity: 0.4; }\n  .mat-chip.mat-chip-selected.mat-accent .mat-chip-remove:hover {\n    opacity: 0.54; }\n\n.mat-table {\n  background: white; }\n\n.mat-row, .mat-header-row {\n  border-bottom-color: rgba(0, 0, 0, 0.12); }\n\n.mat-header-cell {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-cell {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-datepicker-content {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-arrow {\n  border-top-color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-next-button,\n.mat-calendar-previous-button {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-table-header {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-calendar-table-header-divider::after {\n  background: rgba(0, 0, 0, 0.12); }\n\n.mat-calendar-body-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-calendar-body-cell-content {\n  color: rgba(0, 0, 0, 0.87);\n  border-color: transparent; }\n  .mat-calendar-body-disabled > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {\n    color: rgba(0, 0, 0, 0.38); }\n\n:not(.mat-calendar-body-disabled):hover > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),\n.cdk-keyboard-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),\n.cdk-program-focused .mat-calendar-body-active > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {\n  background-color: rgba(0, 0, 0, 0.04); }\n\n.mat-calendar-body-selected {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-body-disabled > .mat-calendar-body-selected {\n  background-color: rgba(255, 193, 7, 0.4); }\n\n.mat-calendar-body-today:not(.mat-calendar-body-selected) {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-calendar-body-today.mat-calendar-body-selected {\n  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.87); }\n\n.mat-calendar-body-disabled > .mat-calendar-body-today:not(.mat-calendar-body-selected) {\n  border-color: rgba(0, 0, 0, 0.18); }\n\n.mat-datepicker-toggle-active {\n  color: #ffc107; }\n\n.mat-dialog-container {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-divider {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-divider-vertical {\n  border-right-color: rgba(0, 0, 0, 0.12); }\n\n.mat-expansion-panel {\n  background: white;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-action-row {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-keyboard-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']).cdk-program-focused, .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled='true']):hover {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-expansion-panel-header-title {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-expansion-panel-header-description,\n.mat-expansion-indicator::after {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-expansion-panel-header[aria-disabled='true'] {\n  color: rgba(0, 0, 0, 0.26); }\n  .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-title,\n  .mat-expansion-panel-header[aria-disabled='true'] .mat-expansion-panel-header-description {\n    color: inherit; }\n\n.mat-form-field-label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-hint {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-focused .mat-form-field-label {\n  color: #ffc107; }\n  .mat-focused .mat-form-field-label.mat-accent {\n    color: #795548; }\n  .mat-focused .mat-form-field-label.mat-warn {\n    color: #ff5722; }\n\n.mat-focused .mat-form-field-required-marker {\n  color: #795548; }\n\n.mat-form-field-underline {\n  background-color: rgba(0, 0, 0, 0.42); }\n\n.mat-form-field-disabled .mat-form-field-underline {\n  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.42) 0%, rgba(0, 0, 0, 0.42) 33%, transparent 0%);\n  background-size: 4px 1px;\n  background-repeat: repeat-x; }\n\n.mat-form-field-ripple {\n  background-color: #ffc107; }\n  .mat-form-field-ripple.mat-accent {\n    background-color: #795548; }\n  .mat-form-field-ripple.mat-warn {\n    background-color: #ff5722; }\n\n.mat-form-field-invalid .mat-form-field-label {\n  color: #ff5722; }\n  .mat-form-field-invalid .mat-form-field-label.mat-accent,\n  .mat-form-field-invalid .mat-form-field-label .mat-form-field-required-marker {\n    color: #ff5722; }\n\n.mat-form-field-invalid .mat-form-field-ripple {\n  background-color: #ff5722; }\n\n.mat-error {\n  color: #ff5722; }\n\n.mat-icon.mat-primary {\n  color: #ffc107; }\n\n.mat-icon.mat-accent {\n  color: #795548; }\n\n.mat-icon.mat-warn {\n  color: #ff5722; }\n\n.mat-input-element:disabled {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-input-element {\n  caret-color: #ffc107; }\n  .mat-input-element::placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element::-moz-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element::-webkit-input-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n  .mat-input-element:-ms-input-placeholder {\n    color: rgba(0, 0, 0, 0.42); }\n\n.mat-accent .mat-input-element {\n  caret-color: #795548; }\n\n.mat-warn .mat-input-element,\n.mat-form-field-invalid .mat-input-element {\n  caret-color: #ff5722; }\n\n.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-list .mat-list-option, .mat-nav-list .mat-list-option, .mat-selection-list .mat-list-option {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-list .mat-subheader, .mat-nav-list .mat-subheader, .mat-selection-list .mat-subheader {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-list-item-disabled {\n  background-color: #eeeeee; }\n\n.mat-list-option:hover, .mat-list-option.mat-list-item-focus,\n.mat-nav-list .mat-list-item:hover,\n.mat-nav-list .mat-list-item.mat-list-item-focus {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-menu-panel {\n  background: white; }\n\n.mat-menu-item {\n  background: transparent;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-menu-item[disabled] {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-menu-item .mat-icon:not([color]),\n.mat-menu-item-submenu-trigger::after {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-menu-item:hover:not([disabled]),\n.mat-menu-item.cdk-program-focused:not([disabled]),\n.mat-menu-item.cdk-keyboard-focused:not([disabled]),\n.mat-menu-item-highlighted:not([disabled]) {\n  background: rgba(0, 0, 0, 0.04); }\n\n.mat-paginator {\n  background: white; }\n\n.mat-paginator,\n.mat-paginator-page-size .mat-select-trigger {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-paginator-decrement,\n.mat-paginator-increment {\n  border-top: 2px solid rgba(0, 0, 0, 0.54);\n  border-right: 2px solid rgba(0, 0, 0, 0.54); }\n\n.mat-paginator-first,\n.mat-paginator-last {\n  border-top: 2px solid rgba(0, 0, 0, 0.54); }\n\n.mat-icon-button[disabled] .mat-paginator-decrement,\n.mat-icon-button[disabled] .mat-paginator-increment,\n.mat-icon-button[disabled] .mat-paginator-first,\n.mat-icon-button[disabled] .mat-paginator-last {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-progress-bar-background {\n  fill: #ffecb3; }\n\n.mat-progress-bar-buffer {\n  background-color: #ffecb3; }\n\n.mat-progress-bar-fill::after {\n  background-color: #ffc107; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-background {\n  fill: #d7ccc8; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-buffer {\n  background-color: #d7ccc8; }\n\n.mat-progress-bar.mat-accent .mat-progress-bar-fill::after {\n  background-color: #795548; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-background {\n  fill: #ffccbc; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-buffer {\n  background-color: #ffccbc; }\n\n.mat-progress-bar.mat-warn .mat-progress-bar-fill::after {\n  background-color: #ff5722; }\n\n.mat-progress-spinner circle, .mat-spinner circle {\n  stroke: #ffc107; }\n\n.mat-progress-spinner.mat-accent circle, .mat-spinner.mat-accent circle {\n  stroke: #795548; }\n\n.mat-progress-spinner.mat-warn circle, .mat-spinner.mat-warn circle {\n  stroke: #ff5722; }\n\n.mat-radio-outer-circle {\n  border-color: rgba(0, 0, 0, 0.54); }\n\n.mat-radio-disabled .mat-radio-outer-circle {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-disabled .mat-radio-ripple .mat-ripple-element, .mat-radio-disabled .mat-radio-inner-circle {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-disabled .mat-radio-label-content {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-radio-button.mat-primary.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #ffc107; }\n\n.mat-radio-button.mat-primary .mat-radio-inner-circle {\n  background-color: #ffc107; }\n\n.mat-radio-button.mat-primary .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.26); }\n\n.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #795548; }\n\n.mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #795548; }\n\n.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.26); }\n\n.mat-radio-button.mat-warn.mat-radio-checked .mat-radio-outer-circle {\n  border-color: #ff5722; }\n\n.mat-radio-button.mat-warn .mat-radio-inner-circle {\n  background-color: #ff5722; }\n\n.mat-radio-button.mat-warn .mat-radio-ripple .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.26); }\n\n.mat-select-content, .mat-select-panel-done-animating {\n  background: white; }\n\n.mat-select-value {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-select-placeholder {\n  color: rgba(0, 0, 0, 0.42); }\n\n.mat-select-disabled .mat-select-value {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-select-arrow {\n  color: rgba(0, 0, 0, 0.54); }\n\n.mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {\n  background: rgba(0, 0, 0, 0.12); }\n\n.mat-form-field.mat-focused.mat-primary .mat-select-arrow {\n  color: #ffc107; }\n\n.mat-form-field.mat-focused.mat-accent .mat-select-arrow {\n  color: #795548; }\n\n.mat-form-field.mat-focused.mat-warn .mat-select-arrow {\n  color: #ff5722; }\n\n.mat-form-field .mat-select.mat-select-invalid .mat-select-arrow {\n  color: #ff5722; }\n\n.mat-form-field .mat-select.mat-select-disabled .mat-select-arrow {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-drawer-container {\n  background-color: #fafafa;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-drawer {\n  background-color: white;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-drawer.mat-drawer-push {\n    background-color: white; }\n\n.mat-drawer-backdrop.mat-drawer-shown {\n  background-color: rgba(0, 0, 0, 0.6); }\n\n.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #795548; }\n\n.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(121, 85, 72, 0.5); }\n\n.mat-slide-toggle:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle .mat-ripple-element {\n  background-color: rgba(121, 85, 72, 0.12); }\n\n.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #ffc107; }\n\n.mat-slide-toggle.mat-primary.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(255, 193, 7, 0.5); }\n\n.mat-slide-toggle.mat-primary:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle.mat-primary .mat-ripple-element {\n  background-color: rgba(255, 193, 7, 0.12); }\n\n.mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {\n  background-color: #ff5722; }\n\n.mat-slide-toggle.mat-warn.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {\n  background-color: rgba(255, 87, 34, 0.5); }\n\n.mat-slide-toggle.mat-warn:not(.mat-checked) .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.06); }\n\n.mat-slide-toggle.mat-warn .mat-ripple-element {\n  background-color: rgba(255, 87, 34, 0.12); }\n\n.mat-disabled .mat-slide-toggle-thumb {\n  background-color: #bdbdbd; }\n\n.mat-disabled .mat-slide-toggle-bar {\n  background-color: rgba(0, 0, 0, 0.1); }\n\n.mat-slide-toggle-thumb {\n  background-color: #fafafa; }\n\n.mat-slide-toggle-bar {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-primary .mat-slider-track-fill,\n.mat-primary .mat-slider-thumb,\n.mat-primary .mat-slider-thumb-label {\n  background-color: #ffc107; }\n\n.mat-primary .mat-slider-thumb-label-text {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-accent .mat-slider-track-fill,\n.mat-accent .mat-slider-thumb,\n.mat-accent .mat-slider-thumb-label {\n  background-color: #795548; }\n\n.mat-accent .mat-slider-thumb-label-text {\n  color: white; }\n\n.mat-warn .mat-slider-track-fill,\n.mat-warn .mat-slider-thumb,\n.mat-warn .mat-slider-thumb-label {\n  background-color: #ff5722; }\n\n.mat-warn .mat-slider-thumb-label-text {\n  color: white; }\n\n.mat-slider-focus-ring {\n  background-color: rgba(121, 85, 72, 0.2); }\n\n.mat-slider:hover .mat-slider-track-background,\n.cdk-focused .mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-disabled .mat-slider-track-background,\n.mat-slider-disabled .mat-slider-track-fill,\n.mat-slider-disabled .mat-slider-thumb {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-disabled:hover .mat-slider-track-background {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-min-value .mat-slider-focus-ring {\n  background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb,\n.mat-slider-min-value.mat-slider-thumb-label-showing .mat-slider-thumb-label {\n  background-color: rgba(0, 0, 0, 0.87); }\n\n.mat-slider-min-value.mat-slider-thumb-label-showing.cdk-focused .mat-slider-thumb,\n.mat-slider-min-value.mat-slider-thumb-label-showing.cdk-focused .mat-slider-thumb-label {\n  background-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing) .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.26);\n  background-color: transparent; }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing):hover .mat-slider-thumb, .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-slider-min-value:not(.mat-slider-thumb-label-showing):hover.mat-slider-disabled .mat-slider-thumb, .mat-slider-min-value:not(.mat-slider-thumb-label-showing).cdk-focused.mat-slider-disabled .mat-slider-thumb {\n  border-color: rgba(0, 0, 0, 0.26); }\n\n.mat-slider-has-ticks .mat-slider-wrapper::after {\n  border-color: rgba(0, 0, 0, 0.7); }\n\n.mat-slider-horizontal .mat-slider-ticks {\n  background-image: repeating-linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent);\n  background-image: -moz-repeating-linear-gradient(0.0001deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent); }\n\n.mat-slider-vertical .mat-slider-ticks {\n  background-image: repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7) 2px, transparent 0, transparent); }\n\n.mat-step-header.cdk-keyboard-focused, .mat-step-header.cdk-program-focused, .mat-step-header:hover {\n  background-color: rgba(0, 0, 0, 0.04); }\n\n.mat-step-header .mat-step-label,\n.mat-step-header .mat-step-optional {\n  color: rgba(0, 0, 0, 0.38); }\n\n.mat-step-header .mat-step-icon {\n  background-color: #ffc107;\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-step-header .mat-step-icon-not-touched {\n  background-color: rgba(0, 0, 0, 0.38);\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-step-header .mat-step-label.mat-step-label-active {\n  color: rgba(0, 0, 0, 0.87); }\n\n.mat-stepper-horizontal, .mat-stepper-vertical {\n  background-color: white; }\n\n.mat-stepper-vertical-line::before {\n  border-left-color: rgba(0, 0, 0, 0.12); }\n\n.mat-stepper-horizontal-line {\n  border-top-color: rgba(0, 0, 0, 0.12); }\n\n.mat-tab-nav-bar,\n.mat-tab-header {\n  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }\n\n.mat-tab-group-inverted-header .mat-tab-nav-bar,\n.mat-tab-group-inverted-header .mat-tab-header {\n  border-top: 1px solid rgba(0, 0, 0, 0.12);\n  border-bottom: none; }\n\n.mat-tab-label, .mat-tab-link {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-tab-label.mat-tab-disabled, .mat-tab-link.mat-tab-disabled {\n    color: rgba(0, 0, 0, 0.38); }\n\n.mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.38); }\n\n.mat-tab-group[class*='mat-background-'] .mat-tab-header,\n.mat-tab-nav-bar[class*='mat-background-'] {\n  border-bottom: none;\n  border-top: none; }\n\n.mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 236, 179, 0.3); }\n\n.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {\n  background-color: #ffc107; }\n\n.mat-tab-group.mat-primary.mat-background-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary.mat-background-primary .mat-ink-bar {\n  background-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-group.mat-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-accent .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-accent .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(215, 204, 200, 0.3); }\n\n.mat-tab-group.mat-accent .mat-ink-bar, .mat-tab-nav-bar.mat-accent .mat-ink-bar {\n  background-color: #795548; }\n\n.mat-tab-group.mat-accent.mat-background-accent .mat-ink-bar, .mat-tab-nav-bar.mat-accent.mat-background-accent .mat-ink-bar {\n  background-color: white; }\n\n.mat-tab-group.mat-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-warn .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-warn .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 204, 188, 0.3); }\n\n.mat-tab-group.mat-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn .mat-ink-bar {\n  background-color: #ff5722; }\n\n.mat-tab-group.mat-warn.mat-background-warn .mat-ink-bar, .mat-tab-nav-bar.mat-warn.mat-background-warn .mat-ink-bar {\n  background-color: white; }\n\n.mat-tab-group.mat-background-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-primary .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-primary .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 236, 179, 0.3); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header, .mat-tab-group.mat-background-primary .mat-tab-links, .mat-tab-nav-bar.mat-background-primary .mat-tab-header, .mat-tab-nav-bar.mat-background-primary .mat-tab-links {\n  background-color: #ffc107; }\n\n.mat-tab-group.mat-background-primary .mat-tab-label, .mat-tab-group.mat-background-primary .mat-tab-link, .mat-tab-nav-bar.mat-background-primary .mat-tab-label, .mat-tab-nav-bar.mat-background-primary .mat-tab-link {\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-tab-group.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-primary .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-primary .mat-tab-link.mat-tab-disabled {\n    color: rgba(0, 0, 0, 0.4); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.87); }\n\n.mat-tab-group.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-primary .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(0, 0, 0, 0.4); }\n\n.mat-tab-group.mat-background-primary .mat-ripple-element, .mat-tab-nav-bar.mat-background-primary .mat-ripple-element {\n  background-color: rgba(0, 0, 0, 0.12); }\n\n.mat-tab-group.mat-background-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-accent .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-accent .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-accent .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(215, 204, 200, 0.3); }\n\n.mat-tab-group.mat-background-accent .mat-tab-header, .mat-tab-group.mat-background-accent .mat-tab-links, .mat-tab-nav-bar.mat-background-accent .mat-tab-header, .mat-tab-nav-bar.mat-background-accent .mat-tab-links {\n  background-color: #795548; }\n\n.mat-tab-group.mat-background-accent .mat-tab-label, .mat-tab-group.mat-background-accent .mat-tab-link, .mat-tab-nav-bar.mat-background-accent .mat-tab-label, .mat-tab-nav-bar.mat-background-accent .mat-tab-link {\n  color: white; }\n  .mat-tab-group.mat-background-accent .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-accent .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-accent .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-accent .mat-tab-link.mat-tab-disabled {\n    color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-accent .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-chevron {\n  border-color: white; }\n\n.mat-tab-group.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-accent .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-accent .mat-ripple-element, .mat-tab-nav-bar.mat-background-accent .mat-ripple-element {\n  background-color: rgba(255, 255, 255, 0.12); }\n\n.mat-tab-group.mat-background-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-group.mat-background-warn .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-background-warn .mat-tab-label:not(.mat-tab-disabled):focus,\n.mat-tab-nav-bar.mat-background-warn .mat-tab-link:not(.mat-tab-disabled):focus {\n  background-color: rgba(255, 204, 188, 0.3); }\n\n.mat-tab-group.mat-background-warn .mat-tab-header, .mat-tab-group.mat-background-warn .mat-tab-links, .mat-tab-nav-bar.mat-background-warn .mat-tab-header, .mat-tab-nav-bar.mat-background-warn .mat-tab-links {\n  background-color: #ff5722; }\n\n.mat-tab-group.mat-background-warn .mat-tab-label, .mat-tab-group.mat-background-warn .mat-tab-link, .mat-tab-nav-bar.mat-background-warn .mat-tab-label, .mat-tab-nav-bar.mat-background-warn .mat-tab-link {\n  color: white; }\n  .mat-tab-group.mat-background-warn .mat-tab-label.mat-tab-disabled, .mat-tab-group.mat-background-warn .mat-tab-link.mat-tab-disabled, .mat-tab-nav-bar.mat-background-warn .mat-tab-label.mat-tab-disabled, .mat-tab-nav-bar.mat-background-warn .mat-tab-link.mat-tab-disabled {\n    color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-warn .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-chevron {\n  border-color: white; }\n\n.mat-tab-group.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron, .mat-tab-nav-bar.mat-background-warn .mat-tab-header-pagination-disabled .mat-tab-header-pagination-chevron {\n  border-color: rgba(255, 255, 255, 0.4); }\n\n.mat-tab-group.mat-background-warn .mat-ripple-element, .mat-tab-nav-bar.mat-background-warn .mat-ripple-element {\n  background-color: rgba(255, 255, 255, 0.12); }\n\n.mat-toolbar {\n  background: whitesmoke;\n  color: rgba(0, 0, 0, 0.87); }\n  .mat-toolbar.mat-primary {\n    background: #ffc107;\n    color: rgba(0, 0, 0, 0.87); }\n  .mat-toolbar.mat-accent {\n    background: #795548;\n    color: white; }\n  .mat-toolbar.mat-warn {\n    background: #ff5722;\n    color: white; }\n\n.mat-tooltip {\n  background: rgba(97, 97, 97, 0.9); }\n\n.mat-snack-bar-container {\n  background: #323232;\n  color: white; }\n\n.mat-simple-snackbar-action {\n  color: #795548; }\n\n.guess-panel .guess-panel-game {\n  display: flex;\n  flex-direction: column; }\n\n.guess-panel .guess-panel-score {\n  margin-top: 16px; }\n\n.guess-panel .guess-points {\n  color: #BDBDBD; }\n\n.guess-panel .guess-score-title {\n  width: 100%;\n  border-bottom: 1px solid #BDBDBD;\n  padding: 12px 0 0 5px;\n  margin-bottom: 6px;\n  height: 1.8em; }\n\n.guess-panel .guess-score-table {\n  padding-left: 5px;\n  table-layout: fixed;\n  width: 100%; }\n\n.guess-panel .guess-score-table-first {\n  width: 60%; }\n\n.guess-panel .guess-score-table-second {\n  text-align: right;\n  width: 20%;\n  padding-right: 5px; }\n\n.guess-panel button {\n  width: 100%;\n  margin: 10px 0; }\n\n.guess-panel .correct {\n  background-color: #795548; }\n\n.guess-panel .false {\n  background-color: #ff5722; }\n\n@media (max-height: 900px) and (max-width: 840px) {\n  .guess-panel button {\n    margin: 2px 0; } }\n\n@media (max-width: 840px) {\n  .guess-panel .guess-panel-game {\n    flex-direction: row; }\n  .guess-panel .guess-panel-score {\n    padding-left: 1em; } }\n\n@media (max-width: 520px) {\n  .guess-panel h2 {\n    margin-bottom: 8px; }\n  .guess-panel .guess-score-title {\n    display: none; }\n  .guess-panel td:nth-child(odd) {\n    display: none; }\n  .guess-panel td {\n    display: block; }\n    .guess-panel td:before {\n      content: attr(data-title);\n      display: block;\n      font-size: 80%; }\n  .guess-panel .guess-panel-score {\n    margin-top: 6px;\n    padding-left: 0; }\n  .guess-panel .guess-panel-guess {\n    min-width: 75%; }\n  .guess-panel .guess-score-table-second {\n    width: 100%;\n    text-align: center; } }\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 611 */
+/* 610 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -89273,8 +89227,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     LoadingPageComponent = __decorate([
         core_1.Component({
             selector: 'loading-page',
-            template: __webpack_require__(612),
-            styles: [__webpack_require__(613)]
+            template: __webpack_require__(611),
+            styles: [__webpack_require__(612)]
         }),
         __metadata("design:paramtypes", [])
     ], LoadingPageComponent);
@@ -89284,17 +89238,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 /***/ }),
-/* 612 */
+/* 611 */
 /***/ (function(module, exports) {
 
 module.exports = "\n<div class=\"spinner\">\n  <div class=\"rect1\"></div>\n  <div class=\"rect2\"></div>\n  <div class=\"rect3\"></div>\n  <div class=\"rect4\"></div>\n  <div class=\"rect5\"></div>\n</div>\n";
 
 /***/ }),
-/* 613 */
+/* 612 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-        var result = __webpack_require__(614);
+        var result = __webpack_require__(613);
 
         if (typeof result === "string") {
             module.exports = result;
@@ -89304,13 +89258,13 @@ module.exports = "\n<div class=\"spinner\">\n  <div class=\"rect1\"></div>\n  <d
     
 
 /***/ }),
-/* 614 */
+/* 613 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(615);
+var content = __webpack_require__(614);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -89335,7 +89289,7 @@ if(false) {
 }
 
 /***/ }),
-/* 615 */
+/* 614 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(20)(undefined);
@@ -89349,7 +89303,7 @@ exports.push([module.i, ".spinner {\n  margin: 100px auto;\n  width: 50px;\n  he
 
 
 /***/ }),
-/* 616 */
+/* 615 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -89388,7 +89342,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate =
 
 
 /***/ }),
-/* 617 */
+/* 616 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -89408,7 +89362,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
             this.winSize = new core_1.EventEmitter();
         }
         onResize(event) {
-            // console.log(event.target.innerWidth);
             this.winSize.emit({ width: event.target.innerWidth, height: event.target.innerHeight });
         }
     };

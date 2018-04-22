@@ -44,7 +44,6 @@ export class EsriMapComponent implements OnInit {
 
   ngOnInit() {
 
-    // this.appState.showMap = 'hide';
     const map = this.mapDataService.map;
 
     const mapViewProperties: any = {
@@ -82,7 +81,7 @@ export class EsriMapComponent implements OnInit {
         if (this.selectedTree) {
           this.treeLayerView.watch('updating', (value) => {
             if (!value && this.selectedTree) {
-              this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id])
+              this.highlight = this.treeLayerView.highlight(this.selectedTree.attributes[attr.id]);
             }
           });
         }
@@ -146,7 +145,7 @@ export class EsriMapComponent implements OnInit {
     if (this.appState.sidePanelPosition === 'right') {
       this.appState.mapPosition = (this.appState.interaction === 'none') ? 'right-closed' : 'right-open';
     }
-    if (this.appState.sidePanelPosition === 'bottom'){
+    if (this.appState.sidePanelPosition === 'bottom') {
       this.appState.mapPosition = (this.appState.interaction === 'none') ? 'bottom-closed' : 'bottom-open';
     }
   }
