@@ -19,8 +19,8 @@ const USER = {
 export class MockState {
 
 
-  public showMap: string = 'hide';
-  public sidePanelPosition: string  = '';
+  public showMap = 'hide';
+  public sidePanelPosition  = '';
 
   // set the view here to get acces to it from everywhere
   public mapView = null;
@@ -54,16 +54,15 @@ export class MockState {
     return this.interaction;
   }
 
-  userIsLoggedIn(): boolean{
+  userIsLoggedIn(): boolean {
     if (USER) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
   }
 
-  userHasRole(role: string){
+  userHasRole(role: string) {
     return USER.roles[role];
   }
 
