@@ -21,6 +21,7 @@ export class AppComponent implements OnInit {
   memberSubComponent = '';
   cmpRef: ComponentRef<any>;
   loggedIn = false;
+  loggedInUser: string;
 
   constructor(
     private _cfr: ComponentFactoryResolver,
@@ -32,6 +33,11 @@ export class AppComponent implements OnInit {
     this.authService.userChanged.subscribe(
       () => {
         this.loggedIn = this.authService.isLoggedIn();
+        const user = this.authService.getUser();
+        if (user) {
+          this.loggedInUser = user.displayName;
+        }
+
       }
     );
   }
